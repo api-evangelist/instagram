@@ -1,0 +1,543 @@
+{
+    "id": "1a278b2d0bd269187c4c68c4f62e6fd3",
+    "name": "Instagram Graph API",
+    "description": null,
+    "auth": null,
+    "events": null,
+    "variables": [],
+    "order": [],
+    "folders_order": [],
+    "folders": [],
+    "requests": [
+        {
+            "id": "3a05fbf2d847e757e6b2d84fa8d944ed",
+            "name": "Instagram Media Comments",
+            "url": "httpsgraph.facebook.com\/v3.0\/&#123;instagram-media-id&#125;\/comments",
+            "description": "Instagram Media Comments",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "GET",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "100",
+                    "description": "Invalid parameter",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "1a278b2d0bd269187c4c68c4f62e6fd3",
+            "rawModeData": ""
+        },
+        {
+            "id": "4d5f0ad252494451e7e71f58554a413b",
+            "name": "Instagram User",
+            "url": "httpsgraph.facebook.com\/v3.0\/&#123;instagram-user-id&#125;",
+            "description": "Instagram User",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "GET",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "idnumeric string",
+                    "description": "ID of the Instagram user",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "follow_countint32",
+                    "description": "Number of Instagram users that this Instagram user follows",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "followed_by_countint32",
+                    "description": "Number of Instagram users that follow this Instagram user",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "has_profile_picturebool",
+                    "description": "Indicates whether Instagram Account has a profile picture",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "is_privatebool",
+                    "description": "Whether the Instagram user is private",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "is_publishedbool",
+                    "description": "Whether the Instagram user is published",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "media_countint32",
+                    "description": "Number of active media posted by this Instagram user",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "profile_picstring",
+                    "description": "URI to user&#039;s Instagram profile picture",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "usernamestring",
+                    "description": "Instagram username",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "1a278b2d0bd269187c4c68c4f62e6fd3",
+            "rawModeData": ""
+        },
+        {
+            "id": "fe5dc61c639b941299c412716b8c63a6",
+            "name": "Instagram User Agencies",
+            "url": "httpsgraph.facebook.com\/v3.0\/&#123;instagram-user-id&#125;\/agencies",
+            "description": "Instagram User Agencies",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "GET",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "294",
+                    "description": "Managing advertisements requires an access token with the extended permission for ads_management",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "1a278b2d0bd269187c4c68c4f62e6fd3",
+            "rawModeData": ""
+        },
+        {
+            "id": "a2d1d33dc8e0002fb61c80dd7daf5d6a",
+            "name": "Instagram User Authorized Adaccounts",
+            "url": "httpsgraph.facebook.com\/v3.0\/&#123;instagram-user-id&#125;\/authorized_adaccounts",
+            "description": "Instagram User Authorized Adaccounts",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "GET",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "100",
+                    "description": "Invalid parameter",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "1a278b2d0bd269187c4c68c4f62e6fd3",
+            "rawModeData": ""
+        },
+        {
+            "id": "0f00bc4da3063e2dc9a9fb8cc6868134",
+            "name": "Instagram Media",
+            "url": "httpsgraph.facebook.com\/v3.0\/&#123;instagram-media-id&#125;",
+            "description": "Instagram Media",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "GET",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "idnumeric string",
+                    "description": "ID of the Instagram user",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "caption_textstring",
+                    "description": "Caption text",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "comment_countint32",
+                    "description": "Number of comments",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "content_typeint32",
+                    "description": "0 for photo, 1 for video",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "display_urlstring",
+                    "description": "URL of the photo or cover frame",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "filter_namestring",
+                    "description": "Name of filter",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "latitudefloat",
+                    "description": "Latitude of the location",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "like_countint32",
+                    "description": "Number of likes",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "locationLocation",
+                    "description": "Location data",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "location_namestring",
+                    "description": "Name of location for location tag",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "longitudefloat",
+                    "description": "Longitude of the location",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "owner_instagram_userInstagramUser",
+                    "description": "The Instagram user that owns this media.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "permalinkstring",
+                    "description": "Link to the media page on Instagram",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "taken_atdatetime",
+                    "description": "When the media was created",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "video_urlstring",
+                    "description": "URL of the video",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "1a278b2d0bd269187c4c68c4f62e6fd3",
+            "rawModeData": ""
+        },
+        {
+            "id": "c3f9ca8ceecae509a6f085d0bce219a0",
+            "name": "Instagram Comment",
+            "url": "httpsgraph.facebook.com\/v3.0\/&#123;instagram-comment-id&#125;",
+            "description": "Instagram Comment",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "GET",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "comment_typeenum",
+                    "description": "Enum indicating the type of comment &#123;CAPTION, NORMAL, UNKNOWN&#125;",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "created_atdatetime",
+                    "description": "Creation time of the comment in milliseconds",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "idstring",
+                    "description": "Base 64 encoded string of instagram_media_id and instagram_comment_id",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "instagram_comment_idnumeric string",
+                    "description": "Id of the comment in instagram",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "instagram_userInstagramUser",
+                    "description": "Instagram user who made the comment",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "mentioned_instagram_userslist&lt;InstagramUser&gt;",
+                    "description": "Instagram users that are mentioned in the comment",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "messagestring",
+                    "description": "Textual message content of the Instagram comment",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "1a278b2d0bd269187c4c68c4f62e6fd3",
+            "rawModeData": ""
+        },
+        {
+            "id": "301687dfa151466e655cdfa304191151",
+            "name": "Instagram Carousel",
+            "url": "httpsgraph.facebook.com\/v3.0\/&#123;instagram-carousel-id&#125;",
+            "description": "Instagram Carousel",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "GET",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "idnumeric string",
+                    "description": "ID of the Instagram user",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "caption_textstring",
+                    "description": "Caption text",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "comment_countint32",
+                    "description": "Number of comments",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "content_typeint32",
+                    "description": "0 for photo, 1 for video",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "display_urlstring",
+                    "description": "URL of the photo or cover frame",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "like_countint32",
+                    "description": "Number of likes",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "owner_instagram_userInstagramUser",
+                    "description": "The Instagram user that owns this media.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "permalinkstring",
+                    "description": "Link to the media page on Instagram",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "taken_atdatetime",
+                    "description": "When the media was created",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "video_urlstring",
+                    "description": "URL of the video",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "1a278b2d0bd269187c4c68c4f62e6fd3",
+            "rawModeData": ""
+        },
+        {
+            "id": "06313a8cca74851caa00fa96b5084494",
+            "name": "Instagram Carousel Comments",
+            "url": "httpsgraph.facebook.com\/v3.0\/&#123;instagram-carousel-id&#125;\/comments",
+            "description": "Instagram Carousel Comments",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "GET",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "100",
+                    "description": "Invalid parameter",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "1a278b2d0bd269187c4c68c4f62e6fd3",
+            "rawModeData": ""
+        },
+        {
+            "id": "3af89757354bb214c8a39831df1ef036",
+            "name": "Instagram Carousel Instagram Comments",
+            "url": "httpsgraph.facebook.com\/v3.0\/&#123;instagram-carousel-id&#125;\/instagram_comments",
+            "description": "Instagram Carousel Instagram Comments",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "GET",
+            "pathVariableData": [],
+            "queryParams": [],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "1a278b2d0bd269187c4c68c4f62e6fd3",
+            "rawModeData": ""
+        }
+    ]
+}
