@@ -1,0 +1,1038 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "version": "v1",
+        "title": "SMSFoo API",
+        "description": "This document provides developers with instructions for integrating SMS\nmessaging services into various solutions using\u2028 SMSFoo HTTP application\nprogramming interface (HTTP API). SMSFoo HTTP API can be used for sending\nSMS messages, collecting delivery reports, making Network Query (NQ) requests\nand receiving inbound SMS messages sent from mobile phones.\n\nAlong with SMSFoo HTTP API specifications, this documentation also provides\nSMSFoo SMPP specifications, including connection\u2028to SMSFoo SMPP server, bind\noptions and specifications for sending HLR requests over SMPP.\n\nBuild something great!\n\nOnce you've\n[registered as a client](http:\/\/smsfoo.com\/) it's easy\nto start communicating via the SMSFoo API.\n\nAll endpoints are only accessible via https and are located at\n`api.smsfoo.com`. The following API methods are available:\n\n* Send messages using HTTP XML POST\n* Send messages using HTTP GET\n* Collect delivery reports \u2013 collect XML-formatted delivery reports for sent\nSMS messages\n* Ne",
+        "termsOfService": "http:\/\/instagram.com\/about\/legal\/terms\/api"
+    },
+    "servers": [
+        "http:\/\/api.instagram.com\/v1"
+    ],
+    "paths": {
+        "\/users\/{user-id}": {
+            "parameters": {
+                "summary": "",
+                "description": "",
+                "operationId": "",
+                "deprecated": 0,
+                "parameters": []
+            },
+            "get": {
+                "summary": "",
+                "description": "Get basic information about a user.",
+                "operationId": "",
+                "deprecated": 0,
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "The user object",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "$href": "#\/components\/schemas\/Media"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "\/users\/self\/feed": {
+            "get": {
+                "summary": "",
+                "description": "See the authenticated user's feed.",
+                "operationId": "",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "count",
+                        "in": "query",
+                        "description": "Count of media to return."
+                    },
+                    {
+                        "name": "max_id",
+                        "in": "query",
+                        "description": "Return media earlier than this max_id.s"
+                    },
+                    {
+                        "name": "min_id",
+                        "in": "query",
+                        "description": "Return media later than this min_id."
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "The user object",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "$href": "#\/components\/schemas\/Media"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "\/users\/{user-id}\/media\/recent": {
+            "parameters": {
+                "summary": "",
+                "description": "",
+                "operationId": "",
+                "deprecated": 0,
+                "parameters": []
+            },
+            "get": {
+                "summary": "",
+                "description": "",
+                "operationId": "",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "count",
+                        "in": "query",
+                        "description": "Count of media to return."
+                    },
+                    {
+                        "name": "max_timestamp",
+                        "in": "query",
+                        "description": "Return media before this UNIX timestamp."
+                    },
+                    {
+                        "name": "min_timestamp",
+                        "in": "query",
+                        "description": "Return media after this UNIX timestamp."
+                    },
+                    {
+                        "name": "min_id",
+                        "in": "query",
+                        "description": "Return media later than this min_id."
+                    },
+                    {
+                        "name": "max_id",
+                        "in": "query",
+                        "description": "Return media earlier than this max_id.s"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "The user object",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "$href": "#\/components\/schemas\/Media"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "\/users\/self\/media\/liked": {
+            "get": {
+                "summary": "",
+                "description": "See the list of media liked by the authenticated user.\nPrivate media is returned as long as the authenticated user\nhas permissionto view that media. Liked media lists are only\navailable for the currently authenticated user.\n",
+                "operationId": "",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "count",
+                        "in": "query",
+                        "description": "Count of media to return."
+                    },
+                    {
+                        "name": "max_like_id",
+                        "in": "query",
+                        "description": "Return media liked before this id."
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "The user object",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "$href": "#\/components\/schemas\/Media"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "\/users\/search": {
+            "get": {
+                "summary": "",
+                "description": "Search for a user by name.",
+                "operationId": "",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "q",
+                        "in": "query",
+                        "description": "A query string"
+                    },
+                    {
+                        "name": "count",
+                        "in": "query",
+                        "description": "Count of media to return."
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "The user object",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "$href": "#\/components\/schemas\/Media"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "\/users\/{user-id}\/follows": {
+            "parameters": {
+                "summary": "",
+                "description": "",
+                "operationId": "",
+                "deprecated": 0,
+                "parameters": []
+            },
+            "get": {
+                "summary": "",
+                "description": "Get the list of users this user follows.",
+                "operationId": "",
+                "deprecated": 0,
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "The user object",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "$href": "#\/components\/schemas\/Media"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "\/users\/{user-id}\/followed-by": {
+            "parameters": {
+                "summary": "",
+                "description": "",
+                "operationId": "",
+                "deprecated": 0,
+                "parameters": []
+            },
+            "get": {
+                "summary": "",
+                "description": "Get the list of users this user is followed by.",
+                "operationId": "",
+                "deprecated": 0,
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "The user object",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "$href": "#\/components\/schemas\/Media"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "\/users\/self\/requested-by": {
+            "get": {
+                "summary": "",
+                "description": "List the users who have requested this user's permission to follow.\n",
+                "operationId": "",
+                "deprecated": 0,
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "The user object",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "$href": "#\/components\/schemas\/Media"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "\/users\/{user-id}\/relationship": {
+            "parameters": {
+                "summary": "",
+                "description": "",
+                "operationId": "",
+                "deprecated": 0,
+                "parameters": []
+            },
+            "post": {
+                "summary": "",
+                "description": "Modify the relationship between the current user and thetarget user.\n",
+                "operationId": "",
+                "deprecated": 0,
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "The user object",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "$href": "#\/components\/schemas\/Media"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "\/media\/{media-id}": {
+            "parameters": {
+                "summary": "",
+                "description": "",
+                "operationId": "",
+                "deprecated": 0,
+                "parameters": []
+            },
+            "get": {
+                "summary": "",
+                "description": "Get information about a media object.\nThe returned type key will allow you to differentiate between `image`\nand `video` media.\n\nNote: if you authenticate with an OAuth Token, you will receive the\n`user_has_liked` key which quickly tells you whether the current user\nhas liked this media item.\n",
+                "operationId": "",
+                "deprecated": 0,
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "The user object",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "$href": "#\/components\/schemas\/Media"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "\/media1\/{shortcode}": {
+            "parameters": {
+                "summary": "",
+                "description": "",
+                "operationId": "",
+                "deprecated": 0,
+                "parameters": []
+            },
+            "get": {
+                "summary": "",
+                "description": "This endpoint returns the same response as **GET** `\/media\/media-id`.\n\nA media object's shortcode can be found in its shortlink URL.\nAn example shortlink is `http:\/\/instagram.com\/p\/D\/`\nIts corresponding shortcode is D.\n",
+                "operationId": "",
+                "deprecated": 0,
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "The user object",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "$href": "#\/components\/schemas\/Media"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "\/media\/search": {
+            "get": {
+                "summary": "",
+                "description": "Search for media in a given area. The default time span is set to 5\ndays. The time span must not exceed 7 days. Defaults time stamps cover\nthe last 5 days. Can return mix of image and video types.\n",
+                "operationId": "",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "LAT",
+                        "in": "query",
+                        "description": "Latitude of the center search coordinate. If used, lng is required.\n"
+                    },
+                    {
+                        "name": "min_timestamp",
+                        "in": "query",
+                        "description": "Return media after this UNIX timestamp."
+                    },
+                    {
+                        "name": "LNG",
+                        "in": "query",
+                        "description": "Longitude of the center search coordinate. If used, lat is required.\n"
+                    },
+                    {
+                        "name": "max_timestamp",
+                        "in": "query",
+                        "description": "Return media before this UNIX timestamp."
+                    },
+                    {
+                        "name": "DISTANCE",
+                        "in": "query",
+                        "description": "Default is 1km (distance=1000), max distance is 5km."
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "The user object",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "$href": "#\/components\/schemas\/Media"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "\/media\/popular": {
+            "get": {
+                "summary": "",
+                "description": "Get a list of what media is most popular at the moment.\nCan return mix of image and video types.\n",
+                "operationId": "",
+                "deprecated": 0,
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "The user object",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "$href": "#\/components\/schemas\/Media"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "\/media\/{media-id}\/comments": {
+            "parameters": {
+                "summary": "",
+                "description": "",
+                "operationId": "",
+                "deprecated": 0,
+                "parameters": []
+            },
+            "get": {
+                "summary": "",
+                "description": "Get a list of recent comments on a media object.\n",
+                "operationId": "",
+                "deprecated": 0,
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "The user object",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "$href": "#\/components\/schemas\/Media"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "summary": "",
+                "description": "Create a comment on a media object with the following rules:\n\n* The total length of the comment cannot exceed 300 characters.\n* The comment cannot contain more than 4 hashtags.\n* The comment cannot contain more than 1 URL.\n* The comment cannot consist of all capital letters.\n",
+                "operationId": "",
+                "deprecated": 0,
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "The user object",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "$href": "#\/components\/schemas\/Media"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "summary": "",
+                "description": "Remove a comment either on the authenticated user's media object or\nauthored by the authenticated user.\n",
+                "operationId": "",
+                "deprecated": 0,
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "The user object",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "$href": "#\/components\/schemas\/Media"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "\/media\/{media-id}\/likes": {
+            "parameters": {
+                "summary": "",
+                "description": "",
+                "operationId": "",
+                "deprecated": 0,
+                "parameters": []
+            },
+            "get": {
+                "summary": "",
+                "description": "Get a list of users who have liked this media.\n",
+                "operationId": "",
+                "deprecated": 0,
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "The user object",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "$href": "#\/components\/schemas\/Media"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "summary": "",
+                "description": "Set a like on this media by the currently authenticated user.",
+                "operationId": "",
+                "deprecated": 0,
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "The user object",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "$href": "#\/components\/schemas\/Media"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "summary": "",
+                "description": "Remove a like on this media by the currently authenticated user.\n",
+                "operationId": "",
+                "deprecated": 0,
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "The user object",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "$href": "#\/components\/schemas\/Media"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "\/tags\/{tag-name}": {
+            "parameters": {
+                "summary": "",
+                "description": "",
+                "operationId": "",
+                "deprecated": 0,
+                "parameters": []
+            },
+            "get": {
+                "summary": "",
+                "description": "Get information about a tag object.",
+                "operationId": "",
+                "deprecated": 0,
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "The user object",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "$href": "#\/components\/schemas\/Media"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "\/tags\/{tag-name}\/media\/recent": {
+            "parameters": {
+                "summary": "",
+                "description": "",
+                "operationId": "",
+                "deprecated": 0,
+                "parameters": []
+            },
+            "get": {
+                "summary": "",
+                "description": "Get a list of recently tagged media. Use the `max_tag_id` and\n`min_tag_id` parameters in the pagination response to paginate through\nthese objects.\n",
+                "operationId": "",
+                "deprecated": 0,
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "The user object",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "$href": "#\/components\/schemas\/Media"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "\/tags\/search": {
+            "get": {
+                "summary": "",
+                "description": "",
+                "operationId": "",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "q",
+                        "in": "query",
+                        "description": "A query string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "The user object",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "$href": "#\/components\/schemas\/Media"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "\/locations\/{location-id}": {
+            "parameters": {
+                "summary": "",
+                "description": "",
+                "operationId": "",
+                "deprecated": 0,
+                "parameters": []
+            },
+            "get": {
+                "summary": "",
+                "description": "Get information about a location.",
+                "operationId": "",
+                "deprecated": 0,
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "The user object",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "$href": "#\/components\/schemas\/Media"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "\/locations\/{location-id}\/media\/recent": {
+            "parameters": {
+                "summary": "",
+                "description": "",
+                "operationId": "",
+                "deprecated": 0,
+                "parameters": []
+            },
+            "get": {
+                "summary": "",
+                "description": "Get a list of recent media objects from a given location.",
+                "operationId": "",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "max_timestamp",
+                        "in": "query",
+                        "description": "Return media before this UNIX timestamp."
+                    },
+                    {
+                        "name": "min_timestamp",
+                        "in": "query",
+                        "description": "Return media after this UNIX timestamp."
+                    },
+                    {
+                        "name": "min_id",
+                        "in": "query",
+                        "description": "Return media later than this min_id."
+                    },
+                    {
+                        "name": "max_id",
+                        "in": "query",
+                        "description": "Return media earlier than this max_id.s"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "The user object",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "$href": "#\/components\/schemas\/Media"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "\/locations\/search": {
+            "get": {
+                "summary": "",
+                "description": "Search for a location by geographic coordinate.",
+                "operationId": "",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "DISTANCE",
+                        "in": "query",
+                        "description": "Default is 1km (distance=1000), max distance is 5km."
+                    },
+                    {
+                        "name": "facebook_places_id",
+                        "in": "query",
+                        "description": "Returns a location mapped off of a Facebook places id. If used, a\nFoursquare id and lat, lng are not required.\n"
+                    },
+                    {
+                        "name": "foursquare_id",
+                        "in": "query",
+                        "description": "returns a location mapped off of a foursquare v1 api location id.\nIf used, you are not required to use lat and lng. Note that this\nmethod is deprecated; you should use the new foursquare IDs with V2\nof their API.\n"
+                    },
+                    {
+                        "name": "LAT",
+                        "in": "query",
+                        "description": "Latitude of the center search coordinate. If used, lng is required.\n"
+                    },
+                    {
+                        "name": "LNG",
+                        "in": "query",
+                        "description": "Longitude of the center search coordinate. If used, lat is required.\n"
+                    },
+                    {
+                        "name": "foursquare_v2_id",
+                        "in": "query",
+                        "description": "Returns a location mapped off of a foursquare v2 api location id. If\nused, you are not required to use lat and lng.\n"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "The user object",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "$href": "#\/components\/schemas\/Media"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "\/geographies\/{geo-id}\/media\/recent": {
+            "parameters": {
+                "summary": "",
+                "description": "",
+                "operationId": "",
+                "deprecated": 0,
+                "parameters": []
+            },
+            "get": {
+                "summary": "",
+                "description": "Get recent media from a geography subscription that you created.\n**Note**: You can only access Geographies that were explicitly created\nby your OAuth client. Check the Geography Subscriptions section of the\n[real-time updates page](https:\/\/instagram.com\/developer\/realtime\/).\nWhen you create a subscription to some geography\nthat you define, you will be returned a unique geo-id that can be used\nin this query. To backfill photos from the location covered by this\ngeography, use the [media search end",
+                "operationId": "",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "count",
+                        "in": "query",
+                        "description": "Count of media to return."
+                    },
+                    {
+                        "name": "min_id",
+                        "in": "query",
+                        "description": "Return media later than this min_id."
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "The user object",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "$href": "#\/components\/schemas\/Media"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "User": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "description": "",
+                        "type": "integer"
+                    },
+                    "username": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "full_name": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "profile_picture": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "bio": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "website": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "counts": {
+                        "description": "",
+                        "type": "object"
+                    }
+                }
+            },
+            "counts": {
+                "type": "object"
+            },
+            "Media": {
+                "type": "object",
+                "properties": {
+                    "created_time": {
+                        "description": "Epoc time (ms)",
+                        "type": "integer"
+                    },
+                    "type": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "filter": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "tags": {
+                        "description": "",
+                        "type": "array"
+                    },
+                    "id": {
+                        "description": "",
+                        "type": "integer"
+                    },
+                    "user": {
+                        "description": "",
+                        "type": ""
+                    },
+                    "users_in_photo": {
+                        "description": "",
+                        "type": "array"
+                    },
+                    "location": {
+                        "description": "",
+                        "type": ""
+                    },
+                    "comments:": {
+                        "description": "",
+                        "type": "object"
+                    },
+                    "likes": {
+                        "description": "",
+                        "type": "object"
+                    },
+                    "images": {
+                        "description": "",
+                        "type": ""
+                    },
+                    "videos": {
+                        "description": "",
+                        "type": ""
+                    }
+                }
+            },
+            "tags": {
+                "type": "array"
+            },
+            "user": {
+                "type": "object"
+            },
+            "users_in_photo": {
+                "type": "array"
+            },
+            "location": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "name": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "latitude": {
+                        "description": "",
+                        "type": "number"
+                    },
+                    "longitude": {
+                        "description": "",
+                        "type": "number"
+                    }
+                }
+            },
+            "comments:": {
+                "type": "object"
+            },
+            "likes": {
+                "type": "object"
+            },
+            "Comment": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "created_time": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "text": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "from": {
+                        "description": "",
+                        "type": ""
+                    }
+                }
+            },
+            "from": {
+                "type": "object"
+            },
+            "Like": {
+                "type": "object",
+                "properties": {
+                    "user_name": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "first_name": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "last_name": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "type": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "id": {
+                        "description": "",
+                        "type": "string"
+                    }
+                }
+            },
+            "Tag": {
+                "type": "object",
+                "properties": {
+                    "media_count": {
+                        "description": "",
+                        "type": "integer"
+                    },
+                    "name": {
+                        "description": "",
+                        "type": "string"
+                    }
+                }
+            },
+            "Image": {
+                "type": "object",
+                "properties": {
+                    "width": {
+                        "description": "",
+                        "type": "integer"
+                    },
+                    "height": {
+                        "description": "",
+                        "type": "integer"
+                    },
+                    "url": {
+                        "description": "",
+                        "type": "string"
+                    }
+                }
+            },
+            "MiniProfile": {
+                "type": "object",
+                "properties": {
+                    "user_name": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "full_name": {
+                        "description": "",
+                        "type": "string"
+                    },
+                    "id": {
+                        "description": "",
+                        "type": "integer"
+                    },
+                    "profile_picture": {
+                        "description": "",
+                        "type": "string"
+                    }
+                }
+            }
+        }
+    }
+}
