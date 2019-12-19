@@ -1,0 +1,326 @@
+{
+    "name": "Instagram",
+    "description": "<p>Instagram is an online mobile photo-sharing, video-sharing and social networking service that enables its users to take pictures and videos, and share them on a variety of social networking platforms, such as Facebook, Twitter, Tumblr and Flickr. A distinctive feature is that it confines photos to a square shape, similar to Kodak Instamatic and Polaroid images, in contrast to the 4:3 aspect ratio typically used by mobile device cameras. Users can also apply digital filters to their images. The maximum duration for Instagram videos is 15 seconds.<\/p>",
+    "image": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-evangelist-site\/company\/logos\/glyph-logo_May2016_200.png",
+    "tags": [
+        "api provider",
+        "change log example",
+        "general data",
+        "have api",
+        "have swagger",
+        "historical data api",
+        "images",
+        "imports",
+        "pedestal",
+        "photos",
+        "relative data",
+        "service api",
+        "social",
+        "streams"
+    ],
+    "created": "2019-12-19",
+    "modified": "2019-12-19",
+    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/instagram\/master\/apis.json",
+    "specificationVersion": "0.14",
+    "apis": [
+        {
+            "name": "Instagram",
+            "description": null,
+            "image": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-evangelist-site\/company\/logos\/glyph-logo_May2016_200.png",
+            "humanURL": "http:\/\/instagram.com",
+            "baseURL": "",
+            "tags": [],
+            "properties": [
+                {
+                    "type": "x-openapi",
+                    "url": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-evangelist-site\/company\/openapis\/instagram.json"
+                }
+            ]
+        },
+        {
+            "name": "Instagram Graph API",
+            "description": null,
+            "image": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-evangelist-site\/company\/logos\/glyph-logo_May2016_200.png",
+            "humanURL": "http:\/\/instagram.com",
+            "baseURL": "",
+            "tags": [],
+            "properties": [
+                {
+                    "type": "x-openapi",
+                    "url": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-evangelist-site\/company\/openapis\/instagram-graph-api.json"
+                }
+            ]
+        },
+        {
+            "name": "SMSFoo API",
+            "description": null,
+            "image": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-evangelist-site\/company\/logos\/glyph-logo_May2016_200.png",
+            "humanURL": "http:\/\/instagram.com",
+            "baseURL": "",
+            "tags": [],
+            "properties": [
+                {
+                    "type": "x-openapi",
+                    "url": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-evangelist-site\/company\/openapis\/smsfoo-api.json"
+                }
+            ]
+        },
+        {
+            "name": "Instagram API",
+            "description": null,
+            "image": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-evangelist-site\/company\/logos\/glyph-logo_May2016_200.png",
+            "humanURL": "http:\/\/instagram.com",
+            "baseURL": "",
+            "tags": [],
+            "properties": [
+                {
+                    "type": "x-openapi",
+                    "url": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-evangelist-site\/company\/openapis\/instagram-api.json"
+                }
+            ]
+        }
+    ],
+    "include": [],
+    "x-common": [
+        {
+            "type": "Application Management",
+            "url": "https:\/\/instagram.com\/accounts\/manage_access\/"
+        },
+        {
+            "type": "Authentication",
+            "url": "http:\/\/instagram.com\/developer\/authentication\/"
+        },
+        {
+            "type": "Base",
+            "url": "https:\/\/api.instagram.com"
+        },
+        {
+            "type": "Blog",
+            "url": "http:\/\/developers.instagram.com\/"
+        },
+        {
+            "type": "Blog",
+            "url": "http:\/\/blog.instagram.com\/"
+        },
+        {
+            "type": "Blog RSS",
+            "url": "http:\/\/developers.instagram.com\/rss"
+        },
+        {
+            "type": "Blog RSS",
+            "url": "http:\/\/blog.instagram.com\/rss"
+        },
+        {
+            "type": "Change Logs",
+            "url": "https:\/\/www.instagram.com\/developer\/changelog\/"
+        },
+        {
+            "type": "Developers",
+            "url": "http:\/\/instagram.com\/developer\/"
+        },
+        {
+            "type": "Developer Showcase",
+            "url": "http:\/\/instagram.com\/developer\/business\/"
+        },
+        {
+            "type": "Embeddable",
+            "url": "http:\/\/instagram.com\/developer\/embedding\/"
+        },
+        {
+            "type": "Github",
+            "url": "https:\/\/github.com\/Instagram"
+        },
+        {
+            "type": "Mobile",
+            "url": "https:\/\/www.instagram.com\/developer\/mobile-sharing\/"
+        },
+        {
+            "type": "Swagger",
+            "url": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-definitions\/swagger\/11309-2019-09-03-21-38-16.json"
+        },
+        {
+            "type": "Swagger",
+            "url": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-definitions\/swagger\/11309-2019-09-03-17-54-45.json"
+        },
+        {
+            "type": "Swagger",
+            "url": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-definitions\/swagger\/11309-2019-09-03-17-55-13.json"
+        },
+        {
+            "type": "Swagger",
+            "url": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-definitions\/swagger\/11309-2019-09-03-17-55-19.json"
+        },
+        {
+            "type": "Swagger",
+            "url": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-definitions\/swagger\/11309-2019-09-03-17-55-25.json"
+        },
+        {
+            "type": "Swagger",
+            "url": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-definitions\/swagger\/11309-2019-09-03-17-55-56.json"
+        },
+        {
+            "type": "Swagger",
+            "url": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-definitions\/swagger\/11309-2019-09-03-17-56-22.json"
+        },
+        {
+            "type": "Swagger",
+            "url": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-definitions\/swagger\/11309-2019-09-03-17-56-34.json"
+        },
+        {
+            "type": "Swagger",
+            "url": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-definitions\/swagger\/11309-2019-09-03-17-56-40.json"
+        },
+        {
+            "type": "Swagger",
+            "url": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-definitions\/swagger\/11309-2019-09-03-17-56-46.json"
+        },
+        {
+            "type": "Swagger",
+            "url": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-definitions\/swagger\/11309-2019-09-03-17-58-18.json"
+        },
+        {
+            "type": "Swagger",
+            "url": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-definitions\/swagger\/11309-2019-09-03-23-38-41.json"
+        },
+        {
+            "type": "Swagger",
+            "url": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-definitions\/swagger\/11309-2019-09-03-23-40-58.json"
+        },
+        {
+            "type": "Swagger",
+            "url": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-definitions\/swagger\/11309-2019-09-03-23-41-06.json"
+        },
+        {
+            "type": "Swagger",
+            "url": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-definitions\/swagger\/11309-2019-09-03-23-41-12.json"
+        },
+        {
+            "type": "Swagger",
+            "url": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-definitions\/swagger\/11309-2019-09-04-15-03-23.json"
+        },
+        {
+            "type": "Swagger",
+            "url": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-definitions\/swagger\/11309-2019-09-04-15-03-32.json"
+        },
+        {
+            "type": "Swagger",
+            "url": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-definitions\/swagger\/11309-2019-09-04-11-49-43.json"
+        },
+        {
+            "type": "Swagger",
+            "url": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-definitions\/swagger\/11309-2019-09-04-15-03-41.json"
+        },
+        {
+            "type": "Swagger",
+            "url": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-definitions\/swagger\/11309-2019-09-04-11-49-51.json"
+        },
+        {
+            "type": "Swagger",
+            "url": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-definitions\/swagger\/11309-2019-09-04-15-03-49.json"
+        },
+        {
+            "type": "Swagger",
+            "url": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-definitions\/swagger\/11309-2019-09-04-11-49-59.json"
+        },
+        {
+            "type": "Swagger",
+            "url": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-definitions\/swagger\/11309-2019-09-04-11-50-18.json"
+        },
+        {
+            "type": "Swagger",
+            "url": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-definitions\/swagger\/11309-2019-09-04-02-50-37.json"
+        },
+        {
+            "type": "Swagger",
+            "url": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-definitions\/swagger\/11309-2019-09-04-06-57-49.json"
+        },
+        {
+            "type": "Swagger",
+            "url": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-definitions\/swagger\/11309-2019-09-04-06-57-57.json"
+        },
+        {
+            "type": "Swagger",
+            "url": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-definitions\/swagger\/11309-2019-09-04-06-58-04.json"
+        },
+        {
+            "type": "Swagger",
+            "url": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-definitions\/swagger\/11309-2019-09-04-06-58-11.json"
+        },
+        {
+            "type": "Swagger",
+            "url": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-definitions\/swagger\/11309-2019-09-04-06-58-19.json"
+        },
+        {
+            "type": "Swagger",
+            "url": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-definitions\/swagger\/11309-2019-09-04-06-58-41.json"
+        },
+        {
+            "type": "Swagger",
+            "url": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-definitions\/swagger\/11309-2019-09-04-06-59-48.json"
+        },
+        {
+            "type": "Swagger",
+            "url": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-definitions\/swagger\/11309-2019-09-04-06-59-55.json"
+        },
+        {
+            "type": "Swagger",
+            "url": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-definitions\/swagger\/11309-2019-09-04-07-00-40.json"
+        },
+        {
+            "type": "Swagger",
+            "url": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-definitions\/swagger\/11309-2019-09-04-07-00-47.json"
+        },
+        {
+            "type": "Privacy",
+            "url": "https:\/\/instagram.com\/about\/legal\/privacy\/"
+        },
+        {
+            "type": "Python Library",
+            "url": "https:\/\/github.com\/Instagram\/python-instagram"
+        },
+        {
+            "type": "Rate Limits",
+            "url": "http:\/\/instagram.com\/developer\/limits\/"
+        },
+        {
+            "type": "Real-Time",
+            "url": "http:\/\/instagram.com\/developer\/realtime\/"
+        },
+        {
+            "type": "Ruby Library",
+            "url": "https:\/\/github.com\/Instagram\/instagram-ruby-gem"
+        },
+        {
+            "type": "Sandbox",
+            "url": "https:\/\/www.instagram.com\/developer\/sandbox\/"
+        },
+        {
+            "type": "Sandbox Invites",
+            "url": "https:\/\/www.instagram.com\/developer\/clients\/sandbox_invites\/"
+        },
+        {
+            "type": "Stack Overflow",
+            "url": "http:\/\/stackoverflow.com\/questions\/tagged\/instagram\/"
+        },
+        {
+            "type": "Subscriptions",
+            "url": "https:\/\/www.instagram.com\/developer\/subscriptions\/"
+        },
+        {
+            "type": "Support",
+            "url": "https:\/\/www.instagram.com\/developer\/support\/"
+        },
+        {
+            "type": "Terms of Service",
+            "url": "https:\/\/instagram.com\/about\/legal\/terms\/"
+        },
+        {
+            "type": "Twitter",
+            "url": "https:\/\/twitter.com\/instagram"
+        },
+        {
+            "type": "Website",
+            "url": "http:\/\/instagram.com"
+        }
+    ]
+}
