@@ -1,0 +1,331 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "version": "",
+        "title": "Instagram Graph API",
+        "description": "",
+        "termsOfService": ""
+    },
+    "servers": [
+        "httpsgraph.facebook.com\/v3.0"
+    ],
+    "paths": {
+        "\/&#123;instagram-media-id&#125;\/comments": {
+            "GET": {
+                "summary": "Instagram Media Comments",
+                "description": "Instagram Media Comments",
+                "operationId": "GetInstagramMediaComments",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "100",
+                        "in": "query",
+                        "description": "Invalid parameter"
+                    }
+                ]
+            }
+        },
+        "\/&#123;instagram-user-id&#125;": {
+            "GET": {
+                "summary": "Instagram User",
+                "description": "Instagram User",
+                "operationId": "GetInstagramUser",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "idnumeric string",
+                        "in": "query",
+                        "description": "ID of the Instagram user"
+                    },
+                    {
+                        "name": "follow_countint32",
+                        "in": "query",
+                        "description": "Number of Instagram users that this Instagram user follows"
+                    },
+                    {
+                        "name": "followed_by_countint32",
+                        "in": "query",
+                        "description": "Number of Instagram users that follow this Instagram user"
+                    },
+                    {
+                        "name": "has_profile_picturebool",
+                        "in": "query",
+                        "description": "Indicates whether Instagram Account has a profile picture"
+                    },
+                    {
+                        "name": "is_privatebool",
+                        "in": "query",
+                        "description": "Whether the Instagram user is private"
+                    },
+                    {
+                        "name": "is_publishedbool",
+                        "in": "query",
+                        "description": "Whether the Instagram user is published"
+                    },
+                    {
+                        "name": "media_countint32",
+                        "in": "query",
+                        "description": "Number of active media posted by this Instagram user"
+                    },
+                    {
+                        "name": "profile_picstring",
+                        "in": "query",
+                        "description": "URI to user&#039;s Instagram profile picture"
+                    },
+                    {
+                        "name": "usernamestring",
+                        "in": "query",
+                        "description": "Instagram username"
+                    }
+                ]
+            }
+        },
+        "\/&#123;instagram-user-id&#125;\/agencies": {
+            "GET": {
+                "summary": "Instagram User Agencies",
+                "description": "Instagram User Agencies",
+                "operationId": "GetInstagramUserAgencies",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "294",
+                        "in": "query",
+                        "description": "Managing advertisements requires an access token with the extended permission for ads_management"
+                    }
+                ]
+            }
+        },
+        "\/&#123;instagram-user-id&#125;\/authorized_adaccounts": {
+            "GET": {
+                "summary": "Instagram User Authorized Adaccounts",
+                "description": "Instagram User Authorized Adaccounts",
+                "operationId": "GetInstagramUserAuthorizedAdaccounts",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "100",
+                        "in": "query",
+                        "description": "Invalid parameter"
+                    }
+                ]
+            }
+        },
+        "\/&#123;instagram-media-id&#125;": {
+            "GET": {
+                "summary": "Instagram Media",
+                "description": "Instagram Media",
+                "operationId": "GetInstagramMedia",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "idnumeric string",
+                        "in": "query",
+                        "description": "ID of the Instagram user"
+                    },
+                    {
+                        "name": "caption_textstring",
+                        "in": "query",
+                        "description": "Caption text"
+                    },
+                    {
+                        "name": "comment_countint32",
+                        "in": "query",
+                        "description": "Number of comments"
+                    },
+                    {
+                        "name": "content_typeint32",
+                        "in": "query",
+                        "description": "0 for photo, 1 for video"
+                    },
+                    {
+                        "name": "display_urlstring",
+                        "in": "query",
+                        "description": "URL of the photo or cover frame"
+                    },
+                    {
+                        "name": "filter_namestring",
+                        "in": "query",
+                        "description": "Name of filter"
+                    },
+                    {
+                        "name": "latitudefloat",
+                        "in": "query",
+                        "description": "Latitude of the location"
+                    },
+                    {
+                        "name": "like_countint32",
+                        "in": "query",
+                        "description": "Number of likes"
+                    },
+                    {
+                        "name": "locationLocation",
+                        "in": "query",
+                        "description": "Location data"
+                    },
+                    {
+                        "name": "location_namestring",
+                        "in": "query",
+                        "description": "Name of location for location tag"
+                    },
+                    {
+                        "name": "longitudefloat",
+                        "in": "query",
+                        "description": "Longitude of the location"
+                    },
+                    {
+                        "name": "owner_instagram_userInstagramUser",
+                        "in": "query",
+                        "description": "The Instagram user that owns this media."
+                    },
+                    {
+                        "name": "permalinkstring",
+                        "in": "query",
+                        "description": "Link to the media page on Instagram"
+                    },
+                    {
+                        "name": "taken_atdatetime",
+                        "in": "query",
+                        "description": "When the media was created"
+                    },
+                    {
+                        "name": "video_urlstring",
+                        "in": "query",
+                        "description": "URL of the video"
+                    }
+                ]
+            }
+        },
+        "\/&#123;instagram-comment-id&#125;": {
+            "GET": {
+                "summary": "Instagram Comment",
+                "description": "Instagram Comment",
+                "operationId": "GetInstagramComment",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "comment_typeenum",
+                        "in": "query",
+                        "description": "Enum indicating the type of comment &#123;CAPTION, NORMAL, UNKNOWN&#125;"
+                    },
+                    {
+                        "name": "created_atdatetime",
+                        "in": "query",
+                        "description": "Creation time of the comment in milliseconds"
+                    },
+                    {
+                        "name": "idstring",
+                        "in": "query",
+                        "description": "Base 64 encoded string of instagram_media_id and instagram_comment_id"
+                    },
+                    {
+                        "name": "instagram_comment_idnumeric string",
+                        "in": "query",
+                        "description": "Id of the comment in instagram"
+                    },
+                    {
+                        "name": "instagram_userInstagramUser",
+                        "in": "query",
+                        "description": "Instagram user who made the comment"
+                    },
+                    {
+                        "name": "mentioned_instagram_userslist&lt;InstagramUser&gt;",
+                        "in": "query",
+                        "description": "Instagram users that are mentioned in the comment"
+                    },
+                    {
+                        "name": "messagestring",
+                        "in": "query",
+                        "description": "Textual message content of the Instagram comment"
+                    }
+                ]
+            }
+        },
+        "\/&#123;instagram-carousel-id&#125;": {
+            "GET": {
+                "summary": "Instagram Carousel",
+                "description": "Instagram Carousel",
+                "operationId": "GetInstagramCarousel",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "idnumeric string",
+                        "in": "query",
+                        "description": "ID of the Instagram user"
+                    },
+                    {
+                        "name": "caption_textstring",
+                        "in": "query",
+                        "description": "Caption text"
+                    },
+                    {
+                        "name": "comment_countint32",
+                        "in": "query",
+                        "description": "Number of comments"
+                    },
+                    {
+                        "name": "content_typeint32",
+                        "in": "query",
+                        "description": "0 for photo, 1 for video"
+                    },
+                    {
+                        "name": "display_urlstring",
+                        "in": "query",
+                        "description": "URL of the photo or cover frame"
+                    },
+                    {
+                        "name": "like_countint32",
+                        "in": "query",
+                        "description": "Number of likes"
+                    },
+                    {
+                        "name": "owner_instagram_userInstagramUser",
+                        "in": "query",
+                        "description": "The Instagram user that owns this media."
+                    },
+                    {
+                        "name": "permalinkstring",
+                        "in": "query",
+                        "description": "Link to the media page on Instagram"
+                    },
+                    {
+                        "name": "taken_atdatetime",
+                        "in": "query",
+                        "description": "When the media was created"
+                    },
+                    {
+                        "name": "video_urlstring",
+                        "in": "query",
+                        "description": "URL of the video"
+                    }
+                ]
+            }
+        },
+        "\/&#123;instagram-carousel-id&#125;\/comments": {
+            "GET": {
+                "summary": "Instagram Carousel Comments",
+                "description": "Instagram Carousel Comments",
+                "operationId": "GetInstagramCarouselComments",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "100",
+                        "in": "query",
+                        "description": "Invalid parameter"
+                    }
+                ]
+            }
+        },
+        "\/&#123;instagram-carousel-id&#125;\/instagram_comments": {
+            "GET": {
+                "summary": "Instagram Carousel Instagram Comments",
+                "description": "Instagram Carousel Instagram Comments",
+                "operationId": "GetInstagramCarouselInstagramComments",
+                "deprecated": 0,
+                "parameters": []
+            }
+        }
+    },
+    "components": {
+        "schemas": []
+    }
+}
