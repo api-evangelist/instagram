@@ -1,0 +1,1152 @@
+{
+    "id": "e285d36b7091517a13a16b2b46a2ff77",
+    "name": "SMSFoo API",
+    "description": null,
+    "auth": null,
+    "events": null,
+    "variables": [],
+    "order": [],
+    "folders_order": [],
+    "folders": [],
+    "requests": [
+        {
+            "id": "649392df2827f3eed2b72e3e8e7919fc",
+            "name": "",
+            "url": "http:\/\/api.instagram.com\/v1\/users\/{user-id}",
+            "description": "",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "parameters",
+            "pathVariableData": [],
+            "queryParams": [],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "e285d36b7091517a13a16b2b46a2ff77",
+            "rawModeData": ""
+        },
+        {
+            "id": "7dc8005bdb7b183713741f133170ff05",
+            "name": "",
+            "url": "http:\/\/api.instagram.com\/v1\/users\/{user-id}",
+            "description": "Get basic information about a user.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "e285d36b7091517a13a16b2b46a2ff77",
+            "rawModeData": ""
+        },
+        {
+            "id": "2ca99f27fe5d20ad308e33cb6881fb40",
+            "name": "",
+            "url": "http:\/\/api.instagram.com\/v1\/users\/self\/feed",
+            "description": "See the authenticated user's feed.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "count",
+                    "description": "Count of media to return.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "max_id",
+                    "description": "Return media earlier than this max_id.s",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "min_id",
+                    "description": "Return media later than this min_id.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "e285d36b7091517a13a16b2b46a2ff77",
+            "rawModeData": ""
+        },
+        {
+            "id": "5c704ca4e23f8ca36839fa49422f5ec5",
+            "name": "",
+            "url": "http:\/\/api.instagram.com\/v1\/users\/{user-id}\/media\/recent",
+            "description": "",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "parameters",
+            "pathVariableData": [],
+            "queryParams": [],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "e285d36b7091517a13a16b2b46a2ff77",
+            "rawModeData": ""
+        },
+        {
+            "id": "a23b598759e2cff03a50728af8e497a3",
+            "name": "",
+            "url": "http:\/\/api.instagram.com\/v1\/users\/{user-id}\/media\/recent",
+            "description": "",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "count",
+                    "description": "Count of media to return.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "max_timestamp",
+                    "description": "Return media before this UNIX timestamp.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "min_timestamp",
+                    "description": "Return media after this UNIX timestamp.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "min_id",
+                    "description": "Return media later than this min_id.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "max_id",
+                    "description": "Return media earlier than this max_id.s",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "e285d36b7091517a13a16b2b46a2ff77",
+            "rawModeData": ""
+        },
+        {
+            "id": "824d46535f9a84ccd176a8d0b71a6680",
+            "name": "",
+            "url": "http:\/\/api.instagram.com\/v1\/users\/self\/media\/liked",
+            "description": "See the list of media liked by the authenticated user.\nPrivate media is returned as long as the authenticated user\nhas permissionto view that media. Liked media lists are only\navailable for the currently authenticated user.\n",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "count",
+                    "description": "Count of media to return.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "max_like_id",
+                    "description": "Return media liked before this id.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "e285d36b7091517a13a16b2b46a2ff77",
+            "rawModeData": ""
+        },
+        {
+            "id": "5d300366bda1d3592cac6a34e9833bc4",
+            "name": "",
+            "url": "http:\/\/api.instagram.com\/v1\/users\/search",
+            "description": "Search for a user by name.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "q",
+                    "description": "A query string",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "count",
+                    "description": "Count of media to return.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "e285d36b7091517a13a16b2b46a2ff77",
+            "rawModeData": ""
+        },
+        {
+            "id": "91bedadf2707757034cf6fbd5be86d1e",
+            "name": "",
+            "url": "http:\/\/api.instagram.com\/v1\/users\/{user-id}\/follows",
+            "description": "",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "parameters",
+            "pathVariableData": [],
+            "queryParams": [],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "e285d36b7091517a13a16b2b46a2ff77",
+            "rawModeData": ""
+        },
+        {
+            "id": "f69da6207398c921dc8ee3a148ddd11d",
+            "name": "",
+            "url": "http:\/\/api.instagram.com\/v1\/users\/{user-id}\/follows",
+            "description": "Get the list of users this user follows.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "e285d36b7091517a13a16b2b46a2ff77",
+            "rawModeData": ""
+        },
+        {
+            "id": "4e1be51f3eaa7b06b1364c4fb2c699de",
+            "name": "",
+            "url": "http:\/\/api.instagram.com\/v1\/users\/{user-id}\/followed-by",
+            "description": "",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "parameters",
+            "pathVariableData": [],
+            "queryParams": [],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "e285d36b7091517a13a16b2b46a2ff77",
+            "rawModeData": ""
+        },
+        {
+            "id": "d75d3e855b7314ed114e821c19257de0",
+            "name": "",
+            "url": "http:\/\/api.instagram.com\/v1\/users\/{user-id}\/followed-by",
+            "description": "Get the list of users this user is followed by.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "e285d36b7091517a13a16b2b46a2ff77",
+            "rawModeData": ""
+        },
+        {
+            "id": "46c570c3b8aa4b91c228efd4e492e3d4",
+            "name": "",
+            "url": "http:\/\/api.instagram.com\/v1\/users\/self\/requested-by",
+            "description": "List the users who have requested this user's permission to follow.\n",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "e285d36b7091517a13a16b2b46a2ff77",
+            "rawModeData": ""
+        },
+        {
+            "id": "a1f7c25c1993138be983694e516f216c",
+            "name": "",
+            "url": "http:\/\/api.instagram.com\/v1\/users\/{user-id}\/relationship",
+            "description": "",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "parameters",
+            "pathVariableData": [],
+            "queryParams": [],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "e285d36b7091517a13a16b2b46a2ff77",
+            "rawModeData": ""
+        },
+        {
+            "id": "94009d1c6111085abb7b5f408a5bd8cc",
+            "name": "",
+            "url": "http:\/\/api.instagram.com\/v1\/users\/{user-id}\/relationship",
+            "description": "Modify the relationship between the current user and thetarget user.\n",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "post",
+            "pathVariableData": [],
+            "queryParams": [],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "e285d36b7091517a13a16b2b46a2ff77",
+            "rawModeData": ""
+        },
+        {
+            "id": "a995c2e3d8058fd88caf304ffd5aa728",
+            "name": "",
+            "url": "http:\/\/api.instagram.com\/v1\/media\/{media-id}",
+            "description": "",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "parameters",
+            "pathVariableData": [],
+            "queryParams": [],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "e285d36b7091517a13a16b2b46a2ff77",
+            "rawModeData": ""
+        },
+        {
+            "id": "dddf24b2eb6ada74109141573d86b777",
+            "name": "",
+            "url": "http:\/\/api.instagram.com\/v1\/media\/{media-id}",
+            "description": "Get information about a media object.\nThe returned type key will allow you to differentiate between `image`\nand `video` media.\n\nNote: if you authenticate with an OAuth Token, you will receive the\n`user_has_liked` key which quickly tells you whether the current user\nhas liked this media item.\n",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "e285d36b7091517a13a16b2b46a2ff77",
+            "rawModeData": ""
+        },
+        {
+            "id": "f3ebfd6e490921362e08a4e2d31f52bc",
+            "name": "",
+            "url": "http:\/\/api.instagram.com\/v1\/media1\/{shortcode}",
+            "description": "",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "parameters",
+            "pathVariableData": [],
+            "queryParams": [],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "e285d36b7091517a13a16b2b46a2ff77",
+            "rawModeData": ""
+        },
+        {
+            "id": "6fc5f79cf546233dc3a34285de4a2245",
+            "name": "",
+            "url": "http:\/\/api.instagram.com\/v1\/media1\/{shortcode}",
+            "description": "This endpoint returns the same response as **GET** `\/media\/media-id`.\n\nA media object's shortcode can be found in its shortlink URL.\nAn example shortlink is `http:\/\/instagram.com\/p\/D\/`\nIts corresponding shortcode is D.\n",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "e285d36b7091517a13a16b2b46a2ff77",
+            "rawModeData": ""
+        },
+        {
+            "id": "d8431529b463c3183089a0e8457193f7",
+            "name": "",
+            "url": "http:\/\/api.instagram.com\/v1\/media\/search",
+            "description": "Search for media in a given area. The default time span is set to 5\ndays. The time span must not exceed 7 days. Defaults time stamps cover\nthe last 5 days. Can return mix of image and video types.\n",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "LAT",
+                    "description": "Latitude of the center search coordinate. If used, lng is required.\n",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "min_timestamp",
+                    "description": "Return media after this UNIX timestamp.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "LNG",
+                    "description": "Longitude of the center search coordinate. If used, lat is required.\n",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "max_timestamp",
+                    "description": "Return media before this UNIX timestamp.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "DISTANCE",
+                    "description": "Default is 1km (distance=1000), max distance is 5km.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "e285d36b7091517a13a16b2b46a2ff77",
+            "rawModeData": ""
+        },
+        {
+            "id": "98e35b2d182ad32b78eb547ea99f05fe",
+            "name": "",
+            "url": "http:\/\/api.instagram.com\/v1\/media\/popular",
+            "description": "Get a list of what media is most popular at the moment.\nCan return mix of image and video types.\n",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "e285d36b7091517a13a16b2b46a2ff77",
+            "rawModeData": ""
+        },
+        {
+            "id": "e122963ea6621cd74da29f7baa775062",
+            "name": "",
+            "url": "http:\/\/api.instagram.com\/v1\/media\/{media-id}\/comments",
+            "description": "",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "parameters",
+            "pathVariableData": [],
+            "queryParams": [],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "e285d36b7091517a13a16b2b46a2ff77",
+            "rawModeData": ""
+        },
+        {
+            "id": "3bcac5cf8bccf693f0e0ee0eabe83f1c",
+            "name": "",
+            "url": "http:\/\/api.instagram.com\/v1\/media\/{media-id}\/comments",
+            "description": "Get a list of recent comments on a media object.\n",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "e285d36b7091517a13a16b2b46a2ff77",
+            "rawModeData": ""
+        },
+        {
+            "id": "1120c4755cbefc6f477834f225308092",
+            "name": "",
+            "url": "http:\/\/api.instagram.com\/v1\/media\/{media-id}\/comments",
+            "description": "Create a comment on a media object with the following rules:\n\n* The total length of the comment cannot exceed 300 characters.\n* The comment cannot contain more than 4 hashtags.\n* The comment cannot contain more than 1 URL.\n* The comment cannot consist of all capital letters.\n",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "post",
+            "pathVariableData": [],
+            "queryParams": [],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "e285d36b7091517a13a16b2b46a2ff77",
+            "rawModeData": ""
+        },
+        {
+            "id": "79a1018b36e115619b8f7a06c63d91d4",
+            "name": "",
+            "url": "http:\/\/api.instagram.com\/v1\/media\/{media-id}\/comments",
+            "description": "Remove a comment either on the authenticated user's media object or\nauthored by the authenticated user.\n",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "delete",
+            "pathVariableData": [],
+            "queryParams": [],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "e285d36b7091517a13a16b2b46a2ff77",
+            "rawModeData": ""
+        },
+        {
+            "id": "b2b4a311426fe8fccb326951eefee053",
+            "name": "",
+            "url": "http:\/\/api.instagram.com\/v1\/media\/{media-id}\/likes",
+            "description": "",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "parameters",
+            "pathVariableData": [],
+            "queryParams": [],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "e285d36b7091517a13a16b2b46a2ff77",
+            "rawModeData": ""
+        },
+        {
+            "id": "108cf67cf09c237c9ab52757976ce32d",
+            "name": "",
+            "url": "http:\/\/api.instagram.com\/v1\/media\/{media-id}\/likes",
+            "description": "Get a list of users who have liked this media.\n",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "e285d36b7091517a13a16b2b46a2ff77",
+            "rawModeData": ""
+        },
+        {
+            "id": "49b41b02c9ff02c351d006d744ca7ea8",
+            "name": "",
+            "url": "http:\/\/api.instagram.com\/v1\/media\/{media-id}\/likes",
+            "description": "Set a like on this media by the currently authenticated user.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "post",
+            "pathVariableData": [],
+            "queryParams": [],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "e285d36b7091517a13a16b2b46a2ff77",
+            "rawModeData": ""
+        },
+        {
+            "id": "2cbbbcd2847dfacccd8a20b8cd2ec640",
+            "name": "",
+            "url": "http:\/\/api.instagram.com\/v1\/media\/{media-id}\/likes",
+            "description": "Remove a like on this media by the currently authenticated user.\n",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "delete",
+            "pathVariableData": [],
+            "queryParams": [],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "e285d36b7091517a13a16b2b46a2ff77",
+            "rawModeData": ""
+        },
+        {
+            "id": "24edf193f8ffefe5caba97a0cb980acd",
+            "name": "",
+            "url": "http:\/\/api.instagram.com\/v1\/tags\/{tag-name}",
+            "description": "",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "parameters",
+            "pathVariableData": [],
+            "queryParams": [],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "e285d36b7091517a13a16b2b46a2ff77",
+            "rawModeData": ""
+        },
+        {
+            "id": "4b88c31d89746ce88a97fffc863aa96a",
+            "name": "",
+            "url": "http:\/\/api.instagram.com\/v1\/tags\/{tag-name}",
+            "description": "Get information about a tag object.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "e285d36b7091517a13a16b2b46a2ff77",
+            "rawModeData": ""
+        },
+        {
+            "id": "4ae1f5a9e71c6b1d6a391b8f068d1315",
+            "name": "",
+            "url": "http:\/\/api.instagram.com\/v1\/tags\/{tag-name}\/media\/recent",
+            "description": "",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "parameters",
+            "pathVariableData": [],
+            "queryParams": [],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "e285d36b7091517a13a16b2b46a2ff77",
+            "rawModeData": ""
+        },
+        {
+            "id": "820925dbf78816f0d0f009f6042c7376",
+            "name": "",
+            "url": "http:\/\/api.instagram.com\/v1\/tags\/{tag-name}\/media\/recent",
+            "description": "Get a list of recently tagged media. Use the `max_tag_id` and\n`min_tag_id` parameters in the pagination response to paginate through\nthese objects.\n",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "e285d36b7091517a13a16b2b46a2ff77",
+            "rawModeData": ""
+        },
+        {
+            "id": "07cb467664af190f412d4ba93b2bdf45",
+            "name": "",
+            "url": "http:\/\/api.instagram.com\/v1\/tags\/search",
+            "description": "",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "q",
+                    "description": "A query string",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "e285d36b7091517a13a16b2b46a2ff77",
+            "rawModeData": ""
+        },
+        {
+            "id": "ea90bfa72b4a78f83c6cfa038f66f3f9",
+            "name": "",
+            "url": "http:\/\/api.instagram.com\/v1\/locations\/{location-id}",
+            "description": "",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "parameters",
+            "pathVariableData": [],
+            "queryParams": [],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "e285d36b7091517a13a16b2b46a2ff77",
+            "rawModeData": ""
+        },
+        {
+            "id": "0c468235b40be7ff3df345ce4624d89b",
+            "name": "",
+            "url": "http:\/\/api.instagram.com\/v1\/locations\/{location-id}",
+            "description": "Get information about a location.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "e285d36b7091517a13a16b2b46a2ff77",
+            "rawModeData": ""
+        },
+        {
+            "id": "3a83dd7c46a9d42ee9ce25c30a776828",
+            "name": "",
+            "url": "http:\/\/api.instagram.com\/v1\/locations\/{location-id}\/media\/recent",
+            "description": "",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "parameters",
+            "pathVariableData": [],
+            "queryParams": [],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "e285d36b7091517a13a16b2b46a2ff77",
+            "rawModeData": ""
+        },
+        {
+            "id": "5aa718c46d0df9763d48b03c2c734f21",
+            "name": "",
+            "url": "http:\/\/api.instagram.com\/v1\/locations\/{location-id}\/media\/recent",
+            "description": "Get a list of recent media objects from a given location.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "max_timestamp",
+                    "description": "Return media before this UNIX timestamp.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "min_timestamp",
+                    "description": "Return media after this UNIX timestamp.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "min_id",
+                    "description": "Return media later than this min_id.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "max_id",
+                    "description": "Return media earlier than this max_id.s",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "e285d36b7091517a13a16b2b46a2ff77",
+            "rawModeData": ""
+        },
+        {
+            "id": "10cb7ed01702d5ea7755bc41759d4c14",
+            "name": "",
+            "url": "http:\/\/api.instagram.com\/v1\/locations\/search",
+            "description": "Search for a location by geographic coordinate.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "DISTANCE",
+                    "description": "Default is 1km (distance=1000), max distance is 5km.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "facebook_places_id",
+                    "description": "Returns a location mapped off of a Facebook places id. If used, a\nFoursquare id and lat, lng are not required.\n",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "foursquare_id",
+                    "description": "returns a location mapped off of a foursquare v1 api location id.\nIf used, you are not required to use lat and lng. Note that this\nmethod is deprecated; you should use the new foursquare IDs with V2\nof their API.\n",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "LAT",
+                    "description": "Latitude of the center search coordinate. If used, lng is required.\n",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "LNG",
+                    "description": "Longitude of the center search coordinate. If used, lat is required.\n",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "foursquare_v2_id",
+                    "description": "Returns a location mapped off of a foursquare v2 api location id. If\nused, you are not required to use lat and lng.\n",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "e285d36b7091517a13a16b2b46a2ff77",
+            "rawModeData": ""
+        },
+        {
+            "id": "e8556fbf812aaebbe8c5bae890a4dcc0",
+            "name": "",
+            "url": "http:\/\/api.instagram.com\/v1\/geographies\/{geo-id}\/media\/recent",
+            "description": "",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "parameters",
+            "pathVariableData": [],
+            "queryParams": [],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "e285d36b7091517a13a16b2b46a2ff77",
+            "rawModeData": ""
+        },
+        {
+            "id": "da2ee3095632e78f6dcf5cb581135c52",
+            "name": "",
+            "url": "http:\/\/api.instagram.com\/v1\/geographies\/{geo-id}\/media\/recent",
+            "description": "Get recent media from a geography subscription that you created.\n**Note**: You can only access Geographies that were explicitly created\nby your OAuth client. Check the Geography Subscriptions section of the\n[real-time updates page](https:\/\/instagram.com\/developer\/realtime\/).\nWhen you create a subscription to some geography\nthat you define, you will be returned a unique geo-id that can be used\nin this query. To backfill photos from the location covered by this\ngeography, use the [media search end",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "count",
+                    "description": "Count of media to return.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                },
+                {
+                    "key": "min_id",
+                    "description": "Return media later than this min_id.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "e285d36b7091517a13a16b2b46a2ff77",
+            "rawModeData": ""
+        }
+    ]
+}
