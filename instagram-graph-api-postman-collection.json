@@ -1,5 +1,5 @@
 {
-    "id": "1a278b2d0bd269187c4c68c4f62e6fd3",
+    "id": "44b0bc2af0ca0f52af35ea929ff41141",
     "name": "Instagram Graph API",
     "description": null,
     "auth": null,
@@ -10,7 +10,7 @@
     "folders": [],
     "requests": [
         {
-            "id": "3a05fbf2d847e757e6b2d84fa8d944ed",
+            "id": "20ef389e0bd06fac733342ac56baf8b8",
             "name": "Instagram Media Comments",
             "url": "httpsgraph.facebook.com\/v3.0\/&#123;instagram-media-id&#125;\/comments",
             "description": "Instagram Media Comments",
@@ -37,11 +37,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "1a278b2d0bd269187c4c68c4f62e6fd3",
+            "collectionId": "44b0bc2af0ca0f52af35ea929ff41141",
             "rawModeData": ""
         },
         {
-            "id": "4d5f0ad252494451e7e71f58554a413b",
+            "id": "97b972990246ad8a51125fedb37c259f",
             "name": "Instagram User",
             "url": "httpsgraph.facebook.com\/v3.0\/&#123;instagram-user-id&#125;",
             "description": "Instagram User",
@@ -124,11 +124,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "1a278b2d0bd269187c4c68c4f62e6fd3",
+            "collectionId": "44b0bc2af0ca0f52af35ea929ff41141",
             "rawModeData": ""
         },
         {
-            "id": "fe5dc61c639b941299c412716b8c63a6",
+            "id": "200c57511a9cbd8e6eaf00921783accd",
             "name": "Instagram User Agencies",
             "url": "httpsgraph.facebook.com\/v3.0\/&#123;instagram-user-id&#125;\/agencies",
             "description": "Instagram User Agencies",
@@ -155,11 +155,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "1a278b2d0bd269187c4c68c4f62e6fd3",
+            "collectionId": "44b0bc2af0ca0f52af35ea929ff41141",
             "rawModeData": ""
         },
         {
-            "id": "a2d1d33dc8e0002fb61c80dd7daf5d6a",
+            "id": "bfd0dd57cea19ddfd8fb67dd1830081e",
             "name": "Instagram User Authorized Adaccounts",
             "url": "httpsgraph.facebook.com\/v3.0\/&#123;instagram-user-id&#125;\/authorized_adaccounts",
             "description": "Instagram User Authorized Adaccounts",
@@ -186,11 +186,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "1a278b2d0bd269187c4c68c4f62e6fd3",
+            "collectionId": "44b0bc2af0ca0f52af35ea929ff41141",
             "rawModeData": ""
         },
         {
-            "id": "0f00bc4da3063e2dc9a9fb8cc6868134",
+            "id": "9f7423c898c894dd0c0b433d11bbf1fc",
             "name": "Instagram Media",
             "url": "httpsgraph.facebook.com\/v3.0\/&#123;instagram-media-id&#125;",
             "description": "Instagram Media",
@@ -315,11 +315,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "1a278b2d0bd269187c4c68c4f62e6fd3",
+            "collectionId": "44b0bc2af0ca0f52af35ea929ff41141",
             "rawModeData": ""
         },
         {
-            "id": "c3f9ca8ceecae509a6f085d0bce219a0",
+            "id": "718729e703863013ec993c2dfc080308",
             "name": "Instagram Comment",
             "url": "httpsgraph.facebook.com\/v3.0\/&#123;instagram-comment-id&#125;",
             "description": "Instagram Comment",
@@ -388,11 +388,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "1a278b2d0bd269187c4c68c4f62e6fd3",
+            "collectionId": "44b0bc2af0ca0f52af35ea929ff41141",
             "rawModeData": ""
         },
         {
-            "id": "301687dfa151466e655cdfa304191151",
+            "id": "3112f083f5b2f16870ebda67ddda312c",
             "name": "Instagram Carousel",
             "url": "httpsgraph.facebook.com\/v3.0\/&#123;instagram-carousel-id&#125;",
             "description": "Instagram Carousel",
@@ -482,11 +482,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "1a278b2d0bd269187c4c68c4f62e6fd3",
+            "collectionId": "44b0bc2af0ca0f52af35ea929ff41141",
             "rawModeData": ""
         },
         {
-            "id": "06313a8cca74851caa00fa96b5084494",
+            "id": "4fdfa6bf356ac577dbade18cb9e0c850",
             "name": "Instagram Carousel Comments",
             "url": "httpsgraph.facebook.com\/v3.0\/&#123;instagram-carousel-id&#125;\/comments",
             "description": "Instagram Carousel Comments",
@@ -513,11 +513,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "1a278b2d0bd269187c4c68c4f62e6fd3",
+            "collectionId": "44b0bc2af0ca0f52af35ea929ff41141",
             "rawModeData": ""
         },
         {
-            "id": "3af89757354bb214c8a39831df1ef036",
+            "id": "f3496edf48c6400d26b60d8742a1e41f",
             "name": "Instagram Carousel Instagram Comments",
             "url": "httpsgraph.facebook.com\/v3.0\/&#123;instagram-carousel-id&#125;\/instagram_comments",
             "description": "Instagram Carousel Instagram Comments",
@@ -536,7 +536,7 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "1a278b2d0bd269187c4c68c4f62e6fd3",
+            "collectionId": "44b0bc2af0ca0f52af35ea929ff41141",
             "rawModeData": ""
         }
     ]
