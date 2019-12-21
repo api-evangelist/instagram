@@ -1,5 +1,5 @@
 {
-    "id": "83f5f9a92adaa542121239f4766d1295",
+    "id": "cb4a5de7e8e5a012389052807a7409fb",
     "name": "Instagram API",
     "description": null,
     "auth": null,
@@ -10,7 +10,7 @@
     "folders": [],
     "requests": [
         {
-            "id": "05d8ad4c367ba95847653f210501095e",
+            "id": "4a1a3383e43662815abed0067e6649e7",
             "name": "",
             "url": "api.instagram.com\/v1\/users\/{user-id}",
             "description": "Get basic information about a user.",
@@ -29,11 +29,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "83f5f9a92adaa542121239f4766d1295",
+            "collectionId": "cb4a5de7e8e5a012389052807a7409fb",
             "rawModeData": ""
         },
         {
-            "id": "66a33ee55580db0fd9f059038acaa642",
+            "id": "30dded55655cf5c1053d5f42b6285f20",
             "name": "",
             "url": "api.instagram.com\/v1\/users\/self\/feed",
             "description": "See the authenticated user's feed.",
@@ -74,11 +74,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "83f5f9a92adaa542121239f4766d1295",
+            "collectionId": "cb4a5de7e8e5a012389052807a7409fb",
             "rawModeData": ""
         },
         {
-            "id": "e8c11e643bf194e18fcdc3e8754a6fc5",
+            "id": "787d78fab267ada4b0d9bb0629cbf9ed",
             "name": "",
             "url": "api.instagram.com\/v1\/users\/{user-id}\/media\/recent",
             "description": "",
@@ -133,11 +133,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "83f5f9a92adaa542121239f4766d1295",
+            "collectionId": "cb4a5de7e8e5a012389052807a7409fb",
             "rawModeData": ""
         },
         {
-            "id": "d65b02050cdf0731e9dd8755613dd1cb",
+            "id": "f25e82934bce3dfd344be9aa7e480e9a",
             "name": "",
             "url": "api.instagram.com\/v1\/users\/self\/media\/liked",
             "description": "See the list of media liked by the authenticated user.\nPrivate media is returned as long as the authenticated user\nhas permissionto view that media. Liked media lists are only\navailable for the currently authenticated user.\n",
@@ -171,11 +171,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "83f5f9a92adaa542121239f4766d1295",
+            "collectionId": "cb4a5de7e8e5a012389052807a7409fb",
             "rawModeData": ""
         },
         {
-            "id": "bf6493e23dad5f4956bb0f07aeef139a",
+            "id": "55ddf9f4d4ec558716c9b2a7e8886a85",
             "name": "",
             "url": "api.instagram.com\/v1\/users\/search",
             "description": "Search for a user by name.",
@@ -209,11 +209,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "83f5f9a92adaa542121239f4766d1295",
+            "collectionId": "cb4a5de7e8e5a012389052807a7409fb",
             "rawModeData": ""
         },
         {
-            "id": "d8031894b6ab41bb32a95e0268e31811",
+            "id": "8dcba1aee114358191bc7eec06aab082",
             "name": "",
             "url": "api.instagram.com\/v1\/users\/{user-id}\/follows",
             "description": "Get the list of users this user follows.",
@@ -232,11 +232,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "83f5f9a92adaa542121239f4766d1295",
+            "collectionId": "cb4a5de7e8e5a012389052807a7409fb",
             "rawModeData": ""
         },
         {
-            "id": "fb60a68c719129bbd5807ddef0fb6a35",
+            "id": "49b9645771e19df973b69e444b01a802",
             "name": "",
             "url": "api.instagram.com\/v1\/users\/{user-id}\/followed-by",
             "description": "Get the list of users this user is followed by.",
@@ -255,11 +255,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "83f5f9a92adaa542121239f4766d1295",
+            "collectionId": "cb4a5de7e8e5a012389052807a7409fb",
             "rawModeData": ""
         },
         {
-            "id": "39ffe8cf9d79dbf219b5eb60815ca4b7",
+            "id": "dc683428673d6b8709ee2fa9c990deb4",
             "name": "",
             "url": "api.instagram.com\/v1\/users\/self\/requested-by",
             "description": "List the users who have requested this user's permission to follow.\n",
@@ -278,11 +278,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "83f5f9a92adaa542121239f4766d1295",
+            "collectionId": "cb4a5de7e8e5a012389052807a7409fb",
             "rawModeData": ""
         },
         {
-            "id": "332dc3969e1d0fddf6bc0d28d86197f0",
+            "id": "d218af90476f6ac0dc7d8810ea08157a",
             "name": "",
             "url": "api.instagram.com\/v1\/users\/{user-id}\/relationship",
             "description": "Modify the relationship between the current user and thetarget user.\n",
@@ -309,11 +309,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "83f5f9a92adaa542121239f4766d1295",
+            "collectionId": "cb4a5de7e8e5a012389052807a7409fb",
             "rawModeData": ""
         },
         {
-            "id": "83777027a9368106d2204e69902e21c1",
+            "id": "40dedff2dc0a2463bee1db7f067e13b6",
             "name": "",
             "url": "api.instagram.com\/v1\/media\/{media-id}",
             "description": "Get information about a media object.\nThe returned type key will allow you to differentiate between `image`\nand `video` media.\n\nNote: if you authenticate with an OAuth Token, you will receive the\n`user_has_liked` key which quickly tells you whether the current user\nhas liked this media item.\n",
@@ -332,11 +332,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "83f5f9a92adaa542121239f4766d1295",
+            "collectionId": "cb4a5de7e8e5a012389052807a7409fb",
             "rawModeData": ""
         },
         {
-            "id": "f61d8890b4363c5e23668645ff61973e",
+            "id": "a671878fa4b3fe4e91169922d0456479",
             "name": "",
             "url": "api.instagram.com\/v1\/media1\/{shortcode}",
             "description": "This endpoint returns the same response as **GET** `\/media\/media-id`.\n\nA media object's shortcode can be found in its shortlink URL.\nAn example shortlink is `http:\/\/instagram.com\/p\/D\/`\nIts corresponding shortcode is D.\n",
@@ -355,11 +355,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "83f5f9a92adaa542121239f4766d1295",
+            "collectionId": "cb4a5de7e8e5a012389052807a7409fb",
             "rawModeData": ""
         },
         {
-            "id": "06b5a440089d453b1c3d19c5bb0f56ff",
+            "id": "8d8781f38bc074cb1f970580d6a7b255",
             "name": "",
             "url": "api.instagram.com\/v1\/media\/search",
             "description": "Search for media in a given area. The default time span is set to 5\ndays. The time span must not exceed 7 days. Defaults time stamps cover\nthe last 5 days. Can return mix of image and video types.\n",
@@ -414,11 +414,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "83f5f9a92adaa542121239f4766d1295",
+            "collectionId": "cb4a5de7e8e5a012389052807a7409fb",
             "rawModeData": ""
         },
         {
-            "id": "3e44a17238682a42ac598c357271a3ff",
+            "id": "f425f84ae69571eb233cd029c6450b7a",
             "name": "",
             "url": "api.instagram.com\/v1\/media\/popular",
             "description": "Get a list of what media is most popular at the moment.\nCan return mix of image and video types.\n",
@@ -437,11 +437,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "83f5f9a92adaa542121239f4766d1295",
+            "collectionId": "cb4a5de7e8e5a012389052807a7409fb",
             "rawModeData": ""
         },
         {
-            "id": "e18546243140efeb87d1721764acc28e",
+            "id": "7624da0f6a5f6a6b681b62e983615023",
             "name": "",
             "url": "api.instagram.com\/v1\/media\/{media-id}\/comments",
             "description": "Get a list of recent comments on a media object.\n",
@@ -460,11 +460,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "83f5f9a92adaa542121239f4766d1295",
+            "collectionId": "cb4a5de7e8e5a012389052807a7409fb",
             "rawModeData": ""
         },
         {
-            "id": "f59bb43ce3bb3757d5971edefcd3d2ea",
+            "id": "1eacb5c197a971672d737c16323c7bc3",
             "name": "",
             "url": "api.instagram.com\/v1\/media\/{media-id}\/comments",
             "description": "Create a comment on a media object with the following rules:\n\n* The total length of the comment cannot exceed 300 characters.\n* The comment cannot contain more than 4 hashtags.\n* The comment cannot contain more than 1 URL.\n* The comment cannot consist of all capital letters.\n",
@@ -491,11 +491,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "83f5f9a92adaa542121239f4766d1295",
+            "collectionId": "cb4a5de7e8e5a012389052807a7409fb",
             "rawModeData": ""
         },
         {
-            "id": "356e703d5a57dcd995c78d6c4a929eb0",
+            "id": "45b4196d1b70beea9a0ff5091c73e2cf",
             "name": "",
             "url": "api.instagram.com\/v1\/media\/{media-id}\/comments",
             "description": "Remove a comment either on the authenticated user's media object or\nauthored by the authenticated user.\n",
@@ -514,11 +514,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "83f5f9a92adaa542121239f4766d1295",
+            "collectionId": "cb4a5de7e8e5a012389052807a7409fb",
             "rawModeData": ""
         },
         {
-            "id": "5898d65822f12db921c27aa083e0f8ab",
+            "id": "a5ea2ba3211d94e881cafb86c1193c4b",
             "name": "",
             "url": "api.instagram.com\/v1\/media\/{media-id}\/likes",
             "description": "Get a list of users who have liked this media.\n",
@@ -537,11 +537,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "83f5f9a92adaa542121239f4766d1295",
+            "collectionId": "cb4a5de7e8e5a012389052807a7409fb",
             "rawModeData": ""
         },
         {
-            "id": "a616c36d11c922b4b8adcc600d52e508",
+            "id": "5489b081b38df15b9ebd61cab7a2d482",
             "name": "",
             "url": "api.instagram.com\/v1\/media\/{media-id}\/likes",
             "description": "Set a like on this media by the currently authenticated user.",
@@ -560,11 +560,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "83f5f9a92adaa542121239f4766d1295",
+            "collectionId": "cb4a5de7e8e5a012389052807a7409fb",
             "rawModeData": ""
         },
         {
-            "id": "7ac15fb763a1e966cf82ab566d51db7a",
+            "id": "d9042921e98e7360580cffe9a0693d45",
             "name": "",
             "url": "api.instagram.com\/v1\/media\/{media-id}\/likes",
             "description": "Remove a like on this media by the currently authenticated user.\n",
@@ -583,11 +583,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "83f5f9a92adaa542121239f4766d1295",
+            "collectionId": "cb4a5de7e8e5a012389052807a7409fb",
             "rawModeData": ""
         },
         {
-            "id": "62eac4fd57bdbf0d8ffeb8ab1cebcee4",
+            "id": "4c6de4b9fbdafcf058c0ccd960701c42",
             "name": "",
             "url": "api.instagram.com\/v1\/tags\/{tag-name}",
             "description": "Get information about a tag object.",
@@ -606,11 +606,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "83f5f9a92adaa542121239f4766d1295",
+            "collectionId": "cb4a5de7e8e5a012389052807a7409fb",
             "rawModeData": ""
         },
         {
-            "id": "a3bcf01d4055163a87f1f1f3352e19e2",
+            "id": "9bf16e57f788632ac41f0303cf101319",
             "name": "",
             "url": "api.instagram.com\/v1\/tags\/{tag-name}\/media\/recent",
             "description": "Get a list of recently tagged media. Use the `max_tag_id` and\n`min_tag_id` parameters in the pagination response to paginate through\nthese objects.\n",
@@ -629,11 +629,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "83f5f9a92adaa542121239f4766d1295",
+            "collectionId": "cb4a5de7e8e5a012389052807a7409fb",
             "rawModeData": ""
         },
         {
-            "id": "50efb29e5df48885bd87eb02cb50d8df",
+            "id": "341f4d6b0b59812aa3c05525a0b33587",
             "name": "",
             "url": "api.instagram.com\/v1\/tags\/search",
             "description": "",
@@ -660,11 +660,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "83f5f9a92adaa542121239f4766d1295",
+            "collectionId": "cb4a5de7e8e5a012389052807a7409fb",
             "rawModeData": ""
         },
         {
-            "id": "fc34d501444d2b793c1201e46ee79c0f",
+            "id": "703613e2af55fe099d5259472a120d73",
             "name": "",
             "url": "api.instagram.com\/v1\/locations\/{location-id}",
             "description": "Get information about a location.",
@@ -683,11 +683,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "83f5f9a92adaa542121239f4766d1295",
+            "collectionId": "cb4a5de7e8e5a012389052807a7409fb",
             "rawModeData": ""
         },
         {
-            "id": "2e42aadf8a07cf1d543a4befabb75b89",
+            "id": "9005fed019eca9d8cf8a724173e147f8",
             "name": "",
             "url": "api.instagram.com\/v1\/locations\/{location-id}\/media\/recent",
             "description": "Get a list of recent media objects from a given location.",
@@ -735,11 +735,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "83f5f9a92adaa542121239f4766d1295",
+            "collectionId": "cb4a5de7e8e5a012389052807a7409fb",
             "rawModeData": ""
         },
         {
-            "id": "04183c27f3c13afc2ca4acd295f80176",
+            "id": "c86997d6b2894e44da3654afc5b69bff",
             "name": "",
             "url": "api.instagram.com\/v1\/locations\/search",
             "description": "Search for a location by geographic coordinate.",
@@ -801,11 +801,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "83f5f9a92adaa542121239f4766d1295",
+            "collectionId": "cb4a5de7e8e5a012389052807a7409fb",
             "rawModeData": ""
         },
         {
-            "id": "1563e3ade566987de90a45136a7fac29",
+            "id": "8b2c022721713e1935f9f2c58eb00449",
             "name": "",
             "url": "api.instagram.com\/v1\/geographies\/{geo-id}\/media\/recent",
             "description": "Get recent media from a geography subscription that you created.\n**Note**: You can only access Geographies that were explicitly created\nby your OAuth client. Check the Geography Subscriptions section of the\n[real-time updates page](https:\/\/instagram.com\/developer\/realtime\/).\nWhen you create a subscription to some geography\nthat you define, you will be returned a unique geo-id that can be used\nin this query. To backfill photos from the location covered by this\ngeography, use the [media search end",
@@ -839,7 +839,7 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "83f5f9a92adaa542121239f4766d1295",
+            "collectionId": "cb4a5de7e8e5a012389052807a7409fb",
             "rawModeData": ""
         }
     ]
