@@ -1,0 +1,75 @@
+name: Instagram
+description: APIs for accessing Instagram platform features including media, user profiles, hashtags, and business accounts
+image: https://www.instagram.com/static/images/ico/favicon-192.png/68d99ba29cc8.png
+url: https://www.instagram.com
+created: '2024'
+modified: '2024'
+apis:
+- name: Instagram Graph API
+  description: Allows Instagram Professionals (Business and Creator accounts) to manage their presence on Instagram
+  image: https://www.instagram.com/static/images/ico/favicon-192.png/68d99ba29cc8.png
+  humanURL: https://developers.facebook.com/docs/instagram-api
+  baseURL: https://graph.instagram.com
+  tags:
+  - social media
+  - photos
+  - videos
+  - business
+  properties:
+  - type: Documentation
+    url: https://developers.facebook.com/docs/instagram-api/
+  - type: Getting Started
+    url: https://developers.facebook.com/docs/instagram-api/getting-started
+  - type: Reference
+    url: https://developers.facebook.com/docs/instagram-api/reference
+  contact:
+  - FN: Meta for Developers
+    email:
+    - email protected
+    url: https://developers.facebook.com/support
+- name: Instagram Basic Display API
+  description: Allows users to get basic profile information, photos, and videos in their Instagram accounts
+  image: https://www.instagram.com/static/images/ico/favicon-192.png/68d99ba29cc8.png
+  humanURL: https://developers.facebook.com/docs/instagram-basic-display-api
+  baseURL: https://graph.instagram.com
+  tags:
+  - social media
+  - photos
+  - videos
+  - display
+  properties:
+  - type: Documentation
+    url: https://developers.facebook.com/docs/instagram-basic-display-api/
+  - type: Getting Started
+    url: https://developers.facebook.com/docs/instagram-basic-display-api/getting-started
+  - type: Reference
+    url: https://developers.facebook.com/docs/instagram-basic-display-api/reference
+  contact:
+  - FN: Meta for Developers
+    email:
+    - email protected
+    url: https://developers.facebook.com/support
+common:
+- type: Terms of Service
+  url: https://developers.facebook.com/terms
+- type: Privacy Policy
+  url: https://www.facebook.com/privacy/explanation
+- type: Status
+  url: https://developers.facebook.com/status/
+- type: Authentication
+  url: https://developers.facebook.com/docs/instagram-api/overview#authentication
+- type: Rate Limits
+  url: https://developers.facebook.com/docs/instagram-api/overview#rate-limiting
+- type: Changelog
+  url: https://developers.facebook.com/docs/instagram-api/changelog
+maintainers:
+- FN: Meta Platforms, Inc.
+  email:
+  - email protected
+  url: https://www.meta.com
+tags:
+- social media
+- photos
+- videos
+- instagram
+- meta
