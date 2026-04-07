@@ -7,11 +7,11 @@ description: >-
 type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
-  - Social Media
-  - Photos
-  - Videos
   - Instagram
   - Meta
+  - Photos
+  - Social Media
+  - Videos
 url: >-
   https://raw.githubusercontent.com/api-evangelist/instagram/refs/heads/main/apis.yml
 created: '2024-01-01'
@@ -26,10 +26,10 @@ apis:
       media, comments, hashtags, mentions, and messaging.
     humanURL: https://developers.facebook.com/docs/instagram-api
     tags:
-      - Social Media
-      - Photos
-      - Videos
       - Business
+      - Photos
+      - Social Media
+      - Videos
     properties:
       - type: Documentation
         url: https://developers.facebook.com/docs/instagram-api/
@@ -44,10 +44,10 @@ apis:
       information, photos, and videos in their Instagram accounts.
     humanURL: https://developers.facebook.com/docs/instagram-basic-display-api
     tags:
-      - Social Media
-      - Photos
-      - Videos
       - Display
+      - Photos
+      - Social Media
+      - Videos
     properties:
       - type: Documentation
         url: https://developers.facebook.com/docs/instagram-basic-display-api/
