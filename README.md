@@ -136,6 +136,30 @@ The Instagram oEmbed endpoint returns HTML and metadata for embedding Instagram 
 | Instagram Messaging | Unified messaging across Instagram Direct and Facebook Messenger for business communication. |
 | Instagram Embedding | oEmbed and embed tools for displaying Instagram content on third-party websites. |
 
+## Artifacts
+
+Machine-readable API specifications organized by format.
+
+### OpenAPI
+
+- [Instagram Graph API](openapi/instagram-graph-api.yaml) — 27 endpoints, 11 schemas (generated from documentation)
+
+### JSON Schema
+
+11 standalone JSON Schema files extracted from the OpenAPI spec in [json-schema/](json-schema/).
+
+### JSON Structure
+
+11 JSON Structure files converted from JSON Schema in [json-structure/](json-structure/).
+
+### JSON-LD
+
+- [Instagram Graph API Context](json-ld/instagram-graph-api-context.jsonld) — 11 types, 37 properties
+
+### Examples
+
+11 realistic example JSON files generated from JSON Schema in [examples/](examples/).
+
 ## Vocabulary
 
 - [Instagram Vocabulary](vocabulary/instagram-vocabulary.yaml) — Unified taxonomy mapping 9 resources, 4 APIs, 5 domains, and 6 personas

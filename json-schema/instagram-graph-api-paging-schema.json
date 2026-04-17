@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/instagram/refs/heads/main/json-schema/instagram-graph-api-paging-schema.json",
+  "title": "Paging",
+  "description": "Paging schema from Instagram Graph API",
+  "type": "object",
+  "properties": {
+    "cursors": {
+      "type": "object",
+      "properties": {
+        "before": {
+          "type": "string",
+          "example": "QVFIUjRtc2c5NEl0ajN3"
+        },
+        "after": {
+          "type": "string",
+          "example": "QVFIUmlKdXBzYWtyUml3"
+        }
+      }
+    },
+    "next": {
+      "type": "string",
+      "description": "URL to fetch next page."
+    },
+    "previous": {
+      "type": "string",
+      "description": "URL to fetch previous page."
+    }
+  }
+}

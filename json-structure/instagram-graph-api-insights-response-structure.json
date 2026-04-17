@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/instagram/refs/heads/main/json-structure/instagram-graph-api-insights-response-structure.json",
+  "name": "InsightsResponse",
+  "description": "InsightsResponse schema from Instagram Graph API",
+  "type": "object",
+  "properties": {
+    "data": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "example": "impressions"
+          },
+          "period": {
+            "type": "string",
+            "example": "day"
+          },
+          "values": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": "int32",
+                  "example": 1500
+                },
+                "end_time": {
+                  "type": "datetime",
+                  "example": "2026-04-17T07:00:00+0000"
+                }
+              }
+            }
+          },
+          "title": {
+            "type": "string",
+            "example": "Impressions"
+          },
+          "description": {
+            "type": "string",
+            "example": "Total number of times the media has been seen."
+          },
+          "id": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

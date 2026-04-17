@@ -1,0 +1,16 @@
+{
+  "image_url": "https://www.example.com/images/photo.jpg",
+  "video_url": "17841400123456789",
+  "caption": "Check out our latest product! #newlaunch",
+  "media_type": "IMAGE",
+  "is_carousel_item": false,
+  "location_id": "17841400123456789",
+  "user_tags": [
+    {
+      "username": "examplebusiness",
+      "x": 42.5,
+      "y": 42.5
+    }
+  ],
+  "access_token": "example_value"
+}

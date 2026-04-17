@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/instagram/refs/heads/main/json-structure/instagram-graph-api-container-response-structure.json",
+  "name": "ContainerResponse",
+  "description": "ContainerResponse schema from Instagram Graph API",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "The container ID.",
+      "example": "17889615691921648"
+    }
+  }
+}

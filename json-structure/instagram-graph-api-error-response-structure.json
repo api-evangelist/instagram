@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/instagram/refs/heads/main/json-structure/instagram-graph-api-error-response-structure.json",
+  "name": "ErrorResponse",
+  "description": "ErrorResponse schema from Instagram Graph API",
+  "type": "object",
+  "properties": {
+    "error": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string",
+          "example": "Invalid OAuth access token."
+        },
+        "type": {
+          "type": "string",
+          "example": "OAuthException"
+        },
+        "code": {
+          "type": "int32",
+          "example": 190
+        },
+        "fbtrace_id": {
+          "type": "string",
+          "example": "ABC123def456"
+        }
+      }
+    }
+  }
+}

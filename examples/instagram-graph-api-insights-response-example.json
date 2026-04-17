@@ -1,0 +1,14 @@
+{
+  "data": [
+    {
+      "name": "impressions",
+      "period": "day",
+      "values": [
+        {}
+      ],
+      "title": "Impressions",
+      "description": "Total number of times the media has been seen.",
+      "id": "17841400123456789"
+    }
+  ]
+}

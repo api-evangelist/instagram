@@ -1,0 +1,37 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/instagram/refs/heads/main/json-structure/instagram-graph-api-comment-structure.json",
+  "name": "Comment",
+  "description": "Comment schema from Instagram Graph API",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "example": "17858893269000001"
+    },
+    "text": {
+      "type": "string",
+      "example": "Amazing photo!"
+    },
+    "username": {
+      "type": "string",
+      "example": "fan_account"
+    },
+    "timestamp": {
+      "type": "datetime",
+      "example": "2026-04-17T14:30:00+0000"
+    },
+    "like_count": {
+      "type": "int32",
+      "example": 5
+    },
+    "hidden": {
+      "type": "boolean",
+      "example": false
+    },
+    "parent_id": {
+      "type": "string",
+      "description": "ID of the parent comment if this is a reply."
+    }
+  }
+}

@@ -1,0 +1,169 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "ig": "https://developers.facebook.com/docs/instagram-api/schema/",
+    "schema": "https://schema.org/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "Comment": "ig:Comment",
+    "CommentList": "ig:CommentList",
+    "ContainerResponse": "ig:ContainerResponse",
+    "CreateContainerRequest": "ig:CreateContainerRequest",
+    "ErrorResponse": "ig:ErrorResponse",
+    "InsightsResponse": "ig:InsightsResponse",
+    "Media": "ig:Media",
+    "MediaList": "ig:MediaList",
+    "Paging": "ig:Paging",
+    "SuccessResponse": "ig:SuccessResponse",
+    "User": "ig:User",
+    "access_token": {
+      "@id": "ig:access_token",
+      "@type": "xsd:string"
+    },
+    "alt_text": {
+      "@id": "ig:alt_text",
+      "@type": "xsd:string"
+    },
+    "biography": {
+      "@id": "ig:biography",
+      "@type": "xsd:string"
+    },
+    "caption": {
+      "@id": "ig:caption",
+      "@type": "xsd:string"
+    },
+    "comments_count": {
+      "@id": "ig:comments_count",
+      "@type": "xsd:integer"
+    },
+    "cursors": {
+      "@id": "ig:cursors",
+      "@type": "@id"
+    },
+    "data": {
+      "@id": "ig:data",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "error": {
+      "@id": "ig:error",
+      "@type": "@id"
+    },
+    "followers_count": {
+      "@id": "ig:followers_count",
+      "@type": "xsd:integer"
+    },
+    "follows_count": {
+      "@id": "ig:follows_count",
+      "@type": "xsd:integer"
+    },
+    "hidden": {
+      "@id": "ig:hidden",
+      "@type": "xsd:boolean"
+    },
+    "id": {
+      "@id": "ig:id",
+      "@type": "xsd:string"
+    },
+    "image_url": {
+      "@id": "ig:image_url",
+      "@type": "xsd:string"
+    },
+    "is_carousel_item": {
+      "@id": "ig:is_carousel_item",
+      "@type": "xsd:boolean"
+    },
+    "is_comment_enabled": {
+      "@id": "ig:is_comment_enabled",
+      "@type": "xsd:boolean"
+    },
+    "is_shared_to_feed": {
+      "@id": "ig:is_shared_to_feed",
+      "@type": "xsd:boolean"
+    },
+    "like_count": {
+      "@id": "ig:like_count",
+      "@type": "xsd:integer"
+    },
+    "location_id": {
+      "@id": "ig:location_id",
+      "@type": "xsd:string"
+    },
+    "media_count": {
+      "@id": "ig:media_count",
+      "@type": "xsd:integer"
+    },
+    "media_type": {
+      "@id": "ig:media_type",
+      "@type": "xsd:string"
+    },
+    "media_url": {
+      "@id": "ig:media_url",
+      "@type": "xsd:string"
+    },
+    "name": {
+      "@id": "schema:name",
+      "@type": "xsd:string"
+    },
+    "next": {
+      "@id": "ig:next",
+      "@type": "xsd:string"
+    },
+    "paging": {
+      "@id": "ig:paging",
+      "@type": "xsd:string"
+    },
+    "parent_id": {
+      "@id": "ig:parent_id",
+      "@type": "xsd:string"
+    },
+    "permalink": {
+      "@id": "ig:permalink",
+      "@type": "xsd:string"
+    },
+    "previous": {
+      "@id": "ig:previous",
+      "@type": "xsd:string"
+    },
+    "profile_picture_url": {
+      "@id": "ig:profile_picture_url",
+      "@type": "xsd:string"
+    },
+    "shortcode": {
+      "@id": "ig:shortcode",
+      "@type": "xsd:string"
+    },
+    "success": {
+      "@id": "ig:success",
+      "@type": "xsd:boolean"
+    },
+    "text": {
+      "@id": "ig:text",
+      "@type": "xsd:string"
+    },
+    "thumbnail_url": {
+      "@id": "ig:thumbnail_url",
+      "@type": "xsd:string"
+    },
+    "timestamp": {
+      "@id": "ig:timestamp",
+      "@type": "xsd:dateTime"
+    },
+    "user_tags": {
+      "@id": "ig:user_tags",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "username": {
+      "@id": "ig:username",
+      "@type": "xsd:string"
+    },
+    "video_url": {
+      "@id": "ig:video_url",
+      "@type": "xsd:string"
+    },
+    "website": {
+      "@id": "ig:website",
+      "@type": "xsd:string"
+    }
+  }
+}

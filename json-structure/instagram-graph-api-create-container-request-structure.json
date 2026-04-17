@@ -1,0 +1,65 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/instagram/refs/heads/main/json-structure/instagram-graph-api-create-container-request-structure.json",
+  "name": "CreateContainerRequest",
+  "description": "CreateContainerRequest schema from Instagram Graph API",
+  "type": "object",
+  "properties": {
+    "image_url": {
+      "type": "string",
+      "description": "Public URL of the image to publish.",
+      "example": "https://www.example.com/images/photo.jpg"
+    },
+    "video_url": {
+      "type": "string",
+      "description": "Public URL of the video to publish."
+    },
+    "caption": {
+      "type": "string",
+      "description": "Caption text for the media.",
+      "example": "Check out our latest product! #newlaunch"
+    },
+    "media_type": {
+      "type": "string",
+      "description": "Type of media to publish.",
+      "enum": [
+        "IMAGE",
+        "VIDEO",
+        "REELS",
+        "STORIES",
+        "CAROUSEL"
+      ],
+      "example": "IMAGE"
+    },
+    "is_carousel_item": {
+      "type": "boolean",
+      "description": "Set to true if this is an item in a carousel.",
+      "example": false
+    },
+    "location_id": {
+      "type": "string",
+      "description": "Facebook Page ID of a location to tag."
+    },
+    "user_tags": {
+      "type": "array",
+      "description": "Users to tag in the media.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "username": {
+            "type": "string"
+          },
+          "x": {
+            "type": "double"
+          },
+          "y": {
+            "type": "double"
+          }
+        }
+      }
+    },
+    "access_token": {
+      "type": "string"
+    }
+  }
+}

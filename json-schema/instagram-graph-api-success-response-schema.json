@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/instagram/refs/heads/main/json-schema/instagram-graph-api-success-response-schema.json",
+  "title": "SuccessResponse",
+  "description": "SuccessResponse schema from Instagram Graph API",
+  "type": "object",
+  "properties": {
+    "success": {
+      "type": "boolean",
+      "example": true
+    }
+  }
+}

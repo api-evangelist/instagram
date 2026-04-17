@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/instagram/refs/heads/main/json-schema/instagram-graph-api-user-schema.json",
+  "title": "User",
+  "description": "User schema from Instagram Graph API",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "App-scoped user ID.",
+      "example": "17841400123456789"
+    },
+    "username": {
+      "type": "string",
+      "description": "Instagram username.",
+      "example": "examplebusiness"
+    },
+    "name": {
+      "type": "string",
+      "description": "Profile name.",
+      "example": "Example Business"
+    },
+    "biography": {
+      "type": "string",
+      "description": "Profile bio text.",
+      "example": "Official account for Example Business."
+    },
+    "website": {
+      "type": "string",
+      "description": "Website URL from profile.",
+      "example": "https://www.example.com"
+    },
+    "profile_picture_url": {
+      "type": "string",
+      "description": "Profile picture URL.",
+      "example": "https://scontent.cdninstagram.com/example.jpg"
+    },
+    "followers_count": {
+      "type": "integer",
+      "description": "Total followers.",
+      "example": 15000
+    },
+    "follows_count": {
+      "type": "integer",
+      "description": "Total accounts followed.",
+      "example": 500
+    },
+    "media_count": {
+      "type": "integer",
+      "description": "Total published media.",
+      "example": 342
+    }
+  }
+}

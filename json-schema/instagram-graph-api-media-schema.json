@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/instagram/refs/heads/main/json-schema/instagram-graph-api-media-schema.json",
+  "title": "Media",
+  "description": "Media schema from Instagram Graph API",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "example": "17854360229135492"
+    },
+    "caption": {
+      "type": "string",
+      "example": "Beautiful sunset at the beach! #photography"
+    },
+    "media_type": {
+      "type": "string",
+      "enum": [
+        "IMAGE",
+        "VIDEO",
+        "CAROUSEL_ALBUM",
+        "REELS",
+        "STORIES"
+      ],
+      "example": "IMAGE"
+    },
+    "media_url": {
+      "type": "string",
+      "example": "https://scontent.cdninstagram.com/media/example.jpg"
+    },
+    "thumbnail_url": {
+      "type": "string",
+      "description": "Thumbnail URL for videos."
+    },
+    "permalink": {
+      "type": "string",
+      "example": "https://www.instagram.com/p/ABC123/"
+    },
+    "shortcode": {
+      "type": "string",
+      "example": "ABC123"
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "example": "2026-04-17T12:00:00+0000"
+    },
+    "like_count": {
+      "type": "integer",
+      "example": 250
+    },
+    "comments_count": {
+      "type": "integer",
+      "example": 15
+    },
+    "is_comment_enabled": {
+      "type": "boolean",
+      "example": true
+    },
+    "is_shared_to_feed": {
+      "type": "boolean",
+      "example": true
+    },
+    "alt_text": {
+      "type": "string",
+      "description": "Alt text for accessibility."
+    },
+    "username": {
+      "type": "string",
+      "example": "examplebusiness"
+    }
+  }
+}
