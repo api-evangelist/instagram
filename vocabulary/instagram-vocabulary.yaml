@@ -1,0 +1,190 @@
+vocabulary: 1.0.0
+info:
+  provider: Instagram
+  description: Vocabulary and taxonomy for the Instagram API ecosystem covering 4
+    APIs for content publishing, media management, messaging, and embedding on the
+    Meta platform.
+  created: '2026-04-17'
+  modified: '2026-04-17'
+operational:
+  apis:
+  - name: Instagram API with Instagram Login
+    namespace: ig-instagram-login
+    baseUrl: https://graph.instagram.com
+    status: active
+  - name: Instagram API with Facebook Login
+    namespace: ig-facebook-login
+    baseUrl: https://graph.facebook.com
+    status: active
+  - name: Instagram Messaging API
+    namespace: ig-messaging
+    baseUrl: https://graph.instagram.com
+    status: active
+  - name: Instagram oEmbed API
+    namespace: ig-oembed
+    baseUrl: https://graph.facebook.com
+    status: active
+  resources:
+  - name: media
+    description: Photos, videos, stories, reels, carousels, and albums.
+    apis:
+    - ig-instagram-login
+    - ig-facebook-login
+    actions:
+    - get
+    - create
+    - delete
+  - name: comments
+    description: Comments on Instagram media.
+    apis:
+    - ig-instagram-login
+    - ig-facebook-login
+    actions:
+    - get
+    - create
+    - delete
+    - hide
+  - name: users
+    description: Instagram Business and Creator account profiles.
+    apis:
+    - ig-instagram-login
+    - ig-facebook-login
+    actions:
+    - get
+  - name: hashtags
+    description: Instagram hashtags for content discovery.
+    apis:
+    - ig-facebook-login
+    actions:
+    - search
+    - get
+  - name: mentions
+    description: Media where account was @mentioned.
+    apis:
+    - ig-instagram-login
+    - ig-facebook-login
+    actions:
+    - get
+  - name: insights
+    description: Account and media level analytics.
+    apis:
+    - ig-instagram-login
+    - ig-facebook-login
+    actions:
+    - get
+  - name: messages
+    description: Instagram Direct conversations.
+    apis:
+    - ig-messaging
+    actions:
+    - send
+    - get
+  - name: containers
+    description: Media containers for content publishing workflow.
+    apis:
+    - ig-instagram-login
+    - ig-facebook-login
+    actions:
+    - create
+    - get
+  - name: embeds
+    description: Embedded Instagram content for websites.
+    apis:
+    - ig-oembed
+    actions:
+    - get
+  authentication:
+    schemes:
+    - type: oauth2
+      flow: authorization_code
+      description: OAuth 2.0 via Instagram Login for Business/Creator accounts.
+    - type: oauth2
+      flow: authorization_code
+      description: OAuth 2.0 via Facebook Login for Facebook Page-linked accounts.
+capability:
+  personas:
+  - id: social-media-manager
+    name: Social Media Manager
+    description: Publishes and manages content across Instagram accounts.
+  - id: brand-manager
+    name: Brand Manager
+    description: Monitors mentions, comments, and brand sentiment on Instagram.
+  - id: customer-support
+    name: Customer Support
+    description: Manages Instagram Direct conversations for business inquiries.
+  - id: content-creator
+    name: Content Creator
+    description: Creates and publishes photos, videos, reels, and stories.
+  - id: analytics-specialist
+    name: Analytics Specialist
+    description: Tracks content performance and audience insights.
+  - id: web-developer
+    name: Web Developer
+    description: Embeds Instagram content on websites and applications.
+  domains:
+  - name: content
+    description: Content publishing and media management.
+    resources:
+    - media
+    - containers
+  - name: engagement
+    description: Comments, mentions, and community interaction.
+    resources:
+    - comments
+    - mentions
+    - hashtags
+  - name: analytics
+    description: Insights and performance metrics.
+    resources:
+    - insights
+    - users
+  - name: messaging
+    description: Instagram Direct messaging.
+    resources:
+    - messages
+  - name: embedding
+    description: Website embedding of Instagram content.
+    resources:
+    - embeds
+crossReference:
+- resource: media
+  operations:
+  - get
+  - create
+  - delete
+  personas:
+  - social-media-manager
+  - content-creator
+- resource: comments
+  operations:
+  - get
+  - create
+  - delete
+  - hide
+  personas:
+  - social-media-manager
+  - brand-manager
+- resource: insights
+  operations:
+  - get
+  personas:
+  - analytics-specialist
+  - brand-manager
+- resource: messages
+  operations:
+  - send
+  - get
+  personas:
+  - customer-support
+- resource: hashtags
+  operations:
+  - search
+  - get
+  personas:
+  - social-media-manager
+  - content-creator
+- resource: embeds
+  operations:
+  - get
+  personas:
+  - web-developer
