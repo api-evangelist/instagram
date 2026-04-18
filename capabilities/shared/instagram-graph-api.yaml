@@ -1,0 +1,1475 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "Instagram Graph API"
+  description: >-
+    The Instagram Graph API allows Instagram Professionals (Business and Creator
+    accounts) to manage their presence on Instagram, including media publishing,
+    comments, hashtags, mentions, insights, and messaging. Uses the Facebook Graph
+    API infrastructure with OAuth 2.0 authentication.
+  tags:
+    - Instagram
+    - Social Media
+    - Graph API
+    - Meta
+  created: "2026-04-18"
+  modified: "2026-04-18"
+
+binds:
+  - namespace: env
+    keys:
+      INSTAGRAM_ACCESS_TOKEN: INSTAGRAM_ACCESS_TOKEN
+
+capability:
+  consumes:
+    - type: http
+      namespace: instagram-graph
+      baseUri: https://graph.facebook.com/v21.0
+      description: "Instagram Graph API for managing Business and Creator accounts."
+      authentication:
+        type: bearer
+        token: "{{INSTAGRAM_ACCESS_TOKEN}}"
+      resources:
+
+        # ── Users ──────────────────────────────────────────────────
+        - name: users
+          path: /
+          description: "Instagram Business and Creator account profiles."
+          operations:
+            - name: get-user
+              method: GET
+              path: /{user_id}
+              description: "Get fields and edges on an Instagram Business or Creator account."
+              inputParameters:
+                - name: user_id
+                  in: path
+                  type: string
+                  required: true
+                  description: "The Instagram user ID."
+                - name: fields
+                  in: query
+                  type: string
+                  required: false
+                  description: "Comma-separated list of fields to return."
+                - name: access_token
+                  in: query
+                  type: string
+                  required: true
+                  description: "User access token."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+            - name: get-business-discovery
+              method: GET
+              path: /{user_id}/business_discovery
+              description: "Get data about other Instagram Business or Creator accounts."
+              inputParameters:
+                - name: user_id
+                  in: path
+                  type: string
+                  required: true
+                  description: "The Instagram user ID."
+                - name: fields
+                  in: query
+                  type: string
+                  required: true
+                  description: "Must include business_discovery.fields()."
+                - name: access_token
+                  in: query
+                  type: string
+                  required: true
+                  description: "User access token."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+        # ── Media ──────────────────────────────────────────────────
+        - name: media
+          path: /
+          description: "Photos, videos, stories, reels, and carousels."
+          operations:
+            - name: get-user-media
+              method: GET
+              path: /{user_id}/media
+              description: "Get a collection of IG Media objects published on the account."
+              inputParameters:
+                - name: user_id
+                  in: path
+                  type: string
+                  required: true
+                  description: "The Instagram user ID."
+                - name: fields
+                  in: query
+                  type: string
+                  required: false
+                  description: "Comma-separated list of fields."
+                - name: limit
+                  in: query
+                  type: integer
+                  required: false
+                  description: "Maximum number of results per page."
+                - name: after
+                  in: query
+                  type: string
+                  required: false
+                  description: "Cursor for pagination."
+                - name: access_token
+                  in: query
+                  type: string
+                  required: true
+                  description: "User access token."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+            - name: get-user-stories
+              method: GET
+              path: /{user_id}/stories
+              description: "Get a collection of story IG Media objects on the account."
+              inputParameters:
+                - name: user_id
+                  in: path
+                  type: string
+                  required: true
+                  description: "The Instagram user ID."
+                - name: fields
+                  in: query
+                  type: string
+                  required: false
+                  description: "Comma-separated list of fields."
+                - name: access_token
+                  in: query
+                  type: string
+                  required: true
+                  description: "User access token."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+            - name: get-media
+              method: GET
+              path: /{media_id}
+              description: "Get fields on an Instagram photo, video, story, reel, or album."
+              inputParameters:
+                - name: media_id
+                  in: path
+                  type: string
+                  required: true
+                  description: "The IG Media ID."
+                - name: fields
+                  in: query
+                  type: string
+                  required: false
+                  description: "Comma-separated list of fields."
+                - name: access_token
+                  in: query
+                  type: string
+                  required: true
+                  description: "User access token."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+            - name: update-media
+              method: POST
+              path: /{media_id}
+              description: "Enable or disable comments on a media object."
+              inputParameters:
+                - name: media_id
+                  in: path
+                  type: string
+                  required: true
+                  description: "The IG Media ID."
+              body:
+                type: json
+                data:
+                  comment_enabled: "{{tools.comment_enabled}}"
+                  access_token: "{{tools.access_token}}"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+            - name: delete-media
+              method: DELETE
+              path: /{media_id}
+              description: "Delete an Instagram media object (post, story, reel, or carousel)."
+              inputParameters:
+                - name: media_id
+                  in: path
+                  type: string
+                  required: true
+                  description: "The IG Media ID."
+                - name: access_token
+                  in: query
+                  type: string
+                  required: true
+                  description: "User access token."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+            - name: get-media-children
+              method: GET
+              path: /{media_id}/children
+              description: "Get media objects within a carousel album."
+              inputParameters:
+                - name: media_id
+                  in: path
+                  type: string
+                  required: true
+                  description: "The IG Media ID."
+                - name: fields
+                  in: query
+                  type: string
+                  required: false
+                  description: "Comma-separated list of fields."
+                - name: access_token
+                  in: query
+                  type: string
+                  required: true
+                  description: "User access token."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+        # ── Publishing ─────────────────────────────────────────────
+        - name: publishing
+          path: /
+          description: "Content creation and publishing workflow."
+          operations:
+            - name: create-media-container
+              method: POST
+              path: /{user_id}/media
+              description: "Create a media container for publishing content. Step 1 of the publishing flow."
+              inputParameters:
+                - name: user_id
+                  in: path
+                  type: string
+                  required: true
+                  description: "The Instagram user ID."
+              body:
+                type: json
+                data:
+                  image_url: "{{tools.image_url}}"
+                  video_url: "{{tools.video_url}}"
+                  caption: "{{tools.caption}}"
+                  media_type: "{{tools.media_type}}"
+                  is_carousel_item: "{{tools.is_carousel_item}}"
+                  location_id: "{{tools.location_id}}"
+                  access_token: "{{tools.access_token}}"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+            - name: publish-media
+              method: POST
+              path: /{user_id}/media_publish
+              description: "Publish a media container. Step 2 of the publishing flow."
+              inputParameters:
+                - name: user_id
+                  in: path
+                  type: string
+                  required: true
+                  description: "The Instagram user ID."
+              body:
+                type: json
+                data:
+                  creation_id: "{{tools.creation_id}}"
+                  access_token: "{{tools.access_token}}"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+            - name: get-content-publishing-limit
+              method: GET
+              path: /{user_id}/content_publishing_limit
+              description: "Get current content publishing usage and rate limit status."
+              inputParameters:
+                - name: user_id
+                  in: path
+                  type: string
+                  required: true
+                  description: "The Instagram user ID."
+                - name: fields
+                  in: query
+                  type: string
+                  required: false
+                  description: "Comma-separated list of fields."
+                - name: access_token
+                  in: query
+                  type: string
+                  required: true
+                  description: "User access token."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+            - name: get-container
+              method: GET
+              path: /{container_id}
+              description: "Check the publishing status of a media container."
+              inputParameters:
+                - name: container_id
+                  in: path
+                  type: string
+                  required: true
+                  description: "The container ID."
+                - name: fields
+                  in: query
+                  type: string
+                  required: false
+                  description: "Comma-separated list of fields."
+                - name: access_token
+                  in: query
+                  type: string
+                  required: true
+                  description: "User access token."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+        # ── Comments ───────────────────────────────────────────────
+        - name: comments
+          path: /
+          description: "Comment management and moderation."
+          operations:
+            - name: get-media-comments
+              method: GET
+              path: /{media_id}/comments
+              description: "Get comments on an Instagram media object."
+              inputParameters:
+                - name: media_id
+                  in: path
+                  type: string
+                  required: true
+                  description: "The IG Media ID."
+                - name: fields
+                  in: query
+                  type: string
+                  required: false
+                  description: "Comma-separated list of fields."
+                - name: access_token
+                  in: query
+                  type: string
+                  required: true
+                  description: "User access token."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+            - name: create-comment
+              method: POST
+              path: /{media_id}/comments
+              description: "Create a comment on an Instagram media object."
+              inputParameters:
+                - name: media_id
+                  in: path
+                  type: string
+                  required: true
+                  description: "The IG Media ID."
+              body:
+                type: json
+                data:
+                  message: "{{tools.message}}"
+                  access_token: "{{tools.access_token}}"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+            - name: get-comment
+              method: GET
+              path: /{comment_id}
+              description: "Get fields on an Instagram comment."
+              inputParameters:
+                - name: comment_id
+                  in: path
+                  type: string
+                  required: true
+                  description: "The comment ID."
+                - name: fields
+                  in: query
+                  type: string
+                  required: false
+                  description: "Comma-separated list of fields."
+                - name: access_token
+                  in: query
+                  type: string
+                  required: true
+                  description: "User access token."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+            - name: hide-comment
+              method: POST
+              path: /{comment_id}
+              description: "Hide or unhide a comment on your media."
+              inputParameters:
+                - name: comment_id
+                  in: path
+                  type: string
+                  required: true
+                  description: "The comment ID."
+              body:
+                type: json
+                data:
+                  hide: "{{tools.hide}}"
+                  access_token: "{{tools.access_token}}"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+            - name: delete-comment
+              method: DELETE
+              path: /{comment_id}
+              description: "Delete a comment on your media."
+              inputParameters:
+                - name: comment_id
+                  in: path
+                  type: string
+                  required: true
+                  description: "The comment ID."
+                - name: access_token
+                  in: query
+                  type: string
+                  required: true
+                  description: "User access token."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+            - name: get-comment-replies
+              method: GET
+              path: /{comment_id}/replies
+              description: "Get replies to a comment."
+              inputParameters:
+                - name: comment_id
+                  in: path
+                  type: string
+                  required: true
+                  description: "The comment ID."
+                - name: fields
+                  in: query
+                  type: string
+                  required: false
+                  description: "Comma-separated list of fields."
+                - name: access_token
+                  in: query
+                  type: string
+                  required: true
+                  description: "User access token."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+            - name: create-comment-reply
+              method: POST
+              path: /{comment_id}/replies
+              description: "Reply to a comment."
+              inputParameters:
+                - name: comment_id
+                  in: path
+                  type: string
+                  required: true
+                  description: "The comment ID."
+              body:
+                type: json
+                data:
+                  message: "{{tools.message}}"
+                  access_token: "{{tools.access_token}}"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+        # ── Hashtags ───────────────────────────────────────────────
+        - name: hashtags
+          path: /
+          description: "Hashtag search and media discovery."
+          operations:
+            - name: search-hashtag
+              method: GET
+              path: /ig_hashtag_search
+              description: "Search for a hashtag by name and get its ID."
+              inputParameters:
+                - name: q
+                  in: query
+                  type: string
+                  required: true
+                  description: "The hashtag to search for (without #)."
+                - name: user_id
+                  in: query
+                  type: string
+                  required: true
+                  description: "The ID of the user making the request."
+                - name: access_token
+                  in: query
+                  type: string
+                  required: true
+                  description: "User access token."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+            - name: get-hashtag-top-media
+              method: GET
+              path: /{hashtag_id}/top_media
+              description: "Get the most popular media tagged with a specific hashtag."
+              inputParameters:
+                - name: hashtag_id
+                  in: path
+                  type: string
+                  required: true
+                  description: "The hashtag ID."
+                - name: user_id
+                  in: query
+                  type: string
+                  required: true
+                  description: "The ID of the user making the request."
+                - name: fields
+                  in: query
+                  type: string
+                  required: false
+                  description: "Comma-separated list of fields."
+                - name: access_token
+                  in: query
+                  type: string
+                  required: true
+                  description: "User access token."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+            - name: get-hashtag-recent-media
+              method: GET
+              path: /{hashtag_id}/recent_media
+              description: "Get the most recently published media tagged with a specific hashtag."
+              inputParameters:
+                - name: hashtag_id
+                  in: path
+                  type: string
+                  required: true
+                  description: "The hashtag ID."
+                - name: user_id
+                  in: query
+                  type: string
+                  required: true
+                  description: "The ID of the user making the request."
+                - name: fields
+                  in: query
+                  type: string
+                  required: false
+                  description: "Comma-separated list of fields."
+                - name: access_token
+                  in: query
+                  type: string
+                  required: true
+                  description: "User access token."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+        # ── Insights ───────────────────────────────────────────────
+        - name: insights
+          path: /
+          description: "Account and media level analytics."
+          operations:
+            - name: get-user-insights
+              method: GET
+              path: /{user_id}/insights
+              description: "Get social interaction metrics for the account."
+              inputParameters:
+                - name: user_id
+                  in: path
+                  type: string
+                  required: true
+                  description: "The Instagram user ID."
+                - name: metric
+                  in: query
+                  type: string
+                  required: true
+                  description: "Comma-separated list of metrics."
+                - name: period
+                  in: query
+                  type: string
+                  required: true
+                  description: "Time period for aggregation (day, week, days_28, month, lifetime)."
+                - name: since
+                  in: query
+                  type: integer
+                  required: false
+                  description: "Unix timestamp for start of range."
+                - name: until
+                  in: query
+                  type: integer
+                  required: false
+                  description: "Unix timestamp for end of range."
+                - name: access_token
+                  in: query
+                  type: string
+                  required: true
+                  description: "User access token."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+            - name: get-media-insights
+              method: GET
+              path: /{media_id}/insights
+              description: "Get social interaction metrics for a media object."
+              inputParameters:
+                - name: media_id
+                  in: path
+                  type: string
+                  required: true
+                  description: "The IG Media ID."
+                - name: metric
+                  in: query
+                  type: string
+                  required: true
+                  description: "Comma-separated list of metrics."
+                - name: access_token
+                  in: query
+                  type: string
+                  required: true
+                  description: "User access token."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+        # ── Mentions ───────────────────────────────────────────────
+        - name: mentions
+          path: /
+          description: "Content where account was mentioned."
+          operations:
+            - name: get-user-tags
+              method: GET
+              path: /{user_id}/tags
+              description: "Get IG Media objects where the user has been tagged by other users."
+              inputParameters:
+                - name: user_id
+                  in: path
+                  type: string
+                  required: true
+                  description: "The Instagram user ID."
+                - name: fields
+                  in: query
+                  type: string
+                  required: false
+                  description: "Comma-separated list of fields."
+                - name: access_token
+                  in: query
+                  type: string
+                  required: true
+                  description: "User access token."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+  exposes:
+    - type: rest
+      port: 8100
+      namespace: instagram-graph-rest
+      description: "REST API exposing all Instagram Graph API operations."
+      resources:
+        - path: /v1/users/{user_id}
+          name: get-user
+          description: "Get user profile."
+          operations:
+            - method: GET
+              name: get-user
+              description: "Get fields and edges on an Instagram Business or Creator account."
+              call: "instagram-graph.get-user"
+              with:
+                user_id: "rest.user_id"
+                fields: "rest.fields"
+                access_token: "rest.access_token"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/users/{user_id}/business-discovery
+          name: get-business-discovery
+          description: "Get business discovery data."
+          operations:
+            - method: GET
+              name: get-business-discovery
+              description: "Get data about other Instagram Business or Creator accounts."
+              call: "instagram-graph.get-business-discovery"
+              with:
+                user_id: "rest.user_id"
+                fields: "rest.fields"
+                access_token: "rest.access_token"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/users/{user_id}/media
+          name: user-media
+          description: "User media collection."
+          operations:
+            - method: GET
+              name: get-user-media
+              description: "Get a collection of IG Media objects published on the account."
+              call: "instagram-graph.get-user-media"
+              with:
+                user_id: "rest.user_id"
+                fields: "rest.fields"
+                limit: "rest.limit"
+                after: "rest.after"
+                access_token: "rest.access_token"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/users/{user_id}/stories
+          name: user-stories
+          description: "User stories collection."
+          operations:
+            - method: GET
+              name: get-user-stories
+              description: "Get a collection of story IG Media objects on the account."
+              call: "instagram-graph.get-user-stories"
+              with:
+                user_id: "rest.user_id"
+                fields: "rest.fields"
+                access_token: "rest.access_token"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/users/{user_id}/insights
+          name: user-insights
+          description: "User account insights."
+          operations:
+            - method: GET
+              name: get-user-insights
+              description: "Get social interaction metrics for the account."
+              call: "instagram-graph.get-user-insights"
+              with:
+                user_id: "rest.user_id"
+                metric: "rest.metric"
+                period: "rest.period"
+                since: "rest.since"
+                until: "rest.until"
+                access_token: "rest.access_token"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/users/{user_id}/tags
+          name: user-tags
+          description: "User tagged media."
+          operations:
+            - method: GET
+              name: get-user-tags
+              description: "Get IG Media objects where the user has been tagged."
+              call: "instagram-graph.get-user-tags"
+              with:
+                user_id: "rest.user_id"
+                fields: "rest.fields"
+                access_token: "rest.access_token"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/users/{user_id}/publishing-limit
+          name: publishing-limit
+          description: "Content publishing rate limit."
+          operations:
+            - method: GET
+              name: get-content-publishing-limit
+              description: "Get current content publishing usage and rate limit status."
+              call: "instagram-graph.get-content-publishing-limit"
+              with:
+                user_id: "rest.user_id"
+                fields: "rest.fields"
+                access_token: "rest.access_token"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/users/{user_id}/containers
+          name: create-container
+          description: "Media container creation."
+          operations:
+            - method: POST
+              name: create-media-container
+              description: "Create a media container for publishing content."
+              call: "instagram-graph.create-media-container"
+              with:
+                user_id: "rest.user_id"
+                image_url: "rest.image_url"
+                video_url: "rest.video_url"
+                caption: "rest.caption"
+                media_type: "rest.media_type"
+                is_carousel_item: "rest.is_carousel_item"
+                location_id: "rest.location_id"
+                access_token: "rest.access_token"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/users/{user_id}/publish
+          name: publish-media
+          description: "Media publishing."
+          operations:
+            - method: POST
+              name: publish-media
+              description: "Publish a media container."
+              call: "instagram-graph.publish-media"
+              with:
+                user_id: "rest.user_id"
+                creation_id: "rest.creation_id"
+                access_token: "rest.access_token"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/media/{media_id}
+          name: media
+          description: "Media object operations."
+          operations:
+            - method: GET
+              name: get-media
+              description: "Get fields on an Instagram media object."
+              call: "instagram-graph.get-media"
+              with:
+                media_id: "rest.media_id"
+                fields: "rest.fields"
+                access_token: "rest.access_token"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: POST
+              name: update-media
+              description: "Enable or disable comments on a media object."
+              call: "instagram-graph.update-media"
+              with:
+                media_id: "rest.media_id"
+                comment_enabled: "rest.comment_enabled"
+                access_token: "rest.access_token"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: DELETE
+              name: delete-media
+              description: "Delete an Instagram media object."
+              call: "instagram-graph.delete-media"
+              with:
+                media_id: "rest.media_id"
+                access_token: "rest.access_token"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/media/{media_id}/children
+          name: media-children
+          description: "Carousel album children."
+          operations:
+            - method: GET
+              name: get-media-children
+              description: "Get media objects within a carousel album."
+              call: "instagram-graph.get-media-children"
+              with:
+                media_id: "rest.media_id"
+                fields: "rest.fields"
+                access_token: "rest.access_token"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/media/{media_id}/comments
+          name: media-comments
+          description: "Media comments."
+          operations:
+            - method: GET
+              name: get-media-comments
+              description: "Get comments on an Instagram media object."
+              call: "instagram-graph.get-media-comments"
+              with:
+                media_id: "rest.media_id"
+                fields: "rest.fields"
+                access_token: "rest.access_token"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: POST
+              name: create-comment
+              description: "Create a comment on an Instagram media object."
+              call: "instagram-graph.create-comment"
+              with:
+                media_id: "rest.media_id"
+                message: "rest.message"
+                access_token: "rest.access_token"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/media/{media_id}/insights
+          name: media-insights
+          description: "Media insights."
+          operations:
+            - method: GET
+              name: get-media-insights
+              description: "Get social interaction metrics for a media object."
+              call: "instagram-graph.get-media-insights"
+              with:
+                media_id: "rest.media_id"
+                metric: "rest.metric"
+                access_token: "rest.access_token"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/comments/{comment_id}
+          name: comment
+          description: "Comment operations."
+          operations:
+            - method: GET
+              name: get-comment
+              description: "Get fields on an Instagram comment."
+              call: "instagram-graph.get-comment"
+              with:
+                comment_id: "rest.comment_id"
+                fields: "rest.fields"
+                access_token: "rest.access_token"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: POST
+              name: hide-comment
+              description: "Hide or unhide a comment on your media."
+              call: "instagram-graph.hide-comment"
+              with:
+                comment_id: "rest.comment_id"
+                hide: "rest.hide"
+                access_token: "rest.access_token"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: DELETE
+              name: delete-comment
+              description: "Delete a comment on your media."
+              call: "instagram-graph.delete-comment"
+              with:
+                comment_id: "rest.comment_id"
+                access_token: "rest.access_token"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/comments/{comment_id}/replies
+          name: comment-replies
+          description: "Comment replies."
+          operations:
+            - method: GET
+              name: get-comment-replies
+              description: "Get replies to a comment."
+              call: "instagram-graph.get-comment-replies"
+              with:
+                comment_id: "rest.comment_id"
+                fields: "rest.fields"
+                access_token: "rest.access_token"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: POST
+              name: create-comment-reply
+              description: "Reply to a comment."
+              call: "instagram-graph.create-comment-reply"
+              with:
+                comment_id: "rest.comment_id"
+                message: "rest.message"
+                access_token: "rest.access_token"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/containers/{container_id}
+          name: container
+          description: "Container status."
+          operations:
+            - method: GET
+              name: get-container
+              description: "Check the publishing status of a media container."
+              call: "instagram-graph.get-container"
+              with:
+                container_id: "rest.container_id"
+                fields: "rest.fields"
+                access_token: "rest.access_token"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/hashtags/search
+          name: hashtag-search
+          description: "Hashtag search."
+          operations:
+            - method: GET
+              name: search-hashtag
+              description: "Search for a hashtag by name and get its ID."
+              call: "instagram-graph.search-hashtag"
+              with:
+                q: "rest.q"
+                user_id: "rest.user_id"
+                access_token: "rest.access_token"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/hashtags/{hashtag_id}/top-media
+          name: hashtag-top-media
+          description: "Hashtag top media."
+          operations:
+            - method: GET
+              name: get-hashtag-top-media
+              description: "Get the most popular media tagged with a specific hashtag."
+              call: "instagram-graph.get-hashtag-top-media"
+              with:
+                hashtag_id: "rest.hashtag_id"
+                user_id: "rest.user_id"
+                fields: "rest.fields"
+                access_token: "rest.access_token"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/hashtags/{hashtag_id}/recent-media
+          name: hashtag-recent-media
+          description: "Hashtag recent media."
+          operations:
+            - method: GET
+              name: get-hashtag-recent-media
+              description: "Get the most recently published media tagged with a specific hashtag."
+              call: "instagram-graph.get-hashtag-recent-media"
+              with:
+                hashtag_id: "rest.hashtag_id"
+                user_id: "rest.user_id"
+                fields: "rest.fields"
+                access_token: "rest.access_token"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      port: 9100
+      namespace: instagram-graph-mcp
+      transport: http
+      description: "MCP server exposing all Instagram Graph API operations."
+      tools:
+        - name: get-user
+          description: "Get fields and edges on an Instagram Business or Creator account."
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "instagram-graph.get-user"
+          with:
+            user_id: "tools.user_id"
+            fields: "tools.fields"
+            access_token: "tools.access_token"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: get-business-discovery
+          description: "Get data about other Instagram Business or Creator accounts."
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "instagram-graph.get-business-discovery"
+          with:
+            user_id: "tools.user_id"
+            fields: "tools.fields"
+            access_token: "tools.access_token"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: get-user-media
+          description: "Get a collection of IG Media objects published on the account."
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "instagram-graph.get-user-media"
+          with:
+            user_id: "tools.user_id"
+            fields: "tools.fields"
+            limit: "tools.limit"
+            after: "tools.after"
+            access_token: "tools.access_token"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: get-user-stories
+          description: "Get a collection of story IG Media objects on the account."
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "instagram-graph.get-user-stories"
+          with:
+            user_id: "tools.user_id"
+            fields: "tools.fields"
+            access_token: "tools.access_token"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: get-media
+          description: "Get fields on an Instagram photo, video, story, reel, or album."
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "instagram-graph.get-media"
+          with:
+            media_id: "tools.media_id"
+            fields: "tools.fields"
+            access_token: "tools.access_token"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: update-media
+          description: "Enable or disable comments on a media object."
+          hints:
+            readOnly: false
+            idempotent: true
+          call: "instagram-graph.update-media"
+          with:
+            media_id: "tools.media_id"
+            comment_enabled: "tools.comment_enabled"
+            access_token: "tools.access_token"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: delete-media
+          description: "Delete an Instagram media object (post, story, reel, or carousel)."
+          hints:
+            readOnly: false
+            destructive: true
+            idempotent: true
+          call: "instagram-graph.delete-media"
+          with:
+            media_id: "tools.media_id"
+            access_token: "tools.access_token"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: get-media-children
+          description: "Get media objects within a carousel album."
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "instagram-graph.get-media-children"
+          with:
+            media_id: "tools.media_id"
+            fields: "tools.fields"
+            access_token: "tools.access_token"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: create-media-container
+          description: "Create a media container for publishing content. Step 1 of the publishing flow."
+          hints:
+            readOnly: false
+            destructive: false
+            idempotent: false
+          call: "instagram-graph.create-media-container"
+          with:
+            user_id: "tools.user_id"
+            image_url: "tools.image_url"
+            video_url: "tools.video_url"
+            caption: "tools.caption"
+            media_type: "tools.media_type"
+            is_carousel_item: "tools.is_carousel_item"
+            location_id: "tools.location_id"
+            access_token: "tools.access_token"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: publish-media
+          description: "Publish a media container. Step 2 of the publishing flow."
+          hints:
+            readOnly: false
+            destructive: false
+            idempotent: false
+          call: "instagram-graph.publish-media"
+          with:
+            user_id: "tools.user_id"
+            creation_id: "tools.creation_id"
+            access_token: "tools.access_token"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: get-content-publishing-limit
+          description: "Get current content publishing usage and rate limit status."
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "instagram-graph.get-content-publishing-limit"
+          with:
+            user_id: "tools.user_id"
+            fields: "tools.fields"
+            access_token: "tools.access_token"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: get-container
+          description: "Check the publishing status of a media container."
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "instagram-graph.get-container"
+          with:
+            container_id: "tools.container_id"
+            fields: "tools.fields"
+            access_token: "tools.access_token"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: get-media-comments
+          description: "Get comments on an Instagram media object."
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "instagram-graph.get-media-comments"
+          with:
+            media_id: "tools.media_id"
+            fields: "tools.fields"
+            access_token: "tools.access_token"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: create-comment
+          description: "Create a comment on an Instagram media object."
+          hints:
+            readOnly: false
+            destructive: false
+            idempotent: false
+          call: "instagram-graph.create-comment"
+          with:
+            media_id: "tools.media_id"
+            message: "tools.message"
+            access_token: "tools.access_token"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: get-comment
+          description: "Get fields on an Instagram comment."
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "instagram-graph.get-comment"
+          with:
+            comment_id: "tools.comment_id"
+            fields: "tools.fields"
+            access_token: "tools.access_token"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: hide-comment
+          description: "Hide or unhide a comment on your media."
+          hints:
+            readOnly: false
+            idempotent: true
+          call: "instagram-graph.hide-comment"
+          with:
+            comment_id: "tools.comment_id"
+            hide: "tools.hide"
+            access_token: "tools.access_token"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: delete-comment
+          description: "Delete a comment on your media."
+          hints:
+            readOnly: false
+            destructive: true
+            idempotent: true
+          call: "instagram-graph.delete-comment"
+          with:
+            comment_id: "tools.comment_id"
+            access_token: "tools.access_token"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: get-comment-replies
+          description: "Get replies to a comment."
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "instagram-graph.get-comment-replies"
+          with:
+            comment_id: "tools.comment_id"
+            fields: "tools.fields"
+            access_token: "tools.access_token"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: create-comment-reply
+          description: "Reply to a comment."
+          hints:
+            readOnly: false
+            destructive: false
+            idempotent: false
+          call: "instagram-graph.create-comment-reply"
+          with:
+            comment_id: "tools.comment_id"
+            message: "tools.message"
+            access_token: "tools.access_token"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: get-user-insights
+          description: "Get social interaction metrics for the account."
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "instagram-graph.get-user-insights"
+          with:
+            user_id: "tools.user_id"
+            metric: "tools.metric"
+            period: "tools.period"
+            since: "tools.since"
+            until: "tools.until"
+            access_token: "tools.access_token"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: get-media-insights
+          description: "Get social interaction metrics for a media object."
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "instagram-graph.get-media-insights"
+          with:
+            media_id: "tools.media_id"
+            metric: "tools.metric"
+            access_token: "tools.access_token"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: get-user-tags
+          description: "Get IG Media objects where the user has been tagged by other users."
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "instagram-graph.get-user-tags"
+          with:
+            user_id: "tools.user_id"
+            fields: "tools.fields"
+            access_token: "tools.access_token"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: search-hashtag
+          description: "Search for a hashtag by name and get its ID."
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "instagram-graph.search-hashtag"
+          with:
+            q: "tools.q"
+            user_id: "tools.user_id"
+            access_token: "tools.access_token"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: get-hashtag-top-media
+          description: "Get the most popular media tagged with a specific hashtag."
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "instagram-graph.get-hashtag-top-media"
+          with:
+            hashtag_id: "tools.hashtag_id"
+            user_id: "tools.user_id"
+            fields: "tools.fields"
+            access_token: "tools.access_token"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: get-hashtag-recent-media
+          description: "Get the most recently published media tagged with a specific hashtag."
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "instagram-graph.get-hashtag-recent-media"
+          with:
+            hashtag_id: "tools.hashtag_id"
+            user_id: "tools.user_id"
+            fields: "tools.fields"
+            access_token: "tools.access_token"
+          outputParameters:
+            - type: object
+              mapping: "$."

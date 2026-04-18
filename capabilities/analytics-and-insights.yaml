@@ -1,0 +1,230 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "Instagram Analytics And Insights"
+  description: >-
+    Unified workflow for Instagram analytics and insights including account-level
+    metrics, media-level performance data, user profile analysis, and competitor
+    research via business discovery. Used by marketing analysts and social media
+    strategists to measure content performance, track audience growth, and
+    benchmark against competitors.
+  tags:
+    - Instagram
+    - Analytics
+    - Insights
+    - Social Media
+    - Reporting
+  created: "2026-04-18"
+  modified: "2026-04-18"
+
+binds:
+  - namespace: env
+    keys:
+      INSTAGRAM_ACCESS_TOKEN: INSTAGRAM_ACCESS_TOKEN
+
+capability:
+  consumes:
+    - import: instagram-graph
+      location: ./shared/instagram-graph-api.yaml
+
+  exposes:
+    - type: rest
+      port: 8082
+      namespace: instagram-analytics-api
+      description: "Unified REST API for Instagram analytics and insights workflows."
+      resources:
+        - path: /v1/users/{user_id}
+          name: user-profile
+          description: "User profile data."
+          operations:
+            - method: GET
+              name: get-user
+              description: "Get fields and edges on an Instagram Business or Creator account."
+              call: "instagram-graph.get-user"
+              with:
+                user_id: "rest.user_id"
+                fields: "rest.fields"
+                access_token: "rest.access_token"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/users/{user_id}/business-discovery
+          name: business-discovery
+          description: "Competitor and business account research."
+          operations:
+            - method: GET
+              name: get-business-discovery
+              description: "Get data about other Instagram Business or Creator accounts."
+              call: "instagram-graph.get-business-discovery"
+              with:
+                user_id: "rest.user_id"
+                fields: "rest.fields"
+                access_token: "rest.access_token"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/users/{user_id}/insights
+          name: user-insights
+          description: "Account-level analytics."
+          operations:
+            - method: GET
+              name: get-user-insights
+              description: "Get social interaction metrics for the account."
+              call: "instagram-graph.get-user-insights"
+              with:
+                user_id: "rest.user_id"
+                metric: "rest.metric"
+                period: "rest.period"
+                since: "rest.since"
+                until: "rest.until"
+                access_token: "rest.access_token"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/media/{media_id}/insights
+          name: media-insights
+          description: "Media-level analytics."
+          operations:
+            - method: GET
+              name: get-media-insights
+              description: "Get social interaction metrics for a media object."
+              call: "instagram-graph.get-media-insights"
+              with:
+                media_id: "rest.media_id"
+                metric: "rest.metric"
+                access_token: "rest.access_token"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/users/{user_id}/media
+          name: user-media
+          description: "User media for analytics review."
+          operations:
+            - method: GET
+              name: get-user-media
+              description: "Get a collection of IG Media objects published on the account."
+              call: "instagram-graph.get-user-media"
+              with:
+                user_id: "rest.user_id"
+                fields: "rest.fields"
+                limit: "rest.limit"
+                after: "rest.after"
+                access_token: "rest.access_token"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/media/{media_id}
+          name: media
+          description: "Individual media detail for analytics."
+          operations:
+            - method: GET
+              name: get-media
+              description: "Get fields on an Instagram media object."
+              call: "instagram-graph.get-media"
+              with:
+                media_id: "rest.media_id"
+                fields: "rest.fields"
+                access_token: "rest.access_token"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      port: 9092
+      namespace: instagram-analytics-mcp
+      transport: http
+      description: "MCP server for AI-assisted Instagram analytics and insights."
+      tools:
+        - name: get-user
+          description: "Get fields and edges on an Instagram Business or Creator account."
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "instagram-graph.get-user"
+          with:
+            user_id: "tools.user_id"
+            fields: "tools.fields"
+            access_token: "tools.access_token"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: get-business-discovery
+          description: "Get data about other Instagram Business or Creator accounts."
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "instagram-graph.get-business-discovery"
+          with:
+            user_id: "tools.user_id"
+            fields: "tools.fields"
+            access_token: "tools.access_token"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: get-user-insights
+          description: "Get social interaction metrics for the account."
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "instagram-graph.get-user-insights"
+          with:
+            user_id: "tools.user_id"
+            metric: "tools.metric"
+            period: "tools.period"
+            since: "tools.since"
+            until: "tools.until"
+            access_token: "tools.access_token"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: get-media-insights
+          description: "Get social interaction metrics for a media object."
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "instagram-graph.get-media-insights"
+          with:
+            media_id: "tools.media_id"
+            metric: "tools.metric"
+            access_token: "tools.access_token"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: get-user-media
+          description: "Get a collection of IG Media objects published on the account."
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "instagram-graph.get-user-media"
+          with:
+            user_id: "tools.user_id"
+            fields: "tools.fields"
+            limit: "tools.limit"
+            after: "tools.after"
+            access_token: "tools.access_token"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: get-media
+          description: "Get fields on an Instagram photo, video, story, reel, or album."
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "instagram-graph.get-media"
+          with:
+            media_id: "tools.media_id"
+            fields: "tools.fields"
+            access_token: "tools.access_token"
+          outputParameters:
+            - type: object
+              mapping: "$."
