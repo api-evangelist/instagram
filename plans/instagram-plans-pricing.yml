@@ -4,162 +4,75 @@ schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main
 provider: Instagram
 providerId: instagram
 created: '2026-05-04'
-modified: '2026-05-04'
+modified: '2026-05-05'
+reconciled: true
 tags:
   - Instagram
   - Meta
-  - Photos
   - Social Media
-  - Videos
-  - Content Publishing
-description: Machine-readable plans and pricing scaffold for this API provider. Conforms to the API Commons
-  Plans schema. Tier limits and prices are scaffold defaults; replace with provider-published values.
+  - Photos
+description: The Instagram Platform APIs (Instagram Graph API, Instagram Login, Messenger / Conversations
+  for Instagram, Business Discovery, Hashtag Search) are free to use. Access is gated by Meta App Review,
+  with two access tiers - Standard Access (default; serves owned accounts only) and Advanced Access
+  (required to serve non-owned accounts; needs App Review and Business Verification). There is no per-call
+  fee; the only cost path is media storage / compute on the consuming app side.
+sources:
+  - https://developers.facebook.com/docs/instagram-api/overview
+  - https://developers.facebook.com/docs/graph-api/overview/rate-limiting
 plans:
-  - id: instagram-free
-    name: Free
+  - id: instagram-standard-access
+    name: Standard Access
     type: freemium
-    description: Free entry tier for the Instagram API surface. Intended for evaluation, prototyping,
-      and low-volume integrations. Real limits and pricing must be reconciled with the provider's published
-      plan documentation.
+    description: Default access on app creation. Allows the app to serve only the developer's own / connected
+      accounts. Free.
     entries:
-      - label: API Requests
-        description: Monthly API request quota across all included endpoints
-        name: api_requests
-        type: quota
-        metric: requests
-        limit: 1000
-        timeFrame: month
-        geo: global
-        domains:
-          - https://graph.instagram.com
-          - https://graph.facebook.com
-        unit: 1
-        price: '0.00'
-        userMultiplied: false
-      - label: Rate Limit
-        description: Maximum requests per minute on the free tier
-        name: rate_limit
-        type: rate
-        metric: requests_per_minute
-        limit: 10
-        timeFrame: minute
-        geo: global
-        domains:
-          - https://graph.instagram.com
-          - https://graph.facebook.com
-        unit: 1
-        price: '0.00'
-        userMultiplied: false
-    elements:
-      - name: Public Documentation
-      - name: Community Support
-      - name: Sandbox Access
-      - name: Instagram API with Instagram Login
-      - name: Instagram API with Facebook Login
-      - name: Instagram Messaging API
-      - name: Instagram oEmbed API
-  - id: instagram-pro
-    name: Professional
-    type: paid
-    description: Production tier for Instagram. Provides higher quotas, priority support, and access to
-      the broader API portfolio. Pricing placeholder; align with the provider's pricing page.
-    entries:
-      - label: API Requests
-        description: Monthly API request quota
-        name: api_requests
-        type: quota
-        metric: requests
-        limit: 100000
-        timeFrame: month
-        geo: global
-        domains:
-          - https://graph.instagram.com
-          - https://graph.facebook.com
-        unit: 1
-        price: TBD
-        userMultiplied: false
-      - label: Rate Limit
-        description: Maximum requests per minute on the professional tier
-        name: rate_limit
-        type: rate
-        metric: requests_per_minute
-        limit: 100
-        timeFrame: minute
-        geo: global
-        domains:
-          - https://graph.instagram.com
-          - https://graph.facebook.com
-        unit: 1
-        price: '0.00'
-        userMultiplied: false
-      - label: Overage
-        description: Per-request price after monthly quota is exceeded
-        name: overage
+      - label: Per-app calls
+        description: Standard Access calls are subject to Meta Graph platform rate limits
+        name: api_calls
         type: metered
-        metric: requests
+        metric: request
         limit: -1
-        timeFrame: month
+        timeFrame: usage
         geo: global
         domains:
-          - https://graph.instagram.com
           - https://graph.facebook.com
-        unit: 1000
-        price: TBD
+          - https://graph.instagram.com
+        unit: 1
+        price: '0.00'
         userMultiplied: false
     elements:
-      - name: All Production Endpoints
-      - name: Email Support
-      - name: SLA Targets
-      - name: Webhook Subscriptions
-      - name: Instagram API with Instagram Login
-      - name: Instagram API with Facebook Login
-      - name: Instagram Messaging API
-      - name: Instagram oEmbed API
-  - id: instagram-enterprise
-    name: Enterprise
-    type: enterprise
-    description: Custom-negotiated tier for Instagram. Includes dedicated capacity, contractual SLAs,
-      security review, data residency options, and named technical account management.
+      - name: Instagram Graph API
+      - name: Instagram Login
+      - name: Owned-account scope only
+      - name: Meta Graph platform rate limits
+  - id: instagram-advanced-access
+    name: Advanced Access
+    type: freemium
+    description: Required to serve accounts the app does not own. Requires Meta App Review approval and
+      Business Verification. Free.
     entries:
-      - label: API Requests
-        description: Negotiated request volume; -1 indicates uncapped subject to fair use
-        name: api_requests
-        type: quota
-        metric: requests
+      - label: Per-app calls
+        description: Advanced Access calls are subject to Business Use Case (BUC) rate limits per Instagram
+          account
+        name: api_calls
+        type: metered
+        metric: request
         limit: -1
-        timeFrame: month
-        geo: configurable
+        timeFrame: usage
+        geo: global
         domains:
-          - https://graph.instagram.com
           - https://graph.facebook.com
-        unit: 1
-        price: custom
-        userMultiplied: false
-      - label: Rate Limit
-        description: Negotiated burst and steady-state rate
-        name: rate_limit
-        type: rate
-        metric: requests_per_minute
-        limit: 1000
-        timeFrame: minute
-        geo: configurable
-        domains:
           - https://graph.instagram.com
-          - https://graph.facebook.com
         unit: 1
-        price: custom
+        price: '0.00'
         userMultiplied: false
     elements:
-      - name: Unlimited / Negotiated Volume
-      - name: 24/7 Dedicated Support
-      - name: Contractual SLA
-      - name: Security & Compliance Review
-      - name: Dedicated Account Manager
-      - name: Custom Data Residency
-      - name: Instagram API with Instagram Login
-      - name: Instagram API with Facebook Login
-      - name: Instagram Messaging API
-      - name: Instagram oEmbed API
+      - name: Instagram Graph API
+      - name: Messenger / Conversations for Instagram
+      - name: Business Discovery
+      - name: Hashtag Search
+      - name: App Review required
+      - name: Business Verification required
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com

@@ -1,5 +1,6 @@
 specification: FinOps Framework
 specificationVersion: '1.0'
+schema: https://www.finops.org/framework/
 alignedWith:
   framework: FinOps Foundation Framework
   frameworkUrl: https://www.finops.org/framework/
@@ -8,34 +9,41 @@ alignedWith:
   dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
 provider: Instagram
 providerId: instagram
-publisherName: Instagram
-serviceCategory: API
+publisherName: Meta Platforms, Inc.
+serviceCategory: Social Media APIs
 created: '2026-05-04'
-modified: '2026-05-04'
+modified: '2026-05-05'
+reconciled: true
 tags:
   - Instagram
   - Meta
-  - Photos
   - Social Media
-  - Videos
-  - Content Publishing
   - FinOps
-  - Cost Management
   - FOCUS
-description: FinOps framework definition for the Instagram API surface. Provides a FOCUS-aligned mapping
-  for cost allocation, usage measurement, and unit-economics reporting across the provider's APIs.
+description: FOCUS-aligned FinOps shape for Instagram Platform APIs. The APIs themselves are free; there
+  is no Meta-issued invoice for API call volume. FinOps practice for Instagram-consuming apps therefore
+  focuses on rate-limit budget consumption (treating X-App-Usage and BUC headers as the de-facto meter)
+  and on the consuming app's own infrastructure cost (storage of media, egress, compute), plus any
+  Instagram Ads (Marketing API) spend which is separately governed.
+notes: No direct Meta charge for Instagram Graph API usage. The 'meter' here is the rate-limit budget;
+  treat X-App-Usage and X-Business-Use-Case-Usage as canonical telemetry. Instagram Ads spend should
+  be tracked separately via the Marketing API.
+sources:
+  - https://developers.facebook.com/docs/instagram-api/overview
+  - https://developers.facebook.com/docs/graph-api/overview/rate-limiting
 principles:
   - name: Visibility
-    description: Make API consumption costs visible to engineering, product, and finance teams in near
-      real-time.
+    description: Log X-App-Usage and X-Business-Use-Case-Usage on every Graph API response and chart
+      call_count / total_cputime / total_time burn against the per-hour and per-day windows.
   - name: Allocation
-    description: Tag every chargeable API call with the consuming team, environment, application, and
-      feature so cost can be allocated.
+    description: Allocate API budget by feature / account; tag requests in your own infrastructure with
+      the consuming product so per-feature rate-limit consumption can be reviewed.
   - name: Optimization
-    description: Continuously evaluate request patterns, caching, batching, and tier selection to reduce
-      cost per useful unit of work.
+    description: Filter fields, batch with Field Expansion judiciously, cache identifiers like Instagram
+      Business Account IDs, and prefer webhooks over polling to reduce calls.
   - name: Accountability
-    description: Establish budget owners and chargeback or showback flows for each consuming team.
+    description: Designate a Platform owner per app; review monthly App Review approvals, BUC tier upgrades,
+      and incident counts (4 / 17 / 80001 / 80002 / 80006 errors) in product reviews.
 domains:
   - name: Understand Usage and Cost
     capabilities:
@@ -45,7 +53,6 @@ domains:
       - Anomaly Management
   - name: Quantify Business Value
     capabilities:
-      - Planning and Estimating
       - Forecasting
       - Budgeting
       - Benchmarking
@@ -53,108 +60,74 @@ domains:
   - name: Optimize Usage and Cost
     capabilities:
       - Architecting for Cloud
-      - Rate Optimization
       - Workload Optimization
-      - Cloud Sustainability
-      - Licensing and SaaS
   - name: Manage the FinOps Practice
     capabilities:
       - FinOps Practice Operations
-      - FinOps Education and Enablement
-      - Invoicing and Chargeback
       - Onboarding Workloads
-      - Intersecting Disciplines
 billingModel:
-  pricingCategory: Usage-Based
-  billingFrequency: Monthly
-  billingCurrency: USD
-  chargeCategories:
-    - Usage
-    - Purchase
-    - Tax
-    - Credit
-    - Adjustment
-  chargeFrequency: Recurring
+  pricingCategory: Free (Rate-Limited)
+  billingFrequency: Not Applicable
+  billingCurrency: Not Applicable
+  chargeCategories: []
+  chargeFrequency: Not Applicable
 focusColumns:
-  ServiceName: Instagram
-  ServiceCategory: Developer Tools / API
-  ProviderName: Instagram
-  PublisherName: Instagram
-  InvoiceIssuerName: Instagram
-  PricingCategory: Usage-Based
-  PricingUnit: request
-  BillingCurrency: USD
+  ServiceName: Instagram Platform
+  ServiceCategory: Social Media APIs
+  ProviderName: Meta
+  PublisherName: Meta Platforms, Inc.
+  InvoiceIssuerName: Meta Platforms, Inc.
+  PricingCategory: Free
+  PricingUnit: not-applicable
+  BillingCurrency: Not Applicable
   ChargeCategory: Usage
 meters:
-  - name: api_requests
-    description: Count of billable API requests
+  - name: api_calls
+    description: Count of Graph API calls made on behalf of the app
     unit: request
     aggregation: sum
     dimensions:
-      - api
       - endpoint
-      - tier
-      - region
-      - consumer
-  - name: data_egress
-    description: Bytes returned over the network in API responses
-    unit: GB
-    aggregation: sum
+      - access_tier
+      - app_id
+  - name: app_usage_call_count
+    description: Percentage of platform call_count budget consumed (X-App-Usage)
+    unit: percent
+    aggregation: max
     dimensions:
-      - api
-      - region
-      - consumer
-  - name: compute_seconds
-    description: Server-side compute consumed by the request, where applicable
-    unit: second
-    aggregation: sum
+      - app_id
+  - name: app_usage_cputime
+    description: Percentage of platform total_cputime consumed (X-App-Usage)
+    unit: percent
+    aggregation: max
     dimensions:
-      - api
-      - endpoint
-      - tier
+      - app_id
+  - name: buc_usage
+    description: BUC consumption percentage per business / Instagram account (X-Business-Use-Case-Usage)
+    unit: percent
+    aggregation: max
+    dimensions:
+      - business_id
+      - ig_business_account
 apis:
-  - name: Instagram API with Instagram Login
-    baseURL: https://graph.instagram.com
-    tags:
-      - Content Publishing
-      - Instagram Login
-      - Media
-      - Messaging
-      - Social Media
-    serviceName: Instagram API with Instagram Login
-    serviceCategory: API
-  - name: Instagram API with Facebook Login
+  - name: Instagram Graph API
     baseURL: https://graph.facebook.com
-    tags:
-      - Content Publishing
-      - Facebook Login
-      - Hashtags
-      - Media
-      - Social Media
-    serviceName: Instagram API with Facebook Login
     serviceCategory: API
-  - name: Instagram Messaging API
-    baseURL: https://graph.instagram.com
-    tags:
-      - Direct Messages
-      - Messaging
-      - Social Media
-    serviceName: Instagram Messaging API
-    serviceCategory: API
-  - name: Instagram oEmbed API
+  - name: Instagram Business Discovery
     baseURL: https://graph.facebook.com
-    tags:
-      - Embedding
-      - oEmbed
-      - Social Media
-    serviceName: Instagram oEmbed API
+    serviceCategory: API
+  - name: Instagram Hashtag Search
+    baseURL: https://graph.facebook.com
+    serviceCategory: API
+  - name: Conversations / Messenger for Instagram
+    baseURL: https://graph.facebook.com
     serviceCategory: API
 unitEconomics:
-  - name: Cost per 1K Requests
-    metric: billed_cost / (api_requests / 1000)
+  - name: Calls per Active User
+    metric: api_calls / active_users
     target: TBD
-  - name: Cost per Active Consumer
-    metric: billed_cost / active_consumers
+  - name: BUC Burn-Rate per Business Account
+    metric: buc_usage / ig_business_account
     target: TBD
 maintainers:
   - FN: Kin Lane
