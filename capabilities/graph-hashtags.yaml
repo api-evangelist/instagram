@@ -1,0 +1,209 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Instagram Graph API — Hashtags
+  description: 'Instagram Graph API — Hashtags. 3 operations. Lead operation: Instagram Search Hashtag. Self-contained Naftiko
+    capability covering one Instagram business surface.'
+  tags:
+  - Instagram
+  - Hashtags
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    INSTAGRAM_API_KEY: INSTAGRAM_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: graph-hashtags
+    baseUri: https://graph.facebook.com/v21.0
+    description: Instagram Graph API — Hashtags business capability. Self-contained, no shared references.
+    resources:
+    - name: ig_hashtag_search
+      path: /ig_hashtag_search
+      operations:
+      - name: searchhashtag
+        method: GET
+        description: Instagram Search Hashtag
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: q
+          in: query
+          type: string
+          description: The hashtag to search for (without
+          required: true
+        - name: user_id
+          in: query
+          type: string
+          description: The ID of the user making the request.
+          required: true
+        - name: access_token
+          in: query
+          type: string
+          required: true
+    - name: hashtag_id-recent_media
+      path: /{hashtag_id}/recent_media
+      operations:
+      - name: gethashtagrecentmedia
+        method: GET
+        description: Instagram Get Hashtag Recent Media
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: hashtag_id
+          in: path
+          type: string
+          required: true
+        - name: user_id
+          in: query
+          type: string
+          required: true
+        - name: fields
+          in: query
+          type: string
+        - name: access_token
+          in: query
+          type: string
+          required: true
+    - name: hashtag_id-top_media
+      path: /{hashtag_id}/top_media
+      operations:
+      - name: gethashtagtopmedia
+        method: GET
+        description: Instagram Get Hashtag Top Media
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: hashtag_id
+          in: path
+          type: string
+          required: true
+        - name: user_id
+          in: query
+          type: string
+          required: true
+        - name: fields
+          in: query
+          type: string
+        - name: access_token
+          in: query
+          type: string
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.INSTAGRAM_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: graph-hashtags-rest
+    port: 8080
+    description: REST adapter for Instagram Graph API — Hashtags. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/ig-hashtag-search
+      name: ig-hashtag-search
+      description: REST surface for ig_hashtag_search.
+      operations:
+      - method: GET
+        name: searchhashtag
+        description: Instagram Search Hashtag
+        call: graph-hashtags.searchhashtag
+        with:
+          q: rest.q
+          user_id: rest.user_id
+          access_token: rest.access_token
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/{hashtag-id}/recent-media
+      name: hashtag-id-recent-media
+      description: REST surface for hashtag_id-recent_media.
+      operations:
+      - method: GET
+        name: gethashtagrecentmedia
+        description: Instagram Get Hashtag Recent Media
+        call: graph-hashtags.gethashtagrecentmedia
+        with:
+          hashtag_id: rest.hashtag_id
+          user_id: rest.user_id
+          fields: rest.fields
+          access_token: rest.access_token
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/{hashtag-id}/top-media
+      name: hashtag-id-top-media
+      description: REST surface for hashtag_id-top_media.
+      operations:
+      - method: GET
+        name: gethashtagtopmedia
+        description: Instagram Get Hashtag Top Media
+        call: graph-hashtags.gethashtagtopmedia
+        with:
+          hashtag_id: rest.hashtag_id
+          user_id: rest.user_id
+          fields: rest.fields
+          access_token: rest.access_token
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: graph-hashtags-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Instagram Graph API — Hashtags. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: instagram-search-hashtag
+      description: Instagram Search Hashtag
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: graph-hashtags.searchhashtag
+      with:
+        q: tools.q
+        user_id: tools.user_id
+        access_token: tools.access_token
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: instagram-get-hashtag-recent-media
+      description: Instagram Get Hashtag Recent Media
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: graph-hashtags.gethashtagrecentmedia
+      with:
+        hashtag_id: tools.hashtag_id
+        user_id: tools.user_id
+        fields: tools.fields
+        access_token: tools.access_token
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: instagram-get-hashtag-top-media
+      description: Instagram Get Hashtag Top Media
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: graph-hashtags.gethashtagtopmedia
+      with:
+        hashtag_id: tools.hashtag_id
+        user_id: tools.user_id
+        fields: tools.fields
+        access_token: tools.access_token
+      outputParameters:
+      - type: object
+        mapping: $.

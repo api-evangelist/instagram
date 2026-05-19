@@ -1,0 +1,90 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Instagram Graph API — Mentions
+  description: 'Instagram Graph API — Mentions. 1 operations. Lead operation: Instagram Get User Tags. Self-contained Naftiko
+    capability covering one Instagram business surface.'
+  tags:
+  - Instagram
+  - Mentions
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    INSTAGRAM_API_KEY: INSTAGRAM_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: graph-mentions
+    baseUri: https://graph.facebook.com/v21.0
+    description: Instagram Graph API — Mentions business capability. Self-contained, no shared references.
+    resources:
+    - name: user_id-tags
+      path: /{user_id}/tags
+      operations:
+      - name: getusertags
+        method: GET
+        description: Instagram Get User Tags
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: user_id
+          in: path
+          type: string
+          required: true
+        - name: fields
+          in: query
+          type: string
+        - name: access_token
+          in: query
+          type: string
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.INSTAGRAM_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: graph-mentions-rest
+    port: 8080
+    description: REST adapter for Instagram Graph API — Mentions. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/{user-id}/tags
+      name: user-id-tags
+      description: REST surface for user_id-tags.
+      operations:
+      - method: GET
+        name: getusertags
+        description: Instagram Get User Tags
+        call: graph-mentions.getusertags
+        with:
+          user_id: rest.user_id
+          fields: rest.fields
+          access_token: rest.access_token
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: graph-mentions-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Instagram Graph API — Mentions. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: instagram-get-user-tags
+      description: Instagram Get User Tags
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: graph-mentions.getusertags
+      with:
+        user_id: tools.user_id
+        fields: tools.fields
+        access_token: tools.access_token
+      outputParameters:
+      - type: object
+        mapping: $.

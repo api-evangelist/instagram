@@ -102,6 +102,8 @@ apis:
   - oEmbed
   - Social Media
 common:
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/instagram
 - type: Portal
   url: https://developers.facebook.com/docs/instagram-platform
 - type: GettingStarted

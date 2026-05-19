@@ -1,0 +1,238 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Instagram Graph API — Publishing
+  description: 'Instagram Graph API — Publishing. 4 operations. Lead operation: Instagram Get Container Status. Self-contained
+    Naftiko capability covering one Instagram business surface.'
+  tags:
+  - Instagram
+  - Publishing
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    INSTAGRAM_API_KEY: INSTAGRAM_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: graph-publishing
+    baseUri: https://graph.facebook.com/v21.0
+    description: Instagram Graph API — Publishing business capability. Self-contained, no shared references.
+    resources:
+    - name: container_id
+      path: /{container_id}
+      operations:
+      - name: getcontainer
+        method: GET
+        description: Instagram Get Container Status
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: container_id
+          in: path
+          type: string
+          required: true
+        - name: fields
+          in: query
+          type: string
+        - name: access_token
+          in: query
+          type: string
+          required: true
+    - name: user_id-content_publishing_limit
+      path: /{user_id}/content_publishing_limit
+      operations:
+      - name: getcontentpublishinglimit
+        method: GET
+        description: Instagram Get Content Publishing Limit
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: user_id
+          in: path
+          type: string
+          required: true
+        - name: fields
+          in: query
+          type: string
+        - name: access_token
+          in: query
+          type: string
+          required: true
+    - name: user_id-media
+      path: /{user_id}/media
+      operations:
+      - name: createmediacontainer
+        method: POST
+        description: Instagram Create Media Container
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: user_id
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: user_id-media_publish
+      path: /{user_id}/media_publish
+      operations:
+      - name: publishmedia
+        method: POST
+        description: Instagram Publish Media Container
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: user_id
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.INSTAGRAM_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: graph-publishing-rest
+    port: 8080
+    description: REST adapter for Instagram Graph API — Publishing. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/{container-id}
+      name: container-id
+      description: REST surface for container_id.
+      operations:
+      - method: GET
+        name: getcontainer
+        description: Instagram Get Container Status
+        call: graph-publishing.getcontainer
+        with:
+          container_id: rest.container_id
+          fields: rest.fields
+          access_token: rest.access_token
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/{user-id}/content-publishing-limit
+      name: user-id-content-publishing-limit
+      description: REST surface for user_id-content_publishing_limit.
+      operations:
+      - method: GET
+        name: getcontentpublishinglimit
+        description: Instagram Get Content Publishing Limit
+        call: graph-publishing.getcontentpublishinglimit
+        with:
+          user_id: rest.user_id
+          fields: rest.fields
+          access_token: rest.access_token
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/{user-id}/media
+      name: user-id-media
+      description: REST surface for user_id-media.
+      operations:
+      - method: POST
+        name: createmediacontainer
+        description: Instagram Create Media Container
+        call: graph-publishing.createmediacontainer
+        with:
+          user_id: rest.user_id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/{user-id}/media-publish
+      name: user-id-media-publish
+      description: REST surface for user_id-media_publish.
+      operations:
+      - method: POST
+        name: publishmedia
+        description: Instagram Publish Media Container
+        call: graph-publishing.publishmedia
+        with:
+          user_id: rest.user_id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: graph-publishing-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Instagram Graph API — Publishing. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: instagram-get-container-status
+      description: Instagram Get Container Status
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: graph-publishing.getcontainer
+      with:
+        container_id: tools.container_id
+        fields: tools.fields
+        access_token: tools.access_token
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: instagram-get-content-publishing-limit
+      description: Instagram Get Content Publishing Limit
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: graph-publishing.getcontentpublishinglimit
+      with:
+        user_id: tools.user_id
+        fields: tools.fields
+        access_token: tools.access_token
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: instagram-create-media-container
+      description: Instagram Create Media Container
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: graph-publishing.createmediacontainer
+      with:
+        user_id: tools.user_id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: instagram-publish-media-container
+      description: Instagram Publish Media Container
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: graph-publishing.publishmedia
+      with:
+        user_id: tools.user_id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

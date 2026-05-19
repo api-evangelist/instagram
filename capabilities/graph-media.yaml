@@ -1,0 +1,343 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Instagram Graph API — Media
+  description: 'Instagram Graph API — Media. 6 operations. Lead operation: Instagram Get Media. Self-contained Naftiko capability
+    covering one Instagram business surface.'
+  tags:
+  - Instagram
+  - Media
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    INSTAGRAM_API_KEY: INSTAGRAM_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: graph-media
+    baseUri: https://graph.facebook.com/v21.0
+    description: Instagram Graph API — Media business capability. Self-contained, no shared references.
+    resources:
+    - name: media_id
+      path: /{media_id}
+      operations:
+      - name: getmedia
+        method: GET
+        description: Instagram Get Media
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: media_id
+          in: path
+          type: string
+          description: The IG Media ID.
+          required: true
+        - name: fields
+          in: query
+          type: string
+          description: Comma-separated list of fields.
+        - name: access_token
+          in: query
+          type: string
+          required: true
+      - name: updatemedia
+        method: POST
+        description: Instagram Update Media
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: media_id
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+      - name: deletemedia
+        method: DELETE
+        description: Instagram Delete Media
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: media_id
+          in: path
+          type: string
+          required: true
+        - name: access_token
+          in: query
+          type: string
+          required: true
+    - name: media_id-children
+      path: /{media_id}/children
+      operations:
+      - name: getmediachildren
+        method: GET
+        description: Instagram Get Carousel Children
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: media_id
+          in: path
+          type: string
+          required: true
+        - name: fields
+          in: query
+          type: string
+        - name: access_token
+          in: query
+          type: string
+          required: true
+    - name: user_id-media
+      path: /{user_id}/media
+      operations:
+      - name: getusermedia
+        method: GET
+        description: Instagram Get User Media
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: user_id
+          in: path
+          type: string
+          description: The Instagram user ID.
+          required: true
+        - name: fields
+          in: query
+          type: string
+          description: Comma-separated list of fields.
+        - name: limit
+          in: query
+          type: integer
+          description: Maximum number of results per page.
+        - name: after
+          in: query
+          type: string
+          description: Cursor for pagination.
+        - name: access_token
+          in: query
+          type: string
+          required: true
+    - name: user_id-stories
+      path: /{user_id}/stories
+      operations:
+      - name: getuserstories
+        method: GET
+        description: Instagram Get User Stories
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: user_id
+          in: path
+          type: string
+          required: true
+        - name: fields
+          in: query
+          type: string
+        - name: access_token
+          in: query
+          type: string
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.INSTAGRAM_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: graph-media-rest
+    port: 8080
+    description: REST adapter for Instagram Graph API — Media. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/{media-id}
+      name: media-id
+      description: REST surface for media_id.
+      operations:
+      - method: GET
+        name: getmedia
+        description: Instagram Get Media
+        call: graph-media.getmedia
+        with:
+          media_id: rest.media_id
+          fields: rest.fields
+          access_token: rest.access_token
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: updatemedia
+        description: Instagram Update Media
+        call: graph-media.updatemedia
+        with:
+          media_id: rest.media_id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletemedia
+        description: Instagram Delete Media
+        call: graph-media.deletemedia
+        with:
+          media_id: rest.media_id
+          access_token: rest.access_token
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/{media-id}/children
+      name: media-id-children
+      description: REST surface for media_id-children.
+      operations:
+      - method: GET
+        name: getmediachildren
+        description: Instagram Get Carousel Children
+        call: graph-media.getmediachildren
+        with:
+          media_id: rest.media_id
+          fields: rest.fields
+          access_token: rest.access_token
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/{user-id}/media
+      name: user-id-media
+      description: REST surface for user_id-media.
+      operations:
+      - method: GET
+        name: getusermedia
+        description: Instagram Get User Media
+        call: graph-media.getusermedia
+        with:
+          user_id: rest.user_id
+          fields: rest.fields
+          limit: rest.limit
+          after: rest.after
+          access_token: rest.access_token
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/{user-id}/stories
+      name: user-id-stories
+      description: REST surface for user_id-stories.
+      operations:
+      - method: GET
+        name: getuserstories
+        description: Instagram Get User Stories
+        call: graph-media.getuserstories
+        with:
+          user_id: rest.user_id
+          fields: rest.fields
+          access_token: rest.access_token
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: graph-media-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Instagram Graph API — Media. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: instagram-get-media
+      description: Instagram Get Media
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: graph-media.getmedia
+      with:
+        media_id: tools.media_id
+        fields: tools.fields
+        access_token: tools.access_token
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: instagram-update-media
+      description: Instagram Update Media
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: graph-media.updatemedia
+      with:
+        media_id: tools.media_id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: instagram-delete-media
+      description: Instagram Delete Media
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: graph-media.deletemedia
+      with:
+        media_id: tools.media_id
+        access_token: tools.access_token
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: instagram-get-carousel-children
+      description: Instagram Get Carousel Children
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: graph-media.getmediachildren
+      with:
+        media_id: tools.media_id
+        fields: tools.fields
+        access_token: tools.access_token
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: instagram-get-user-media
+      description: Instagram Get User Media
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: graph-media.getusermedia
+      with:
+        user_id: tools.user_id
+        fields: tools.fields
+        limit: tools.limit
+        after: tools.after
+        access_token: tools.access_token
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: instagram-get-user-stories
+      description: Instagram Get User Stories
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: graph-media.getuserstories
+      with:
+        user_id: tools.user_id
+        fields: tools.fields
+        access_token: tools.access_token
+      outputParameters:
+      - type: object
+        mapping: $.

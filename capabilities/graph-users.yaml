@@ -1,0 +1,147 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Instagram Graph API — Users
+  description: 'Instagram Graph API — Users. 2 operations. Lead operation: Instagram Get User Profile. Self-contained Naftiko
+    capability covering one Instagram business surface.'
+  tags:
+  - Instagram
+  - Users
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    INSTAGRAM_API_KEY: INSTAGRAM_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: graph-users
+    baseUri: https://graph.facebook.com/v21.0
+    description: Instagram Graph API — Users business capability. Self-contained, no shared references.
+    resources:
+    - name: user_id
+      path: /{user_id}
+      operations:
+      - name: getuser
+        method: GET
+        description: Instagram Get User Profile
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: user_id
+          in: path
+          type: string
+          description: The Instagram user ID.
+          required: true
+        - name: fields
+          in: query
+          type: string
+          description: Comma-separated list of fields to return.
+        - name: access_token
+          in: query
+          type: string
+          description: User access token.
+          required: true
+    - name: user_id-business_discovery
+      path: /{user_id}/business_discovery
+      operations:
+      - name: getbusinessdiscovery
+        method: GET
+        description: Instagram Get Business Discovery
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: user_id
+          in: path
+          type: string
+          required: true
+        - name: fields
+          in: query
+          type: string
+          description: Must include business_discovery.fields().
+          required: true
+        - name: access_token
+          in: query
+          type: string
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.INSTAGRAM_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: graph-users-rest
+    port: 8080
+    description: REST adapter for Instagram Graph API — Users. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/{user-id}
+      name: user-id
+      description: REST surface for user_id.
+      operations:
+      - method: GET
+        name: getuser
+        description: Instagram Get User Profile
+        call: graph-users.getuser
+        with:
+          user_id: rest.user_id
+          fields: rest.fields
+          access_token: rest.access_token
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/{user-id}/business-discovery
+      name: user-id-business-discovery
+      description: REST surface for user_id-business_discovery.
+      operations:
+      - method: GET
+        name: getbusinessdiscovery
+        description: Instagram Get Business Discovery
+        call: graph-users.getbusinessdiscovery
+        with:
+          user_id: rest.user_id
+          fields: rest.fields
+          access_token: rest.access_token
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: graph-users-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Instagram Graph API — Users. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: instagram-get-user-profile
+      description: Instagram Get User Profile
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: graph-users.getuser
+      with:
+        user_id: tools.user_id
+        fields: tools.fields
+        access_token: tools.access_token
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: instagram-get-business-discovery
+      description: Instagram Get Business Discovery
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: graph-users.getbusinessdiscovery
+      with:
+        user_id: tools.user_id
+        fields: tools.fields
+        access_token: tools.access_token
+      outputParameters:
+      - type: object
+        mapping: $.
