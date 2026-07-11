@@ -1,0 +1,19 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/instagram-graph-api.yaml
+summary:
+  types:
+  - oauth2
+  oauth2_flows:
+  - authorizationCode
+schemes:
+- name: oauth2
+  type: oauth2
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://www.facebook.com/dialog/oauth
+    tokenUrl: https://graph.facebook.com/oauth/access_token
+    scopes: 7
+  description: OAuth 2.0 authentication via Instagram Login or Facebook Login.
+  sources:
+  - openapi/instagram-graph-api.yaml

@@ -102,6 +102,10 @@ apis:
     - oEmbed
     - Social Media
 common:
+  - type: DomainSecurity
+    url: security/instagram-domain-security.yml
+  - type: Authentication
+    url: authentication/instagram-authentication.yml
   - type: OAuthScopes
     url: scopes/instagram-scopes.yml
   - type: LinkedIn
