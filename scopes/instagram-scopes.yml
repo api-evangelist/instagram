@@ -1,0 +1,54 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/instagram-graph-api.yaml
+schemes:
+- name: oauth2
+  source: openapi/instagram-graph-api.yaml
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://www.facebook.com/dialog/oauth
+    tokenUrl: https://graph.facebook.com/oauth/access_token
+  description: OAuth 2.0 authentication via Instagram Login or Facebook Login.
+scopes:
+- scope: instagram_basic
+  description: Read user profile and media.
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/instagram-graph-api.yaml
+- scope: instagram_content_publish
+  description: Publish content on behalf of the user.
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/instagram-graph-api.yaml
+- scope: instagram_manage_comments
+  description: Manage comments on media.
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/instagram-graph-api.yaml
+- scope: instagram_manage_insights
+  description: Access insights and analytics.
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/instagram-graph-api.yaml
+- scope: instagram_manage_messages
+  description: Manage Instagram Direct messages.
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/instagram-graph-api.yaml
+- scope: pages_read_engagement
+  description: Read engagement data from pages.
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/instagram-graph-api.yaml
+- scope: pages_show_list
+  description: Show list of pages managed by user.
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/instagram-graph-api.yaml

@@ -102,6 +102,8 @@ apis:
     - oEmbed
     - Social Media
 common:
+  - type: OAuthScopes
+    url: scopes/instagram-scopes.yml
   - type: LinkedIn
     url: https://www.linkedin.com/company/instagram
   - type: Portal
