@@ -1,3 +1,22 @@
+# instagram — Spectral ruleset (strengthened)
+# Plain Spectral. Existing hand-authored rules preserved; measured rules added
+# from this provider's own OpenAPI conventions by strengthen_ruleset.py,
+# then self-validated against the spec.
+#
+# Provenance:
+#   - servers-https-only: 100% of servers already https (error)
+#   - path-params-casing: snake @ 100% (n=24)
+#   - query-params-casing: snake @ 100% (n=44)
+#   - operationid-casing: camel @ 100% (n=25)
+#   - schema-names-casing: pascal @ 100% (n=11)
+#   - schema-properties-casing: snake @ 100% (n=49)
+#   - security: neither global nor consistently per-op — schemes-defined only
+#   - error-schema-defined: ErrorResponse
+#   - pagination params observed: ['limit']
+#   - merge: kept 20 existing, added 4 measured, upgraded 0
+#   - added: query-params-casing, operationid-casing, schema-properties-casing, error-schema-defined
+extends:
+  - spectral:oas
 rules:
   info-title-required:
     description: API title must be present.
@@ -13,7 +32,7 @@ rules:
     then:
       function: pattern
       functionOptions:
-        match: "^Instagram "
+        match: '^Instagram '
   info-description-required:
     description: API description must be present.
     severity: error
@@ -36,7 +55,7 @@ rules:
       field: openapi
       function: pattern
       functionOptions:
-        match: "^3\\.0\\."
+        match: ^3\.0\.
   servers-defined:
     description: At least one server must be defined.
     severity: error
@@ -51,7 +70,7 @@ rules:
     then:
       function: pattern
       functionOptions:
-        match: "^https://"
+        match: ^https://
   servers-graph-domain:
     description: Server URLs should use graph.facebook.com or graph.instagram.com.
     severity: info
@@ -59,16 +78,16 @@ rules:
     then:
       function: pattern
       functionOptions:
-        match: "(graph\\.facebook\\.com|graph\\.instagram\\.com)"
+        match: (graph\.facebook\.com|graph\.instagram\.com)
   paths-no-trailing-slash:
     description: Paths must not have trailing slashes.
     severity: error
     given: $.paths
     then:
-      field: "@key"
+      field: '@key'
       function: pattern
       functionOptions:
-        notMatch: "\\/$"
+        notMatch: \/$
   operation-description-required:
     description: Every operation must have a description.
     severity: error
@@ -97,7 +116,7 @@ rules:
     then:
       function: pattern
       functionOptions:
-        match: "^[A-Z][a-zA-Z0-9]*(\\s[A-Za-z0-9]+)*$"
+        match: ^[A-Z][a-zA-Z0-9]*(\s[A-Za-z0-9]+)*$
   parameter-description-required:
     description: All parameters must have a description.
     severity: error
@@ -114,9 +133,12 @@ rules:
       functionOptions:
         schema:
           anyOf:
-            - required: ["200"]
-            - required: ["201"]
-            - required: ["204"]
+          - required:
+            - '200'
+          - required:
+            - '201'
+          - required:
+            - '204'
   response-description-required:
     description: All responses must have a description.
     severity: error
@@ -129,10 +151,10 @@ rules:
     severity: warn
     given: $.components.schemas
     then:
-      field: "@key"
+      field: '@key'
       function: pattern
       functionOptions:
-        match: "^[A-Z][a-zA-Z0-9]*$"
+        match: ^[A-Z][a-zA-Z0-9]*$
   security-schemes-defined:
     description: Security schemes should be defined.
     severity: warn
@@ -150,6 +172,39 @@ rules:
   no-empty-descriptions:
     description: Descriptions must not be empty.
     severity: error
-    given: "$..description"
+    given: $..description
     then:
+      function: truthy
+  query-params-casing:
+    description: Query parameters should be snake_case (the dominant convention in this API).
+    severity: warn
+    given: $.paths[*][get,post,put,patch,delete].parameters[?(@.in=='query')]
+    then:
+      field: name
+      function: casing
+      functionOptions:
+        type: snake
+  operationid-casing:
+    description: Operation IDs should be camelCase (the dominant convention in this API).
+    severity: warn
+    given: $.paths[*][get,post,put,patch,delete].operationId
+    then:
+      function: casing
+      functionOptions:
+        type: camel
+  schema-properties-casing:
+    description: Schema properties should be snake_case (the dominant convention in this API).
+    severity: warn
+    given: $.components.schemas[*].properties
+    then:
+      field: '@key'
+      function: casing
+      functionOptions:
+        type: snake
+  error-schema-defined:
+    description: A shared error schema (ErrorResponse) should be defined for error payloads.
+    severity: warn
+    given: $.components.schemas
+    then:
+      field: ErrorResponse
       function: truthy
