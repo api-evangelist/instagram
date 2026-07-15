@@ -102,6 +102,8 @@ apis:
     - oEmbed
     - Social Media
 common:
+  - type: AgenticAccess
+    url: agentic-access/instagram-agentic-access.yml
   - type: DomainSecurity
     url: security/instagram-domain-security.yml
   - type: Authentication
