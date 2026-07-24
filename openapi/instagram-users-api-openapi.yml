@@ -1,0 +1,156 @@
+openapi: 3.0.3
+info:
+  title: Instagram Graph Comments Users API
+  description: The Instagram Graph API allows Instagram Professionals (Business and Creator accounts) to manage their presence on Instagram, including media publishing, comments, hashtags, mentions, insights, and messaging. Uses the Facebook Graph API infrastructure with OAuth 2.0 authentication.
+  version: '21.0'
+  contact:
+    name: Meta for Developers
+    url: https://developers.facebook.com/docs/instagram-api
+  license:
+    name: Meta Platform Terms
+    url: https://developers.facebook.com/terms
+servers:
+- url: https://graph.facebook.com/v21.0
+  description: Facebook Graph API (Facebook Login)
+- url: https://graph.instagram.com/v21.0
+  description: Instagram Graph API (Instagram Login)
+tags:
+- name: Users
+  description: Instagram Business and Creator account profiles
+paths:
+  /{user_id}:
+    get:
+      operationId: getUser
+      summary: Instagram Get User Profile
+      description: Get fields and edges on an Instagram Business or Creator account.
+      tags:
+      - Users
+      parameters:
+      - name: user_id
+        in: path
+        required: true
+        description: The Instagram user ID.
+        schema:
+          type: string
+        example: '17841400123456789'
+      - name: fields
+        in: query
+        required: false
+        description: Comma-separated list of fields to return.
+        schema:
+          type: string
+        example: id,username,name,biography,followers_count,media_count
+      - name: access_token
+        in: query
+        required: true
+        description: User access token.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: User profile data.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /{user_id}/business_discovery:
+    get:
+      operationId: getBusinessDiscovery
+      summary: Instagram Get Business Discovery
+      description: Get data about other Instagram Business or Creator accounts.
+      tags:
+      - Users
+      parameters:
+      - name: user_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: fields
+        in: query
+        required: true
+        description: Must include business_discovery.fields().
+        schema:
+          type: string
+        example: business_discovery.fields(username,media_count,followers_count)
+      - name: access_token
+        in: query
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Business discovery data.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  business_discovery:
+                    $ref: '#/components/schemas/User'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        id:
+          type: string
+          description: App-scoped user ID.
+          example: '17841400123456789'
+        username:
+          type: string
+          description: Instagram username.
+          example: examplebusiness
+        name:
+          type: string
+          description: Profile name.
+          example: Example Business
+        biography:
+          type: string
+          description: Profile bio text.
+          example: Official account for Example Business.
+        website:
+          type: string
+          description: Website URL from profile.
+          example: https://www.example.com
+        profile_picture_url:
+          type: string
+          description: Profile picture URL.
+          example: https://scontent.cdninstagram.com/example.jpg
+        followers_count:
+          type: integer
+          description: Total followers.
+          example: 15000
+        follows_count:
+          type: integer
+          description: Total accounts followed.
+          example: 500
+        media_count:
+          type: integer
+          description: Total published media.
+          example: 342
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: OAuth 2.0 authentication via Instagram Login or Facebook Login.
+      flows:
+        authorizationCode:
+          authorizationUrl: https://www.facebook.com/dialog/oauth
+          tokenUrl: https://graph.facebook.com/oauth/access_token
+          scopes:
+            instagram_basic: Read user profile and media.
+            instagram_content_publish: Publish content on behalf of the user.
+            instagram_manage_comments: Manage comments on media.
+            instagram_manage_insights: Access insights and analytics.
+            instagram_manage_messages: Manage Instagram Direct messages.
+            pages_show_list: Show list of pages managed by user.
+            pages_read_engagement: Read engagement data from pages.
+externalDocs:
+  description: Instagram Platform Documentation
+  url: https://developers.facebook.com/docs/instagram-platform

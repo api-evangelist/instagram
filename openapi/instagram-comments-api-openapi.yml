@@ -1,0 +1,344 @@
+openapi: 3.0.3
+info:
+  title: Instagram Graph Comments API
+  description: The Instagram Graph API allows Instagram Professionals (Business and Creator accounts) to manage their presence on Instagram, including media publishing, comments, hashtags, mentions, insights, and messaging. Uses the Facebook Graph API infrastructure with OAuth 2.0 authentication.
+  version: '21.0'
+  contact:
+    name: Meta for Developers
+    url: https://developers.facebook.com/docs/instagram-api
+  license:
+    name: Meta Platform Terms
+    url: https://developers.facebook.com/terms
+servers:
+- url: https://graph.facebook.com/v21.0
+  description: Facebook Graph API (Facebook Login)
+- url: https://graph.instagram.com/v21.0
+  description: Instagram Graph API (Instagram Login)
+tags:
+- name: Comments
+  description: Comment management and moderation
+paths:
+  /{media_id}/comments:
+    get:
+      operationId: getMediaComments
+      summary: Instagram Get Media Comments
+      description: Get comments on an Instagram media object.
+      tags:
+      - Comments
+      parameters:
+      - name: media_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: fields
+        in: query
+        schema:
+          type: string
+        example: id,text,username,timestamp,like_count
+      - name: access_token
+        in: query
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: List of comments.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommentList'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    post:
+      operationId: createComment
+      summary: Instagram Create Comment
+      description: Create a comment on an Instagram media object.
+      tags:
+      - Comments
+      parameters:
+      - name: media_id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - message
+              - access_token
+              properties:
+                message:
+                  type: string
+                  description: The comment text.
+                  example: Great post!
+                access_token:
+                  type: string
+      responses:
+        '200':
+          description: Comment created.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    example: '17858893269000001'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /{comment_id}:
+    get:
+      operationId: getComment
+      summary: Instagram Get Comment
+      description: Get fields on an Instagram comment.
+      tags:
+      - Comments
+      parameters:
+      - name: comment_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: fields
+        in: query
+        schema:
+          type: string
+        example: id,text,username,timestamp,like_count,hidden
+      - name: access_token
+        in: query
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Comment data.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Comment'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    post:
+      operationId: hideComment
+      summary: Instagram Hide or Unhide Comment
+      description: Hide or unhide a comment on your media.
+      tags:
+      - Comments
+      parameters:
+      - name: comment_id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - hide
+              - access_token
+              properties:
+                hide:
+                  type: boolean
+                  description: True to hide, false to unhide.
+                  example: true
+                access_token:
+                  type: string
+      responses:
+        '200':
+          description: Success.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    delete:
+      operationId: deleteComment
+      summary: Instagram Delete Comment
+      description: Delete a comment on your media.
+      tags:
+      - Comments
+      parameters:
+      - name: comment_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: access_token
+        in: query
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Comment deleted.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /{comment_id}/replies:
+    get:
+      operationId: getCommentReplies
+      summary: Instagram Get Comment Replies
+      description: Get replies to a comment.
+      tags:
+      - Comments
+      parameters:
+      - name: comment_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: fields
+        in: query
+        schema:
+          type: string
+      - name: access_token
+        in: query
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: List of reply comments.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommentList'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    post:
+      operationId: createCommentReply
+      summary: Instagram Create Comment Reply
+      description: Reply to a comment.
+      tags:
+      - Comments
+      parameters:
+      - name: comment_id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - message
+              - access_token
+              properties:
+                message:
+                  type: string
+                  example: Thanks for the feedback!
+                access_token:
+                  type: string
+      responses:
+        '200':
+          description: Reply created.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    example: '17858893269000002'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    Paging:
+      type: object
+      properties:
+        cursors:
+          type: object
+          properties:
+            before:
+              type: string
+              example: QVFIUjRtc2c5NEl0ajN3
+            after:
+              type: string
+              example: QVFIUmlKdXBzYWtyUml3
+        next:
+          type: string
+          description: URL to fetch next page.
+        previous:
+          type: string
+          description: URL to fetch previous page.
+    Comment:
+      type: object
+      properties:
+        id:
+          type: string
+          example: '17858893269000001'
+        text:
+          type: string
+          example: Amazing photo!
+        username:
+          type: string
+          example: fan_account
+        timestamp:
+          type: string
+          format: date-time
+          example: 2026-04-17T14:30:00+0000
+        like_count:
+          type: integer
+          example: 5
+        hidden:
+          type: boolean
+          example: false
+        parent_id:
+          type: string
+          description: ID of the parent comment if this is a reply.
+    SuccessResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+          example: true
+    CommentList:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Comment'
+        paging:
+          $ref: '#/components/schemas/Paging'
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: OAuth 2.0 authentication via Instagram Login or Facebook Login.
+      flows:
+        authorizationCode:
+          authorizationUrl: https://www.facebook.com/dialog/oauth
+          tokenUrl: https://graph.facebook.com/oauth/access_token
+          scopes:
+            instagram_basic: Read user profile and media.
+            instagram_content_publish: Publish content on behalf of the user.
+            instagram_manage_comments: Manage comments on media.
+            instagram_manage_insights: Access insights and analytics.
+            instagram_manage_messages: Manage Instagram Direct messages.
+            pages_show_list: Show list of pages managed by user.
+            pages_read_engagement: Read engagement data from pages.
+externalDocs:
+  description: Instagram Platform Documentation
+  url: https://developers.facebook.com/docs/instagram-platform

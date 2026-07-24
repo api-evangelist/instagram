@@ -1,0 +1,338 @@
+openapi: 3.0.3
+info:
+  title: Instagram Graph Comments Media API
+  description: The Instagram Graph API allows Instagram Professionals (Business and Creator accounts) to manage their presence on Instagram, including media publishing, comments, hashtags, mentions, insights, and messaging. Uses the Facebook Graph API infrastructure with OAuth 2.0 authentication.
+  version: '21.0'
+  contact:
+    name: Meta for Developers
+    url: https://developers.facebook.com/docs/instagram-api
+  license:
+    name: Meta Platform Terms
+    url: https://developers.facebook.com/terms
+servers:
+- url: https://graph.facebook.com/v21.0
+  description: Facebook Graph API (Facebook Login)
+- url: https://graph.instagram.com/v21.0
+  description: Instagram Graph API (Instagram Login)
+tags:
+- name: Media
+  description: Photos, videos, stories, reels, and carousels
+paths:
+  /{user_id}/media:
+    get:
+      operationId: getUserMedia
+      summary: Instagram Get User Media
+      description: Get a collection of IG Media objects published on the account.
+      tags:
+      - Media
+      parameters:
+      - name: user_id
+        in: path
+        required: true
+        description: The Instagram user ID.
+        schema:
+          type: string
+      - name: fields
+        in: query
+        description: Comma-separated list of fields.
+        schema:
+          type: string
+        example: id,caption,media_type,media_url,timestamp,permalink
+      - name: limit
+        in: query
+        description: Maximum number of results per page.
+        schema:
+          type: integer
+        example: 25
+      - name: after
+        in: query
+        description: Cursor for pagination.
+        schema:
+          type: string
+      - name: access_token
+        in: query
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: List of media objects.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MediaList'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /{user_id}/stories:
+    get:
+      operationId: getUserStories
+      summary: Instagram Get User Stories
+      description: Get a collection of story IG Media objects on the account.
+      tags:
+      - Media
+      parameters:
+      - name: user_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: fields
+        in: query
+        schema:
+          type: string
+      - name: access_token
+        in: query
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: List of story media.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MediaList'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /{media_id}:
+    get:
+      operationId: getMedia
+      summary: Instagram Get Media
+      description: Get fields on an Instagram photo, video, story, reel, or album.
+      tags:
+      - Media
+      parameters:
+      - name: media_id
+        in: path
+        required: true
+        description: The IG Media ID.
+        schema:
+          type: string
+      - name: fields
+        in: query
+        description: Comma-separated list of fields.
+        schema:
+          type: string
+        example: id,caption,media_type,media_url,timestamp,like_count,comments_count
+      - name: access_token
+        in: query
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Media object.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Media'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    post:
+      operationId: updateMedia
+      summary: Instagram Update Media
+      description: Enable or disable comments on a media object.
+      tags:
+      - Media
+      parameters:
+      - name: media_id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                comment_enabled:
+                  type: boolean
+                  example: true
+                access_token:
+                  type: string
+      responses:
+        '200':
+          description: Update success.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    delete:
+      operationId: deleteMedia
+      summary: Instagram Delete Media
+      description: Delete an Instagram media object (post, story, reel, or carousel).
+      tags:
+      - Media
+      parameters:
+      - name: media_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: access_token
+        in: query
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Media deleted.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  deleted_id:
+                    type: string
+                    example: '17854360229135492'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /{media_id}/children:
+    get:
+      operationId: getMediaChildren
+      summary: Instagram Get Carousel Children
+      description: Get media objects within a carousel album.
+      tags:
+      - Media
+      parameters:
+      - name: media_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: fields
+        in: query
+        schema:
+          type: string
+      - name: access_token
+        in: query
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: List of child media.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MediaList'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    Media:
+      type: object
+      properties:
+        id:
+          type: string
+          example: '17854360229135492'
+        caption:
+          type: string
+          example: 'Beautiful sunset at the beach! #photography'
+        media_type:
+          type: string
+          enum:
+          - IMAGE
+          - VIDEO
+          - CAROUSEL_ALBUM
+          - REELS
+          - STORIES
+          example: IMAGE
+        media_url:
+          type: string
+          example: https://scontent.cdninstagram.com/media/example.jpg
+        thumbnail_url:
+          type: string
+          description: Thumbnail URL for videos.
+        permalink:
+          type: string
+          example: https://www.instagram.com/p/ABC123/
+        shortcode:
+          type: string
+          example: ABC123
+        timestamp:
+          type: string
+          format: date-time
+          example: 2026-04-17T12:00:00+0000
+        like_count:
+          type: integer
+          example: 250
+        comments_count:
+          type: integer
+          example: 15
+        is_comment_enabled:
+          type: boolean
+          example: true
+        is_shared_to_feed:
+          type: boolean
+          example: true
+        alt_text:
+          type: string
+          description: Alt text for accessibility.
+        username:
+          type: string
+          example: examplebusiness
+    Paging:
+      type: object
+      properties:
+        cursors:
+          type: object
+          properties:
+            before:
+              type: string
+              example: QVFIUjRtc2c5NEl0ajN3
+            after:
+              type: string
+              example: QVFIUmlKdXBzYWtyUml3
+        next:
+          type: string
+          description: URL to fetch next page.
+        previous:
+          type: string
+          description: URL to fetch previous page.
+    SuccessResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+          example: true
+    MediaList:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Media'
+        paging:
+          $ref: '#/components/schemas/Paging'
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: OAuth 2.0 authentication via Instagram Login or Facebook Login.
+      flows:
+        authorizationCode:
+          authorizationUrl: https://www.facebook.com/dialog/oauth
+          tokenUrl: https://graph.facebook.com/oauth/access_token
+          scopes:
+            instagram_basic: Read user profile and media.
+            instagram_content_publish: Publish content on behalf of the user.
+            instagram_manage_comments: Manage comments on media.
+            instagram_manage_insights: Access insights and analytics.
+            instagram_manage_messages: Manage Instagram Direct messages.
+            pages_show_list: Show list of pages managed by user.
+            pages_read_engagement: Read engagement data from pages.
+externalDocs:
+  description: Instagram Platform Documentation
+  url: https://developers.facebook.com/docs/instagram-platform

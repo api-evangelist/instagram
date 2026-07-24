@@ -1,0 +1,168 @@
+openapi: 3.0.3
+info:
+  title: Instagram Graph Comments Insights API
+  description: The Instagram Graph API allows Instagram Professionals (Business and Creator accounts) to manage their presence on Instagram, including media publishing, comments, hashtags, mentions, insights, and messaging. Uses the Facebook Graph API infrastructure with OAuth 2.0 authentication.
+  version: '21.0'
+  contact:
+    name: Meta for Developers
+    url: https://developers.facebook.com/docs/instagram-api
+  license:
+    name: Meta Platform Terms
+    url: https://developers.facebook.com/terms
+servers:
+- url: https://graph.facebook.com/v21.0
+  description: Facebook Graph API (Facebook Login)
+- url: https://graph.instagram.com/v21.0
+  description: Instagram Graph API (Instagram Login)
+tags:
+- name: Insights
+  description: Account and media level analytics
+paths:
+  /{user_id}/insights:
+    get:
+      operationId: getUserInsights
+      summary: Instagram Get User Insights
+      description: Get social interaction metrics for the account.
+      tags:
+      - Insights
+      parameters:
+      - name: user_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: metric
+        in: query
+        required: true
+        description: Comma-separated list of metrics.
+        schema:
+          type: string
+        example: impressions,reach,profile_views
+      - name: period
+        in: query
+        required: true
+        description: Time period for aggregation.
+        schema:
+          type: string
+          enum:
+          - day
+          - week
+          - days_28
+          - month
+          - lifetime
+        example: day
+      - name: since
+        in: query
+        description: Unix timestamp for start of range.
+        schema:
+          type: integer
+      - name: until
+        in: query
+        description: Unix timestamp for end of range.
+        schema:
+          type: integer
+      - name: access_token
+        in: query
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Account insights data.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InsightsResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /{media_id}/insights:
+    get:
+      operationId: getMediaInsights
+      summary: Instagram Get Media Insights
+      description: Get social interaction metrics for a media object.
+      tags:
+      - Insights
+      parameters:
+      - name: media_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: metric
+        in: query
+        required: true
+        description: Comma-separated list of metrics.
+        schema:
+          type: string
+        example: impressions,reach,engagement,saved
+      - name: access_token
+        in: query
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Media insights data.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InsightsResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    InsightsResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+                example: impressions
+              period:
+                type: string
+                example: day
+              values:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    value:
+                      type: integer
+                      example: 1500
+                    end_time:
+                      type: string
+                      format: date-time
+                      example: 2026-04-17T07:00:00+0000
+              title:
+                type: string
+                example: Impressions
+              description:
+                type: string
+                example: Total number of times the media has been seen.
+              id:
+                type: string
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: OAuth 2.0 authentication via Instagram Login or Facebook Login.
+      flows:
+        authorizationCode:
+          authorizationUrl: https://www.facebook.com/dialog/oauth
+          tokenUrl: https://graph.facebook.com/oauth/access_token
+          scopes:
+            instagram_basic: Read user profile and media.
+            instagram_content_publish: Publish content on behalf of the user.
+            instagram_manage_comments: Manage comments on media.
+            instagram_manage_insights: Access insights and analytics.
+            instagram_manage_messages: Manage Instagram Direct messages.
+            pages_show_list: Show list of pages managed by user.
+            pages_read_engagement: Read engagement data from pages.
+externalDocs:
+  description: Instagram Platform Documentation
+  url: https://developers.facebook.com/docs/instagram-platform

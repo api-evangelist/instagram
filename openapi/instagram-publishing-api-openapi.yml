@@ -1,0 +1,257 @@
+openapi: 3.0.3
+info:
+  title: Instagram Graph Comments Publishing API
+  description: The Instagram Graph API allows Instagram Professionals (Business and Creator accounts) to manage their presence on Instagram, including media publishing, comments, hashtags, mentions, insights, and messaging. Uses the Facebook Graph API infrastructure with OAuth 2.0 authentication.
+  version: '21.0'
+  contact:
+    name: Meta for Developers
+    url: https://developers.facebook.com/docs/instagram-api
+  license:
+    name: Meta Platform Terms
+    url: https://developers.facebook.com/terms
+servers:
+- url: https://graph.facebook.com/v21.0
+  description: Facebook Graph API (Facebook Login)
+- url: https://graph.instagram.com/v21.0
+  description: Instagram Graph API (Instagram Login)
+tags:
+- name: Publishing
+  description: Content creation and publishing workflow
+paths:
+  /{user_id}/media:
+    post:
+      operationId: createMediaContainer
+      summary: Instagram Create Media Container
+      description: Create a media container for publishing content. Step 1 of the publishing flow.
+      tags:
+      - Publishing
+      parameters:
+      - name: user_id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateContainerRequest'
+      responses:
+        '200':
+          description: Container created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContainerResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /{user_id}/media_publish:
+    post:
+      operationId: publishMedia
+      summary: Instagram Publish Media Container
+      description: Publish a media container. Step 2 of the publishing flow.
+      tags:
+      - Publishing
+      parameters:
+      - name: user_id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - creation_id
+              - access_token
+              properties:
+                creation_id:
+                  type: string
+                  description: The container ID from createMediaContainer.
+                  example: '17889615691921648'
+                access_token:
+                  type: string
+      responses:
+        '200':
+          description: Media published.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: The published media ID.
+                    example: '17854360229135492'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /{user_id}/content_publishing_limit:
+    get:
+      operationId: getContentPublishingLimit
+      summary: Instagram Get Content Publishing Limit
+      description: Get current content publishing usage and rate limit status.
+      tags:
+      - Publishing
+      parameters:
+      - name: user_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: fields
+        in: query
+        schema:
+          type: string
+        example: config,quota_usage
+      - name: access_token
+        in: query
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Publishing limit data.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  config:
+                    type: object
+                    properties:
+                      quota_total:
+                        type: integer
+                        example: 100
+                      quota_duration:
+                        type: integer
+                        example: 86400
+                  quota_usage:
+                    type: integer
+                    example: 5
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /{container_id}:
+    get:
+      operationId: getContainer
+      summary: Instagram Get Container Status
+      description: Check the publishing status of a media container.
+      tags:
+      - Publishing
+      parameters:
+      - name: container_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: fields
+        in: query
+        schema:
+          type: string
+        example: status_code,status
+      - name: access_token
+        in: query
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Container status.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  status_code:
+                    type: string
+                    enum:
+                    - EXPIRED
+                    - ERROR
+                    - FINISHED
+                    - IN_PROGRESS
+                    - PUBLISHED
+                    example: FINISHED
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    ContainerResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The container ID.
+          example: '17889615691921648'
+    CreateContainerRequest:
+      type: object
+      properties:
+        image_url:
+          type: string
+          description: Public URL of the image to publish.
+          example: https://www.example.com/images/photo.jpg
+        video_url:
+          type: string
+          description: Public URL of the video to publish.
+        caption:
+          type: string
+          description: Caption text for the media.
+          example: 'Check out our latest product! #newlaunch'
+        media_type:
+          type: string
+          description: Type of media to publish.
+          enum:
+          - IMAGE
+          - VIDEO
+          - REELS
+          - STORIES
+          - CAROUSEL
+          example: IMAGE
+        is_carousel_item:
+          type: boolean
+          description: Set to true if this is an item in a carousel.
+          example: false
+        location_id:
+          type: string
+          description: Facebook Page ID of a location to tag.
+        user_tags:
+          type: array
+          description: Users to tag in the media.
+          items:
+            type: object
+            properties:
+              username:
+                type: string
+              x:
+                type: number
+              y:
+                type: number
+        access_token:
+          type: string
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: OAuth 2.0 authentication via Instagram Login or Facebook Login.
+      flows:
+        authorizationCode:
+          authorizationUrl: https://www.facebook.com/dialog/oauth
+          tokenUrl: https://graph.facebook.com/oauth/access_token
+          scopes:
+            instagram_basic: Read user profile and media.
+            instagram_content_publish: Publish content on behalf of the user.
+            instagram_manage_comments: Manage comments on media.
+            instagram_manage_insights: Access insights and analytics.
+            instagram_manage_messages: Manage Instagram Direct messages.
+            pages_show_list: Show list of pages managed by user.
+            pages_read_engagement: Read engagement data from pages.
+externalDocs:
+  description: Instagram Platform Documentation
+  url: https://developers.facebook.com/docs/instagram-platform
