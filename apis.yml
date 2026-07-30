@@ -7,7 +7,20 @@ description: Instagram is a photo and video sharing social networking platform o
   Available through the Meta Developer Platform with Facebook Login or Instagram Login
   authentication.
 type: Index
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: paid
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Paid · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/instagram.png
 url: https://raw.githubusercontent.com/api-evangelist/instagram/refs/heads/main/apis.yml
 created: '2024-01-01'
 modified: '2026-04-17'
@@ -20,88 +33,250 @@ tags:
   - Videos
   - Content Publishing
 apis:
-  - aid: instagram:instagram-api-with-instagram-login
-    name: Instagram API with Instagram Login
-    description: The Instagram API with Instagram Login enables access to Instagram
-      Business and Creator accounts using Instagram native login flow. Supports media
-      management, content publishing, comment handling, mention identification, messaging,
-      insights, and webhooks.
-    humanURL: https://developers.facebook.com/docs/instagram-platform/instagram-api-with-instagram-login
-    baseURL: https://graph.instagram.com
-    properties:
-    - type: Documentation
-      url: https://developers.facebook.com/docs/instagram-platform/instagram-api-with-instagram-login
-    - type: GettingStarted
-      url: https://developers.facebook.com/docs/instagram-platform/instagram-api-with-instagram-login/getting-started
-    - type: APIReference
-      url: https://developers.facebook.com/docs/instagram-api/reference
-    - type: Authentication
-      url: https://developers.facebook.com/docs/instagram-platform/instagram-api-with-instagram-login/business-login
-    - type: OpenAPI
-      url: openapi/instagram-graph-api.yaml
-    tags:
-    - Content Publishing
-    - Instagram Login
-    - Media
-    - Messaging
-    - Social Media
-  - aid: instagram:instagram-api-with-facebook-login
-    name: Instagram API with Facebook Login
-    description: The Instagram API with Facebook Login accesses Instagram Business and
-      Creator accounts linked to Facebook Pages. Enables media retrieval and publishing,
-      comment management, mention identification, hashtag-based media discovery, insights,
-      and business metadata.
-    humanURL: https://developers.facebook.com/docs/instagram-api
-    baseURL: https://graph.facebook.com
-    properties:
-    - type: Documentation
-      url: https://developers.facebook.com/docs/instagram-api/
-    - type: GettingStarted
-      url: https://developers.facebook.com/docs/instagram-api/getting-started
-    - type: APIReference
-      url: https://developers.facebook.com/docs/instagram-api/reference
-    - type: Authentication
-      url: https://developers.facebook.com/docs/instagram-api/overview#authentication
-    - type: ChangeLog
-      url: https://developers.facebook.com/docs/instagram-api/changelog
-    - type: OpenAPI
-      url: openapi/instagram-graph-api.yaml
-    tags:
-    - Content Publishing
-    - Facebook Login
-    - Hashtags
-    - Media
-    - Social Media
-  - aid: instagram:instagram-messaging-api
-    name: Instagram Messaging API
-    description: The Messenger API support for Instagram consolidates Instagram and
-      Facebook Page messaging into a unified platform. Enables businesses and creators
-      to manage conversations, send and receive messages, and handle messaging automation
-      across Instagram Direct.
-    humanURL: https://developers.facebook.com/docs/instagram-platform/instagram-api-with-instagram-login/messaging-api
-    baseURL: https://graph.instagram.com
-    properties:
-    - type: Documentation
-      url: https://developers.facebook.com/docs/instagram-platform/instagram-api-with-instagram-login/messaging-api
-    tags:
-    - Direct Messages
-    - Messaging
-    - Social Media
-  - aid: instagram:instagram-oembed-api
-    name: Instagram oEmbed API
-    description: The Instagram oEmbed endpoint returns HTML and metadata for embedding
-      Instagram photos, videos, reels, and carousels on third-party websites using the
-      standard oEmbed protocol.
-    humanURL: https://developers.facebook.com/docs/instagram-platform/oembed
-    baseURL: https://graph.facebook.com
-    properties:
-    - type: Documentation
-      url: https://developers.facebook.com/docs/instagram-platform/oembed
-    tags:
-    - Embedding
-    - oEmbed
-    - Social Media
+- aid: instagram:instagram-messaging-api
+  name: Instagram Messaging API
+  description: >-
+    The Messenger API support for Instagram consolidates Instagram and Facebook Page messaging into a
+    unified platform. Enables businesses and creators to manage conversations, send and receive messages,
+    and handle messaging automation across Instagram Direct.
+  humanURL: >-
+    https://developers.facebook.com/docs/instagram-platform/instagram-api-with-instagram-login/messaging-api
+  baseURL: https://graph.instagram.com
+  properties:
+  - type: Documentation
+    url: >-
+      https://developers.facebook.com/docs/instagram-platform/instagram-api-with-instagram-login/messaging-api
+  tags:
+  - Direct Messages
+  - Messaging
+  - Social Media
+- aid: instagram:instagram-oembed-api
+  name: Instagram oEmbed API
+  description: >-
+    The Instagram oEmbed endpoint returns HTML and metadata for embedding Instagram photos, videos, reels,
+    and carousels on third-party websites using the standard oEmbed protocol.
+  humanURL: https://developers.facebook.com/docs/instagram-platform/oembed
+  baseURL: https://graph.facebook.com
+  properties:
+  - type: Documentation
+    url: https://developers.facebook.com/docs/instagram-platform/oembed
+  tags:
+  - Embedding
+  - oEmbed
+  - Social Media
+- aid: instagram:instagram-comments-api
+  name: Instagram Comments API
+  description: Comment management and moderation
+  humanURL: >-
+    https://developers.facebook.com/docs/instagram-platform/instagram-api-with-instagram-login
+  baseURL: https://graph.instagram.com
+  tags:
+  - Comments
+  properties:
+  - type: OpenAPI
+    url: openapi/instagram-comments-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://developers.facebook.com/docs/instagram-platform/instagram-api-with-instagram-login
+  - type: GettingStarted
+    url: >-
+      https://developers.facebook.com/docs/instagram-platform/instagram-api-with-instagram-login/getting-started
+  - type: APIReference
+    url: https://developers.facebook.com/docs/instagram-api/reference
+  - type: Authentication
+    url: >-
+      https://developers.facebook.com/docs/instagram-platform/instagram-api-with-instagram-login/business-login
+  - type: Documentation
+    url: https://developers.facebook.com/docs/instagram-api/
+  - type: GettingStarted
+    url: https://developers.facebook.com/docs/instagram-api/getting-started
+  - type: Authentication
+    url: https://developers.facebook.com/docs/instagram-api/overview#authentication
+  - type: ChangeLog
+    url: https://developers.facebook.com/docs/instagram-api/changelog
+- aid: instagram:instagram-hashtags-api
+  name: Instagram Hashtags API
+  description: Hashtag search and media discovery
+  humanURL: >-
+    https://developers.facebook.com/docs/instagram-platform/instagram-api-with-instagram-login
+  baseURL: https://graph.instagram.com
+  tags:
+  - Hashtags
+  properties:
+  - type: OpenAPI
+    url: openapi/instagram-hashtags-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://developers.facebook.com/docs/instagram-platform/instagram-api-with-instagram-login
+  - type: GettingStarted
+    url: >-
+      https://developers.facebook.com/docs/instagram-platform/instagram-api-with-instagram-login/getting-started
+  - type: APIReference
+    url: https://developers.facebook.com/docs/instagram-api/reference
+  - type: Authentication
+    url: >-
+      https://developers.facebook.com/docs/instagram-platform/instagram-api-with-instagram-login/business-login
+  - type: Documentation
+    url: https://developers.facebook.com/docs/instagram-api/
+  - type: GettingStarted
+    url: https://developers.facebook.com/docs/instagram-api/getting-started
+  - type: Authentication
+    url: https://developers.facebook.com/docs/instagram-api/overview#authentication
+  - type: ChangeLog
+    url: https://developers.facebook.com/docs/instagram-api/changelog
+- aid: instagram:instagram-insights-api
+  name: Instagram Insights API
+  description: Account and media level analytics
+  humanURL: >-
+    https://developers.facebook.com/docs/instagram-platform/instagram-api-with-instagram-login
+  baseURL: https://graph.instagram.com
+  tags:
+  - Insights
+  properties:
+  - type: OpenAPI
+    url: openapi/instagram-insights-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://developers.facebook.com/docs/instagram-platform/instagram-api-with-instagram-login
+  - type: GettingStarted
+    url: >-
+      https://developers.facebook.com/docs/instagram-platform/instagram-api-with-instagram-login/getting-started
+  - type: APIReference
+    url: https://developers.facebook.com/docs/instagram-api/reference
+  - type: Authentication
+    url: >-
+      https://developers.facebook.com/docs/instagram-platform/instagram-api-with-instagram-login/business-login
+  - type: Documentation
+    url: https://developers.facebook.com/docs/instagram-api/
+  - type: GettingStarted
+    url: https://developers.facebook.com/docs/instagram-api/getting-started
+  - type: Authentication
+    url: https://developers.facebook.com/docs/instagram-api/overview#authentication
+  - type: ChangeLog
+    url: https://developers.facebook.com/docs/instagram-api/changelog
+- aid: instagram:instagram-media-api
+  name: Instagram Media API
+  description: Photos, videos, stories, reels, and carousels
+  humanURL: >-
+    https://developers.facebook.com/docs/instagram-platform/instagram-api-with-instagram-login
+  baseURL: https://graph.instagram.com
+  tags:
+  - Media
+  properties:
+  - type: OpenAPI
+    url: openapi/instagram-media-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://developers.facebook.com/docs/instagram-platform/instagram-api-with-instagram-login
+  - type: GettingStarted
+    url: >-
+      https://developers.facebook.com/docs/instagram-platform/instagram-api-with-instagram-login/getting-started
+  - type: APIReference
+    url: https://developers.facebook.com/docs/instagram-api/reference
+  - type: Authentication
+    url: >-
+      https://developers.facebook.com/docs/instagram-platform/instagram-api-with-instagram-login/business-login
+  - type: Documentation
+    url: https://developers.facebook.com/docs/instagram-api/
+  - type: GettingStarted
+    url: https://developers.facebook.com/docs/instagram-api/getting-started
+  - type: Authentication
+    url: https://developers.facebook.com/docs/instagram-api/overview#authentication
+  - type: ChangeLog
+    url: https://developers.facebook.com/docs/instagram-api/changelog
+- aid: instagram:instagram-mentions-api
+  name: Instagram Mentions API
+  description: Content where account was mentioned
+  humanURL: >-
+    https://developers.facebook.com/docs/instagram-platform/instagram-api-with-instagram-login
+  baseURL: https://graph.instagram.com
+  tags:
+  - Mentions
+  properties:
+  - type: OpenAPI
+    url: openapi/instagram-mentions-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://developers.facebook.com/docs/instagram-platform/instagram-api-with-instagram-login
+  - type: GettingStarted
+    url: >-
+      https://developers.facebook.com/docs/instagram-platform/instagram-api-with-instagram-login/getting-started
+  - type: APIReference
+    url: https://developers.facebook.com/docs/instagram-api/reference
+  - type: Authentication
+    url: >-
+      https://developers.facebook.com/docs/instagram-platform/instagram-api-with-instagram-login/business-login
+  - type: Documentation
+    url: https://developers.facebook.com/docs/instagram-api/
+  - type: GettingStarted
+    url: https://developers.facebook.com/docs/instagram-api/getting-started
+  - type: Authentication
+    url: https://developers.facebook.com/docs/instagram-api/overview#authentication
+  - type: ChangeLog
+    url: https://developers.facebook.com/docs/instagram-api/changelog
+- aid: instagram:instagram-publishing-api
+  name: Instagram Publishing API
+  description: Content creation and publishing workflow
+  humanURL: >-
+    https://developers.facebook.com/docs/instagram-platform/instagram-api-with-instagram-login
+  baseURL: https://graph.instagram.com
+  tags:
+  - Publishing
+  properties:
+  - type: OpenAPI
+    url: openapi/instagram-publishing-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://developers.facebook.com/docs/instagram-platform/instagram-api-with-instagram-login
+  - type: GettingStarted
+    url: >-
+      https://developers.facebook.com/docs/instagram-platform/instagram-api-with-instagram-login/getting-started
+  - type: APIReference
+    url: https://developers.facebook.com/docs/instagram-api/reference
+  - type: Authentication
+    url: >-
+      https://developers.facebook.com/docs/instagram-platform/instagram-api-with-instagram-login/business-login
+  - type: Documentation
+    url: https://developers.facebook.com/docs/instagram-api/
+  - type: GettingStarted
+    url: https://developers.facebook.com/docs/instagram-api/getting-started
+  - type: Authentication
+    url: https://developers.facebook.com/docs/instagram-api/overview#authentication
+  - type: ChangeLog
+    url: https://developers.facebook.com/docs/instagram-api/changelog
+- aid: instagram:instagram-users-api
+  name: Instagram Users API
+  description: Instagram Business and Creator account profiles
+  humanURL: >-
+    https://developers.facebook.com/docs/instagram-platform/instagram-api-with-instagram-login
+  baseURL: https://graph.instagram.com
+  tags:
+  - Users
+  properties:
+  - type: OpenAPI
+    url: openapi/instagram-users-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://developers.facebook.com/docs/instagram-platform/instagram-api-with-instagram-login
+  - type: GettingStarted
+    url: >-
+      https://developers.facebook.com/docs/instagram-platform/instagram-api-with-instagram-login/getting-started
+  - type: APIReference
+    url: https://developers.facebook.com/docs/instagram-api/reference
+  - type: Authentication
+    url: >-
+      https://developers.facebook.com/docs/instagram-platform/instagram-api-with-instagram-login/business-login
+  - type: Documentation
+    url: https://developers.facebook.com/docs/instagram-api/
+  - type: GettingStarted
+    url: https://developers.facebook.com/docs/instagram-api/getting-started
+  - type: Authentication
+    url: https://developers.facebook.com/docs/instagram-api/overview#authentication
+  - type: ChangeLog
+    url: https://developers.facebook.com/docs/instagram-api/changelog
 common:
+  - type: PostmanWorkspace
+    url: https://www.postman.com/kinlaneapi/instagram/overview
   - type: AgenticAccess
     url: agentic-access/instagram-agentic-access.yml
   - type: DomainSecurity
