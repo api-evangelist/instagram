@@ -1,0 +1,795 @@
+{
+  "info": {
+    "_postman_id": "9bbbb9fe-18b5-4d81-86d0-6df26c5c5b65",
+    "name": "Instagram Graph Comments API",
+    "description": "The Instagram Graph API allows Instagram Professionals (Business and Creator accounts) to manage their presence on Instagram, including media publishing, comments, hashtags, mentions, insights, and messaging. Uses the Facebook Graph API infrastructure with OAuth 2.0 authentication.\n\nContact Support:\n Name: Meta for Developers",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:58:30.000Z",
+    "updatedAt": "2026-07-28T01:58:31.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-9bbbb9fe-18b5-4d81-86d0-6df26c5c5b65"
+  },
+  "item": [
+    {
+      "name": "{media_id}",
+      "item": [
+        {
+          "name": "comments",
+          "item": [
+            {
+              "name": "Instagram Get Media Comments",
+              "id": "a86157f1-07e0-4a6b-a8b8-98d18766d984",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/:media_id/comments?fields=<string>&access_token=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ":media_id",
+                    "comments"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) ",
+                      "key": "access_token",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "id": "5de8d0fc-a5b5-4c94-9905-f1ceb09cb7c7",
+                      "key": "media_id",
+                      "value": "<string>",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "description": "Get comments on an Instagram media object."
+              },
+              "response": [
+                {
+                  "id": "93419cb9-9729-4bef-91d2-59bf154f37d8",
+                  "name": "List of comments.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/:media_id/comments?fields=<string>&access_token=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        ":media_id",
+                        "comments"
+                      ],
+                      "query": [
+                        {
+                          "key": "fields",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) ",
+                          "key": "access_token",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "media_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"text\": \"<string>\",\n      \"username\": \"<string>\",\n      \"timestamp\": \"<dateTime>\",\n      \"like_count\": \"<integer>\",\n      \"hidden\": \"<boolean>\",\n      \"parent_id\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"text\": \"<string>\",\n      \"username\": \"<string>\",\n      \"timestamp\": \"<dateTime>\",\n      \"like_count\": \"<integer>\",\n      \"hidden\": \"<boolean>\",\n      \"parent_id\": \"<string>\"\n    }\n  ],\n  \"paging\": {\n    \"cursors\": {\n      \"before\": \"<string>\",\n      \"after\": \"<string>\"\n    },\n    \"next\": \"<string>\",\n    \"previous\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:58:31.000Z",
+                  "updatedAt": "2026-07-28T01:58:31.000Z",
+                  "uid": "35240-93419cb9-9729-4bef-91d2-59bf154f37d8"
+                }
+              ],
+              "createdAt": "2026-07-28T01:58:31.000Z",
+              "updatedAt": "2026-07-28T01:58:31.000Z",
+              "uid": "35240-a86157f1-07e0-4a6b-a8b8-98d18766d984"
+            },
+            {
+              "name": "Instagram Create Comment",
+              "id": "cf45d7c7-3afe-47c7-9898-7287f42881ca",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"message\": \"<string>\",\n  \"access_token\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/:media_id/comments",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ":media_id",
+                    "comments"
+                  ],
+                  "variable": [
+                    {
+                      "id": "177f0090-3125-40bc-975a-99a0dc23d2bf",
+                      "key": "media_id",
+                      "value": "<string>",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "description": "Create a comment on an Instagram media object."
+              },
+              "response": [
+                {
+                  "id": "8321649c-6d09-424c-934b-1a1c309e7e1f",
+                  "name": "Comment created.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"message\": \"<string>\",\n  \"access_token\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/:media_id/comments",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        ":media_id",
+                        "comments"
+                      ],
+                      "variable": [
+                        {
+                          "key": "media_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T01:58:31.000Z",
+                  "updatedAt": "2026-07-28T01:58:31.000Z",
+                  "uid": "35240-8321649c-6d09-424c-934b-1a1c309e7e1f"
+                }
+              ],
+              "createdAt": "2026-07-28T01:58:31.000Z",
+              "updatedAt": "2026-07-28T01:58:31.000Z",
+              "uid": "35240-cf45d7c7-3afe-47c7-9898-7287f42881ca"
+            }
+          ],
+          "id": "60c77d9f-6db6-4013-8a16-780f3f1d75cd",
+          "createdAt": "2026-07-28T01:58:31.000Z",
+          "updatedAt": "2026-07-28T01:58:31.000Z",
+          "uid": "35240-60c77d9f-6db6-4013-8a16-780f3f1d75cd"
+        }
+      ],
+      "id": "7b888049-98c8-41e9-b5e6-6953fcb3a1cd",
+      "createdAt": "2026-07-28T01:58:31.000Z",
+      "updatedAt": "2026-07-28T01:58:31.000Z",
+      "uid": "35240-7b888049-98c8-41e9-b5e6-6953fcb3a1cd"
+    },
+    {
+      "name": "{comment_id}",
+      "item": [
+        {
+          "name": "replies",
+          "item": [
+            {
+              "name": "Instagram Get Comment Replies",
+              "id": "dddd831a-ac7a-40ee-a9bb-1c426d6842ea",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/:comment_id/replies?fields=<string>&access_token=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ":comment_id",
+                    "replies"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) ",
+                      "key": "access_token",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "id": "56327e38-cc47-45b1-abee-a1085fc83b38",
+                      "key": "comment_id",
+                      "value": "<string>",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "description": "Get replies to a comment."
+              },
+              "response": [
+                {
+                  "id": "3c6d630a-3906-44e5-9d13-aeae298394a9",
+                  "name": "List of reply comments.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/:comment_id/replies?fields=<string>&access_token=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        ":comment_id",
+                        "replies"
+                      ],
+                      "query": [
+                        {
+                          "key": "fields",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) ",
+                          "key": "access_token",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "comment_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"text\": \"<string>\",\n      \"username\": \"<string>\",\n      \"timestamp\": \"<dateTime>\",\n      \"like_count\": \"<integer>\",\n      \"hidden\": \"<boolean>\",\n      \"parent_id\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"text\": \"<string>\",\n      \"username\": \"<string>\",\n      \"timestamp\": \"<dateTime>\",\n      \"like_count\": \"<integer>\",\n      \"hidden\": \"<boolean>\",\n      \"parent_id\": \"<string>\"\n    }\n  ],\n  \"paging\": {\n    \"cursors\": {\n      \"before\": \"<string>\",\n      \"after\": \"<string>\"\n    },\n    \"next\": \"<string>\",\n    \"previous\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:58:31.000Z",
+                  "updatedAt": "2026-07-28T01:58:31.000Z",
+                  "uid": "35240-3c6d630a-3906-44e5-9d13-aeae298394a9"
+                }
+              ],
+              "createdAt": "2026-07-28T01:58:31.000Z",
+              "updatedAt": "2026-07-28T01:58:31.000Z",
+              "uid": "35240-dddd831a-ac7a-40ee-a9bb-1c426d6842ea"
+            },
+            {
+              "name": "Instagram Create Comment Reply",
+              "id": "22145003-454b-4356-a9ea-fe4c8286eb8a",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"message\": \"<string>\",\n  \"access_token\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/:comment_id/replies",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ":comment_id",
+                    "replies"
+                  ],
+                  "variable": [
+                    {
+                      "id": "e32a30d9-b9fd-4be5-9761-e8b513e5de29",
+                      "key": "comment_id",
+                      "value": "<string>",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "description": "Reply to a comment."
+              },
+              "response": [
+                {
+                  "id": "f2837003-6b96-4561-affd-265c86a1caf9",
+                  "name": "Reply created.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"message\": \"<string>\",\n  \"access_token\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/:comment_id/replies",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        ":comment_id",
+                        "replies"
+                      ],
+                      "variable": [
+                        {
+                          "key": "comment_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T01:58:31.000Z",
+                  "updatedAt": "2026-07-28T01:58:31.000Z",
+                  "uid": "35240-f2837003-6b96-4561-affd-265c86a1caf9"
+                }
+              ],
+              "createdAt": "2026-07-28T01:58:31.000Z",
+              "updatedAt": "2026-07-28T01:58:31.000Z",
+              "uid": "35240-22145003-454b-4356-a9ea-fe4c8286eb8a"
+            }
+          ],
+          "id": "2fd59e9d-6dd9-4e73-bec5-957c3dde83b3",
+          "createdAt": "2026-07-28T01:58:31.000Z",
+          "updatedAt": "2026-07-28T01:58:31.000Z",
+          "uid": "35240-2fd59e9d-6dd9-4e73-bec5-957c3dde83b3"
+        },
+        {
+          "name": "Instagram Get Comment",
+          "id": "518f4073-16bd-4f94-a8a8-6698c7d6c246",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/:comment_id?fields=<string>&access_token=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                ":comment_id"
+              ],
+              "query": [
+                {
+                  "key": "fields",
+                  "value": "<string>"
+                },
+                {
+                  "description": "(Required) ",
+                  "key": "access_token",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "id": "f3b350f3-9174-4af3-acd6-f176a7df4556",
+                  "key": "comment_id",
+                  "value": "<string>",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "description": "Get fields on an Instagram comment."
+          },
+          "response": [
+            {
+              "id": "08eece1b-475e-4018-9b05-0925334fccfd",
+              "name": "Comment data.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/:comment_id?fields=<string>&access_token=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ":comment_id"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) ",
+                      "key": "access_token",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "key": "comment_id"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"id\": \"<string>\",\n  \"text\": \"<string>\",\n  \"username\": \"<string>\",\n  \"timestamp\": \"<dateTime>\",\n  \"like_count\": \"<integer>\",\n  \"hidden\": \"<boolean>\",\n  \"parent_id\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:58:31.000Z",
+              "updatedAt": "2026-07-28T01:58:31.000Z",
+              "uid": "35240-08eece1b-475e-4018-9b05-0925334fccfd"
+            }
+          ],
+          "createdAt": "2026-07-28T01:58:31.000Z",
+          "updatedAt": "2026-07-28T01:58:31.000Z",
+          "uid": "35240-518f4073-16bd-4f94-a8a8-6698c7d6c246"
+        },
+        {
+          "name": "Instagram Hide or Unhide Comment",
+          "id": "95d12faa-a3cf-48ee-919e-7c54636146ca",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"hide\": \"<boolean>\",\n  \"access_token\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/:comment_id",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                ":comment_id"
+              ],
+              "variable": [
+                {
+                  "id": "46882c76-e461-41ea-9fc6-def2710e8c2f",
+                  "key": "comment_id",
+                  "value": "<string>",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "description": "Hide or unhide a comment on your media."
+          },
+          "response": [
+            {
+              "id": "55fd00fd-0454-4b0e-ace0-d6cd248a1049",
+              "name": "Success.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"hide\": \"<boolean>\",\n  \"access_token\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/:comment_id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ":comment_id"
+                  ],
+                  "variable": [
+                    {
+                      "key": "comment_id"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"success\": \"<boolean>\"\n}",
+              "createdAt": "2026-07-28T01:58:31.000Z",
+              "updatedAt": "2026-07-28T01:58:31.000Z",
+              "uid": "35240-55fd00fd-0454-4b0e-ace0-d6cd248a1049"
+            }
+          ],
+          "createdAt": "2026-07-28T01:58:31.000Z",
+          "updatedAt": "2026-07-28T01:58:31.000Z",
+          "uid": "35240-95d12faa-a3cf-48ee-919e-7c54636146ca"
+        },
+        {
+          "name": "Instagram Delete Comment",
+          "id": "ffde354a-e851-4ef2-8ab1-6c0cc8fd4d93",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/:comment_id?access_token=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                ":comment_id"
+              ],
+              "query": [
+                {
+                  "description": "(Required) ",
+                  "key": "access_token",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "id": "444779fe-e591-4198-aeb0-a2d2d4994db1",
+                  "key": "comment_id",
+                  "value": "<string>",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "description": "Delete a comment on your media."
+          },
+          "response": [
+            {
+              "id": "be2b058a-481b-4ab6-9814-115830adc3f2",
+              "name": "Comment deleted.",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/:comment_id?access_token=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ":comment_id"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) ",
+                      "key": "access_token",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "key": "comment_id"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"success\": \"<boolean>\"\n}",
+              "createdAt": "2026-07-28T01:58:31.000Z",
+              "updatedAt": "2026-07-28T01:58:31.000Z",
+              "uid": "35240-be2b058a-481b-4ab6-9814-115830adc3f2"
+            }
+          ],
+          "createdAt": "2026-07-28T01:58:31.000Z",
+          "updatedAt": "2026-07-28T01:58:31.000Z",
+          "uid": "35240-ffde354a-e851-4ef2-8ab1-6c0cc8fd4d93"
+        }
+      ],
+      "id": "690cb8bb-d405-4470-a70b-4c1ff480ab34",
+      "createdAt": "2026-07-28T01:58:31.000Z",
+      "updatedAt": "2026-07-28T01:58:31.000Z",
+      "uid": "35240-690cb8bb-d405-4470-a70b-4c1ff480ab34"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://graph.facebook.com/v21.0"
+    }
+  ]
+}

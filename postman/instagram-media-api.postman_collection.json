@@ -1,0 +1,711 @@
+{
+  "info": {
+    "_postman_id": "8edbf1f1-ee78-4ca6-bc76-643d07392d79",
+    "name": "Instagram Graph Comments Media API",
+    "description": "The Instagram Graph API allows Instagram Professionals (Business and Creator accounts) to manage their presence on Instagram, including media publishing, comments, hashtags, mentions, insights, and messaging. Uses the Facebook Graph API infrastructure with OAuth 2.0 authentication.\n\nContact Support:\n Name: Meta for Developers",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:58:33.000Z",
+    "updatedAt": "2026-07-28T01:58:33.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-8edbf1f1-ee78-4ca6-bc76-643d07392d79"
+  },
+  "item": [
+    {
+      "name": "{user_id}",
+      "item": [
+        {
+          "name": "media",
+          "item": [
+            {
+              "name": "Instagram Get User Media",
+              "id": "0f4fd886-33ea-4394-8ad8-08bf09ddbbf6",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/:user_id/media?fields=<string>&limit=<integer>&after=<string>&access_token=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ":user_id",
+                    "media"
+                  ],
+                  "query": [
+                    {
+                      "description": "Comma-separated list of fields.",
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Maximum number of results per page.",
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Cursor for pagination.",
+                      "key": "after",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) ",
+                      "key": "access_token",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "id": "08ab9e43-7ce3-4977-9c2c-589cb3604790",
+                      "key": "user_id",
+                      "value": "<string>",
+                      "description": "(Required) The Instagram user ID."
+                    }
+                  ]
+                },
+                "description": "Get a collection of IG Media objects published on the account."
+              },
+              "response": [
+                {
+                  "id": "783bfcd7-c560-46ea-83de-ea16cce82da4",
+                  "name": "List of media objects.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/:user_id/media?fields=<string>&limit=<integer>&after=<string>&access_token=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        ":user_id",
+                        "media"
+                      ],
+                      "query": [
+                        {
+                          "description": "Comma-separated list of fields.",
+                          "key": "fields",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Maximum number of results per page.",
+                          "key": "limit",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Cursor for pagination.",
+                          "key": "after",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) ",
+                          "key": "access_token",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "user_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"caption\": \"<string>\",\n      \"media_type\": \"STORIES\",\n      \"media_url\": \"<string>\",\n      \"thumbnail_url\": \"<string>\",\n      \"permalink\": \"<string>\",\n      \"shortcode\": \"<string>\",\n      \"timestamp\": \"<dateTime>\",\n      \"like_count\": \"<integer>\",\n      \"comments_count\": \"<integer>\",\n      \"is_comment_enabled\": \"<boolean>\",\n      \"is_shared_to_feed\": \"<boolean>\",\n      \"alt_text\": \"<string>\",\n      \"username\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"caption\": \"<string>\",\n      \"media_type\": \"CAROUSEL_ALBUM\",\n      \"media_url\": \"<string>\",\n      \"thumbnail_url\": \"<string>\",\n      \"permalink\": \"<string>\",\n      \"shortcode\": \"<string>\",\n      \"timestamp\": \"<dateTime>\",\n      \"like_count\": \"<integer>\",\n      \"comments_count\": \"<integer>\",\n      \"is_comment_enabled\": \"<boolean>\",\n      \"is_shared_to_feed\": \"<boolean>\",\n      \"alt_text\": \"<string>\",\n      \"username\": \"<string>\"\n    }\n  ],\n  \"paging\": {\n    \"cursors\": {\n      \"before\": \"<string>\",\n      \"after\": \"<string>\"\n    },\n    \"next\": \"<string>\",\n    \"previous\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:58:34.000Z",
+                  "updatedAt": "2026-07-28T01:58:34.000Z",
+                  "uid": "35240-783bfcd7-c560-46ea-83de-ea16cce82da4"
+                }
+              ],
+              "createdAt": "2026-07-28T01:58:34.000Z",
+              "updatedAt": "2026-07-28T01:58:34.000Z",
+              "uid": "35240-0f4fd886-33ea-4394-8ad8-08bf09ddbbf6"
+            }
+          ],
+          "id": "a73d53af-f34d-409b-9994-db246fa66636",
+          "createdAt": "2026-07-28T01:58:34.000Z",
+          "updatedAt": "2026-07-28T01:58:34.000Z",
+          "uid": "35240-a73d53af-f34d-409b-9994-db246fa66636"
+        },
+        {
+          "name": "stories",
+          "item": [
+            {
+              "name": "Instagram Get User Stories",
+              "id": "3ef0f7ef-dff4-41be-8517-5e78502ef6d0",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/:user_id/stories?fields=<string>&access_token=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ":user_id",
+                    "stories"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) ",
+                      "key": "access_token",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "id": "e7281c19-a60f-4dff-92f2-6ab166fb8efa",
+                      "key": "user_id",
+                      "value": "<string>",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "description": "Get a collection of story IG Media objects on the account."
+              },
+              "response": [
+                {
+                  "id": "0fe2240e-fe6f-46b9-9eb1-76c230991877",
+                  "name": "List of story media.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/:user_id/stories?fields=<string>&access_token=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        ":user_id",
+                        "stories"
+                      ],
+                      "query": [
+                        {
+                          "key": "fields",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) ",
+                          "key": "access_token",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "user_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"caption\": \"<string>\",\n      \"media_type\": \"STORIES\",\n      \"media_url\": \"<string>\",\n      \"thumbnail_url\": \"<string>\",\n      \"permalink\": \"<string>\",\n      \"shortcode\": \"<string>\",\n      \"timestamp\": \"<dateTime>\",\n      \"like_count\": \"<integer>\",\n      \"comments_count\": \"<integer>\",\n      \"is_comment_enabled\": \"<boolean>\",\n      \"is_shared_to_feed\": \"<boolean>\",\n      \"alt_text\": \"<string>\",\n      \"username\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"caption\": \"<string>\",\n      \"media_type\": \"CAROUSEL_ALBUM\",\n      \"media_url\": \"<string>\",\n      \"thumbnail_url\": \"<string>\",\n      \"permalink\": \"<string>\",\n      \"shortcode\": \"<string>\",\n      \"timestamp\": \"<dateTime>\",\n      \"like_count\": \"<integer>\",\n      \"comments_count\": \"<integer>\",\n      \"is_comment_enabled\": \"<boolean>\",\n      \"is_shared_to_feed\": \"<boolean>\",\n      \"alt_text\": \"<string>\",\n      \"username\": \"<string>\"\n    }\n  ],\n  \"paging\": {\n    \"cursors\": {\n      \"before\": \"<string>\",\n      \"after\": \"<string>\"\n    },\n    \"next\": \"<string>\",\n    \"previous\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:58:34.000Z",
+                  "updatedAt": "2026-07-28T01:58:34.000Z",
+                  "uid": "35240-0fe2240e-fe6f-46b9-9eb1-76c230991877"
+                }
+              ],
+              "createdAt": "2026-07-28T01:58:34.000Z",
+              "updatedAt": "2026-07-28T01:58:34.000Z",
+              "uid": "35240-3ef0f7ef-dff4-41be-8517-5e78502ef6d0"
+            }
+          ],
+          "id": "fa7fb09a-cb26-47f0-978d-8e14bc58e028",
+          "createdAt": "2026-07-28T01:58:34.000Z",
+          "updatedAt": "2026-07-28T01:58:34.000Z",
+          "uid": "35240-fa7fb09a-cb26-47f0-978d-8e14bc58e028"
+        }
+      ],
+      "id": "9d402d3a-b3b6-49b8-b201-ec3de387a35c",
+      "createdAt": "2026-07-28T01:58:34.000Z",
+      "updatedAt": "2026-07-28T01:58:34.000Z",
+      "uid": "35240-9d402d3a-b3b6-49b8-b201-ec3de387a35c"
+    },
+    {
+      "name": "{media_id}",
+      "item": [
+        {
+          "name": "children",
+          "item": [
+            {
+              "name": "Instagram Get Carousel Children",
+              "id": "72a54b4f-831f-45e4-a59a-386f056f24a7",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/:media_id/children?fields=<string>&access_token=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ":media_id",
+                    "children"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) ",
+                      "key": "access_token",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "id": "baded332-6138-463c-b96f-ef761c925838",
+                      "key": "media_id",
+                      "value": "<string>",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "description": "Get media objects within a carousel album."
+              },
+              "response": [
+                {
+                  "id": "3d0106b5-99e0-47f9-9bf8-771ff89fe779",
+                  "name": "List of child media.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/:media_id/children?fields=<string>&access_token=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        ":media_id",
+                        "children"
+                      ],
+                      "query": [
+                        {
+                          "key": "fields",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) ",
+                          "key": "access_token",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "media_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"caption\": \"<string>\",\n      \"media_type\": \"STORIES\",\n      \"media_url\": \"<string>\",\n      \"thumbnail_url\": \"<string>\",\n      \"permalink\": \"<string>\",\n      \"shortcode\": \"<string>\",\n      \"timestamp\": \"<dateTime>\",\n      \"like_count\": \"<integer>\",\n      \"comments_count\": \"<integer>\",\n      \"is_comment_enabled\": \"<boolean>\",\n      \"is_shared_to_feed\": \"<boolean>\",\n      \"alt_text\": \"<string>\",\n      \"username\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"caption\": \"<string>\",\n      \"media_type\": \"CAROUSEL_ALBUM\",\n      \"media_url\": \"<string>\",\n      \"thumbnail_url\": \"<string>\",\n      \"permalink\": \"<string>\",\n      \"shortcode\": \"<string>\",\n      \"timestamp\": \"<dateTime>\",\n      \"like_count\": \"<integer>\",\n      \"comments_count\": \"<integer>\",\n      \"is_comment_enabled\": \"<boolean>\",\n      \"is_shared_to_feed\": \"<boolean>\",\n      \"alt_text\": \"<string>\",\n      \"username\": \"<string>\"\n    }\n  ],\n  \"paging\": {\n    \"cursors\": {\n      \"before\": \"<string>\",\n      \"after\": \"<string>\"\n    },\n    \"next\": \"<string>\",\n    \"previous\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:58:34.000Z",
+                  "updatedAt": "2026-07-28T01:58:34.000Z",
+                  "uid": "35240-3d0106b5-99e0-47f9-9bf8-771ff89fe779"
+                }
+              ],
+              "createdAt": "2026-07-28T01:58:34.000Z",
+              "updatedAt": "2026-07-28T01:58:34.000Z",
+              "uid": "35240-72a54b4f-831f-45e4-a59a-386f056f24a7"
+            }
+          ],
+          "id": "c70feeff-5e1e-48a3-882a-a8847708f055",
+          "createdAt": "2026-07-28T01:58:34.000Z",
+          "updatedAt": "2026-07-28T01:58:34.000Z",
+          "uid": "35240-c70feeff-5e1e-48a3-882a-a8847708f055"
+        },
+        {
+          "name": "Instagram Get Media",
+          "id": "dc1f1959-0e42-4f01-92f1-a6121bccc232",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/:media_id?fields=<string>&access_token=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                ":media_id"
+              ],
+              "query": [
+                {
+                  "description": "Comma-separated list of fields.",
+                  "key": "fields",
+                  "value": "<string>"
+                },
+                {
+                  "description": "(Required) ",
+                  "key": "access_token",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "id": "9ed1722d-900e-4e20-9ea7-b3166eda6726",
+                  "key": "media_id",
+                  "value": "<string>",
+                  "description": "(Required) The IG Media ID."
+                }
+              ]
+            },
+            "description": "Get fields on an Instagram photo, video, story, reel, or album."
+          },
+          "response": [
+            {
+              "id": "45fd64e7-a81d-4152-89fa-eb8b1848567f",
+              "name": "Media object.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/:media_id?fields=<string>&access_token=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ":media_id"
+                  ],
+                  "query": [
+                    {
+                      "description": "Comma-separated list of fields.",
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) ",
+                      "key": "access_token",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "key": "media_id"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"id\": \"<string>\",\n  \"caption\": \"<string>\",\n  \"media_type\": \"VIDEO\",\n  \"media_url\": \"<string>\",\n  \"thumbnail_url\": \"<string>\",\n  \"permalink\": \"<string>\",\n  \"shortcode\": \"<string>\",\n  \"timestamp\": \"<dateTime>\",\n  \"like_count\": \"<integer>\",\n  \"comments_count\": \"<integer>\",\n  \"is_comment_enabled\": \"<boolean>\",\n  \"is_shared_to_feed\": \"<boolean>\",\n  \"alt_text\": \"<string>\",\n  \"username\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:58:34.000Z",
+              "updatedAt": "2026-07-28T01:58:34.000Z",
+              "uid": "35240-45fd64e7-a81d-4152-89fa-eb8b1848567f"
+            }
+          ],
+          "createdAt": "2026-07-28T01:58:34.000Z",
+          "updatedAt": "2026-07-28T01:58:34.000Z",
+          "uid": "35240-dc1f1959-0e42-4f01-92f1-a6121bccc232"
+        },
+        {
+          "name": "Instagram Update Media",
+          "id": "d5896e3a-88a2-4d85-aa6c-52e54071cdf1",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"comment_enabled\": \"<boolean>\",\n  \"access_token\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/:media_id",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                ":media_id"
+              ],
+              "variable": [
+                {
+                  "id": "fc260f84-d03e-4192-a112-341f846b164e",
+                  "key": "media_id",
+                  "value": "<string>",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "description": "Enable or disable comments on a media object."
+          },
+          "response": [
+            {
+              "id": "5c52aa3e-9e15-45d7-912e-c328e795ab5f",
+              "name": "Update success.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"comment_enabled\": \"<boolean>\",\n  \"access_token\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/:media_id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ":media_id"
+                  ],
+                  "variable": [
+                    {
+                      "key": "media_id"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"success\": \"<boolean>\"\n}",
+              "createdAt": "2026-07-28T01:58:34.000Z",
+              "updatedAt": "2026-07-28T01:58:34.000Z",
+              "uid": "35240-5c52aa3e-9e15-45d7-912e-c328e795ab5f"
+            }
+          ],
+          "createdAt": "2026-07-28T01:58:34.000Z",
+          "updatedAt": "2026-07-28T01:58:34.000Z",
+          "uid": "35240-d5896e3a-88a2-4d85-aa6c-52e54071cdf1"
+        },
+        {
+          "name": "Instagram Delete Media",
+          "id": "91db15d5-f300-45fe-87fc-948a4fab4966",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/:media_id?access_token=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                ":media_id"
+              ],
+              "query": [
+                {
+                  "description": "(Required) ",
+                  "key": "access_token",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "id": "ae29ae5d-59b2-46ad-90ea-fde2ce99a8e7",
+                  "key": "media_id",
+                  "value": "<string>",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "description": "Delete an Instagram media object (post, story, reel, or carousel)."
+          },
+          "response": [
+            {
+              "id": "b67f77cb-5564-43c5-ba97-cea7d1f1590e",
+              "name": "Media deleted.",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/:media_id?access_token=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ":media_id"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) ",
+                      "key": "access_token",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "key": "media_id"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"success\": \"<boolean>\",\n  \"deleted_id\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:58:34.000Z",
+              "updatedAt": "2026-07-28T01:58:34.000Z",
+              "uid": "35240-b67f77cb-5564-43c5-ba97-cea7d1f1590e"
+            }
+          ],
+          "createdAt": "2026-07-28T01:58:34.000Z",
+          "updatedAt": "2026-07-28T01:58:34.000Z",
+          "uid": "35240-91db15d5-f300-45fe-87fc-948a4fab4966"
+        }
+      ],
+      "id": "ad4d5b54-9b85-4f7f-a50d-0c34cb3d03d8",
+      "createdAt": "2026-07-28T01:58:34.000Z",
+      "updatedAt": "2026-07-28T01:58:34.000Z",
+      "uid": "35240-ad4d5b54-9b85-4f7f-a50d-0c34cb3d03d8"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://graph.facebook.com/v21.0"
+    }
+  ]
+}

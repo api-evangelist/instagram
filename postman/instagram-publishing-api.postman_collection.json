@@ -1,0 +1,495 @@
+{
+  "info": {
+    "_postman_id": "fa2446fe-b0ad-4085-8779-de711849c992",
+    "name": "Instagram Graph Comments Publishing API",
+    "description": "The Instagram Graph API allows Instagram Professionals (Business and Creator accounts) to manage their presence on Instagram, including media publishing, comments, hashtags, mentions, insights, and messaging. Uses the Facebook Graph API infrastructure with OAuth 2.0 authentication.\n\nContact Support:\n Name: Meta for Developers",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:58:35.000Z",
+    "updatedAt": "2026-07-28T01:58:35.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-fa2446fe-b0ad-4085-8779-de711849c992"
+  },
+  "item": [
+    {
+      "name": "{user_id}",
+      "item": [
+        {
+          "name": "media",
+          "item": [
+            {
+              "name": "Instagram Create Media Container",
+              "id": "a035c280-5301-4d16-afd0-ccce263776ce",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"image_url\": \"<string>\",\n  \"video_url\": \"<string>\",\n  \"caption\": \"<string>\",\n  \"media_type\": \"STORIES\",\n  \"is_carousel_item\": \"<boolean>\",\n  \"location_id\": \"<string>\",\n  \"user_tags\": [\n    {\n      \"username\": \"<string>\",\n      \"x\": \"<number>\",\n      \"y\": \"<number>\"\n    },\n    {\n      \"username\": \"<string>\",\n      \"x\": \"<number>\",\n      \"y\": \"<number>\"\n    }\n  ],\n  \"access_token\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/:user_id/media",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ":user_id",
+                    "media"
+                  ],
+                  "variable": [
+                    {
+                      "id": "86038ba8-025a-40bb-b7b4-ec17701b9a5b",
+                      "key": "user_id",
+                      "value": "<string>",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "description": "Create a media container for publishing content. Step 1 of the publishing flow."
+              },
+              "response": [
+                {
+                  "id": "a83edeb9-849c-49b7-922e-a9b98b857310",
+                  "name": "Container created.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"image_url\": \"<string>\",\n  \"video_url\": \"<string>\",\n  \"caption\": \"<string>\",\n  \"media_type\": \"STORIES\",\n  \"is_carousel_item\": \"<boolean>\",\n  \"location_id\": \"<string>\",\n  \"user_tags\": [\n    {\n      \"username\": \"<string>\",\n      \"x\": \"<number>\",\n      \"y\": \"<number>\"\n    },\n    {\n      \"username\": \"<string>\",\n      \"x\": \"<number>\",\n      \"y\": \"<number>\"\n    }\n  ],\n  \"access_token\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/:user_id/media",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        ":user_id",
+                        "media"
+                      ],
+                      "variable": [
+                        {
+                          "key": "user_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T01:58:35.000Z",
+                  "updatedAt": "2026-07-28T01:58:35.000Z",
+                  "uid": "35240-a83edeb9-849c-49b7-922e-a9b98b857310"
+                }
+              ],
+              "createdAt": "2026-07-28T01:58:35.000Z",
+              "updatedAt": "2026-07-28T01:58:35.000Z",
+              "uid": "35240-a035c280-5301-4d16-afd0-ccce263776ce"
+            }
+          ],
+          "id": "77eb67a9-c8cb-4357-9235-6032c74f34cd",
+          "createdAt": "2026-07-28T01:58:35.000Z",
+          "updatedAt": "2026-07-28T01:58:35.000Z",
+          "uid": "35240-77eb67a9-c8cb-4357-9235-6032c74f34cd"
+        },
+        {
+          "name": "media_publish",
+          "item": [
+            {
+              "name": "Instagram Publish Media Container",
+              "id": "4008b11f-491d-415f-bd50-4930f0ec97af",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"creation_id\": \"<string>\",\n  \"access_token\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/:user_id/media_publish",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ":user_id",
+                    "media_publish"
+                  ],
+                  "variable": [
+                    {
+                      "id": "c9bc920c-b198-4b40-9bd0-08cab5d05a56",
+                      "key": "user_id",
+                      "value": "<string>",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "description": "Publish a media container. Step 2 of the publishing flow."
+              },
+              "response": [
+                {
+                  "id": "00815044-8284-4046-ab67-7680541ae322",
+                  "name": "Media published.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"creation_id\": \"<string>\",\n  \"access_token\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/:user_id/media_publish",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        ":user_id",
+                        "media_publish"
+                      ],
+                      "variable": [
+                        {
+                          "key": "user_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T01:58:35.000Z",
+                  "updatedAt": "2026-07-28T01:58:35.000Z",
+                  "uid": "35240-00815044-8284-4046-ab67-7680541ae322"
+                }
+              ],
+              "createdAt": "2026-07-28T01:58:35.000Z",
+              "updatedAt": "2026-07-28T01:58:35.000Z",
+              "uid": "35240-4008b11f-491d-415f-bd50-4930f0ec97af"
+            }
+          ],
+          "id": "c75625f3-6a0a-4610-823b-f4283f795586",
+          "createdAt": "2026-07-28T01:58:35.000Z",
+          "updatedAt": "2026-07-28T01:58:35.000Z",
+          "uid": "35240-c75625f3-6a0a-4610-823b-f4283f795586"
+        },
+        {
+          "name": "content_publishing_limit",
+          "item": [
+            {
+              "name": "Instagram Get Content Publishing Limit",
+              "id": "36cd9784-44e2-4660-8828-5cbd785ecb6a",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/:user_id/content_publishing_limit?fields=<string>&access_token=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ":user_id",
+                    "content_publishing_limit"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) ",
+                      "key": "access_token",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "id": "7a9c95a7-df1f-479b-bc03-c147c71eeb00",
+                      "key": "user_id",
+                      "value": "<string>",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "description": "Get current content publishing usage and rate limit status."
+              },
+              "response": [
+                {
+                  "id": "cfc8a51c-37d2-4cb8-a548-c9c88f63e1fc",
+                  "name": "Publishing limit data.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/:user_id/content_publishing_limit?fields=<string>&access_token=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        ":user_id",
+                        "content_publishing_limit"
+                      ],
+                      "query": [
+                        {
+                          "key": "fields",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) ",
+                          "key": "access_token",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "user_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"config\": {\n    \"quota_total\": \"<integer>\",\n    \"quota_duration\": \"<integer>\"\n  },\n  \"quota_usage\": \"<integer>\"\n}",
+                  "createdAt": "2026-07-28T01:58:35.000Z",
+                  "updatedAt": "2026-07-28T01:58:35.000Z",
+                  "uid": "35240-cfc8a51c-37d2-4cb8-a548-c9c88f63e1fc"
+                }
+              ],
+              "createdAt": "2026-07-28T01:58:35.000Z",
+              "updatedAt": "2026-07-28T01:58:35.000Z",
+              "uid": "35240-36cd9784-44e2-4660-8828-5cbd785ecb6a"
+            }
+          ],
+          "id": "f96f0da9-1a04-4e8e-b739-9a71e48c4f7b",
+          "createdAt": "2026-07-28T01:58:35.000Z",
+          "updatedAt": "2026-07-28T01:58:35.000Z",
+          "uid": "35240-f96f0da9-1a04-4e8e-b739-9a71e48c4f7b"
+        }
+      ],
+      "id": "2cd6ae28-1535-4708-9983-0b75eff09f82",
+      "createdAt": "2026-07-28T01:58:35.000Z",
+      "updatedAt": "2026-07-28T01:58:35.000Z",
+      "uid": "35240-2cd6ae28-1535-4708-9983-0b75eff09f82"
+    },
+    {
+      "name": "{container_id}",
+      "item": [
+        {
+          "name": "Instagram Get Container Status",
+          "id": "6f555b4f-ed53-4f7f-ab4e-8a9d2cd95dd7",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/:container_id?fields=<string>&access_token=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                ":container_id"
+              ],
+              "query": [
+                {
+                  "key": "fields",
+                  "value": "<string>"
+                },
+                {
+                  "description": "(Required) ",
+                  "key": "access_token",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "id": "42a50d5e-33e0-4fc2-be23-aa99f77d35b7",
+                  "key": "container_id",
+                  "value": "<string>",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "description": "Check the publishing status of a media container."
+          },
+          "response": [
+            {
+              "id": "88f913a3-2d74-46de-ab40-4e605f65e0fa",
+              "name": "Container status.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/:container_id?fields=<string>&access_token=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ":container_id"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) ",
+                      "key": "access_token",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "key": "container_id"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"id\": \"<string>\",\n  \"status_code\": \"FINISHED\"\n}",
+              "createdAt": "2026-07-28T01:58:35.000Z",
+              "updatedAt": "2026-07-28T01:58:35.000Z",
+              "uid": "35240-88f913a3-2d74-46de-ab40-4e605f65e0fa"
+            }
+          ],
+          "createdAt": "2026-07-28T01:58:35.000Z",
+          "updatedAt": "2026-07-28T01:58:35.000Z",
+          "uid": "35240-6f555b4f-ed53-4f7f-ab4e-8a9d2cd95dd7"
+        }
+      ],
+      "id": "967b1a67-ad37-4b48-ac36-c7bc9bbfbe93",
+      "createdAt": "2026-07-28T01:58:35.000Z",
+      "updatedAt": "2026-07-28T01:58:35.000Z",
+      "uid": "35240-967b1a67-ad37-4b48-ac36-c7bc9bbfbe93"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://graph.facebook.com/v21.0"
+    }
+  ]
+}

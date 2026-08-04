@@ -1,0 +1,250 @@
+{
+  "info": {
+    "_postman_id": "50d09dc7-2095-4388-95f6-734d8060de53",
+    "name": "Instagram Graph Comments Users API",
+    "description": "The Instagram Graph API allows Instagram Professionals (Business and Creator accounts) to manage their presence on Instagram, including media publishing, comments, hashtags, mentions, insights, and messaging. Uses the Facebook Graph API infrastructure with OAuth 2.0 authentication.\n\nContact Support:\n Name: Meta for Developers",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:58:36.000Z",
+    "updatedAt": "2026-07-28T01:58:36.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-50d09dc7-2095-4388-95f6-734d8060de53"
+  },
+  "item": [
+    {
+      "name": "{user_id}",
+      "item": [
+        {
+          "name": "business_discovery",
+          "item": [
+            {
+              "name": "Instagram Get Business Discovery",
+              "id": "ce9d0429-7715-481b-8c13-28a88a279f37",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/:user_id/business_discovery?fields=<string>&access_token=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ":user_id",
+                    "business_discovery"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Must include business_discovery.fields().",
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) ",
+                      "key": "access_token",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "id": "6780379e-ba18-4580-adae-874bb389c317",
+                      "key": "user_id",
+                      "value": "<string>",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "description": "Get data about other Instagram Business or Creator accounts."
+              },
+              "response": [
+                {
+                  "id": "3ecd58e2-c788-44e3-8e03-0fa60e867e66",
+                  "name": "Business discovery data.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/:user_id/business_discovery?fields=<string>&access_token=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        ":user_id",
+                        "business_discovery"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) Must include business_discovery.fields().",
+                          "key": "fields",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) ",
+                          "key": "access_token",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "user_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"business_discovery\": {\n    \"id\": \"<string>\",\n    \"username\": \"<string>\",\n    \"name\": \"<string>\",\n    \"biography\": \"<string>\",\n    \"website\": \"<string>\",\n    \"profile_picture_url\": \"<string>\",\n    \"followers_count\": \"<integer>\",\n    \"follows_count\": \"<integer>\",\n    \"media_count\": \"<integer>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:58:36.000Z",
+                  "updatedAt": "2026-07-28T01:58:36.000Z",
+                  "uid": "35240-3ecd58e2-c788-44e3-8e03-0fa60e867e66"
+                }
+              ],
+              "createdAt": "2026-07-28T01:58:36.000Z",
+              "updatedAt": "2026-07-28T01:58:36.000Z",
+              "uid": "35240-ce9d0429-7715-481b-8c13-28a88a279f37"
+            }
+          ],
+          "id": "4ed94de4-4765-4a6e-88bd-e7015f883501",
+          "createdAt": "2026-07-28T01:58:36.000Z",
+          "updatedAt": "2026-07-28T01:58:36.000Z",
+          "uid": "35240-4ed94de4-4765-4a6e-88bd-e7015f883501"
+        },
+        {
+          "name": "Instagram Get User Profile",
+          "id": "183af4e8-3e0d-4c35-9948-8378fd462e12",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/:user_id?fields=<string>&access_token=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                ":user_id"
+              ],
+              "query": [
+                {
+                  "description": "Comma-separated list of fields to return.",
+                  "key": "fields",
+                  "value": "<string>"
+                },
+                {
+                  "description": "(Required) User access token.",
+                  "key": "access_token",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "id": "a1e1822e-0e00-4628-ab43-737723983d1a",
+                  "key": "user_id",
+                  "value": "<string>",
+                  "description": "(Required) The Instagram user ID."
+                }
+              ]
+            },
+            "description": "Get fields and edges on an Instagram Business or Creator account."
+          },
+          "response": [
+            {
+              "id": "91d3495f-1e57-4e85-a6e4-d833f6a01c43",
+              "name": "User profile data.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/:user_id?fields=<string>&access_token=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ":user_id"
+                  ],
+                  "query": [
+                    {
+                      "description": "Comma-separated list of fields to return.",
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) User access token.",
+                      "key": "access_token",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "key": "user_id"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"id\": \"<string>\",\n  \"username\": \"<string>\",\n  \"name\": \"<string>\",\n  \"biography\": \"<string>\",\n  \"website\": \"<string>\",\n  \"profile_picture_url\": \"<string>\",\n  \"followers_count\": \"<integer>\",\n  \"follows_count\": \"<integer>\",\n  \"media_count\": \"<integer>\"\n}",
+              "createdAt": "2026-07-28T01:58:36.000Z",
+              "updatedAt": "2026-07-28T01:58:36.000Z",
+              "uid": "35240-91d3495f-1e57-4e85-a6e4-d833f6a01c43"
+            }
+          ],
+          "createdAt": "2026-07-28T01:58:36.000Z",
+          "updatedAt": "2026-07-28T01:58:36.000Z",
+          "uid": "35240-183af4e8-3e0d-4c35-9948-8378fd462e12"
+        }
+      ],
+      "id": "264e0b44-8e78-4a4e-b00a-0cc847939fd3",
+      "createdAt": "2026-07-28T01:58:36.000Z",
+      "updatedAt": "2026-07-28T01:58:36.000Z",
+      "uid": "35240-264e0b44-8e78-4a4e-b00a-0cc847939fd3"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://graph.facebook.com/v21.0"
+    }
+  ]
+}

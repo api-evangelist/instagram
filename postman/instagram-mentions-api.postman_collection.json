@@ -1,0 +1,143 @@
+{
+  "info": {
+    "_postman_id": "202b6d8e-0011-43b8-b22d-e4852832a7e7",
+    "name": "Instagram Graph Comments Mentions API",
+    "description": "The Instagram Graph API allows Instagram Professionals (Business and Creator accounts) to manage their presence on Instagram, including media publishing, comments, hashtags, mentions, insights, and messaging. Uses the Facebook Graph API infrastructure with OAuth 2.0 authentication.\n\nContact Support:\n Name: Meta for Developers",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:58:34.000Z",
+    "updatedAt": "2026-07-28T01:58:34.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-202b6d8e-0011-43b8-b22d-e4852832a7e7"
+  },
+  "item": [
+    {
+      "name": "{user_id}",
+      "item": [
+        {
+          "name": "tags",
+          "item": [
+            {
+              "name": "Instagram Get User Tags",
+              "id": "cfc94ba6-c518-4406-b5b7-83a6d33b8f7b",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/:user_id/tags?fields=<string>&access_token=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ":user_id",
+                    "tags"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) ",
+                      "key": "access_token",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "id": "561dd2a2-2685-4169-83e5-bfdbb3bd93f4",
+                      "key": "user_id",
+                      "value": "<string>",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "description": "Get IG Media objects where the user has been tagged by other users."
+              },
+              "response": [
+                {
+                  "id": "83cd8106-6a75-4f84-b704-3358c10f3f48",
+                  "name": "List of tagged media.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/:user_id/tags?fields=<string>&access_token=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        ":user_id",
+                        "tags"
+                      ],
+                      "query": [
+                        {
+                          "key": "fields",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) ",
+                          "key": "access_token",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "user_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"caption\": \"<string>\",\n      \"media_type\": \"STORIES\",\n      \"media_url\": \"<string>\",\n      \"thumbnail_url\": \"<string>\",\n      \"permalink\": \"<string>\",\n      \"shortcode\": \"<string>\",\n      \"timestamp\": \"<dateTime>\",\n      \"like_count\": \"<integer>\",\n      \"comments_count\": \"<integer>\",\n      \"is_comment_enabled\": \"<boolean>\",\n      \"is_shared_to_feed\": \"<boolean>\",\n      \"alt_text\": \"<string>\",\n      \"username\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"caption\": \"<string>\",\n      \"media_type\": \"REELS\",\n      \"media_url\": \"<string>\",\n      \"thumbnail_url\": \"<string>\",\n      \"permalink\": \"<string>\",\n      \"shortcode\": \"<string>\",\n      \"timestamp\": \"<dateTime>\",\n      \"like_count\": \"<integer>\",\n      \"comments_count\": \"<integer>\",\n      \"is_comment_enabled\": \"<boolean>\",\n      \"is_shared_to_feed\": \"<boolean>\",\n      \"alt_text\": \"<string>\",\n      \"username\": \"<string>\"\n    }\n  ],\n  \"paging\": {\n    \"cursors\": {\n      \"before\": \"<string>\",\n      \"after\": \"<string>\"\n    },\n    \"next\": \"<string>\",\n    \"previous\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:58:35.000Z",
+                  "updatedAt": "2026-07-28T01:58:35.000Z",
+                  "uid": "35240-83cd8106-6a75-4f84-b704-3358c10f3f48"
+                }
+              ],
+              "createdAt": "2026-07-28T01:58:35.000Z",
+              "updatedAt": "2026-07-28T01:58:35.000Z",
+              "uid": "35240-cfc94ba6-c518-4406-b5b7-83a6d33b8f7b"
+            }
+          ],
+          "id": "466efac0-9430-4d6f-b8f0-24f2427cbfd8",
+          "createdAt": "2026-07-28T01:58:35.000Z",
+          "updatedAt": "2026-07-28T01:58:35.000Z",
+          "uid": "35240-466efac0-9430-4d6f-b8f0-24f2427cbfd8"
+        }
+      ],
+      "id": "a2903fde-c53e-446e-b8a2-dd08541f9ba6",
+      "createdAt": "2026-07-28T01:58:35.000Z",
+      "updatedAt": "2026-07-28T01:58:35.000Z",
+      "uid": "35240-a2903fde-c53e-446e-b8a2-dd08541f9ba6"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://graph.facebook.com/v21.0"
+    }
+  ]
+}

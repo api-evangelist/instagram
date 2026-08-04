@@ -1,0 +1,26 @@
+{
+  "provider": "instagram",
+  "sources": [
+    "instagram-comments-api-openapi.yml",
+    "instagram-hashtags-api-openapi.yml",
+    "instagram-insights-api-openapi.yml",
+    "instagram-media-api-openapi.yml",
+    "instagram-mentions-api-openapi.yml",
+    "instagram-publishing-api-openapi.yml",
+    "instagram-users-api-openapi.yml"
+  ],
+  "outputs": [
+    "instagram-comments-api-openapi.yml",
+    "instagram-hashtags-api-openapi.yml",
+    "instagram-insights-api-openapi.yml",
+    "instagram-media-api-openapi.yml",
+    "instagram-mentions-api-openapi.yml",
+    "instagram-publishing-api-openapi.yml",
+    "instagram-users-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

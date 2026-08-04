@@ -1,0 +1,388 @@
+{
+  "info": {
+    "_postman_id": "745ac653-4b71-48a8-8f9d-3dbcdc7d02f4",
+    "name": "Instagram Graph Comments Hashtags API",
+    "description": "The Instagram Graph API allows Instagram Professionals (Business and Creator accounts) to manage their presence on Instagram, including media publishing, comments, hashtags, mentions, insights, and messaging. Uses the Facebook Graph API infrastructure with OAuth 2.0 authentication.\n\nContact Support:\n Name: Meta for Developers",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:58:31.000Z",
+    "updatedAt": "2026-07-28T01:58:32.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-745ac653-4b71-48a8-8f9d-3dbcdc7d02f4"
+  },
+  "item": [
+    {
+      "name": "ig_hashtag_search",
+      "item": [
+        {
+          "name": "Instagram Search Hashtag",
+          "id": "f2a88b4b-19fa-4447-9745-44214c553a7a",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/ig_hashtag_search?q=<string>&user_id=<string>&access_token=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "ig_hashtag_search"
+              ],
+              "query": [
+                {
+                  "description": "(Required) The hashtag to search for (without",
+                  "key": "q",
+                  "value": "<string>"
+                },
+                {
+                  "description": "(Required) The ID of the user making the request.",
+                  "key": "user_id",
+                  "value": "<string>"
+                },
+                {
+                  "description": "(Required) ",
+                  "key": "access_token",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Search for a hashtag by name and get its ID."
+          },
+          "response": [
+            {
+              "id": "51b326fe-e674-4cd3-bb43-541f047f926e",
+              "name": "Hashtag search results.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/ig_hashtag_search?q=<string>&user_id=<string>&access_token=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "ig_hashtag_search"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) The hashtag to search for (without",
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) The ID of the user making the request.",
+                      "key": "user_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) ",
+                      "key": "access_token",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\"\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T01:58:32.000Z",
+              "updatedAt": "2026-07-28T01:58:32.000Z",
+              "uid": "35240-51b326fe-e674-4cd3-bb43-541f047f926e"
+            }
+          ],
+          "createdAt": "2026-07-28T01:58:32.000Z",
+          "updatedAt": "2026-07-28T01:58:32.000Z",
+          "uid": "35240-f2a88b4b-19fa-4447-9745-44214c553a7a"
+        }
+      ],
+      "id": "73d81bba-a2b8-429d-b3f4-8dea0b40b363",
+      "createdAt": "2026-07-28T01:58:32.000Z",
+      "updatedAt": "2026-07-28T01:58:32.000Z",
+      "uid": "35240-73d81bba-a2b8-429d-b3f4-8dea0b40b363"
+    },
+    {
+      "name": "{hashtag_id}",
+      "item": [
+        {
+          "name": "top_media",
+          "item": [
+            {
+              "name": "Instagram Get Hashtag Top Media",
+              "id": "eb131eab-3e7b-44e5-b2c1-9e2a9472f7d0",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/:hashtag_id/top_media?user_id=<string>&fields=<string>&access_token=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ":hashtag_id",
+                    "top_media"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) ",
+                      "key": "user_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) ",
+                      "key": "access_token",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "id": "2857da12-079e-4a55-b95d-861c63e9e66d",
+                      "key": "hashtag_id",
+                      "value": "<string>",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "description": "Get the most popular media tagged with a specific hashtag."
+              },
+              "response": [
+                {
+                  "id": "0782c092-7bd0-4285-9f64-bf0804ee6fc6",
+                  "name": "Top media for the hashtag.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/:hashtag_id/top_media?user_id=<string>&fields=<string>&access_token=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        ":hashtag_id",
+                        "top_media"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) ",
+                          "key": "user_id",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "fields",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) ",
+                          "key": "access_token",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "hashtag_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"caption\": \"<string>\",\n      \"media_type\": \"VIDEO\",\n      \"media_url\": \"<string>\",\n      \"thumbnail_url\": \"<string>\",\n      \"permalink\": \"<string>\",\n      \"shortcode\": \"<string>\",\n      \"timestamp\": \"<dateTime>\",\n      \"like_count\": \"<integer>\",\n      \"comments_count\": \"<integer>\",\n      \"is_comment_enabled\": \"<boolean>\",\n      \"is_shared_to_feed\": \"<boolean>\",\n      \"alt_text\": \"<string>\",\n      \"username\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"caption\": \"<string>\",\n      \"media_type\": \"REELS\",\n      \"media_url\": \"<string>\",\n      \"thumbnail_url\": \"<string>\",\n      \"permalink\": \"<string>\",\n      \"shortcode\": \"<string>\",\n      \"timestamp\": \"<dateTime>\",\n      \"like_count\": \"<integer>\",\n      \"comments_count\": \"<integer>\",\n      \"is_comment_enabled\": \"<boolean>\",\n      \"is_shared_to_feed\": \"<boolean>\",\n      \"alt_text\": \"<string>\",\n      \"username\": \"<string>\"\n    }\n  ],\n  \"paging\": {\n    \"cursors\": {\n      \"before\": \"<string>\",\n      \"after\": \"<string>\"\n    },\n    \"next\": \"<string>\",\n    \"previous\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:58:32.000Z",
+                  "updatedAt": "2026-07-28T01:58:32.000Z",
+                  "uid": "35240-0782c092-7bd0-4285-9f64-bf0804ee6fc6"
+                }
+              ],
+              "createdAt": "2026-07-28T01:58:32.000Z",
+              "updatedAt": "2026-07-28T01:58:32.000Z",
+              "uid": "35240-eb131eab-3e7b-44e5-b2c1-9e2a9472f7d0"
+            }
+          ],
+          "id": "4bd548b3-0867-42ac-b226-60a93aaf31de",
+          "createdAt": "2026-07-28T01:58:32.000Z",
+          "updatedAt": "2026-07-28T01:58:32.000Z",
+          "uid": "35240-4bd548b3-0867-42ac-b226-60a93aaf31de"
+        },
+        {
+          "name": "recent_media",
+          "item": [
+            {
+              "name": "Instagram Get Hashtag Recent Media",
+              "id": "afb9fba1-0acb-461b-877f-67483556db96",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/:hashtag_id/recent_media?user_id=<string>&fields=<string>&access_token=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ":hashtag_id",
+                    "recent_media"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) ",
+                      "key": "user_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) ",
+                      "key": "access_token",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "id": "6a491a6e-b0e8-4d5d-93c5-75149f1734c2",
+                      "key": "hashtag_id",
+                      "value": "<string>",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "description": "Get the most recently published media tagged with a specific hashtag."
+              },
+              "response": [
+                {
+                  "id": "b8e3232f-95c1-4eb8-bf3b-a52d54c97890",
+                  "name": "Recent media for the hashtag.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/:hashtag_id/recent_media?user_id=<string>&fields=<string>&access_token=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        ":hashtag_id",
+                        "recent_media"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) ",
+                          "key": "user_id",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "fields",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) ",
+                          "key": "access_token",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "hashtag_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"caption\": \"<string>\",\n      \"media_type\": \"VIDEO\",\n      \"media_url\": \"<string>\",\n      \"thumbnail_url\": \"<string>\",\n      \"permalink\": \"<string>\",\n      \"shortcode\": \"<string>\",\n      \"timestamp\": \"<dateTime>\",\n      \"like_count\": \"<integer>\",\n      \"comments_count\": \"<integer>\",\n      \"is_comment_enabled\": \"<boolean>\",\n      \"is_shared_to_feed\": \"<boolean>\",\n      \"alt_text\": \"<string>\",\n      \"username\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"caption\": \"<string>\",\n      \"media_type\": \"REELS\",\n      \"media_url\": \"<string>\",\n      \"thumbnail_url\": \"<string>\",\n      \"permalink\": \"<string>\",\n      \"shortcode\": \"<string>\",\n      \"timestamp\": \"<dateTime>\",\n      \"like_count\": \"<integer>\",\n      \"comments_count\": \"<integer>\",\n      \"is_comment_enabled\": \"<boolean>\",\n      \"is_shared_to_feed\": \"<boolean>\",\n      \"alt_text\": \"<string>\",\n      \"username\": \"<string>\"\n    }\n  ],\n  \"paging\": {\n    \"cursors\": {\n      \"before\": \"<string>\",\n      \"after\": \"<string>\"\n    },\n    \"next\": \"<string>\",\n    \"previous\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:58:32.000Z",
+                  "updatedAt": "2026-07-28T01:58:32.000Z",
+                  "uid": "35240-b8e3232f-95c1-4eb8-bf3b-a52d54c97890"
+                }
+              ],
+              "createdAt": "2026-07-28T01:58:32.000Z",
+              "updatedAt": "2026-07-28T01:58:32.000Z",
+              "uid": "35240-afb9fba1-0acb-461b-877f-67483556db96"
+            }
+          ],
+          "id": "e46bf16e-f6f9-4d8b-9c38-61ee6701e7ed",
+          "createdAt": "2026-07-28T01:58:32.000Z",
+          "updatedAt": "2026-07-28T01:58:32.000Z",
+          "uid": "35240-e46bf16e-f6f9-4d8b-9c38-61ee6701e7ed"
+        }
+      ],
+      "id": "d3926756-289a-44bd-9b10-ea04b020c073",
+      "createdAt": "2026-07-28T01:58:32.000Z",
+      "updatedAt": "2026-07-28T01:58:32.000Z",
+      "uid": "35240-d3926756-289a-44bd-9b10-ea04b020c073"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://graph.facebook.com/v21.0"
+    }
+  ]
+}
