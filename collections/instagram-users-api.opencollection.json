@@ -1,0 +1,78 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Instagram Graph Comments Users API",
+    "version": "21.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Users",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Instagram Get User Profile",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://graph.facebook.com/v21.0/:user_id",
+            "params": [
+              {
+                "name": "user_id",
+                "value": "17841400123456789",
+                "type": "path",
+                "description": "The Instagram user ID."
+              },
+              {
+                "name": "fields",
+                "value": "id,username,name,biography,followers_count,media_count",
+                "type": "query",
+                "description": "Comma-separated list of fields to return."
+              },
+              {
+                "name": "access_token",
+                "value": "",
+                "type": "query",
+                "description": "User access token."
+              }
+            ]
+          },
+          "docs": "Get fields and edges on an Instagram Business or Creator account."
+        },
+        {
+          "info": {
+            "name": "Instagram Get Business Discovery",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://graph.facebook.com/v21.0/:user_id/business_discovery",
+            "params": [
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "fields",
+                "value": "business_discovery.fields(username,media_count,followers_count)",
+                "type": "query",
+                "description": "Must include business_discovery.fields()."
+              },
+              {
+                "name": "access_token",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get data about other Instagram Business or Creator accounts."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

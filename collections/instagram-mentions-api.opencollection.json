@@ -1,0 +1,46 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Instagram Graph Comments Mentions API",
+    "version": "21.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Mentions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Instagram Get User Tags",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://graph.facebook.com/v21.0/:user_id/tags",
+            "params": [
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "access_token",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get IG Media objects where the user has been tagged by other users."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

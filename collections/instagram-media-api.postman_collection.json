@@ -1,0 +1,693 @@
+{
+  "item": [
+    {
+      "id": "3322a9e5-ba08-4a57-8352-01813a0f2ee8",
+      "name": "Media",
+      "description": {
+        "content": "Photos, videos, stories, reels, and carousels",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "1c1d6528-1fc8-4926-afba-715fbf6bfdf9",
+          "name": "Instagram Get User Media",
+          "request": {
+            "name": "Instagram Get User Media",
+            "description": {
+              "content": "Get a collection of IG Media objects published on the account.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":user_id",
+                "media"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Comma-separated list of fields."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "Maximum number of results per page."
+                },
+                {
+                  "disabled": false,
+                  "key": "after",
+                  "value": "<string>",
+                  "description": "Cursor for pagination."
+                },
+                {
+                  "disabled": false,
+                  "key": "access_token",
+                  "value": "<string>",
+                  "description": "(Required) "
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "user_id",
+                  "description": "(Required) The Instagram user ID."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "942a8667-363d-477b-9433-6c494fbccdc3",
+              "name": "List of media objects.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":user_id",
+                    "media"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "id,caption,media_type,media_url,timestamp,permalink"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "25"
+                    },
+                    {
+                      "key": "after",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "access_token",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "user_id",
+                      "description": "(Required) The Instagram user ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"17854360229135492\",\n      \"caption\": \"Beautiful sunset at the beach! #photography\",\n      \"media_type\": \"IMAGE\",\n      \"media_url\": \"https://scontent.cdninstagram.com/media/example.jpg\",\n      \"thumbnail_url\": \"string\",\n      \"permalink\": \"https://www.instagram.com/p/ABC123/\",\n      \"shortcode\": \"ABC123\",\n      \"timestamp\": \"2026-04-17T12:00:00+0000\",\n      \"like_count\": 250,\n      \"comments_count\": 15,\n      \"is_comment_enabled\": true,\n      \"is_shared_to_feed\": true,\n      \"alt_text\": \"string\",\n      \"username\": \"examplebusiness\"\n    },\n    {\n      \"id\": \"17854360229135492\",\n      \"caption\": \"Beautiful sunset at the beach! #photography\",\n      \"media_type\": \"IMAGE\",\n      \"media_url\": \"https://scontent.cdninstagram.com/media/example.jpg\",\n      \"thumbnail_url\": \"string\",\n      \"permalink\": \"https://www.instagram.com/p/ABC123/\",\n      \"shortcode\": \"ABC123\",\n      \"timestamp\": \"2026-04-17T12:00:00+0000\",\n      \"like_count\": 250,\n      \"comments_count\": 15,\n      \"is_comment_enabled\": true,\n      \"is_shared_to_feed\": true,\n      \"alt_text\": \"string\",\n      \"username\": \"examplebusiness\"\n    }\n  ],\n  \"paging\": {\n    \"cursors\": {\n      \"before\": \"QVFIUjRtc2c5NEl0ajN3\",\n      \"after\": \"QVFIUmlKdXBzYWtyUml3\"\n    },\n    \"next\": \"string\",\n    \"previous\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6de82d0a-2154-4c04-93ee-7e90fdd68b7e",
+          "name": "Instagram Get User Stories",
+          "request": {
+            "name": "Instagram Get User Stories",
+            "description": {
+              "content": "Get a collection of story IG Media objects on the account.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":user_id",
+                "stories"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "access_token",
+                  "value": "<string>",
+                  "description": "(Required) "
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "user_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e89a59fe-2dfc-45bf-af99-8669fc5cb5ce",
+              "name": "List of story media.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":user_id",
+                    "stories"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "access_token",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "user_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"17854360229135492\",\n      \"caption\": \"Beautiful sunset at the beach! #photography\",\n      \"media_type\": \"IMAGE\",\n      \"media_url\": \"https://scontent.cdninstagram.com/media/example.jpg\",\n      \"thumbnail_url\": \"string\",\n      \"permalink\": \"https://www.instagram.com/p/ABC123/\",\n      \"shortcode\": \"ABC123\",\n      \"timestamp\": \"2026-04-17T12:00:00+0000\",\n      \"like_count\": 250,\n      \"comments_count\": 15,\n      \"is_comment_enabled\": true,\n      \"is_shared_to_feed\": true,\n      \"alt_text\": \"string\",\n      \"username\": \"examplebusiness\"\n    },\n    {\n      \"id\": \"17854360229135492\",\n      \"caption\": \"Beautiful sunset at the beach! #photography\",\n      \"media_type\": \"IMAGE\",\n      \"media_url\": \"https://scontent.cdninstagram.com/media/example.jpg\",\n      \"thumbnail_url\": \"string\",\n      \"permalink\": \"https://www.instagram.com/p/ABC123/\",\n      \"shortcode\": \"ABC123\",\n      \"timestamp\": \"2026-04-17T12:00:00+0000\",\n      \"like_count\": 250,\n      \"comments_count\": 15,\n      \"is_comment_enabled\": true,\n      \"is_shared_to_feed\": true,\n      \"alt_text\": \"string\",\n      \"username\": \"examplebusiness\"\n    }\n  ],\n  \"paging\": {\n    \"cursors\": {\n      \"before\": \"QVFIUjRtc2c5NEl0ajN3\",\n      \"after\": \"QVFIUmlKdXBzYWtyUml3\"\n    },\n    \"next\": \"string\",\n    \"previous\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f399a216-ff17-47b2-a500-8627c92cda92",
+          "name": "Instagram Get Media",
+          "request": {
+            "name": "Instagram Get Media",
+            "description": {
+              "content": "Get fields on an Instagram photo, video, story, reel, or album.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":media_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Comma-separated list of fields."
+                },
+                {
+                  "disabled": false,
+                  "key": "access_token",
+                  "value": "<string>",
+                  "description": "(Required) "
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "media_id",
+                  "description": "(Required) The IG Media ID."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "937302ba-a931-48be-872d-653aeeedcce0",
+              "name": "Media object.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":media_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "id,caption,media_type,media_url,timestamp,like_count,comments_count"
+                    },
+                    {
+                      "key": "access_token",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "media_id",
+                      "description": "(Required) The IG Media ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"17854360229135492\",\n  \"caption\": \"Beautiful sunset at the beach! #photography\",\n  \"media_type\": \"IMAGE\",\n  \"media_url\": \"https://scontent.cdninstagram.com/media/example.jpg\",\n  \"thumbnail_url\": \"string\",\n  \"permalink\": \"https://www.instagram.com/p/ABC123/\",\n  \"shortcode\": \"ABC123\",\n  \"timestamp\": \"2026-04-17T12:00:00+0000\",\n  \"like_count\": 250,\n  \"comments_count\": 15,\n  \"is_comment_enabled\": true,\n  \"is_shared_to_feed\": true,\n  \"alt_text\": \"string\",\n  \"username\": \"examplebusiness\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fa9b4660-a4e7-4aca-a27a-225754b86db2",
+          "name": "Instagram Update Media",
+          "request": {
+            "name": "Instagram Update Media",
+            "description": {
+              "content": "Enable or disable comments on a media object.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":media_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "media_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"comment_enabled\": \"<boolean>\",\n  \"access_token\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b41996fb-05da-4a78-923a-78b01e0e0c70",
+              "name": "Update success.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":media_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "media_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"comment_enabled\": true,\n  \"access_token\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "742b3d0d-9564-42ef-8e74-84b3f5f16e3d",
+          "name": "Instagram Delete Media",
+          "request": {
+            "name": "Instagram Delete Media",
+            "description": {
+              "content": "Delete an Instagram media object (post, story, reel, or carousel).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":media_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "access_token",
+                  "value": "<string>",
+                  "description": "(Required) "
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "media_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "107acb12-2284-4d2f-b4cd-495074e5b07e",
+              "name": "Media deleted.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":media_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "access_token",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "media_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"deleted_id\": \"17854360229135492\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6df329f5-22bf-47e5-8034-f2fd2f9f416d",
+          "name": "Instagram Get Carousel Children",
+          "request": {
+            "name": "Instagram Get Carousel Children",
+            "description": {
+              "content": "Get media objects within a carousel album.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":media_id",
+                "children"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "access_token",
+                  "value": "<string>",
+                  "description": "(Required) "
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "media_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "75142cec-752e-4bf7-96fc-6e533e09cc27",
+              "name": "List of child media.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":media_id",
+                    "children"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "access_token",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "media_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"17854360229135492\",\n      \"caption\": \"Beautiful sunset at the beach! #photography\",\n      \"media_type\": \"IMAGE\",\n      \"media_url\": \"https://scontent.cdninstagram.com/media/example.jpg\",\n      \"thumbnail_url\": \"string\",\n      \"permalink\": \"https://www.instagram.com/p/ABC123/\",\n      \"shortcode\": \"ABC123\",\n      \"timestamp\": \"2026-04-17T12:00:00+0000\",\n      \"like_count\": 250,\n      \"comments_count\": 15,\n      \"is_comment_enabled\": true,\n      \"is_shared_to_feed\": true,\n      \"alt_text\": \"string\",\n      \"username\": \"examplebusiness\"\n    },\n    {\n      \"id\": \"17854360229135492\",\n      \"caption\": \"Beautiful sunset at the beach! #photography\",\n      \"media_type\": \"IMAGE\",\n      \"media_url\": \"https://scontent.cdninstagram.com/media/example.jpg\",\n      \"thumbnail_url\": \"string\",\n      \"permalink\": \"https://www.instagram.com/p/ABC123/\",\n      \"shortcode\": \"ABC123\",\n      \"timestamp\": \"2026-04-17T12:00:00+0000\",\n      \"like_count\": 250,\n      \"comments_count\": 15,\n      \"is_comment_enabled\": true,\n      \"is_shared_to_feed\": true,\n      \"alt_text\": \"string\",\n      \"username\": \"examplebusiness\"\n    }\n  ],\n  \"paging\": {\n    \"cursors\": {\n      \"before\": \"QVFIUjRtc2c5NEl0ajN3\",\n      \"after\": \"QVFIUmlKdXBzYWtyUml3\"\n    },\n    \"next\": \"string\",\n    \"previous\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://graph.facebook.com/v21.0",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "5df18fa3-2e31-4e60-97b6-76ce4d58da1a",
+    "name": "Instagram Graph Comments Media API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Instagram Graph API allows Instagram Professionals (Business and Creator accounts) to manage their presence on Instagram, including media publishing, comments, hashtags, mentions, insights, and messaging. Uses the Facebook Graph API infrastructure with OAuth 2.0 authentication.\n\nContact Support:\n Name: Meta for Developers",
+      "type": "text/plain"
+    }
+  }
+}

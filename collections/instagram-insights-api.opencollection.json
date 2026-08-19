@@ -1,0 +1,94 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Instagram Graph Comments Insights API",
+    "version": "21.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Insights",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Instagram Get User Insights",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://graph.facebook.com/v21.0/:user_id/insights",
+            "params": [
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "metric",
+                "value": "impressions,reach,profile_views",
+                "type": "query",
+                "description": "Comma-separated list of metrics."
+              },
+              {
+                "name": "period",
+                "value": "day",
+                "type": "query",
+                "description": "Time period for aggregation."
+              },
+              {
+                "name": "since",
+                "value": "",
+                "type": "query",
+                "description": "Unix timestamp for start of range."
+              },
+              {
+                "name": "until",
+                "value": "",
+                "type": "query",
+                "description": "Unix timestamp for end of range."
+              },
+              {
+                "name": "access_token",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get social interaction metrics for the account."
+        },
+        {
+          "info": {
+            "name": "Instagram Get Media Insights",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://graph.facebook.com/v21.0/:media_id/insights",
+            "params": [
+              {
+                "name": "media_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "metric",
+                "value": "impressions,reach,engagement,saved",
+                "type": "query",
+                "description": "Comma-separated list of metrics."
+              },
+              {
+                "name": "access_token",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get social interaction metrics for a media object."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

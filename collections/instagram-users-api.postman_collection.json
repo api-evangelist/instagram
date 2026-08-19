@@ -1,0 +1,250 @@
+{
+  "item": [
+    {
+      "id": "1d77ff04-4d1c-4761-b74f-bbe0b6ecb2ad",
+      "name": "Users",
+      "description": {
+        "content": "Instagram Business and Creator account profiles",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ae05b034-ec0a-4cbd-804e-174e3f6a31e9",
+          "name": "Instagram Get User Profile",
+          "request": {
+            "name": "Instagram Get User Profile",
+            "description": {
+              "content": "Get fields and edges on an Instagram Business or Creator account.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":user_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Comma-separated list of fields to return."
+                },
+                {
+                  "disabled": false,
+                  "key": "access_token",
+                  "value": "<string>",
+                  "description": "(Required) User access token."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "user_id",
+                  "description": "(Required) The Instagram user ID."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c48c8419-144b-4fb5-bd15-ee501275e5ed",
+              "name": "User profile data.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":user_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "id,username,name,biography,followers_count,media_count"
+                    },
+                    {
+                      "key": "access_token",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "user_id",
+                      "description": "(Required) The Instagram user ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"17841400123456789\",\n  \"username\": \"examplebusiness\",\n  \"name\": \"Example Business\",\n  \"biography\": \"Official account for Example Business.\",\n  \"website\": \"https://www.example.com\",\n  \"profile_picture_url\": \"https://scontent.cdninstagram.com/example.jpg\",\n  \"followers_count\": 15000,\n  \"follows_count\": 500,\n  \"media_count\": 342\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6efad228-3347-4615-81d3-afd9e9f3bdb1",
+          "name": "Instagram Get Business Discovery",
+          "request": {
+            "name": "Instagram Get Business Discovery",
+            "description": {
+              "content": "Get data about other Instagram Business or Creator accounts.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":user_id",
+                "business_discovery"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "(Required) Must include business_discovery.fields()."
+                },
+                {
+                  "disabled": false,
+                  "key": "access_token",
+                  "value": "<string>",
+                  "description": "(Required) "
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "user_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1f6fde0b-9c70-4e10-bc29-7c097c2b888c",
+              "name": "Business discovery data.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":user_id",
+                    "business_discovery"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "business_discovery.fields(username,media_count,followers_count)"
+                    },
+                    {
+                      "key": "access_token",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "user_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"business_discovery\": {\n    \"id\": \"17841400123456789\",\n    \"username\": \"examplebusiness\",\n    \"name\": \"Example Business\",\n    \"biography\": \"Official account for Example Business.\",\n    \"website\": \"https://www.example.com\",\n    \"profile_picture_url\": \"https://scontent.cdninstagram.com/example.jpg\",\n    \"followers_count\": 15000,\n    \"follows_count\": 500,\n    \"media_count\": 342\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://graph.facebook.com/v21.0",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "4ca90255-f298-4232-acce-8b5a1bb76d69",
+    "name": "Instagram Graph Comments Users API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Instagram Graph API allows Instagram Professionals (Business and Creator accounts) to manage their presence on Instagram, including media publishing, comments, hashtags, mentions, insights, and messaging. Uses the Facebook Graph API infrastructure with OAuth 2.0 authentication.\n\nContact Support:\n Name: Meta for Developers",
+      "type": "text/plain"
+    }
+  }
+}

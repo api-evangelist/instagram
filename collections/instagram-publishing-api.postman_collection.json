@@ -1,0 +1,466 @@
+{
+  "item": [
+    {
+      "id": "203a230e-13be-4c9c-b524-ed298beea7ea",
+      "name": "Publishing",
+      "description": {
+        "content": "Content creation and publishing workflow",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "9cf6807f-c74a-410b-a180-21e7982186df",
+          "name": "Instagram Create Media Container",
+          "request": {
+            "name": "Instagram Create Media Container",
+            "description": {
+              "content": "Create a media container for publishing content. Step 1 of the publishing flow.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":user_id",
+                "media"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "user_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"image_url\": \"<string>\",\n  \"video_url\": \"<string>\",\n  \"caption\": \"<string>\",\n  \"media_type\": \"<string>\",\n  \"is_carousel_item\": \"<boolean>\",\n  \"location_id\": \"<string>\",\n  \"user_tags\": [\n    {\n      \"username\": \"<string>\",\n      \"x\": \"<number>\",\n      \"y\": \"<number>\"\n    },\n    {\n      \"username\": \"<string>\",\n      \"x\": \"<number>\",\n      \"y\": \"<number>\"\n    }\n  ],\n  \"access_token\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "11f2fb78-b966-4ccb-ae97-233a3bdc7f94",
+              "name": "Container created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":user_id",
+                    "media"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "user_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"image_url\": \"https://www.example.com/images/photo.jpg\",\n  \"video_url\": \"<string>\",\n  \"caption\": \"Check out our latest product! #newlaunch\",\n  \"media_type\": \"IMAGE\",\n  \"is_carousel_item\": false,\n  \"location_id\": \"<string>\",\n  \"user_tags\": [\n    {\n      \"username\": \"<string>\",\n      \"x\": \"<number>\",\n      \"y\": \"<number>\"\n    },\n    {\n      \"username\": \"<string>\",\n      \"x\": \"<number>\",\n      \"y\": \"<number>\"\n    }\n  ],\n  \"access_token\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"17889615691921648\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b4b9412f-5187-420b-a049-fb6d11d6847c",
+          "name": "Instagram Publish Media Container",
+          "request": {
+            "name": "Instagram Publish Media Container",
+            "description": {
+              "content": "Publish a media container. Step 2 of the publishing flow.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":user_id",
+                "media_publish"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "user_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"creation_id\": \"<string>\",\n  \"access_token\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "4aef443c-c97a-43df-b503-58decb5b42fa",
+              "name": "Media published.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":user_id",
+                    "media_publish"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "user_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"creation_id\": \"17889615691921648\",\n  \"access_token\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"17854360229135492\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "433b2632-6dcd-4cba-9fe1-72f2b4100483",
+          "name": "Instagram Get Content Publishing Limit",
+          "request": {
+            "name": "Instagram Get Content Publishing Limit",
+            "description": {
+              "content": "Get current content publishing usage and rate limit status.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":user_id",
+                "content_publishing_limit"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "access_token",
+                  "value": "<string>",
+                  "description": "(Required) "
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "user_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "98068def-2bf7-45c4-83e6-3d171b9a3835",
+              "name": "Publishing limit data.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":user_id",
+                    "content_publishing_limit"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "config,quota_usage"
+                    },
+                    {
+                      "key": "access_token",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "user_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"config\": {\n    \"quota_total\": 100,\n    \"quota_duration\": 86400\n  },\n  \"quota_usage\": 5\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "74a4eaf4-b988-43d8-8b5c-63bcabb437c4",
+          "name": "Instagram Get Container Status",
+          "request": {
+            "name": "Instagram Get Container Status",
+            "description": {
+              "content": "Check the publishing status of a media container.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":container_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "access_token",
+                  "value": "<string>",
+                  "description": "(Required) "
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "container_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a8a1dd32-d37f-4eb6-92b1-e8d8a608f5e0",
+              "name": "Container status.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":container_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "status_code,status"
+                    },
+                    {
+                      "key": "access_token",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "container_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"status_code\": \"FINISHED\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://graph.facebook.com/v21.0",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "96327358-4948-47d6-a64b-3c36c9044332",
+    "name": "Instagram Graph Comments Publishing API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Instagram Graph API allows Instagram Professionals (Business and Creator accounts) to manage their presence on Instagram, including media publishing, comments, hashtags, mentions, insights, and messaging. Uses the Facebook Graph API infrastructure with OAuth 2.0 authentication.\n\nContact Support:\n Name: Meta for Developers",
+      "type": "text/plain"
+    }
+  }
+}

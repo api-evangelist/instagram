@@ -1,0 +1,191 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Instagram Graph Comments Media API",
+    "version": "21.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Media",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Instagram Get User Media",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://graph.facebook.com/v21.0/:user_id/media",
+            "params": [
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "path",
+                "description": "The Instagram user ID."
+              },
+              {
+                "name": "fields",
+                "value": "id,caption,media_type,media_url,timestamp,permalink",
+                "type": "query",
+                "description": "Comma-separated list of fields."
+              },
+              {
+                "name": "limit",
+                "value": "25",
+                "type": "query",
+                "description": "Maximum number of results per page."
+              },
+              {
+                "name": "after",
+                "value": "",
+                "type": "query",
+                "description": "Cursor for pagination."
+              },
+              {
+                "name": "access_token",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get a collection of IG Media objects published on the account."
+        },
+        {
+          "info": {
+            "name": "Instagram Get User Stories",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://graph.facebook.com/v21.0/:user_id/stories",
+            "params": [
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "access_token",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get a collection of story IG Media objects on the account."
+        },
+        {
+          "info": {
+            "name": "Instagram Get Media",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://graph.facebook.com/v21.0/:media_id",
+            "params": [
+              {
+                "name": "media_id",
+                "value": "",
+                "type": "path",
+                "description": "The IG Media ID."
+              },
+              {
+                "name": "fields",
+                "value": "id,caption,media_type,media_url,timestamp,like_count,comments_count",
+                "type": "query",
+                "description": "Comma-separated list of fields."
+              },
+              {
+                "name": "access_token",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get fields on an Instagram photo, video, story, reel, or album."
+        },
+        {
+          "info": {
+            "name": "Instagram Update Media",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://graph.facebook.com/v21.0/:media_id",
+            "params": [
+              {
+                "name": "media_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Enable or disable comments on a media object."
+        },
+        {
+          "info": {
+            "name": "Instagram Delete Media",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://graph.facebook.com/v21.0/:media_id",
+            "params": [
+              {
+                "name": "media_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "access_token",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Delete an Instagram media object (post, story, reel, or carousel)."
+        },
+        {
+          "info": {
+            "name": "Instagram Get Carousel Children",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://graph.facebook.com/v21.0/:media_id/children",
+            "params": [
+              {
+                "name": "media_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "access_token",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get media objects within a carousel album."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

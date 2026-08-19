@@ -1,0 +1,191 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Instagram Graph Comments API",
+    "version": "21.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Comments",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Instagram Get Media Comments",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://graph.facebook.com/v21.0/:media_id/comments",
+            "params": [
+              {
+                "name": "media_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "fields",
+                "value": "id,text,username,timestamp,like_count",
+                "type": "query"
+              },
+              {
+                "name": "access_token",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get comments on an Instagram media object."
+        },
+        {
+          "info": {
+            "name": "Instagram Create Comment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://graph.facebook.com/v21.0/:media_id/comments",
+            "params": [
+              {
+                "name": "media_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a comment on an Instagram media object."
+        },
+        {
+          "info": {
+            "name": "Instagram Get Comment",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://graph.facebook.com/v21.0/:comment_id",
+            "params": [
+              {
+                "name": "comment_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "fields",
+                "value": "id,text,username,timestamp,like_count,hidden",
+                "type": "query"
+              },
+              {
+                "name": "access_token",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get fields on an Instagram comment."
+        },
+        {
+          "info": {
+            "name": "Instagram Hide or Unhide Comment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://graph.facebook.com/v21.0/:comment_id",
+            "params": [
+              {
+                "name": "comment_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Hide or unhide a comment on your media."
+        },
+        {
+          "info": {
+            "name": "Instagram Delete Comment",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://graph.facebook.com/v21.0/:comment_id",
+            "params": [
+              {
+                "name": "comment_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "access_token",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Delete a comment on your media."
+        },
+        {
+          "info": {
+            "name": "Instagram Get Comment Replies",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://graph.facebook.com/v21.0/:comment_id/replies",
+            "params": [
+              {
+                "name": "comment_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "access_token",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get replies to a comment."
+        },
+        {
+          "info": {
+            "name": "Instagram Create Comment Reply",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://graph.facebook.com/v21.0/:comment_id/replies",
+            "params": [
+              {
+                "name": "comment_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Reply to a comment."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

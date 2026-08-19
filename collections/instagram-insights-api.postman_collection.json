@@ -1,0 +1,282 @@
+{
+  "item": [
+    {
+      "id": "66f80dd7-71a0-4a3f-86d5-1626f7e010d1",
+      "name": "Insights",
+      "description": {
+        "content": "Account and media level analytics",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "58c4b736-6b58-487d-8f2d-01f69e20a5b9",
+          "name": "Instagram Get User Insights",
+          "request": {
+            "name": "Instagram Get User Insights",
+            "description": {
+              "content": "Get social interaction metrics for the account.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":user_id",
+                "insights"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "metric",
+                  "value": "<string>",
+                  "description": "(Required) Comma-separated list of metrics."
+                },
+                {
+                  "disabled": false,
+                  "key": "period",
+                  "value": "<string>",
+                  "description": "(Required) Time period for aggregation."
+                },
+                {
+                  "disabled": false,
+                  "key": "since",
+                  "value": "<integer>",
+                  "description": "Unix timestamp for start of range."
+                },
+                {
+                  "disabled": false,
+                  "key": "until",
+                  "value": "<integer>",
+                  "description": "Unix timestamp for end of range."
+                },
+                {
+                  "disabled": false,
+                  "key": "access_token",
+                  "value": "<string>",
+                  "description": "(Required) "
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "user_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3c744135-86e3-4674-8f78-1fb57dbe33bd",
+              "name": "Account insights data.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":user_id",
+                    "insights"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "metric",
+                      "value": "impressions,reach,profile_views"
+                    },
+                    {
+                      "key": "period",
+                      "value": "day"
+                    },
+                    {
+                      "key": "since",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "until",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "access_token",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "user_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"name\": \"impressions\",\n      \"period\": \"day\",\n      \"values\": [\n        {\n          \"value\": 1500,\n          \"end_time\": \"2026-04-17T07:00:00+0000\"\n        },\n        {\n          \"value\": 1500,\n          \"end_time\": \"2026-04-17T07:00:00+0000\"\n        }\n      ],\n      \"title\": \"Impressions\",\n      \"description\": \"Total number of times the media has been seen.\",\n      \"id\": \"string\"\n    },\n    {\n      \"name\": \"impressions\",\n      \"period\": \"day\",\n      \"values\": [\n        {\n          \"value\": 1500,\n          \"end_time\": \"2026-04-17T07:00:00+0000\"\n        },\n        {\n          \"value\": 1500,\n          \"end_time\": \"2026-04-17T07:00:00+0000\"\n        }\n      ],\n      \"title\": \"Impressions\",\n      \"description\": \"Total number of times the media has been seen.\",\n      \"id\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e09c3d36-aaed-4957-9411-207ef5ca28a6",
+          "name": "Instagram Get Media Insights",
+          "request": {
+            "name": "Instagram Get Media Insights",
+            "description": {
+              "content": "Get social interaction metrics for a media object.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":media_id",
+                "insights"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "metric",
+                  "value": "<string>",
+                  "description": "(Required) Comma-separated list of metrics."
+                },
+                {
+                  "disabled": false,
+                  "key": "access_token",
+                  "value": "<string>",
+                  "description": "(Required) "
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "media_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "30f2b0d0-c833-43df-bea0-1b870e859567",
+              "name": "Media insights data.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":media_id",
+                    "insights"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "metric",
+                      "value": "impressions,reach,engagement,saved"
+                    },
+                    {
+                      "key": "access_token",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "media_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"name\": \"impressions\",\n      \"period\": \"day\",\n      \"values\": [\n        {\n          \"value\": 1500,\n          \"end_time\": \"2026-04-17T07:00:00+0000\"\n        },\n        {\n          \"value\": 1500,\n          \"end_time\": \"2026-04-17T07:00:00+0000\"\n        }\n      ],\n      \"title\": \"Impressions\",\n      \"description\": \"Total number of times the media has been seen.\",\n      \"id\": \"string\"\n    },\n    {\n      \"name\": \"impressions\",\n      \"period\": \"day\",\n      \"values\": [\n        {\n          \"value\": 1500,\n          \"end_time\": \"2026-04-17T07:00:00+0000\"\n        },\n        {\n          \"value\": 1500,\n          \"end_time\": \"2026-04-17T07:00:00+0000\"\n        }\n      ],\n      \"title\": \"Impressions\",\n      \"description\": \"Total number of times the media has been seen.\",\n      \"id\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://graph.facebook.com/v21.0",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "6f802784-3059-4d1d-9895-451499191019",
+    "name": "Instagram Graph Comments Insights API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Instagram Graph API allows Instagram Professionals (Business and Creator accounts) to manage their presence on Instagram, including media publishing, comments, hashtags, mentions, insights, and messaging. Uses the Facebook Graph API infrastructure with OAuth 2.0 authentication.\n\nContact Support:\n Name: Meta for Developers",
+      "type": "text/plain"
+    }
+  }
+}

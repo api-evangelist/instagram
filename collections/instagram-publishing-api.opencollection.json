@@ -1,0 +1,118 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Instagram Graph Comments Publishing API",
+    "version": "21.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Publishing",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Instagram Create Media Container",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://graph.facebook.com/v21.0/:user_id/media",
+            "params": [
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a media container for publishing content. Step 1 of the publishing flow."
+        },
+        {
+          "info": {
+            "name": "Instagram Publish Media Container",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://graph.facebook.com/v21.0/:user_id/media_publish",
+            "params": [
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Publish a media container. Step 2 of the publishing flow."
+        },
+        {
+          "info": {
+            "name": "Instagram Get Content Publishing Limit",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://graph.facebook.com/v21.0/:user_id/content_publishing_limit",
+            "params": [
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "fields",
+                "value": "config,quota_usage",
+                "type": "query"
+              },
+              {
+                "name": "access_token",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get current content publishing usage and rate limit status."
+        },
+        {
+          "info": {
+            "name": "Instagram Get Container Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://graph.facebook.com/v21.0/:container_id",
+            "params": [
+              {
+                "name": "container_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "fields",
+                "value": "status_code,status",
+                "type": "query"
+              },
+              {
+                "name": "access_token",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Check the publishing status of a media container."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

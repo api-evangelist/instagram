@@ -1,0 +1,141 @@
+{
+  "item": [
+    {
+      "id": "11eccc60-06db-468f-814c-2d9debf6045b",
+      "name": "Mentions",
+      "description": {
+        "content": "Content where account was mentioned",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "9555bbda-16f8-4726-839c-36f989c6fd63",
+          "name": "Instagram Get User Tags",
+          "request": {
+            "name": "Instagram Get User Tags",
+            "description": {
+              "content": "Get IG Media objects where the user has been tagged by other users.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":user_id",
+                "tags"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "access_token",
+                  "value": "<string>",
+                  "description": "(Required) "
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "user_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "57287b2f-ab30-4e0c-b423-43c5c79ac8be",
+              "name": "List of tagged media.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":user_id",
+                    "tags"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "access_token",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "user_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"17854360229135492\",\n      \"caption\": \"Beautiful sunset at the beach! #photography\",\n      \"media_type\": \"IMAGE\",\n      \"media_url\": \"https://scontent.cdninstagram.com/media/example.jpg\",\n      \"thumbnail_url\": \"string\",\n      \"permalink\": \"https://www.instagram.com/p/ABC123/\",\n      \"shortcode\": \"ABC123\",\n      \"timestamp\": \"2026-04-17T12:00:00+0000\",\n      \"like_count\": 250,\n      \"comments_count\": 15,\n      \"is_comment_enabled\": true,\n      \"is_shared_to_feed\": true,\n      \"alt_text\": \"string\",\n      \"username\": \"examplebusiness\"\n    },\n    {\n      \"id\": \"17854360229135492\",\n      \"caption\": \"Beautiful sunset at the beach! #photography\",\n      \"media_type\": \"IMAGE\",\n      \"media_url\": \"https://scontent.cdninstagram.com/media/example.jpg\",\n      \"thumbnail_url\": \"string\",\n      \"permalink\": \"https://www.instagram.com/p/ABC123/\",\n      \"shortcode\": \"ABC123\",\n      \"timestamp\": \"2026-04-17T12:00:00+0000\",\n      \"like_count\": 250,\n      \"comments_count\": 15,\n      \"is_comment_enabled\": true,\n      \"is_shared_to_feed\": true,\n      \"alt_text\": \"string\",\n      \"username\": \"examplebusiness\"\n    }\n  ],\n  \"paging\": {\n    \"cursors\": {\n      \"before\": \"QVFIUjRtc2c5NEl0ajN3\",\n      \"after\": \"QVFIUmlKdXBzYWtyUml3\"\n    },\n    \"next\": \"string\",\n    \"previous\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://graph.facebook.com/v21.0",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "3ec7f5f4-4e4f-45a6-a368-d6583340c502",
+    "name": "Instagram Graph Comments Mentions API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Instagram Graph API allows Instagram Professionals (Business and Creator accounts) to manage their presence on Instagram, including media publishing, comments, hashtags, mentions, insights, and messaging. Uses the Facebook Graph API infrastructure with OAuth 2.0 authentication.\n\nContact Support:\n Name: Meta for Developers",
+      "type": "text/plain"
+    }
+  }
+}

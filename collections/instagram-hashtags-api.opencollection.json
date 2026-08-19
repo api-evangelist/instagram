@@ -1,0 +1,114 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Instagram Graph Comments Hashtags API",
+    "version": "21.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Hashtags",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Instagram Search Hashtag",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://graph.facebook.com/v21.0/ig_hashtag_search",
+            "params": [
+              {
+                "name": "q",
+                "value": "photography",
+                "type": "query",
+                "description": "The hashtag to search for (without"
+              },
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "query",
+                "description": "The ID of the user making the request."
+              },
+              {
+                "name": "access_token",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Search for a hashtag by name and get its ID."
+        },
+        {
+          "info": {
+            "name": "Instagram Get Hashtag Top Media",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://graph.facebook.com/v21.0/:hashtag_id/top_media",
+            "params": [
+              {
+                "name": "hashtag_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "fields",
+                "value": "id,caption,media_type,permalink",
+                "type": "query"
+              },
+              {
+                "name": "access_token",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get the most popular media tagged with a specific hashtag."
+        },
+        {
+          "info": {
+            "name": "Instagram Get Hashtag Recent Media",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://graph.facebook.com/v21.0/:hashtag_id/recent_media",
+            "params": [
+              {
+                "name": "hashtag_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "access_token",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get the most recently published media tagged with a specific hashtag."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
