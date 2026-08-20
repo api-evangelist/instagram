@@ -29,6 +29,13 @@ tags:
   - Instagram
   - Meta
   - Photos
+  - Social-Media
+  - Videos
+  - Content Publishing
+tags_raw:
+  - Instagram
+  - Meta
+  - Photos
   - Social Media
   - Videos
   - Content Publishing
@@ -49,6 +56,10 @@ apis:
   tags:
   - Direct Messages
   - Messaging
+  - Social-Media
+  tags_raw:
+  - Direct Messages
+  - Messaging
   - Social Media
 - aid: instagram:instagram-oembed-api
   name: Instagram oEmbed API
@@ -61,6 +72,10 @@ apis:
   - type: Documentation
     url: https://developers.facebook.com/docs/instagram-platform/oembed
   tags:
+  - Embedding
+  - oEmbed
+  - Social-Media
+  tags_raw:
   - Embedding
   - oEmbed
   - Social Media
@@ -251,6 +266,8 @@ apis:
     https://developers.facebook.com/docs/instagram-platform/instagram-api-with-instagram-login
   baseURL: https://graph.instagram.com
   tags:
+  - User
+  tags_raw:
   - Users
   properties:
   - type: OpenAPI
