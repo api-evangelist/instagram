@@ -7,6 +7,18 @@ description: Instagram is a photo and video sharing social networking platform o
   Available through the Meta Developer Platform with Facebook Login or Instagram Login
   authentication.
 type: Index
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: paid
   onboarding: self-serve
@@ -292,6 +304,9 @@ apis:
   - type: ChangeLog
     url: https://developers.facebook.com/docs/instagram-api/changelog
 common:
+  - type: CapabilityMap
+    url: capabilities/instagram-capability-edges.yml
+    name: Instagram Business Capability Map
   - type: PostmanWorkspace
     url: https://www.postman.com/kinlaneapi/instagram/overview
   - type: AgenticAccess

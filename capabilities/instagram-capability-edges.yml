@@ -1,0 +1,25 @@
+slug: instagram
+provider: Instagram
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Banking & Capital Markets
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 1
+edges:
+- tag: Publishing
+  spec_file: instagram-publishing-api-openapi.yml
+  capability_id: BC-400.60
+  capability_id_l1: BC-400
+  capability_name: Digital Marketing Management
+  confidence: 0.75
+  evidence: POST /{user_id}/media_publish publishMedia 'Instagram Publish Media Container'; GET /{user_id}/content_publishing_limit
+  reason: Content publishing to a social channel for business accounts — social/digital marketing publishing.
+    Could arguably be Content Marketing distribution, hence not higher.
