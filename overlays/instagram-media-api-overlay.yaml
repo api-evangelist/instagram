@@ -1,0 +1,54 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enrichment overlay - Instagram Graph Comments Media API
+  version: 1.0.0
+  x-generated: '2026-08-29'
+  x-method: generated
+  x-source: openapi/instagram-media-api-openapi.yml
+  x-description: Captures API Evangelist enrichment on top of the original definition. Does not mutate
+    the original; apply with an Overlay 1.0.0 processor.
+extends: instagram-media-api-openapi.yml
+actions:
+- target: $.info
+  description: Record the enrichment provenance and the version drift against the live Graph API.
+  update:
+    x-apievangelist-enrichment:
+      repo: https://github.com/api-evangelist/instagram
+      generated: '2026-08-29'
+      spec-graph-api-version: '21.0'
+      live-graph-api-version: v26.0
+      live-version-released: '2026-07-29'
+      drift-note: This definition describes Graph API v21.0; live is v26.0. Meta silently redirects expired-version
+        calls to the next oldest usable version.
+- target: $
+  description: Attach the repo artifacts that carry the runtime semantics this definition does not express.
+  update:
+    x-apievangelist-artifacts:
+      authentication: authentication/instagram-authentication.yml
+      scopes: scopes/instagram-scopes.yml
+      conventions: conventions/instagram-conventions.yml
+      errors: errors/instagram-problem-types.yml
+      rate-limits: rate-limits/instagram-rate-limits.yml
+      lifecycle: lifecycle/instagram-lifecycle.yml
+      webhooks: asyncapi/instagram-webhooks.yml
+      data-model: data-model/instagram-data-model.yml
+      conformance: conformance/instagram-conformance.yml
+      packages: packages/instagram-packages.yml
+      sandbox: sandbox/instagram-sandbox.yml
+      agentic-access: agentic-access/instagram-agentic-access.yml
+- target: $.paths.*.*.responses
+  description: Note that Meta error responses are not described in this contract; the catalog is docs-derived.
+  update:
+    x-apievangelist-error-catalog: errors/instagram-problem-types.yml
+    x-apievangelist-error-envelope: error.{message,type,code,error_subcode,error_user_title,error_user_msg,fbtrace_id}
+      - not RFC 9457
+- target: $.paths['/{media_id}'].post
+  description: Reversibility annotation for updateMedia.
+  update:
+    x-agentic-consequence: write
+    x-reversal-operation: re-issue with prior value (caller must record it)
+- target: $.paths['/{media_id}'].delete
+  description: Reversibility annotation for deleteMedia.
+  update:
+    x-agentic-consequence: write
+    x-reversibility-note: irreversible - destroys post, permalink, comments and insights

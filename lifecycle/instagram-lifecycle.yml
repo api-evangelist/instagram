@@ -1,0 +1,74 @@
+generated: '2026-08-29'
+method: searched
+source: https://developers.facebook.com/docs/graph-api/guides/versioning
+description: >-
+  The Instagram Platform is versioned by the Meta Graph API version train. Instagram endpoints
+  carry no version scheme of their own - the version in the path (for example /v26.0/) is the
+  Graph API version, and Instagram's own changes are published in a separate Instagram Platform
+  changelog that references those versions.
+versioning:
+  scheme: path-segment major.minor (v{N}.0) on the Graph API host
+  example: https://graph.facebook.com/v26.0/ig_hashtag_search
+  current_version: v26.0
+  current_version_released: '2026-07-29'
+  version_in_repo_specs: v21.0
+  drift_note: >-
+    The OpenAPI definitions in openapi/ describe Graph API v21.0. Live is v26.0 as of 2026-08-29 -
+    five versions of drift. Meta auto-redirects calls to an expired version to "the next oldest,
+    usable version" rather than failing, which hides the drift at runtime.
+  unversioned_calls: >-
+    A call with no version segment resolves to the version pinned in the app's dashboard settings,
+    not to the newest version.
+  version_pinning: >-
+    An app can only call an older version if it had previously called that version. An app created
+    after a version's release can never retroactively adopt it.
+  source: https://developers.facebook.com/docs/graph-api/guides/versioning
+deprecation:
+  policy_published: true
+  policy_url: https://developers.facebook.com/docs/graph-api/guides/versioning
+  changelog_url: https://developers.facebook.com/docs/graph-api/changelog/
+  instagram_changelog_url: https://developers.facebook.com/docs/instagram-platform/changelog
+  guarantee: >-
+    Each version is supported for a minimum of two years. Precisely - a version stops being usable
+    two years after the date the subsequent version is released.
+  emergency_changes: >-
+    Meta reserves the right to make emergency changes to any API for security or privacy reasons
+    outside the two-year window.
+  post_expiry_behavior: calls to an expired version are silently redirected to the next oldest usable version
+  sunset_header: false
+  deprecation_header: false
+  rfc8594: false
+  note: >-
+    Meta publishes a real, dated, calendar-based deprecation schedule but does NOT emit RFC 8594
+    Sunset or Deprecation response headers. An agent cannot learn a version's expiry from the wire -
+    only from the published table.
+  schedule:
+  - version: v26.0
+    released: '2026-07-29'
+    expires: null
+  - version: v25.0
+    released: '2026-02-18'
+    expires: '2028-07-29'
+  - version: v24.0
+    released: '2025-10-08'
+    expires: '2028-02-18'
+  - version: v23.0
+    released: '2025-05-29'
+    expires: '2027-10-08'
+  - version: v22.0
+    released: '2025-01-21'
+    expires: '2027-05-20'
+status_page:
+  published: true
+  url: https://developers.facebook.com/status/
+  name: Meta Platform Status
+  note: Platform-wide status dashboard for Meta developer products, including Instagram Platform.
+sla:
+  published: false
+  note: >-
+    Meta publishes no uptime SLA for the Instagram Platform. Access is governed by the Meta Platform
+    Terms (https://developers.facebook.com/terms), which carry no availability commitment.
+deprecated_operations:
+  derived_from: openapi/
+  count: 0
+  note: No operation in openapi/ carries deprecated:true.

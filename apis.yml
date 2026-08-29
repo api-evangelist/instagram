@@ -35,7 +35,7 @@ accessModel:
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/instagram.png
 url: https://raw.githubusercontent.com/api-evangelist/instagram/refs/heads/main/apis.yml
 created: '2024-01-01'
-modified: '2026-04-17'
+modified: '2026-08-29'
 specificationVersion: '0.23'
 tags:
   - Instagram
@@ -102,12 +102,14 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/instagram-comments-api-openapi.yml
+  - type: Overlay
+    url: overlays/instagram-comments-api-overlay.yaml
   - type: Documentation
     url: >-
       https://developers.facebook.com/docs/instagram-platform/instagram-api-with-instagram-login
   - type: GettingStarted
     url: >-
-      https://developers.facebook.com/docs/instagram-platform/instagram-api-with-instagram-login/getting-started
+      https://developers.facebook.com/docs/instagram-platform/instagram-api-with-instagram-login/get-started
   - type: APIReference
     url: https://developers.facebook.com/docs/instagram-api/reference
   - type: Authentication
@@ -115,8 +117,6 @@ apis:
       https://developers.facebook.com/docs/instagram-platform/instagram-api-with-instagram-login/business-login
   - type: Documentation
     url: https://developers.facebook.com/docs/instagram-api/
-  - type: GettingStarted
-    url: https://developers.facebook.com/docs/instagram-api/getting-started
   - type: Authentication
     url: https://developers.facebook.com/docs/instagram-api/overview#authentication
   - type: ChangeLog
@@ -125,19 +125,21 @@ apis:
   name: Instagram Hashtags API
   description: Hashtag search and media discovery
   humanURL: >-
-    https://developers.facebook.com/docs/instagram-platform/instagram-api-with-instagram-login
-  baseURL: https://graph.instagram.com
+    https://developers.facebook.com/docs/instagram-platform/instagram-graph-api/reference/ig-hashtag-search
+  baseURL: https://graph.facebook.com
   tags:
   - Hashtags
   properties:
   - type: OpenAPI
     url: openapi/instagram-hashtags-api-openapi.yml
+  - type: Overlay
+    url: overlays/instagram-hashtags-api-overlay.yaml
   - type: Documentation
     url: >-
       https://developers.facebook.com/docs/instagram-platform/instagram-api-with-instagram-login
   - type: GettingStarted
     url: >-
-      https://developers.facebook.com/docs/instagram-platform/instagram-api-with-instagram-login/getting-started
+      https://developers.facebook.com/docs/instagram-platform/instagram-api-with-instagram-login/get-started
   - type: APIReference
     url: https://developers.facebook.com/docs/instagram-api/reference
   - type: Authentication
@@ -145,8 +147,6 @@ apis:
       https://developers.facebook.com/docs/instagram-platform/instagram-api-with-instagram-login/business-login
   - type: Documentation
     url: https://developers.facebook.com/docs/instagram-api/
-  - type: GettingStarted
-    url: https://developers.facebook.com/docs/instagram-api/getting-started
   - type: Authentication
     url: https://developers.facebook.com/docs/instagram-api/overview#authentication
   - type: ChangeLog
@@ -162,12 +162,14 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/instagram-insights-api-openapi.yml
+  - type: Overlay
+    url: overlays/instagram-insights-api-overlay.yaml
   - type: Documentation
     url: >-
       https://developers.facebook.com/docs/instagram-platform/instagram-api-with-instagram-login
   - type: GettingStarted
     url: >-
-      https://developers.facebook.com/docs/instagram-platform/instagram-api-with-instagram-login/getting-started
+      https://developers.facebook.com/docs/instagram-platform/instagram-api-with-instagram-login/get-started
   - type: APIReference
     url: https://developers.facebook.com/docs/instagram-api/reference
   - type: Authentication
@@ -175,8 +177,6 @@ apis:
       https://developers.facebook.com/docs/instagram-platform/instagram-api-with-instagram-login/business-login
   - type: Documentation
     url: https://developers.facebook.com/docs/instagram-api/
-  - type: GettingStarted
-    url: https://developers.facebook.com/docs/instagram-api/getting-started
   - type: Authentication
     url: https://developers.facebook.com/docs/instagram-api/overview#authentication
   - type: ChangeLog
@@ -192,12 +192,14 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/instagram-media-api-openapi.yml
+  - type: Overlay
+    url: overlays/instagram-media-api-overlay.yaml
   - type: Documentation
     url: >-
       https://developers.facebook.com/docs/instagram-platform/instagram-api-with-instagram-login
   - type: GettingStarted
     url: >-
-      https://developers.facebook.com/docs/instagram-platform/instagram-api-with-instagram-login/getting-started
+      https://developers.facebook.com/docs/instagram-platform/instagram-api-with-instagram-login/get-started
   - type: APIReference
     url: https://developers.facebook.com/docs/instagram-api/reference
   - type: Authentication
@@ -205,8 +207,6 @@ apis:
       https://developers.facebook.com/docs/instagram-platform/instagram-api-with-instagram-login/business-login
   - type: Documentation
     url: https://developers.facebook.com/docs/instagram-api/
-  - type: GettingStarted
-    url: https://developers.facebook.com/docs/instagram-api/getting-started
   - type: Authentication
     url: https://developers.facebook.com/docs/instagram-api/overview#authentication
   - type: ChangeLog
@@ -222,12 +222,14 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/instagram-mentions-api-openapi.yml
+  - type: Overlay
+    url: overlays/instagram-mentions-api-overlay.yaml
   - type: Documentation
     url: >-
       https://developers.facebook.com/docs/instagram-platform/instagram-api-with-instagram-login
   - type: GettingStarted
     url: >-
-      https://developers.facebook.com/docs/instagram-platform/instagram-api-with-instagram-login/getting-started
+      https://developers.facebook.com/docs/instagram-platform/instagram-api-with-instagram-login/get-started
   - type: APIReference
     url: https://developers.facebook.com/docs/instagram-api/reference
   - type: Authentication
@@ -235,8 +237,6 @@ apis:
       https://developers.facebook.com/docs/instagram-platform/instagram-api-with-instagram-login/business-login
   - type: Documentation
     url: https://developers.facebook.com/docs/instagram-api/
-  - type: GettingStarted
-    url: https://developers.facebook.com/docs/instagram-api/getting-started
   - type: Authentication
     url: https://developers.facebook.com/docs/instagram-api/overview#authentication
   - type: ChangeLog
@@ -252,12 +252,14 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/instagram-publishing-api-openapi.yml
+  - type: Overlay
+    url: overlays/instagram-publishing-api-overlay.yaml
   - type: Documentation
     url: >-
       https://developers.facebook.com/docs/instagram-platform/instagram-api-with-instagram-login
   - type: GettingStarted
     url: >-
-      https://developers.facebook.com/docs/instagram-platform/instagram-api-with-instagram-login/getting-started
+      https://developers.facebook.com/docs/instagram-platform/instagram-api-with-instagram-login/get-started
   - type: APIReference
     url: https://developers.facebook.com/docs/instagram-api/reference
   - type: Authentication
@@ -265,8 +267,6 @@ apis:
       https://developers.facebook.com/docs/instagram-platform/instagram-api-with-instagram-login/business-login
   - type: Documentation
     url: https://developers.facebook.com/docs/instagram-api/
-  - type: GettingStarted
-    url: https://developers.facebook.com/docs/instagram-api/getting-started
   - type: Authentication
     url: https://developers.facebook.com/docs/instagram-api/overview#authentication
   - type: ChangeLog
@@ -284,12 +284,14 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/instagram-users-api-openapi.yml
+  - type: Overlay
+    url: overlays/instagram-users-api-overlay.yaml
   - type: Documentation
     url: >-
       https://developers.facebook.com/docs/instagram-platform/instagram-api-with-instagram-login
   - type: GettingStarted
     url: >-
-      https://developers.facebook.com/docs/instagram-platform/instagram-api-with-instagram-login/getting-started
+      https://developers.facebook.com/docs/instagram-platform/instagram-api-with-instagram-login/get-started
   - type: APIReference
     url: https://developers.facebook.com/docs/instagram-api/reference
   - type: Authentication
@@ -297,13 +299,13 @@ apis:
       https://developers.facebook.com/docs/instagram-platform/instagram-api-with-instagram-login/business-login
   - type: Documentation
     url: https://developers.facebook.com/docs/instagram-api/
-  - type: GettingStarted
-    url: https://developers.facebook.com/docs/instagram-api/getting-started
   - type: Authentication
     url: https://developers.facebook.com/docs/instagram-api/overview#authentication
   - type: ChangeLog
     url: https://developers.facebook.com/docs/instagram-api/changelog
 common:
+  - type: Website
+    url: https://www.instagram.com/
   - type: CapabilityMap
     url: capabilities/instagram-capability-edges.yml
     name: Instagram Business Capability Map
@@ -321,8 +323,6 @@ common:
     url: https://www.linkedin.com/company/instagram
   - type: Portal
     url: https://developers.facebook.com/docs/instagram-platform
-  - type: GettingStarted
-    url: https://developers.facebook.com/docs/instagram-api/getting-started
   - type: Authentication
     url: https://developers.facebook.com/docs/instagram-api/overview#authentication
   - type: TermsOfService
@@ -330,7 +330,7 @@ common:
   - type: PrivacyPolicy
     url: https://www.facebook.com/privacy/explanation
   - type: StatusPage
-    url: https://developers.facebook.com/status/
+    url: https://metastatus.com/
   - type: ChangeLog
     url: https://developers.facebook.com/docs/instagram-api/changelog
   - type: Support
@@ -428,6 +428,94 @@ common:
     - name: Instagram Embedding
       description: oEmbed and embed tools for displaying Instagram content on third-party
         websites.
+  - type: GettingStarted
+    url: https://developers.facebook.com/docs/instagram-platform/instagram-api-with-instagram-login/get-started
+  - type: Documentation
+    url: https://developers.facebook.com/docs/instagram-platform
+  - type: APIReference
+    url: https://developers.facebook.com/docs/instagram-api/reference
+  - type: Login
+    url: https://developers.facebook.com/apps/
+  - type: Packages
+    url: packages/instagram-packages.yml
+  - type: SDKs
+    url: packages/instagram-packages.yml
+  - type: WellKnown
+    url: well-known/instagram-well-known.yml
+  - type: LLMsTxt
+    url: llms/instagram-llms.txt
+  - type: Conformance
+    url: conformance/instagram-conformance.yml
+  - type: ErrorCatalog
+    url: errors/instagram-problem-types.yml
+  - type: Lifecycle
+    url: lifecycle/instagram-lifecycle.yml
+  - type: Deprecation
+    url: lifecycle/instagram-lifecycle.yml
+  - type: Conventions
+    url: conventions/instagram-conventions.yml
+  - type: DataModel
+    url: data-model/instagram-data-model.yml
+  - type: Components
+    url: components/instagram-components.yml
+  - type: Sandbox
+    url: sandbox/instagram-sandbox.yml
+  - type: ChangeLog
+    url: changelog/instagram-changelog.yml
+  - type: Webhooks
+    url: asyncapi/instagram-webhooks.yml
+  - type: AgentSkill
+    url: skills/_index.yml
+  - type: VulnerabilityDisclosure
+    url: security/instagram-vulnerability-disclosure.yml
+  - type: Security
+    url: security/instagram-vulnerability-disclosure.yml
+  - type: RateLimits
+    url: rate-limits/instagram-rate-limits.yml
+  - type: Plans
+    url: plans/instagram-plans-pricing.yml
+  - type: FinOps
+    url: finops/instagram-finops.yml
+  - type: Vocabulary
+    url: vocabulary/instagram-vocabulary.yaml
+  - type: SpectralRules
+    url: rules/instagram-spectral-rules.yml
+  - type: JSONLDContext
+    url: json-ld/instagram-graph-api-context.jsonld
+  - type: JSONSchema
+    url: json-schema/instagram-graph-api-media-schema.json
+  - type: JSONSchema
+    url: json-schema/instagram-graph-api-comment-schema.json
+  - type: JSONSchema
+    url: json-schema/instagram-graph-api-user-schema.json
+  - type: JSONSchema
+    url: json-schema/instagram-graph-api-error-response-schema.json
+  - type: JSONStructure
+    url: json-structure/instagram-graph-api-media-structure.json
+  - type: Examples
+    url: examples/instagram-graph-api-media-example.json
+  - type: Examples
+    url: examples/instagram-graph-api-comment-example.json
+  - type: Examples
+    url: examples/instagram-graph-api-error-response-example.json
+  - type: PostmanCollection
+    url: collections/instagram-media-api.postman_collection.json
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
+x-enrichment:
+  date: '2026-08-29'
+  status: enriched
+  artifacts_added: 27
+  pass: local-v1
+x-coverage:
+  state: covered
+  reason: null
+  detail: >-
+    Full pass completed. Instagram publishes no OpenAPI, no llms.txt, no agent card and no MCP
+    server, but its documentation is fully readable and yielded searched artifacts for permissions,
+    errors, rate limits, versioning, webhooks, sandbox tooling, SDK registry currency and the
+    vulnerability disclosure program.
+  checked: '2026-08-29'
+x-parent: meta
+x-relationship: product

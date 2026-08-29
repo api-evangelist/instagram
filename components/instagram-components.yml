@@ -1,0 +1,76 @@
+generated: '2026-08-29'
+method: searched
+source:
+- https://developers.facebook.com/docs/instagram-platform/oembed
+- https://developers.facebook.com/docs/facebook-login/web
+description: >-
+  Client-side and embeddable surfaces Instagram publishes for third-party sites. These are distinct
+  from the server-side SDKs in packages/ - they run in the visitor's browser and require no API
+  credential.
+families:
+- name: Instagram Embeds
+  description: >-
+    Blockquote-plus-script embeds for posts, reels, videos and profiles. The markup is returned by
+    the oEmbed endpoint or copied from the Instagram UI; the loader script rewrites it into an iframe.
+  auth_required: false
+  components:
+  - name: Post embed
+    markup: '<blockquote class="instagram-media" data-instgrm-permalink="...">'
+    loader: https://www.instagram.com/embed.js
+    note: Renders a single feed post, reel or video.
+  - name: Reel embed
+    markup: '<blockquote class="instagram-media" data-instgrm-permalink=".../reel/...">'
+    loader: https://www.instagram.com/embed.js
+  - name: Profile embed
+    note: Renders an account header card.
+    loader: https://www.instagram.com/embed.js
+- name: oEmbed
+  description: >-
+    Server-side companion to the embeds - returns the embed HTML plus metadata for a permalink,
+    following the oEmbed 1.0 specification.
+  auth_required: false
+  components:
+  - name: instagram_oembed
+    endpoint: https://graph.facebook.com/{version}/instagram_oembed
+    params:
+    - url (required) - the Instagram permalink
+    - maxwidth
+    - fields
+    - omitscript
+    - hidecaption
+    returns: version, provider_name, provider_url, type, width, height, html, thumbnail_url, author_name
+    note: >-
+      Anonymous since 2026-05-15 and verified live on 2026-08-29 (HTTP 200 with no access token).
+      This is the only Instagram endpoint callable with no credential at all.
+- name: Facebook Login for the Web (JavaScript SDK)
+  description: >-
+    Browser SDK that runs the OAuth flow for Instagram API with Facebook Login and holds the
+    resulting token in the page.
+  auth_required: true
+  components:
+  - name: Facebook JavaScript SDK
+    loader: https://connect.facebook.net/en_US/sdk.js
+    versioned: false
+    note: >-
+      The loader URL is UNPINNED - it always serves the current build, so a consumer cannot tell
+      which version they are running and cannot roll back. Meta versions the API in the FB.init()
+      call (version: 'v26.0'), not in the script URL.
+  - name: Login Button (fb:login-button XFBML)
+    description: Declarative login button rendered by the JS SDK.
+loaders:
+- url: https://www.instagram.com/embed.js
+  status: 200
+  probed: '2026-08-29'
+  pinned: false
+  note: Unpinned, floats to latest. Size ~106KB at probe time.
+- url: https://connect.facebook.net/en_US/sdk.js
+  status: 200
+  probed: '2026-08-29'
+  pinned: false
+  note: >-
+    Unpinned, floats to latest. Locale is part of the path (en_US). No integrity hash is published,
+    so subresource integrity cannot be used.
+gaps:
+- No web components, no React/Vue component library, no design system, no npm-distributed embed
+  package. The embed loaders are unversioned script tags only.
+- No embedded dashboard or hosted analytics surface for third parties.

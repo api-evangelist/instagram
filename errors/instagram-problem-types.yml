@@ -1,0 +1,172 @@
+generated: '2026-08-29'
+method: searched
+source: https://developers.facebook.com/docs/graph-api/guides/error-handling/
+description: >-
+  Instagram Platform errors are Meta Graph API errors. The envelope is Meta's own, not RFC 9457
+  problem+json, and it is returned with content-type application/json.
+format: meta-graph-error
+rfc9457: false
+rfc9457_note: >-
+  Meta does not implement RFC 9457 / RFC 7807. There is no type URI, no title, no instance, and
+  no application/problem+json media type. The equivalent discriminator is the (code, error_subcode)
+  pair inside the error object.
+envelope:
+  media_type: application/json
+  shape:
+    error:
+      message: Human-readable description of the error.
+      type: Exception class, e.g. OAuthException, IGApiException, GraphMethodException.
+      code: Integer error code - the primary discriminator.
+      error_subcode: Integer subcode narrowing the cause. Optional.
+      error_user_title: Short title safe to show an end user. Optional.
+      error_user_msg: Message safe to show an end user. Optional. Prefer this over `message` in any UI.
+      fbtrace_id: Opaque request trace id. Include it in every support report.
+  example: |
+    {
+      "error": {
+        "message": "Message describing the error",
+        "type": "OAuthException",
+        "code": 190,
+        "error_subcode": 460,
+        "error_user_title": "A title",
+        "error_user_msg": "A message",
+        "fbtrace_id": "REDACTED_TRACE_ID"
+      }
+    }
+  http_status_note: >-
+    Meta does not document a code-to-HTTP-status mapping. Observed live on 2026-08-29:
+    graph.instagram.com and graph.facebook.com return HTTP 400 for authentication and
+    unknown-path errors, so the HTTP status is NOT a reliable discriminator - an agent must read
+    error.code.
+in_spec_coverage:
+  note: >-
+    The OpenAPI definitions in openapi/ declare only 200 responses across all 25 operations. None
+    of the error codes below is expressed in the contract, so this catalog is docs-derived and is
+    the only machine-readable error surface for this provider.
+  operations_with_4xx_or_5xx: 0
+  operations_total: 25
+problem_types:
+- code: 1
+  type: API Unknown
+  meaning: Possible temporary downtime, or the requested API does not exist.
+  action: Retry the operation. If it persists, verify the endpoint exists in the version you are calling.
+  retryable: true
+- code: 2
+  type: API Service
+  meaning: Temporary issue due to downtime.
+  action: Wait and retry with exponential backoff.
+  retryable: true
+- code: 3
+  type: API Method
+  meaning: Capability or permission is missing for this method.
+  action: Verify the app has been granted the required permission and feature.
+  retryable: false
+- code: 4
+  type: API Too Many Calls
+  meaning: Application-level (app access token) platform rate limit reached.
+  action: Back off; inspect X-App-Usage; reduce request volume.
+  retryable: true
+  rate_limit: true
+- code: 10
+  type: API Permission Denied
+  meaning: Permission is either not granted or has been removed.
+  action: Re-request the permission through App Review / re-authorize the user.
+  retryable: false
+- code: 17
+  type: API User Too Many Calls
+  meaning: User-level (user access token) rate limit reached.
+  action: Back off per user; inspect X-App-Usage; spread load across users.
+  retryable: true
+  rate_limit: true
+- code: 32
+  type: Page Level Throttling
+  meaning: Pages API rate limit reached.
+  action: Back off; inspect X-Business-Use-Case-Usage.
+  retryable: true
+  rate_limit: true
+- code: 102
+  type: API Session
+  meaning: Login status or access token has expired, been revoked, or is otherwise invalid.
+  action: Obtain a new access token; check error_subcode for the specific cause.
+  retryable: false
+- code: 190
+  type: Access token has expired
+  meaning: The access token is no longer valid.
+  action: Refresh or re-issue the token. Long-lived Instagram tokens must be refreshed before 60 days.
+  retryable: false
+  subcodes:
+  - subcode: 458
+    meaning: App not installed - the user has removed the app.
+    action: Re-authenticate the user.
+  - subcode: 459
+    meaning: User checkpointed - the user must resolve a security checkpoint.
+    action: Direct the user to log in at facebook.com / instagram.com.
+  - subcode: 460
+    meaning: Password changed - the token was invalidated by a credential change.
+    action: Re-authenticate the user.
+  - subcode: 463
+    meaning: Token expired.
+    action: Obtain a new access token.
+  - subcode: 464
+    meaning: Unconfirmed user.
+    action: Direct the user to confirm their account.
+  - subcode: 467
+    meaning: Invalid access token.
+    action: Obtain a new access token.
+  - subcode: 492
+    meaning: Invalid session - the user lacks the appropriate Page role.
+    action: Grant the user a task role on the connected Facebook Page.
+- code: 200
+  code_range: 200-299
+  type: API Permission
+  meaning: Family of permission errors - a required permission was not granted or was revoked.
+  action: Identify the specific permission from error_user_msg and re-request it.
+  retryable: false
+- code: 341
+  type: Application limit reached
+  meaning: Temporary throttling or downtime.
+  action: Wait and retry; review call volume.
+  retryable: true
+  rate_limit: true
+- code: 368
+  type: Temporarily blocked for policies violations
+  meaning: The acting account or app has tripped a policy enforcement.
+  action: Wait and retry. Repeated occurrences require a policy review, not a code change.
+  retryable: true
+- code: 506
+  type: Duplicate Post
+  meaning: Duplicate posts cannot be published consecutively.
+  action: >-
+    Change the content and resubmit. This is the closest thing the Instagram Publishing API has to
+    a de-duplication guard - see conventions/ for why it is not idempotency.
+  retryable: false
+- code: 613
+  type: Calls to this API have exceeded the rate limit
+  meaning: A custom rate limit was exceeded.
+  action: Back off; inspect X-Business-Use-Case-Usage.
+  retryable: true
+  rate_limit: true
+- code: 1609005
+  type: Error posting link
+  meaning: A link in the post could not be scraped.
+  action: Verify the URL resolves publicly and retry.
+  retryable: true
+buc_rate_limit_codes:
+  note: >-
+    Business Use Case rate limit errors carry codes in the 80000 block. The Instagram Platform is a
+    BUC-limited surface.
+  codes:
+  - code: 80000
+    meaning: Ads Insights BUC rate limit.
+  - code: 80001
+    meaning: Pages (Page or System User token) BUC rate limit.
+  - code: 80002
+    meaning: Custom Audience BUC rate limit.
+  - code: 80004
+    meaning: Ads Management BUC rate limit.
+  - code: 80008
+    meaning: WhatsApp Business BUC rate limit.
+exception_types:
+- OAuthException
+- IGApiException
+- GraphMethodException

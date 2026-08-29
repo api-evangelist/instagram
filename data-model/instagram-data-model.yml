@@ -1,0 +1,240 @@
+generated: '2026-08-29'
+method: derived
+source: openapi/
+description: >-
+  Entity graph derived from the components.schemas and the id-reference path parameters across the
+  seven OpenAPI definitions in openapi/. Instagram is a Meta Graph API surface, so the model is a
+  node-and-edge graph rather than a REST resource tree - every entity is addressed by a bare numeric
+  id at the host root (GET /{id}), and relationships are traversed as named edges (GET /{id}/{edge}).
+graph_shape:
+  addressing: node id at host root - /{node_id}
+  traversal: named edge - /{node_id}/{edge_name}
+  field_selection: ?fields= (sparse fieldsets, nested expansion supported)
+  id_type: numeric string, globally unique across Meta node types
+  id_prefixes: none - Instagram ids carry no type prefix, so an id alone does not tell you what it points at
+entities:
+- name: User
+  aka: IG User
+  schema: User
+  source_spec: openapi/instagram-users-api-openapi.yml
+  operations:
+  - getUser
+  - getBusinessDiscovery
+  - getUserMedia
+  - getUserStories
+  - getUserTags
+  - getUserInsights
+  - createMediaContainer
+  - publishMedia
+  - getContentPublishingLimit
+  fields:
+  - id
+  - username
+  - name
+  - biography
+  - website
+  - profile_picture_url
+  - followers_count
+  - follows_count
+  - media_count
+  relationships:
+  - type: has_many
+    target: Media
+    via: /{user_id}/media
+    operation: getUserMedia
+  - type: has_many
+    target: Media
+    via: /{user_id}/stories
+    operation: getUserStories
+    note: Stories are Media objects with a 24-hour lifetime.
+  - type: has_many
+    target: Media
+    via: /{user_id}/tags
+    operation: getUserTags
+    note: Media published by OTHER users in which this user is tagged - the mentions surface.
+  - type: has_many
+    target: Insight
+    via: /{user_id}/insights
+    operation: getUserInsights
+  - type: has_many
+    target: Container
+    via: /{user_id}/media (POST)
+    operation: createMediaContainer
+  - type: has_one
+    target: ContentPublishingLimit
+    via: /{user_id}/content_publishing_limit
+    operation: getContentPublishingLimit
+- name: Media
+  aka: IG Media
+  schema: Media
+  source_spec: openapi/instagram-hashtags-api-openapi.yml
+  operations:
+  - getMedia
+  - updateMedia
+  - deleteMedia
+  - getMediaChildren
+  - getMediaComments
+  - createComment
+  - getMediaInsights
+  fields:
+  - id
+  - caption
+  - media_type
+  - media_url
+  - thumbnail_url
+  - permalink
+  - shortcode
+  - timestamp
+  - like_count
+  - comments_count
+  - is_comment_enabled
+  - is_shared_to_feed
+  - alt_text
+  - username
+  relationships:
+  - type: belongs_to
+    target: User
+    via: username field (denormalised); the owning user id is implied by the access token, not returned
+    note: >-
+      A Media object does NOT carry an owner id field. An agent holding only a media id cannot
+      resolve its owner from the API - this is a real traversal gap in the graph.
+  - type: has_many
+    target: Media
+    via: /{media_id}/children
+    operation: getMediaChildren
+    note: Carousel children. Self-referential - a carousel Media contains child Media.
+  - type: has_many
+    target: Comment
+    via: /{media_id}/comments
+    operation: getMediaComments
+  - type: has_many
+    target: Insight
+    via: /{media_id}/insights
+    operation: getMediaInsights
+- name: Comment
+  aka: IG Comment
+  schema: Comment
+  source_spec: openapi/instagram-comments-api-openapi.yml
+  operations:
+  - getComment
+  - hideComment
+  - deleteComment
+  - getCommentReplies
+  - createCommentReply
+  fields:
+  - id
+  - text
+  - username
+  - timestamp
+  - like_count
+  - hidden
+  - parent_id
+  relationships:
+  - type: belongs_to
+    target: Media
+    via: implied by the /{media_id}/comments edge; not returned as a field
+  - type: belongs_to
+    target: Comment
+    via: parent_id
+    note: Self-referential - a reply carries the parent comment id. The one explicit id reference in the whole model.
+  - type: has_many
+    target: Comment
+    via: /{comment_id}/replies
+    operation: getCommentReplies
+- name: Container
+  aka: IG Container / creation_id
+  schema: ContainerResponse
+  request_schema: CreateContainerRequest
+  source_spec: openapi/instagram-publishing-api-openapi.yml
+  operations:
+  - createMediaContainer
+  - getContainer
+  - publishMedia
+  fields:
+  - id
+  request_fields:
+  - image_url
+  - video_url
+  - caption
+  - media_type
+  - is_carousel_item
+  - location_id
+  - user_tags
+  relationships:
+  - type: belongs_to
+    target: User
+    via: created on the /{user_id}/media edge
+  - type: becomes
+    target: Media
+    via: publishMedia consumes the container id as creation_id and returns a Media id
+    note: >-
+      A Container is a staged, unpublished Media. It expires after 24 hours if never published.
+      This is the only two-phase write in the model and the only stated reversibility window.
+- name: Hashtag
+  aka: IG Hashtag
+  schema: null
+  source_spec: openapi/instagram-hashtags-api-openapi.yml
+  operations:
+  - searchHashtag
+  - getHashtagTopMedia
+  - getHashtagRecentMedia
+  note: >-
+    No schema is declared for the Hashtag node itself; searchHashtag returns an id which is then
+    used to traverse the two media edges.
+  relationships:
+  - type: has_many
+    target: Media
+    via: /{hashtag_id}/top_media
+    operation: getHashtagTopMedia
+  - type: has_many
+    target: Media
+    via: /{hashtag_id}/recent_media
+    operation: getHashtagRecentMedia
+- name: Insight
+  schema: InsightsResponse
+  source_spec: openapi/instagram-insights-api-openapi.yml
+  operations:
+  - getUserInsights
+  - getMediaInsights
+  note: >-
+    Metric time series, not an addressable node. Returned as {data:[{name, period, values:[...]}]}
+    and queried with metric / period / since / until rather than by id.
+- name: BusinessDiscovery
+  schema: null
+  source_spec: openapi/instagram-users-api-openapi.yml
+  operations:
+  - getBusinessDiscovery
+  note: >-
+    Read-only projection of another professional account's public profile and media, reached as an
+    edge on the CALLER's user node (/{user_id}/business_discovery?username=...). The one place the
+    graph is traversed by username rather than by id.
+envelope_types:
+- name: Paging
+  schema: Paging
+  fields:
+  - cursors (before / after)
+  - next
+  - previous
+- name: MediaList
+  schema: MediaList
+  fields:
+  - data
+  - paging
+- name: CommentList
+  schema: CommentList
+  fields:
+  - data
+  - paging
+- name: SuccessResponse
+  schema: SuccessResponse
+  fields:
+  - success
+  note: Returned by mutations that have nothing to return - hide, delete.
+observations:
+- The model has almost no explicit foreign keys. Comment.parent_id is the only id-reference field
+  in any schema; every other relationship is expressed as a URL edge. An agent cannot reconstruct
+  the graph from a payload alone - it has to know the edge names.
+- Media carries no owner id, so ownership is not resolvable from a media id.
+- Four capabilities announced since 2026-04 (Audio, Collaborative Media, is_ai_generated, the new
+  engagement counters) are absent from these schemas - see changelog/instagram-changelog.yml.
+render: null

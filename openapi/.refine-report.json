@@ -21,6 +21,15 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
+  "notes": [
+    "instagram-comments-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "instagram-hashtags-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "instagram-insights-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "instagram-media-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "instagram-mentions-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "instagram-publishing-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "instagram-users-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
   "skipped": []
 }

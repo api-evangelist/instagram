@@ -1,19 +1,116 @@
-generated: '2026-07-11'
-method: derived
-source: openapi/instagram-graph-api.yaml
+generated: '2026-08-29'
+method: searched
+source:
+- https://developers.facebook.com/docs/instagram-platform/instagram-api-with-instagram-login/business-login
+- https://developers.facebook.com/docs/permissions
+- https://www.facebook.com/.well-known/openid-configuration
+- openapi/
+docs: https://developers.facebook.com/docs/instagram-platform/instagram-api-with-instagram-login/business-login
+description: >-
+  The Instagram Platform is OAuth 2.0 authorization code only. There is no API key, no basic auth,
+  no mTLS and no service account. Which of the two login models you pick determines the host, the
+  permission family, the token endpoints and which capabilities you can reach - they are not
+  interchangeable. Upgraded 2026-08-29 from a derivation off the OpenAPI securitySchemes to the
+  published Business Login reference, which supplied the Instagram Login endpoints and the token
+  lifetimes the specs do not carry.
 summary:
   types:
   - oauth2
   oauth2_flows:
   - authorizationCode
+  api_key: false
+  basic_auth: false
+  mutual_tls: false
+  openid_connect: partial
 schemes:
-- name: oauth2
+- name: oauth2-instagram-login
   type: oauth2
+  login_model: Instagram API with Instagram Login
+  base: https://graph.instagram.com
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://www.instagram.com/oauth/authorize
+    tokenUrl: https://api.instagram.com/oauth/access_token
+    longLivedTokenUrl: https://graph.instagram.com/access_token
+    refreshUrl: https://graph.instagram.com/refresh_access_token
+    scopes: 4
+  scope_family: instagram_business_*
+  scopes:
+  - instagram_business_basic
+  - instagram_business_content_publish
+  - instagram_business_manage_comments
+  - instagram_business_manage_messages
+  deprecated_scope_values:
+    deprecated_on: '2025-01-27'
+    replaced:
+    - business_basic
+    - business_content_publish
+    - business_manage_comments
+    - business_manage_messages
+  description: >-
+    Native Instagram authentication. The professional account authorizes directly; no Facebook Page
+    is involved. Cannot reach hashtag search or business discovery.
+- name: oauth2-facebook-login
+  type: oauth2
+  login_model: Instagram API with Facebook Login
+  base: https://graph.facebook.com
   flows:
   - flow: authorizationCode
     authorizationUrl: https://www.facebook.com/dialog/oauth
     tokenUrl: https://graph.facebook.com/oauth/access_token
-    scopes: 7
-  description: OAuth 2.0 authentication via Instagram Login or Facebook Login.
-  sources:
-  - openapi/instagram-graph-api.yaml
+    scopes: 15
+  scope_family: instagram_*
+  description: >-
+    Facebook Page-linked authentication. The Instagram professional account must be connected to a
+    Facebook Page and the user must hold a task role on that Page. Required for IG Hashtag Search
+    and Business Discovery.
+  openid_connect:
+    discovery_document: https://www.facebook.com/.well-known/openid-configuration
+    status: 200
+    saved: well-known/instagram-facebook-openid-configuration.json
+    issuer: https://www.facebook.com
+    jwks_uri: https://www.facebook.com/.well-known/oauth/openid/jwks/
+    id_token_signing_alg: RS256
+    subject_types: pairwise
+    response_types: [id_token, 'token id_token']
+    caveat: >-
+      The document omits token_endpoint and userinfo_endpoint, so it is not a complete OIDC
+      discovery document. Instagram Login publishes no discovery document at all and issues no
+      id_token.
+tokens:
+  authorization_code:
+    lifetime: 1 hour
+    single_use: true
+  short_lived_access_token:
+    lifetime: 1 hour
+    note: Exchange for a long-lived token immediately on receipt.
+  long_lived_access_token:
+    lifetime: 60 days
+    refreshable: true
+    refresh_endpoint: https://graph.instagram.com/refresh_access_token
+    note: >-
+      Refresh extends by another 60 days when conditions are met. An integration that goes quiet for
+      60 days loses the token permanently and has to re-authorize the user - the single most common
+      cause of a silently dead Instagram integration.
+  transport:
+  - preferred: 'Authorization: Bearer {access-token}'
+  - accepted: '?access_token={access-token}'
+  transport_note: >-
+    Meta accepts the token as a query parameter. That form leaks the credential into access logs,
+    proxy logs and Referer headers - use the header.
+  revocation:
+    user_initiated: >-
+      A user can remove the app from Instagram Settings > Apps and Websites, which invalidates the
+      token immediately (surfaced as error 190 subcode 458).
+    password_change: A credential change invalidates the token (error 190 subcode 460).
+authorization_model:
+  gate: App Review plus Business Verification, not payment
+  standard_access: permissions usable only against users holding a role on the app
+  advanced_access: permissions usable against any user, after per-permission App Review
+  detail: scopes/instagram-scopes.yml
+errors:
+  190: Access token expired, revoked or otherwise invalid. Read error_subcode for the cause.
+  102: Login status or access token has expired or been revoked.
+  10: Permission not granted or removed.
+  200-299: Permission family errors.
+  detail: errors/instagram-problem-types.yml

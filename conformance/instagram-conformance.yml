@@ -1,0 +1,144 @@
+generated: '2026-08-29'
+method: searched
+source:
+- https://developers.facebook.com/docs/instagram-platform/oembed
+- https://developers.facebook.com/docs/instagram-platform/webhooks
+- https://www.facebook.com/.well-known/openid-configuration
+- https://developers.facebook.com/docs/graph-api/guides/error-handling/
+- openapi/
+description: >-
+  Cross-cutting and domain-standard conformance for the Instagram Platform, asserted against the
+  contract and against live probes - not against marketing copy.
+standards:
+- id: oauth2
+  name: OAuth 2.0 (RFC 6749) authorization code grant
+  conforms: true
+  evidence: >-
+    Every OpenAPI in openapi/ declares components.securitySchemes.oauth2 with an authorizationCode
+    flow, authorizationUrl https://www.facebook.com/dialog/oauth and tokenUrl
+    https://graph.facebook.com/oauth/access_token. Instagram Login uses the parallel pair at
+    www.instagram.com/oauth/authorize and graph.instagram.com/oauth/access_token.
+- id: oidc
+  name: OpenID Connect Discovery 1.0
+  conforms: partial
+  evidence: >-
+    https://www.facebook.com/.well-known/openid-configuration returns HTTP 200 with a real discovery
+    document (issuer https://www.facebook.com, jwks_uri
+    https://www.facebook.com/.well-known/oauth/openid/jwks/, RS256, pairwise subject type,
+    response_types_supported ["id_token","token id_token"]). Saved verbatim to
+    well-known/instagram-facebook-openid-configuration.json.
+  caveat: >-
+    This applies to Facebook Login only, which is one of the two Instagram login models. Instagram
+    Login (graph.instagram.com) publishes NO discovery document and issues no id_token - it is plain
+    OAuth 2.0. The document also omits token_endpoint and userinfo_endpoint, so it is not a complete
+    OIDC discovery document.
+- id: oembed
+  name: oEmbed 1.0
+  conforms: true
+  domain_standard: true
+  evidence: >-
+    PROBED LIVE 2026-08-29 - GET https://graph.facebook.com/v26.0/instagram_oembed?url=... returned
+    HTTP 200 with a conformant oEmbed rich-type response
+    {"version":"1.0","provider_name":"Instagram","provider_url":"https://www.instagram.com/",
+    "type":"rich","width":658,"html":"..."} with NO access token supplied. The 2026-05-15 Instagram
+    Platform changelog entry confirms the endpoint was opened to anonymous callers.
+  spec: https://oembed.com/
+  note: >-
+    This is the only endpoint in the entire Instagram surface that is callable without
+    authentication, and the only one that implements a cross-vendor interoperability standard. Any
+    consumer that already speaks oEmbed integrates Instagram embeds with no bespoke connector.
+- id: websub
+  name: WebSub / PubSubHubbub verification handshake
+  conforms: partial
+  domain_standard: true
+  evidence: >-
+    The Instagram webhook subscription verification uses the WebSub hub parameter vocabulary
+    verbatim - Meta sends GET with hub.mode=subscribe, hub.challenge and hub.verify_token, and the
+    subscriber must echo hub.challenge. Source:
+    https://developers.facebook.com/docs/instagram-platform/webhooks
+  caveat: >-
+    Only the verification handshake follows WebSub. Delivery does not - payloads are Meta's own
+    {object, entry[], changes[]} envelope signed with X-Hub-Signature-256 (sha256=...), not a
+    WebSub content-distribution POST, and there is no hub Link header discovery.
+- id: rfc9457
+  name: RFC 9457 Problem Details for HTTP APIs
+  conforms: false
+  evidence: >-
+    Errors use Meta's proprietary {"error":{message,type,code,error_subcode,fbtrace_id}} envelope
+    with content-type application/json. No type URI, no title, no instance, no
+    application/problem+json. See errors/instagram-problem-types.yml.
+- id: rfc9331
+  name: RFC 9331 RateLimit header fields
+  conforms: false
+  evidence: >-
+    Rate limit state is signalled through proprietary JSON-in-a-header
+    (X-App-Usage, X-Business-Use-Case-Usage), not RateLimit-Limit / RateLimit-Remaining /
+    RateLimit-Reset, and not Retry-After. See rate-limits/instagram-rate-limits.yml.
+- id: rfc8594
+  name: RFC 8594 Sunset HTTP header
+  conforms: false
+  evidence: >-
+    Meta publishes a two-year calendar deprecation schedule but emits no Sunset or Deprecation
+    response header. Expiry is discoverable only from the published table. See
+    lifecycle/instagram-lifecycle.yml.
+- id: idempotency
+  name: Idempotency keys (draft-ietf-httpapi-idempotency-key-header)
+  conforms: false
+  evidence: >-
+    No Idempotency-Key header and no caller-supplied request id is documented anywhere in the
+    Instagram Platform. See conventions/instagram-conventions.yml.
+- id: pagination
+  name: Cursor pagination
+  conforms: true
+  evidence: >-
+    Consistent {data:[], paging:{cursors:{before,after}, next, previous}} envelope across every
+    collection edge; modelled by the Paging and MediaList/CommentList schemas in openapi/.
+- id: json-api
+  name: JSON:API
+  conforms: false
+  evidence: Response envelope is Meta's data/paging shape, not JSON:API's data/links/included with type+id resource objects.
+- id: odata
+  name: OData
+  conforms: false
+  evidence: No $metadata surface; ?fields= is Meta's own sparse-fieldset syntax, not $select.
+- id: scim
+  name: SCIM
+  conforms: false
+  evidence: No urn:ietf:params:scim:schemas:* URNs; there is no user-provisioning surface.
+- id: fapi
+  name: FAPI
+  conforms: false
+  evidence: Not a financial-grade surface; no mTLS, no PAR, no DPoP.
+- id: activitypub
+  name: ActivityPub
+  conforms: false
+  evidence: >-
+    Probed - no actor document, no /.well-known/webfinger, no AS2 content types. Instagram is not
+    part of the fediverse (unlike Meta's Threads, which is a separate product and a separate repo).
+domain_standard_conformance:
+  market: social media content publishing and syndication
+  standards_present:
+  - oembed
+  - websub
+  summary: >-
+    Instagram's market has exactly one widely-adopted interoperability standard - oEmbed, for
+    third-party embedding - and Instagram implements it conformantly and, since 2026-05-15,
+    anonymously. The webhook verification handshake additionally reuses the WebSub parameter
+    vocabulary. Everything else on the platform (auth beyond OAuth 2.0, errors, rate limits,
+    pagination, deprecation signalling) is Meta-proprietary, so a consumer needs a bespoke Meta
+    connector for all of it.
+compliance:
+  certifications_published: false
+  note: >-
+    Meta publishes no named certification (SOC 2, ISO 27001, PCI, HIPAA, FedRAMP) for the Instagram
+    Platform developer surface. The obligations that exist run the other way - Meta imposes the Data
+    Protection Assessment, Data Use Checkup, App Review and Business Verification on the DEVELOPER.
+    No Compliance pointer is emitted, because a compliance program a provider imposes on its
+    callers is not a certification the provider holds.
+  developer_obligations:
+  - name: App Review
+    url: https://developers.facebook.com/docs/app-review
+  - name: Business Verification
+    url: https://developers.facebook.com/docs/development/release/business-verification
+  - name: Meta Platform Terms
+    url: https://developers.facebook.com/terms

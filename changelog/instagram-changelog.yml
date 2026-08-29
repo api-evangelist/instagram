@@ -1,0 +1,82 @@
+generated: '2026-08-29'
+method: searched
+source: https://developers.facebook.com/docs/instagram-platform/changelog
+description: >-
+  Instagram publishes a dated, human-readable changelog on the developer portal, separate from the
+  Meta Graph API version changelog. There is no feed, no RSS, and no machine-readable form - it is
+  an HTML page keyed on dates.
+scheme:
+  versioning: Meta Graph API path versions (v{N}.0); Instagram changes are announced by date and mapped onto those versions.
+  current_graph_version: v26.0
+  current_graph_version_released: '2026-07-29'
+  machine_readable: false
+  feed_url: null
+changelog_urls:
+  instagram_platform: https://developers.facebook.com/docs/instagram-platform/changelog
+  graph_api: https://developers.facebook.com/docs/graph-api/changelog/
+entries:
+- date: '2026-06-22'
+  title: AI Info label
+  type: addition
+  breaking: false
+  highlight: >-
+    New is_ai_generated parameter on the Content Publishing API lets a publisher self-disclose
+    AI-generated content.
+- date: '2026-06-22'
+  title: Story Insights - link_clicks
+  type: addition
+  breaking: false
+  highlight: New link_clicks metric tracks taps on links within stories.
+- date: '2026-06-01'
+  title: Instagram Audio API
+  type: addition
+  breaking: false
+  highlight: >-
+    New capability to search and attach audio to Reels, covering royalty-free and original sounds.
+    Not represented in openapi/.
+- date: '2026-06-01'
+  title: IG Media media_audio_type field
+  type: addition
+  breaking: false
+  highlight: New media_audio_type field indicates whether media uses licensed music or original audio.
+- date: '2026-05-15'
+  title: oEmbed without an access token
+  type: addition
+  breaking: false
+  highlight: >-
+    "You can now call Instagram oEmbed API without an access token." Verified live 2026-08-29 -
+    GET https://graph.facebook.com/v26.0/instagram_oembed?url=... returned 200 anonymously.
+- date: '2026-05-06'
+  title: Multi-image messaging general availability
+  type: addition
+  breaking: false
+  highlight: Sending multiple images in a single Instagram Direct message exits beta for all accounts.
+- date: '2026-04-22'
+  title: Media engagement fields
+  type: addition
+  breaking: false
+  highlight: Three new IG Media fields - reposts_count, saved_count, shares_count.
+- date: '2026-04-22'
+  title: Aggregated cross-platform metrics
+  type: addition
+  breaking: false
+  highlight: New total_like_count, total_comments_count and total_views_count roll up engagement across surfaces.
+- date: '2026-04-22'
+  title: Enhanced views metrics
+  type: addition
+  breaking: false
+  highlight: facebook_views now supports additional media types and cross-app recommended content.
+- date: '2026-04-22'
+  title: Collaborative Media API
+  type: addition
+  breaking: false
+  highlight: >-
+    New endpoints retrieve media on which the app user is an accepted collaborator. Not represented
+    in openapi/.
+observations:
+- Every entry in the recent window is additive; no breaking change was announced in the captured
+  window. Breaking changes on this platform arrive through Graph API version expiry rather than
+  through the Instagram changelog.
+- Four capabilities announced since 2026-04 (Audio API, Collaborative Media, is_ai_generated,
+  the new engagement and aggregated-metric fields) have no representation in the OpenAPI
+  definitions in openapi/, which describe v21.0.

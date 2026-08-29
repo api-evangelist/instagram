@@ -1,0 +1,94 @@
+generated: '2026-08-29'
+method: searched
+source:
+- https://developers.facebook.com/docs/development/build-and-test/test-users
+- https://developers.facebook.com/docs/graph-api/overview/access-levels
+- https://developers.facebook.com/tools/explorer/
+description: >-
+  Meta ships no sandbox environment for the Instagram Platform. There is no test host, no test key
+  prefix, no test-vs-live mode switch, and no fixture data. Testing is done against PRODUCTION with
+  real Instagram professional accounts, constrained by the app's access level. This is a materially
+  weaker testing story than the payments-style sandbox the artifact type was designed for, and the
+  honest record of it is the finding.
+sandbox_environment:
+  exists: false
+  test_host: null
+  test_key_prefix: null
+  live_key_prefix: null
+  note: >-
+    graph.instagram.com and graph.facebook.com are the only hosts. An access token is an access
+    token - nothing in its shape tells a caller whether it is pointed at test data, because there
+    is no test data.
+access_levels:
+  note: >-
+    The nearest thing to a sandbox is the access-level model. A newly created app has Standard
+    Access, which confines every permission to users holding a role on the app - developer, tester
+    or admin. That is the de facto test mode.
+  levels:
+  - name: Standard Access
+    granted: automatically on app creation
+    scope: only users with a role on the app (admin, developer, tester)
+    cost: free
+    review_required: false
+  - name: Advanced Access
+    granted: through App Review
+    scope: any Instagram user
+    cost: free
+    review_required: true
+    additional_requirements:
+    - Business Verification (required since 2023-02-01)
+    - Live-mode app
+    - Published privacy policy
+    - Data deletion callback
+  source: https://developers.facebook.com/docs/graph-api/overview/access-levels
+test_users:
+  supported: partial
+  max_per_app: 10
+  created_via: App Dashboard > Roles > Test Users (up to 4 at a time), or the Graph API accounts/test-users edge
+  capabilities:
+  - assign permissions, locale and age
+  - generate access tokens
+  - establish friend connections
+  - rename, change password, delete
+  isolation: >-
+    Test users cannot interact with real users; their data is visible only to other test users and
+    to app admins. They are exempt from spam detection, so testing will not get them disabled.
+  caveat: >-
+    Meta's own documentation states it is "temporarily removing the ability for apps to create new
+    test users" - existing test users and those created for assessment keep working. As of
+    2026-08-29 a new integrator may not be able to create any. Test users are Facebook accounts,
+    and an Instagram professional account still has to be created and linked separately.
+  source: https://developers.facebook.com/docs/development/build-and-test/test-users
+instagram_testers:
+  supported: true
+  description: >-
+    A real Instagram account can be added to an app in the Roles > Roles > Instagram Testers
+    section; the account holder then accepts the invitation from the Instagram app under
+    Settings > Apps and Websites > Tester Invites. This is how a real professional account is
+    brought under Standard Access before App Review.
+tooling:
+- name: Graph API Explorer
+  url: https://developers.facebook.com/tools/explorer/
+  description: >-
+    Interactive console for composing Graph API calls, selecting permissions, and minting short-lived
+    user access tokens. It calls PRODUCTION - every request is real.
+- name: Access Token Debugger
+  url: https://developers.facebook.com/tools/debug/accesstoken/
+  description: Decodes a token to show its app, user, scopes, issue and expiry times.
+- name: Sharing Debugger
+  url: https://developers.facebook.com/tools/debug/
+  description: Re-scrapes a URL's Open Graph metadata; useful when error 1609005 (error posting link) fires.
+- name: Webhooks test-send
+  description: >-
+    The App Dashboard Webhooks product can send a sample payload to the configured callback for each
+    subscribed field, which is the only fixture data Meta provides anywhere on this platform.
+test_fixtures:
+  test_cards: null
+  test_accounts: null
+  magic_identifiers: null
+  time_simulation: false
+  note: >-
+    No test cards (not a payments API), no magic identifiers, no test clock, no time simulation. A
+    24-hour story cannot be fast-forwarded; a 24-hour publishing container cannot be expired on
+    demand; the 100-posts-per-24-hours publishing limit cannot be reset. Anything time-dependent has
+    to be tested in real time.

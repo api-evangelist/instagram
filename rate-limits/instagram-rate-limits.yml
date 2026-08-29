@@ -4,96 +4,180 @@ schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main
 provider: Instagram
 providerId: instagram
 created: '2026-05-04'
-# Provenance stamped 2026-08-11: this artifact was written by the API Evangelist
-# bulk sweep dated 2026-05-04, not harvested from the provider. See roadmap#35.
-method: generated
-modified: '2026-05-05'
+modified: '2026-08-29'
+generated: '2026-08-29'
+method: searched
+source: https://developers.facebook.com/docs/graph-api/overview/rate-limiting/
 reconciled: true
+# 2026-08-29: upgraded from method:generated (2026-05-04 bulk sweep) to method:searched, read from
+# the Meta rate-limiting reference. Four values in the prior version were wrong and are corrected
+# here: 80002 is Custom Audience (not Instagram), 80006 is not a documented code, and Meta
+# documents neither a 429 status nor a Retry-After header for Graph API throttling - observed live
+# 2026-08-29, throttled and error responses come back as HTTP 400 with the code in the body.
 tags:
   - Instagram
   - Meta
   - Social Media
   - Rate Limiting
-description: Instagram Platform inherits Meta Graph API rate limiting. Two regimes apply - Platform Rate
-  Limits (Graph API requests with app or user access tokens) and Business Use Case (BUC) Rate Limits
-  (Marketing API, Instagram Platform, Pages API requests with system / page tokens). Standard endpoints
-  are sized as "4800 * Number of Impressions" calls per 24-hour rolling window. Messaging and reply
-  endpoints have specific per-second / per-account limits. Throttling decisions are surfaced via X-App-Usage
-  and X-Business-Use-Case-Usage headers and via specific error codes.
+description: >-
+  The Instagram Platform inherits Meta Graph API rate limiting. Two regimes apply. Platform Rate
+  Limits govern Graph API calls made with an app or user access token and are signalled in
+  X-App-Usage. Business Use Case (BUC) Rate Limits govern the Instagram Platform, Marketing API and
+  Pages API and are signalled in X-Business-Use-Case-Usage. Instagram's own BUC budget is sized as
+  "4800 * Number of Impressions" calls per rolling 24 hours, per unique app-user pair. Messaging
+  endpoints carry their own per-second and per-hour caps. Content publishing carries a separate
+  100-posts-per-24-hours cap, which is the only limit with a dedicated read endpoint.
 sources:
-  - https://developers.facebook.com/docs/instagram-api/overview
-  - https://developers.facebook.com/docs/graph-api/overview/rate-limiting
+  - https://developers.facebook.com/docs/graph-api/overview/rate-limiting/
+  - https://developers.facebook.com/docs/instagram-platform/content-publishing
+  - https://developers.facebook.com/docs/graph-api/guides/error-handling/
 headers:
   appUsage: X-App-Usage
   businessUseCaseUsage: X-Business-Use-Case-Usage
-  retryAfter: Retry-After
+  adAccountUsage: X-Ad-Account-Usage
+  standardRateLimitHeaders: false
+  retryAfter: false
+headerShapes:
+  X-App-Usage:
+    call_count: percentage of the app's hourly call quota consumed (0-100)
+    total_time: percentage of the app's total-time quota consumed (0-100)
+    total_cputime: percentage of the app's CPU-time quota consumed (0-100)
+    note: >-
+      Whichever of the three is highest is the app's true current usage. Throttling engages when any
+      one reaches 100.
+  X-Business-Use-Case-Usage:
+    business-id: the business the usage is attributed to
+    call_count: percentage of the BUC call quota consumed
+    total_time: percentage of the BUC total-time quota consumed
+    total_cputime: percentage of the BUC CPU-time quota consumed
+    estimated_time_to_regain_access: seconds until access is restored
+    type: the business use case, e.g. ads_management
+    ads_api_access_tier: standard_access or advanced_access
+    note: >-
+      estimated_time_to_regain_access is the only machine-readable back-off hint Meta publishes -
+      there is no Retry-After header.
 responseCodes:
   appRateLimitReached: 4
   userRateLimitReached: 17
-  pageThrottled: 80001
-  instagramThrottled: 80002
-  messengerThrottled: 80006
-  throttled: 429
-  serviceUnavailable: 503
+  pageThrottled: 32
+  customRateLimitExceeded: 613
+  bucAdsInsights: 80000
+  bucPages: 80001
+  bucCustomAudience: 80002
+  bucAdsManagement: 80004
+  bucWhatsAppBusiness: 80008
+  applicationLimitReached: 341
+  httpStatus: >-
+    Meta documents no HTTP status mapping for throttling. Observed live 2026-08-29 - graph.instagram.com
+    and graph.facebook.com return HTTP 400 with the code in error.code. Do not branch on the status.
 limits:
-  - name: Platform Rate Limits (app token)
+  - name: Platform Rate Limits (app access token)
     scope: app
     metric: requests_per_hour
     limit: 200 * Number of Users
+    limitFormula: Calls within one hour = 200 * Number of Users
     timeFrame: hour
-    notes: Calls within one hour = 200 * Number of Users. X-App-Usage tracks call_count, total_cputime,
-      and total_time as percentages; throttling engages when any reaches 100.
+    burst: null
+    signalHeader: X-App-Usage
+    errorCode: 4
+    notes: >-
+      "Users" is measured by daily active users, adjusted against weekly and monthly patterns during
+      low-activity periods.
     applies:
       - Instagram Graph API
-  - name: Standard endpoints (rolling window)
-    scope: app
+      - Instagram API with Facebook Login
+  - name: Platform Rate Limits (user access token)
+    scope: user
+    metric: requests_per_hour
+    limit: undisclosed
+    timeFrame: hour
+    signalHeader: X-App-Usage
+    errorCode: 17
+    notes: >-
+      Per-user call counts are tracked across ALL applications the user has authorized, and Meta
+      declines to publish the value for privacy reasons. A well-behaved app can therefore be
+      throttled by another app's traffic against the same user.
+    applies:
+      - Instagram Graph API
+  - name: Instagram Platform Business Use Case limit
+    scope: app-user pair
     metric: requests_per_day
     limit: 4800 * Number of Impressions
-    timeFrame: day
-    notes: 24-hour rolling window. Applies to standard Instagram Platform endpoints.
+    limitFormula: Calls within 24 hours = 4800 * Number of Impressions
+    timeFrame: 24-hour rolling window
+    signalHeader: X-Business-Use-Case-Usage
+    notes: >-
+      Impressions are counted per unique app-user pair. A low-traffic account has a correspondingly
+      small budget, which is why per-media insights walks exhaust it fastest.
     applies:
       - Instagram Graph API
-  - name: Business Discovery / Hashtag Search
-    scope: app
-    metric: varies
-    limit: separate Platform Rate Limits apply per Business Use Case
-    applies:
-      - Instagram Business Discovery
+      - Instagram Insights
       - Instagram Hashtag Search
-  - name: Conversations API messaging
+      - Instagram Business Discovery
+  - name: Content publishing cap
+    scope: account
+    metric: posts_per_day
+    limit: 100
+    timeFrame: 24-hour rolling window
+    readEndpoint: GET /{ig-user-id}/content_publishing_limit
+    operationId: getContentPublishingLimit
+    notes: >-
+      A carousel counts as one post. Meta's guidance is that the app should enforce this itself,
+      particularly when offering scheduled posting. This is the only limit on the platform with a
+      dedicated read endpoint.
+    applies:
+      - Instagram Content Publishing API
+  - name: Conversations API
     scope: account
     metric: requests_per_second
     limit: 2
     timeFrame: second
     applies:
-      - Conversations / Messenger for Instagram
-  - name: Live replies
-    scope: account
+      - Messenger API for Instagram
+  - name: Send API (text, links, reactions)
+    scope: page
     metric: requests_per_second
-    limit: 100
+    limit: 300
     timeFrame: second
     applies:
-      - Conversations / Messenger for Instagram
-  - name: Post / reel replies
+      - Messenger API for Instagram
+  - name: Send API (audio, video)
+    scope: page
+    metric: requests_per_second
+    limit: 10
+    timeFrame: second
+    applies:
+      - Messenger API for Instagram
+  - name: Private Replies
     scope: account
     metric: requests_per_hour
     limit: 750
     timeFrame: hour
     applies:
-      - Conversations / Messenger for Instagram
+      - Messenger API for Instagram
 policies:
   - name: Backoff Strategy
-    description: When throttled, stop making calls (continued calls prolong recovery). Honor Retry-After
-      and recheck X-App-Usage / X-Business-Use-Case-Usage before resuming.
+    description: >-
+      When throttled, STOP calling - continued calls prolong the recovery window. There is no
+      Retry-After header; read estimated_time_to_regain_access from X-Business-Use-Case-Usage, or
+      back off exponentially against X-App-Usage.
   - name: Header-Driven Pacing
-    description: Read X-App-Usage and X-Business-Use-Case-Usage on every response and pace requests so
-      call_count, total_cputime, and total_time stay below 100.
+    description: >-
+      Read X-App-Usage and X-Business-Use-Case-Usage on every response and pace requests so
+      call_count, total_cputime and total_time all stay below 100. Take the maximum of the three as
+      true usage. Community guidance is to begin backing off at 80-90 percent.
   - name: Filter Aggressively
-    description: Use field expansion sparingly and request only needed fields to reduce CPU-time consumption
-      against the limit.
+    description: >-
+      Request only the fields you need via ?fields=. Broad field selection and deep nested expansion
+      inflate total_cputime, which throttles an app well before its call_count does.
+  - name: Enforce the publishing cap yourself
+    description: >-
+      Call getContentPublishingLimit before staging a container. A container that cannot be published
+      is wasted work and expires after 24 hours regardless.
   - name: App Review Gating
-    description: Higher-throughput access (Advanced Access) requires Meta App Review and Business Verification
-      rather than a paid tier upgrade.
+    description: >-
+      Higher-throughput access (Advanced Access) is obtained through Meta App Review and Business
+      Verification, not through a paid tier upgrade. There is no way to buy more quota.
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com

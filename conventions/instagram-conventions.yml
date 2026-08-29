@@ -1,0 +1,200 @@
+generated: '2026-08-29'
+method: searched
+source:
+- https://developers.facebook.com/docs/graph-api/guides
+- https://developers.facebook.com/docs/graph-api/results
+- https://developers.facebook.com/docs/graph-api/overview/rate-limiting/
+- openapi/
+description: >-
+  Cross-cutting runtime semantics for the Instagram Platform. Instagram inherits every convention
+  from the Meta Graph API: nodes and edges addressed by numeric id, sparse fieldsets via ?fields=,
+  cursor pagination, a custom error envelope, and OAuth 2.0 bearer tokens. Nothing here is
+  Instagram-specific except the permission names and the publishing container flow.
+auth:
+  style: OAuth 2.0 authorization code
+  token_transport:
+  - header: 'Authorization: Bearer {access-token}'
+  - query: '?access_token={access-token}'
+  note: >-
+    Meta accepts the token as a query parameter as well as a bearer header. The query form leaks
+    the credential into logs and referrers - prefer the header. The generated OpenAPI in openapi/
+    models the token as a securityScheme, but CreateContainerRequest also carries an access_token
+    body field, which mirrors the docs.
+  two_login_models:
+  - name: Instagram API with Instagram Login
+    base: https://graph.instagram.com
+    authorize: https://www.instagram.com/oauth/authorize
+    scopes_prefix: instagram_business_*
+  - name: Instagram API with Facebook Login
+    base: https://graph.facebook.com
+    authorize: https://www.facebook.com/dialog/oauth
+    scopes_prefix: instagram_*
+    note: >-
+      Required for hashtag search and business discovery - confirmed 2026-08-29 from the IG Hashtag
+      Search reference, which states "Available for the Instagram API with Facebook Login" and
+      samples https://graph.facebook.com/v25.0/ig_hashtag_search.
+  detail: authentication/instagram-authentication.yml
+  scopes: scopes/instagram-scopes.yml
+idempotency:
+  supported: false
+  header: null
+  note: >-
+    Meta documents no idempotency key for the Instagram Platform. There is no Idempotency-Key
+    header, no client-supplied request id, and no replay window. The nearest guard is error code
+    506 ("Duplicate posts cannot be published consecutively"), which is a content-equality check by
+    the server, not a caller-controlled idempotency contract - a caller cannot make a retry safe,
+    and cannot distinguish "already applied" from "rejected".
+  partial_mitigation: >-
+    The two-step publishing flow (POST /{user_id}/media returns a container id, then POST
+    /{user_id}/media_publish consumes it) means a retried container creation produces a NEW
+    container rather than a duplicate post, and only the publish step is genuinely at risk. The
+    container id is the closest available de-duplication token.
+  grade: absent
+pagination:
+  style: cursor
+  request_params:
+  - name: limit
+    description: Page size.
+  - name: after
+    description: Cursor - return results after this cursor.
+  - name: before
+    description: Cursor - return results before this cursor.
+  response_fields:
+    envelope: data
+    paging: paging
+    cursors: paging.cursors.after / paging.cursors.before
+    next: paging.next (absolute URL, pre-signed with the cursor)
+    previous: paging.previous
+  note: >-
+    Follow paging.next verbatim rather than reconstructing it. The Paging schema in
+    openapi/instagram-comments-api-openapi.yml models this shape.
+  time_based:
+    note: >-
+      Insights edges use since / until UNIX timestamps plus period rather than cursors.
+field_expansion:
+  supported: true
+  style: sparse fieldsets plus nested expansion
+  param: fields
+  example: '?fields=id,caption,media_type,media_url,timestamp,permalink'
+  nested_example: '?fields=comments{id,text,username},children{media_url}'
+  note: >-
+    Field selection is MANDATORY in practice - a bare node request returns only id and a small
+    default set. This is the single most common cause of "the API returned nothing" for new
+    integrators, and it is not expressible in the OpenAPI, which types `fields` as a free string.
+metadata:
+  supported: false
+  note: No customer-defined metadata/tags surface on Instagram nodes.
+request_tracing:
+  request_id_field: error.fbtrace_id
+  header: null
+  note: >-
+    fbtrace_id is returned only inside the error envelope, not as a response header on success.
+    There is no correlation id for a successful call, so a caller cannot tie a support ticket to a
+    2xx request.
+versioning:
+  scheme: path segment (/v26.0/)
+  detail: lifecycle/instagram-lifecycle.yml
+errors:
+  envelope: error.{message,type,code,error_subcode,error_user_title,error_user_msg,fbtrace_id}
+  rfc9457: false
+  detail: errors/instagram-problem-types.yml
+rate_limit_signaling:
+  headers:
+  - X-App-Usage
+  - X-Business-Use-Case-Usage
+  - X-Ad-Account-Usage
+  standard_headers: false
+  note: >-
+    Meta uses proprietary JSON-in-a-header signalling, not RFC 9331 RateLimit-* nor a plain
+    Retry-After. X-App-Usage carries {call_count,total_time,total_cputime} as percentages of the
+    limit; X-Business-Use-Case-Usage additionally carries estimated_time_to_regain_access in
+    seconds, which is the only machine-readable back-off hint the platform gives.
+  detail: rate-limits/instagram-rate-limits.yml
+dry_run_mode:
+  supported: false
+  note: >-
+    No preview/validate/dry-run mode. The nearest analogue is the publishing container - creating a
+    container (POST /{user_id}/media) validates the media and returns a container id WITHOUT
+    publishing, and the container can simply be abandoned. That is a rehearsal for the publish path
+    only; there is no equivalent for comments, moderation, or messaging.
+reversibility:
+  applicable: true
+  grade: documented
+  grade_basis: >-
+    Reversal operations exist and are documented for the moderation write surface, but Meta states
+    no window for any of them - no restore period after delete, no undo window on publish. Per the
+    0.12.0 rubric that is `documented` (reversal path present) and not `verified` (path plus a
+    stated window).
+  write_surfaces:
+  - operation: createComment
+    operationId: createComment
+    path: POST /{media_id}/comments
+    reversal: deleteComment
+    reversal_operationId: deleteComment
+    reversal_path: DELETE /{comment_id}
+    window: null
+    window_documented: false
+    note: A comment can be deleted at any time by the owning account. No stated retention or restore path once deleted.
+  - operation: hideComment
+    operationId: hideComment
+    path: POST /{comment_id}
+    reversal: unhide by setting hide=false on the same operation
+    reversal_operationId: hideComment
+    window: null
+    window_documented: false
+    note: >-
+      Hiding is the one genuinely two-way write on the platform - the same operation with hide=false
+      restores visibility. This is the safest moderation action for an agent to take.
+  - operation: deleteComment
+    operationId: deleteComment
+    path: DELETE /{comment_id}
+    reversal: none
+    window: null
+    window_documented: false
+    note: IRREVERSIBLE. There is no undelete. Prefer hideComment for anything an agent decides autonomously.
+  - operation: deleteMedia
+    operationId: deleteMedia
+    path: DELETE /{media_id}
+    reversal: none
+    window: null
+    window_documented: false
+    note: >-
+      IRREVERSIBLE. Deleting published media destroys the post, its permalink, its comments and its
+      accumulated insights. Requires instagram_manage_contents. This is the highest-consequence
+      operation in the catalog and should never be delegated without human confirmation.
+  - operation: publishMedia
+    operationId: publishMedia
+    path: POST /{user_id}/media_publish
+    reversal: deleteMedia (destructive, not an unpublish)
+    window: null
+    window_documented: false
+    note: >-
+      There is no unpublish. The only way to take a published post back is to delete it, which is
+      itself irreversible. Publishing is effectively a one-way door.
+  - operation: updateMedia
+    operationId: updateMedia
+    path: POST /{media_id}
+    reversal: re-issue updateMedia with the previous value
+    window: null
+    window_documented: false
+    note: >-
+      Toggling comment_enabled is reversible by the caller only if the caller recorded the prior
+      value first - the API returns no prior state and keeps no history.
+  - operation: createMediaContainer
+    operationId: createMediaContainer
+    path: POST /{user_id}/media
+    reversal: abandon the container (no publish call)
+    window: containers expire after 24 hours if not published
+    window_documented: true
+    window_source: https://developers.facebook.com/docs/instagram-platform/content-publishing
+    note: >-
+      The one write on the platform with a stated window - an unpublished container expires on its
+      own, so an abandoned container is self-cleaning.
+  read_only: false
+cross_links:
+  errors: errors/instagram-problem-types.yml
+  lifecycle: lifecycle/instagram-lifecycle.yml
+  authentication: authentication/instagram-authentication.yml
+  scopes: scopes/instagram-scopes.yml
+  rate_limits: rate-limits/instagram-rate-limits.yml
+  webhooks: asyncapi/instagram-webhooks.yml

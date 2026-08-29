@@ -1,0 +1,116 @@
+generated: '2026-08-29'
+method: searched
+source: https://developers.facebook.com/docs/instagram-platform/webhooks
+description: >-
+  Instagram publishes a real, documented webhook surface but ships NO AsyncAPI, no event-schema
+  registry, and no machine-readable event catalog. This artifact captures the webhook catalog
+  verbatim from the docs. It is deliberately NOT an AsyncAPI document - authoring one would mean
+  inventing payload schemas Meta does not publish.
+asyncapi_published: false
+asyncapi_probed:
+- url: https://developers.facebook.com/asyncapi.yaml
+  status: 404
+- url: https://graph.instagram.com/asyncapi.json
+  status: 400
+transport: HTTPS webhook callback (Meta Graph API Webhooks)
+subscription:
+  object: instagram
+  configured_in: Meta App Dashboard - Webhooks product, or via the Graph API subscriptions edge
+  callback_requirements:
+  - HTTPS endpoint with a valid TLS certificate
+  - Must respond 200 promptly; Meta retries on failure
+verification_handshake:
+  method: GET
+  params:
+  - name: hub.mode
+    value: subscribe
+  - name: hub.challenge
+    description: Integer the endpoint must echo back in the response body.
+  - name: hub.verify_token
+    description: The string configured in the App Dashboard; the endpoint must compare it before echoing.
+  standard: WebSub / PubSubHubbub parameter vocabulary
+signature:
+  header: X-Hub-Signature-256
+  algorithm: HMAC-SHA256 over the raw request body, keyed with the app secret
+  format: 'sha256={hex-digest}'
+  note: >-
+    Validate against the RAW body bytes before any JSON parsing or re-serialisation. Meta also
+    emits the legacy X-Hub-Signature (SHA1) header on some products; prefer the -256 form.
+envelope:
+  object: The object type the notification is about (e.g. instagram, user, page).
+  entry: Array batching notifications, potentially for multiple objects.
+  entry[].id: The id of the object the change belongs to.
+  entry[].time: UNIX timestamp of when the notification was sent.
+  entry[].changes: Array of {field, value} for field-level subscriptions.
+  entry[].changed_fields: Array of field names, when the subscription is configured for names only.
+  entry[].messaging: Array used by the messaging fields instead of changes.
+  ordering_note: >-
+    Meta does not guarantee ordering or exactly-once delivery. A subscriber must be idempotent on
+    (entry.id, entry.time, field) - and note that the Instagram REST surface itself offers no
+    idempotency mechanism to help, see conventions/instagram-conventions.yml.
+events:
+- field: comments
+  description: Notification when someone comments on the account's media objects.
+  category: engagement
+  related_operations:
+  - getMediaComments
+  - getComment
+  - hideComment
+  - deleteComment
+- field: live_comments
+  description: Real-time alerts for viewer comments during an active live broadcast.
+  category: engagement
+- field: mentions
+  description: Alert when a user references the account via an @ tag in a caption or comment.
+  category: engagement
+  related_operations:
+  - getUserTags
+- field: message_echoes
+  description: Confirmation of messages sent by the app itself to a user.
+  category: messaging
+- field: message_reactions
+  description: Notification of an emoji reaction to a sent message.
+  category: messaging
+- field: messages
+  description: Incoming direct message to the professional account.
+  category: messaging
+- field: messaging_handover
+  description: Transfer of conversation control between apps and systems (handover protocol).
+  category: messaging
+- field: messaging_optins
+  description: User opt-in event for messaging capabilities.
+  category: messaging
+- field: messaging_policy_enforcement
+  description: Policy violation notice affecting messaging functionality.
+  category: messaging
+- field: messaging_postbacks
+  description: Structured interaction response from a message button.
+  category: messaging
+- field: messaging_referral
+  description: Data emitted when a user reaches the account via a referral link or entry point.
+  category: messaging
+- field: messaging_seen
+  description: Read receipt indicating a message was seen.
+  category: messaging
+- field: response_feedback
+  description: User satisfaction rating on response quality.
+  category: messaging
+- field: standby
+  description: Notification that the app has entered standby mode in the handover protocol.
+  category: messaging
+- field: story_insights
+  description: Metrics for a story's first 24 hours, delivered before the story expires.
+  category: insights
+  related_operations:
+  - getMediaInsights
+  note: >-
+    This is the only way to capture story metrics - stories expire after 24 hours and the insights
+    are unrecoverable afterwards. A polling-only integration structurally loses this data.
+event_count: 15
+gaps:
+- No AsyncAPI or JSON Schema is published for any payload; a consumer must reverse-engineer each
+  value object from live traffic or from the per-field reference pages.
+- No replay or dead-letter surface. A missed delivery is lost; there is no backfill endpoint for
+  webhook events.
+- Delivery is at-least-once with no ordering guarantee, and the REST API offers no idempotency key
+  to make the subscriber's downstream writes safe.

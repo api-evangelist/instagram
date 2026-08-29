@@ -1,0 +1,49 @@
+generated: '2026-08-29'
+method: generated
+source: openapi/
+description: >-
+  Packaged Agent Skills for the Instagram Platform, generated from the OpenAPI definitions in
+  openapi/ plus the runtime semantics captured in conventions/, errors/, rate-limits/ and
+  asyncapi/. Every operationId referenced was verified against the specs in this repo. Meta
+  publishes no AGENTS.md or first-party skill pack - searched 2026-08-29.
+provider_published_skills: false
+skills:
+- name: instagram-publish-media
+  file: instagram-publish-media.md
+  api: instagram:instagram-publishing-api
+  operations:
+  - getContentPublishingLimit
+  - createMediaContainer
+  - getContainer
+  - publishMedia
+  consequence: write
+  human_in_the_loop: required at publishMedia
+- name: instagram-moderate-comments
+  file: instagram-moderate-comments.md
+  api: instagram:instagram-comments-api
+  operations:
+  - getMediaComments
+  - getComment
+  - getCommentReplies
+  - createComment
+  - createCommentReply
+  - hideComment
+  - deleteComment
+  consequence: write
+  human_in_the_loop: required at deleteComment
+- name: instagram-read-insights
+  file: instagram-read-insights.md
+  api: instagram:instagram-insights-api
+  operations:
+  - getUserInsights
+  - getMediaInsights
+  - getUserMedia
+  - getUserStories
+  consequence: read
+- name: instagram-embed-content
+  file: instagram-embed-content.md
+  api: instagram:instagram-oembed-api
+  operations:
+  - instagram_oembed
+  consequence: read
+  auth_required: false

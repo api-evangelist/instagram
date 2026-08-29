@@ -4,10 +4,17 @@ schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main
 provider: Instagram
 providerId: instagram
 created: '2026-05-04'
-# Provenance stamped 2026-08-11: this artifact was written by the API Evangelist
-# bulk sweep dated 2026-05-04, not harvested from the provider. See roadmap#35.
-method: generated
-modified: '2026-05-05'
+# 2026-08-29: upgraded from method:generated (2026-05-04 bulk sweep) to method:searched, read from
+# the Meta access-levels reference. Confirmed there: Standard Access is granted automatically on app
+# creation and confines every permission to users holding a role on the app; Advanced Access opens
+# them to any user and requires Business Verification (mandatory since 2023-02-01) plus per-permission
+# App Review. Meta's access-levels page states no monetary cost of any kind, and there is no paid
+# tier anywhere on the Instagram Platform - the gate is review, not money.
+method: searched
+modified: '2026-08-29'
+generated: '2026-08-29'
+source: https://developers.facebook.com/docs/graph-api/overview/access-levels
+plan_count: 2
 reconciled: true
 tags:
   - Instagram
@@ -20,8 +27,10 @@ description: The Instagram Platform APIs (Instagram Graph API, Instagram Login, 
   (required to serve non-owned accounts; needs App Review and Business Verification). There is no per-call
   fee; the only cost path is media storage / compute on the consuming app side.
 sources:
+  - https://developers.facebook.com/docs/graph-api/overview/access-levels
   - https://developers.facebook.com/docs/instagram-api/overview
-  - https://developers.facebook.com/docs/graph-api/overview/rate-limiting
+  - https://developers.facebook.com/docs/graph-api/overview/rate-limiting/
+  - https://developers.facebook.com/docs/app-review
 plans:
   - id: instagram-standard-access
     name: Standard Access

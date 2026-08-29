@@ -1,0 +1,81 @@
+generated: '2026-08-29'
+method: searched
+source: https://developers.facebook.com/docs/business-sdk
+description: >-
+  Meta does not ship an Instagram-only client library. The Instagram Platform (Instagram
+  Graph API / Instagram API with Instagram Login) is served by the Meta Business SDK, which
+  Meta describes as covering "the Marketing API as well as many Facebook APIs from different
+  platforms such as Pages, Business Manager, Instagram". The five packages below are the
+  first-party distributions, published by the `facebook` GitHub org and versioned in lockstep
+  with the Graph API version number (SDK v26.x == Graph API v26.0).
+notes:
+  - The SDK major version tracks the Graph API version, so the published version doubles as a
+    currency signal - the Node.js and Java distributions are behind the Python/Ruby/PHP ones.
+  - There is no first-party Instagram-specific SDK, CLI, or thin client. Instagram endpoints are
+    reached through the Business SDK's generic Graph nodes/edges or by plain HTTPS.
+packages:
+- name: facebook-nodejs-business-sdk
+  registry: npm
+  language: JavaScript
+  official: true
+  url: https://www.npmjs.com/package/facebook-nodejs-business-sdk
+  repository: https://github.com/facebook/facebook-nodejs-business-sdk
+  version: 24.0.1
+  published: '2025-11-21'
+  note: >-
+    Latest npm release corresponds to Graph API v24.0; Graph API v26.0 shipped 2026-07-29, so
+    the Node.js distribution trails the live API by two versions.
+- name: facebook-business
+  registry: pypi
+  language: Python
+  official: true
+  url: https://pypi.org/project/facebook-business/
+  repository: https://github.com/facebook/facebook-python-business-sdk
+  version: 26.0.1
+  published: '2026-08-25'
+  note: Current with Graph API v26.0.
+- name: facebookbusiness
+  registry: rubygems
+  language: Ruby
+  official: true
+  url: https://rubygems.org/gems/facebookbusiness
+  repository: https://github.com/facebook/facebook-ruby-business-sdk
+  version: 26.0.1
+  published: '2026-08-25'
+  note: Current with Graph API v26.0.
+- name: facebook/php-business-sdk
+  registry: packagist
+  language: PHP
+  official: true
+  url: https://packagist.org/packages/facebook/php-business-sdk
+  repository: https://github.com/facebook/facebook-php-business-sdk
+  version: 26.0.1
+  published: '2026-08-25'
+  note: Current with Graph API v26.0.
+- name: com.facebook.business.sdk:facebook-java-business-sdk
+  registry: maven
+  language: Java
+  official: true
+  url: https://central.sonatype.com/artifact/com.facebook.business.sdk/facebook-java-business-sdk
+  repository: https://github.com/facebook/facebook-java-business-sdk
+  version: 23.0.0
+  published: '2025-06-17'
+  note: >-
+    Latest Maven Central release corresponds to Graph API v23.0 (released 2025-05-29). Three
+    Graph API versions behind as of 2026-08-29 - the weakest currency signal in the set.
+registries_checked:
+- registry: npm
+  endpoint: https://registry.npmjs.org/facebook-nodejs-business-sdk
+  status: 200
+- registry: pypi
+  endpoint: https://pypi.org/pypi/facebook-business/json
+  status: 200
+- registry: rubygems
+  endpoint: https://rubygems.org/api/v1/gems/facebookbusiness.json
+  status: 200
+- registry: packagist
+  endpoint: https://repo.packagist.org/p2/facebook/php-business-sdk.json
+  status: 200
+- registry: maven
+  endpoint: https://search.maven.org/solrsearch/select?q=a:facebook-java-business-sdk
+  status: 200

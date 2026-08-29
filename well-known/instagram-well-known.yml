@@ -1,0 +1,126 @@
+generated: '2026-08-29'
+method: probed
+source: live GET probes of every apis.yml baseURL host, every OpenAPI servers[] host, the docs host, and the OAuth authorization host declared in the specs' oauth2 securityScheme
+description: >-
+  Probe of the standard /.well-known/ surface across every host in this repo. One real document
+  was served: the OpenID Connect discovery document at www.facebook.com. That host is in scope
+  because it is the authorization host the Instagram specs themselves declare - every Instagram
+  OpenAPI in openapi/ carries oauth2.flows.authorizationCode.authorizationUrl =
+  https://www.facebook.com/dialog/oauth - and it is the documented login path for "Instagram API
+  with Facebook Login".
+false_positives:
+  - host: www.instagram.com
+    note: >-
+      The Instagram web app answers HTTP 200 with a ~620KB single-page-app HTML shell for EVERY
+      /.well-known/* path, including agent-card.json, api-catalog, openid-configuration and
+      security.txt. None of these is a document; all are recorded as misses below with
+      status 200 and a note, per the SPA catch-all rule.
+  - host: graph.instagram.com
+    note: >-
+      Returns HTTP 400 with an IGApiException "Invalid OAuth 2.0 Access Token" JSON body for every
+      path, including /.well-known/*. The Graph host has no unauthenticated document surface.
+hosts:
+- host: www.facebook.com
+  role: OAuth 2.0 / OIDC authorization host for Instagram API with Facebook Login
+  documents:
+  - path: /.well-known/openid-configuration
+    status: 200
+    file: instagram-facebook-openid-configuration.json
+    note: >-
+      Real OIDC discovery document. issuer https://www.facebook.com, authorization_endpoint
+      https://facebook.com/dialog/oauth, jwks_uri https://www.facebook.com/.well-known/oauth/openid/jwks/,
+      RS256, pairwise subjects, id_token and "token id_token" response types.
+  - path: /.well-known/oauth-authorization-server
+    status: 400
+  - path: /.well-known/security.txt
+    status: 400
+  - path: /.well-known/api-catalog
+    status: 400
+  - path: /.well-known/ai-plugin.json
+    status: 400
+  - path: /.well-known/agent-card.json
+    status: 400
+- host: graph.instagram.com
+  role: Instagram Graph API base host (Instagram Login)
+  documents:
+  - path: /.well-known/security.txt
+    status: 400
+  - path: /.well-known/openid-configuration
+    status: 400
+  - path: /.well-known/oauth-authorization-server
+    status: 400
+  - path: /.well-known/api-catalog
+    status: 400
+  - path: /.well-known/ai-plugin.json
+    status: 400
+  - path: /.well-known/agent-card.json
+    status: 400
+  - path: /.well-known/agent.json
+    status: 400
+- host: graph.facebook.com
+  role: Instagram Graph API base host (Facebook Login) and oEmbed host
+  documents:
+  - path: /.well-known/security.txt
+    status: 400
+  - path: /.well-known/openid-configuration
+    status: 400
+  - path: /.well-known/oauth-authorization-server
+    status: 400
+  - path: /.well-known/api-catalog
+    status: 400
+  - path: /.well-known/ai-plugin.json
+    status: 400
+  - path: /.well-known/agent-card.json
+    status: 400
+  - path: /.well-known/agent.json
+    status: 400
+- host: developers.facebook.com
+  role: developer portal / documentation host
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404
+  - path: /.well-known/llms.txt
+    status: 404
+- host: www.instagram.com
+  role: consumer web app / oEmbed and embed.js origin
+  documents:
+  - path: /.well-known/security.txt
+    status: 200
+    note: SPA catch-all HTML shell, not a document. Treated as a miss.
+  - path: /.well-known/openid-configuration
+    status: 200
+    note: SPA catch-all HTML shell, not a document. Treated as a miss.
+  - path: /.well-known/oauth-authorization-server
+    status: 200
+    note: SPA catch-all HTML shell, not a document. Treated as a miss.
+  - path: /.well-known/api-catalog
+    status: 200
+    note: SPA catch-all HTML shell, not a document. Treated as a miss.
+  - path: /.well-known/agent-card.json
+    status: 200
+    note: SPA catch-all HTML shell, not a document. Treated as a miss.
+- host: api.instagram.com
+  role: legacy Instagram Basic Display / token exchange host
+  documents:
+  - path: /.well-known/openid-configuration
+    status: 500
+  - path: /.well-known/security.txt
+    status: 404
+security_txt:
+  served: false
+  note: >-
+    No RFC 9116 security.txt is served on any Instagram or Meta host probed. Meta runs its
+    vulnerability disclosure program at bugbounty.meta.com instead - captured in
+    security/instagram-vulnerability-disclosure.yml.

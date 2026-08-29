@@ -1,54 +1,171 @@
-generated: '2026-07-11'
-method: derived
-source: openapi/instagram-graph-api.yaml
+generated: '2026-08-29'
+method: searched
+source: https://developers.facebook.com/docs/permissions
+docs: https://developers.facebook.com/docs/permissions
+description: >-
+  Meta calls these "permissions", not scopes, but they are requested as OAuth 2.0 scopes in the
+  authorization request. Upgraded 2026-08-29 from a 7-scope derivation off the OpenAPI
+  securitySchemes to the full published reference - 19 instagram_* permissions plus the Facebook
+  Page permissions an Instagram-with-Facebook-Login app also needs. EVERY instagram_* permission
+  requires App Review to be used against accounts the app does not own.
 schemes:
 - name: oauth2
-  source: openapi/instagram-graph-api.yaml
+  source:
+  - openapi/
+  - https://developers.facebook.com/docs/permissions
   flows:
   - flow: authorizationCode
+    login_model: Instagram API with Facebook Login
     authorizationUrl: https://www.facebook.com/dialog/oauth
     tokenUrl: https://graph.facebook.com/oauth/access_token
-  description: OAuth 2.0 authentication via Instagram Login or Facebook Login.
+    base: https://graph.facebook.com
+    scope_family: instagram_*
+  - flow: authorizationCode
+    login_model: Instagram API with Instagram Login
+    authorizationUrl: https://www.instagram.com/oauth/authorize
+    tokenUrl: https://api.instagram.com/oauth/access_token
+    base: https://graph.instagram.com
+    scope_family: instagram_business_*
+  description: >-
+    OAuth 2.0 authorization code. Two parallel login models with two distinct permission families -
+    picking the wrong family for the host is the most common integration failure on this platform.
+access_levels:
+  standard: >-
+    Granted automatically on app creation. The permission may only be requested from users who hold
+    a role on the app (admin, developer, tester).
+  advanced: >-
+    Required to request the permission from any user. Needs App Review for the specific permission,
+    plus Business Verification.
+  source: https://developers.facebook.com/docs/graph-api/overview/access-levels
 scopes:
 - scope: instagram_basic
-  description: Read user profile and media.
-  flows:
-  - authorizationCode
-  sources:
-  - openapi/instagram-graph-api.yaml
+  description: Read an Instagram account profile's info and media.
+  family: facebook-login
+  app_review: true
+  flows: [authorizationCode]
 - scope: instagram_content_publish
-  description: Publish content on behalf of the user.
-  flows:
-  - authorizationCode
-  sources:
-  - openapi/instagram-graph-api.yaml
+  description: Create organic feed photo and video posts on behalf of a business user.
+  family: facebook-login
+  app_review: true
+  flows: [authorizationCode]
 - scope: instagram_manage_comments
-  description: Manage comments on media.
-  flows:
-  - authorizationCode
-  sources:
-  - openapi/instagram-graph-api.yaml
+  description: Create, delete and hide comments on behalf of the Instagram account linked to a Page.
+  family: facebook-login
+  app_review: true
+  flows: [authorizationCode]
 - scope: instagram_manage_insights
-  description: Access insights and analytics.
-  flows:
-  - authorizationCode
-  sources:
-  - openapi/instagram-graph-api.yaml
+  description: Get access to insights for the Instagram account linked to a Facebook Page.
+  family: facebook-login
+  app_review: true
+  flows: [authorizationCode]
 - scope: instagram_manage_messages
-  description: Manage Instagram Direct messages.
-  flows:
-  - authorizationCode
-  sources:
-  - openapi/instagram-graph-api.yaml
-- scope: pages_read_engagement
-  description: Read engagement data from pages.
-  flows:
-  - authorizationCode
-  sources:
-  - openapi/instagram-graph-api.yaml
+  description: Read and respond to Instagram Direct messages.
+  family: facebook-login
+  app_review: true
+  flows: [authorizationCode]
+- scope: instagram_manage_contents
+  description: Delete posts on behalf of an Instagram account linked to a Facebook Page.
+  family: facebook-login
+  app_review: true
+  flows: [authorizationCode]
+  note: This is the permission behind deleteMedia - the highest-consequence, irreversible operation in the catalog.
+- scope: instagram_manage_engagement
+  description: Publish or delete a Like on IG Media objects, Feed or Reels.
+  family: facebook-login
+  app_review: true
+  flows: [authorizationCode]
+- scope: instagram_manage_events
+  description: Log events on behalf of Instagram accounts.
+  family: facebook-login
+  app_review: true
+  flows: [authorizationCode]
+- scope: instagram_manage_upcoming_events
+  description: Read, create and update upcoming events on behalf of Instagram accounts.
+  family: facebook-login
+  app_review: true
+  flows: [authorizationCode]
+- scope: instagram_shopping_tag_products
+  description: Tag Instagram media with product tags and appeal product rejections.
+  family: facebook-login
+  app_review: true
+  flows: [authorizationCode]
+- scope: instagram_branded_content_ads_brand
+  description: Read Instagram posts where the app user's Instagram account is tagged as a paid partner.
+  family: facebook-login
+  app_review: true
+  flows: [authorizationCode]
+- scope: instagram_branded_content_brand
+  description: Add, remove and view creators from a specific brand's approved creators list.
+  family: facebook-login
+  app_review: true
+  flows: [authorizationCode]
+- scope: instagram_branded_content_creator
+  description: Read and change the boost status of a creator's specific piece of content.
+  family: facebook-login
+  app_review: true
+  flows: [authorizationCode]
+- scope: instagram_creator_marketplace_discovery
+  description: Discover content creators on Instagram Creator Marketplace.
+  family: facebook-login
+  app_review: true
+  flows: [authorizationCode]
+- scope: instagram_creator_marketplace_messaging
+  description: Get a brand's partnership conversations and a creator's messaging ID.
+  family: facebook-login
+  app_review: true
+  flows: [authorizationCode]
+- scope: instagram_business_basic
+  description: Read an Instagram Business account profile's info and media.
+  family: instagram-login
+  app_review: true
+  flows: [authorizationCode]
+- scope: instagram_business_content_publish
+  description: Create organic feed photo and video posts on behalf of a business user.
+  family: instagram-login
+  app_review: true
+  flows: [authorizationCode]
+- scope: instagram_business_manage_comments
+  description: Create, update and delete comments on Instagram business accounts.
+  family: instagram-login
+  app_review: true
+  flows: [authorizationCode]
+- scope: instagram_business_manage_messages
+  description: Access messages on an Instagram professional account.
+  family: instagram-login
+  app_review: true
+  flows: [authorizationCode]
+companion_scopes:
 - scope: pages_show_list
-  description: Show list of pages managed by user.
-  flows:
-  - authorizationCode
-  sources:
-  - openapi/instagram-graph-api.yaml
+  description: List the Facebook Pages a user manages - needed to find the Page an Instagram account is linked to.
+  family: facebook-login
+  required_for: Instagram API with Facebook Login
+- scope: pages_read_engagement
+  description: Read engagement data from Pages.
+  family: facebook-login
+  required_for: Instagram API with Facebook Login
+- scope: ads_management
+  description: Alternative to pages_read_engagement when Page access was granted through Business Manager.
+  family: facebook-login
+  required_for: IG Hashtag Search in some Business Manager configurations
+- scope: business_management
+  description: Alternative to pages_read_engagement when Page access was granted through Business Manager.
+  family: facebook-login
+  required_for: IG Hashtag Search in some Business Manager configurations
+features:
+- name: Instagram Public Content Access
+  description: >-
+    A FEATURE, not a permission, and a separate App Review item. Required in addition to
+    instagram_basic for IG Hashtag Search.
+  applies_to:
+  - searchHashtag
+  - getHashtagTopMedia
+  - getHashtagRecentMedia
+scope_count: 19
+observations:
+- The two permission families are not interchangeable. instagram_business_* only works with
+  Instagram Login at graph.instagram.com; instagram_* only works with Facebook Login at
+  graph.facebook.com.
+- Hashtag search and business discovery are reachable ONLY through Facebook Login, and hashtag
+  search additionally needs the Instagram Public Content Access feature approved.
+- Every single instagram_* permission requires App Review. There is no read-only tier an app can
+  self-serve into for other people's accounts.

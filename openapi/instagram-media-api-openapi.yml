@@ -1,4 +1,4 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   title: Instagram Graph Comments Media API
   description: The Instagram Graph API allows Instagram Professionals (Business and Creator accounts) to manage their presence on Instagram, including media publishing, comments, hashtags, mentions, insights, and messaging. Uses the Facebook Graph API infrastructure with OAuth 2.0 authentication.
@@ -284,6 +284,15 @@ components:
         username:
           type: string
           example: examplebusiness
+    MediaList:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Media'
+        paging:
+          $ref: '#/components/schemas/Paging'
     Paging:
       type: object
       properties:
@@ -308,15 +317,6 @@ components:
         success:
           type: boolean
           example: true
-    MediaList:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/Media'
-        paging:
-          $ref: '#/components/schemas/Paging'
   securitySchemes:
     oauth2:
       type: oauth2

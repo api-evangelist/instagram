@@ -1,0 +1,220 @@
+generated: '2026-08-29'
+method: derived
+source: openapi/
+status: candidate
+description: >-
+  Meta publishes NO official MCP server for Instagram - not remote, not stdio, not in any registry.
+  Searched 2026-08-29 across the Meta developer portal, the facebook and fbsamples GitHub orgs, npm
+  and PyPI. Everything on offer is third-party (jlbadano/ig-mcp, AleemHaider/instagram-mcp,
+  pipeboard-co/meta-ads-mcp, several hosted commercial wrappers), each of them a community wrapper
+  over the same Graph API this repo already describes. None is first-party, so none is recorded as
+  Instagram's agent surface and NO MCPServer pointer is emitted in apis.yml.
+  The tools[] below are a DERIVED candidate surface - what a first-party server would expose if Meta
+  shipped one, bound one-to-one to real operationIds in openapi/. They are a design input, not a
+  callable endpoint.
+deployment:
+  mode: none
+  endpoint: null
+  install: null
+  package: null
+  auth: oauth
+  verified: searched
+  note: >-
+    mode is none because no server exists to reach. auth records what a server WOULD need - the
+    Instagram Platform is OAuth 2.0 only, with per-permission App Review, which is also the reason
+    a hosted first-party server is hard for Meta to ship: the token is per-app and per-user, not
+    per-tenant.
+search_evidence:
+- query: official Meta / Instagram MCP server
+  date: '2026-08-29'
+  finding: >-
+    No official Instagram MCP server from Meta; every published server is community-built on the
+    Graph API and requires an Instagram professional (Business or Creator) account.
+- probed: https://developers.facebook.com/.well-known/oauth-protected-resource
+  status: 404
+- probed: https://graph.instagram.com/.well-known/oauth-authorization-server
+  status: 400
+third_party_servers:
+- name: jlbadano/ig-mcp
+  url: https://github.com/jlbadano/ig-mcp
+  official: false
+- name: AleemHaider/instagram-mcp
+  url: https://github.com/AleemHaider/instagram-mcp
+  official: false
+  note: 24 tools across profile/media, publishing, comments, DMs and insights.
+- name: pipeboard-co/meta-ads-mcp
+  url: https://github.com/pipeboard-co/meta-ads-mcp
+  official: false
+  note: Hosted remote MCP for Meta Ads (Facebook/Instagram); badged Meta Business Partner, not Meta-authored.
+candidate_tools:
+- name: instagram_get_user
+  description: Get an Instagram professional account's profile - username, biography, follower and media counts.
+  rest: getUser
+  consequence: read
+  scopes:
+  - instagram_business_basic
+- name: instagram_business_discovery
+  description: Look up another professional account's public profile and media by username.
+  rest: getBusinessDiscovery
+  consequence: read
+  scopes:
+  - instagram_basic
+  note: Requires Instagram API with Facebook Login.
+- name: instagram_list_media
+  description: List media published on the account, with cursor pagination.
+  rest: getUserMedia
+  consequence: read
+  scopes:
+  - instagram_business_basic
+- name: instagram_list_stories
+  description: List the account's active stories (24-hour lifetime).
+  rest: getUserStories
+  consequence: read
+  scopes:
+  - instagram_business_basic
+- name: instagram_get_media
+  description: Get a single media object by id.
+  rest: getMedia
+  consequence: read
+  scopes:
+  - instagram_business_basic
+- name: instagram_get_media_children
+  description: List the child media of a carousel.
+  rest: getMediaChildren
+  consequence: read
+  scopes:
+  - instagram_business_basic
+- name: instagram_list_tagged_media
+  description: List media published by other users in which this account is tagged.
+  rest: getUserTags
+  consequence: read
+  scopes:
+  - instagram_basic
+- name: instagram_list_comments
+  description: List comments on a media object.
+  rest: getMediaComments
+  consequence: read
+  scopes:
+  - instagram_business_manage_comments
+- name: instagram_get_comment
+  description: Get a single comment by id.
+  rest: getComment
+  consequence: read
+  scopes:
+  - instagram_business_manage_comments
+- name: instagram_list_comment_replies
+  description: List replies to a comment.
+  rest: getCommentReplies
+  consequence: read
+  scopes:
+  - instagram_business_manage_comments
+- name: instagram_search_hashtag
+  description: Resolve a hashtag name to a hashtag id.
+  rest: searchHashtag
+  consequence: read
+  scopes:
+  - instagram_basic
+  note: Requires Facebook Login plus the Instagram Public Content Access feature.
+- name: instagram_hashtag_top_media
+  description: List top media for a hashtag id.
+  rest: getHashtagTopMedia
+  consequence: read
+- name: instagram_hashtag_recent_media
+  description: List recent media for a hashtag id.
+  rest: getHashtagRecentMedia
+  consequence: read
+- name: instagram_account_insights
+  description: Get account-level metrics for a period.
+  rest: getUserInsights
+  consequence: read
+  scopes:
+  - instagram_manage_insights
+- name: instagram_media_insights
+  description: Get media-level metrics.
+  rest: getMediaInsights
+  consequence: read
+  scopes:
+  - instagram_manage_insights
+- name: instagram_get_publishing_limit
+  description: Check how much of the 100-posts-per-24-hours publishing quota is used.
+  rest: getContentPublishingLimit
+  consequence: read
+- name: instagram_get_container
+  description: Check the processing status of an unpublished media container.
+  rest: getContainer
+  consequence: read
+- name: instagram_create_container
+  description: Stage a photo, video, reel or carousel item for publishing. Does NOT publish.
+  rest: createMediaContainer
+  consequence: write
+  reversible: true
+  reversal: abandon - unpublished containers expire after 24 hours
+  scopes:
+  - instagram_business_content_publish
+- name: instagram_publish_media
+  description: Publish a staged container to the account's feed.
+  rest: publishMedia
+  consequence: write
+  reversible: false
+  human_in_the_loop: recommended
+  note: One-way door. The only way back is deleteMedia, which is itself irreversible.
+  scopes:
+  - instagram_business_content_publish
+- name: instagram_update_media
+  description: Update a published media object (e.g. toggle comments).
+  rest: updateMedia
+  consequence: write
+  reversible: true
+  reversal: re-issue with the prior value, which the caller must have recorded itself
+- name: instagram_delete_media
+  description: Delete a published media object.
+  rest: deleteMedia
+  consequence: write
+  reversible: false
+  human_in_the_loop: required
+  note: Destroys the post, its permalink, its comments and its accumulated insights. No undelete.
+  scopes:
+  - instagram_manage_contents
+- name: instagram_create_comment
+  description: Post a comment on a media object.
+  rest: createComment
+  consequence: write
+  reversible: true
+  reversal: deleteComment
+  scopes:
+  - instagram_business_manage_comments
+- name: instagram_reply_to_comment
+  description: Reply to a comment.
+  rest: createCommentReply
+  consequence: write
+  reversible: true
+  reversal: deleteComment
+  scopes:
+  - instagram_business_manage_comments
+- name: instagram_hide_comment
+  description: Hide or unhide a comment.
+  rest: hideComment
+  consequence: write
+  reversible: true
+  reversal: same operation with hide=false
+  note: The safest moderation action for an autonomous agent - fully two-way.
+  scopes:
+  - instagram_business_manage_comments
+- name: instagram_delete_comment
+  description: Delete a comment.
+  rest: deleteComment
+  consequence: write
+  reversible: false
+  human_in_the_loop: recommended
+  note: Prefer instagram_hide_comment for autonomous moderation.
+  scopes:
+  - instagram_business_manage_comments
+coverage:
+  operations_in_openapi: 25
+  candidate_tools: 25
+  unmapped_operations: 0
+gaps:
+- Messaging (Instagram Direct) is documented in apis.yml as an API entry but has no OpenAPI in
+  openapi/, so no candidate tool covers send/receive DMs.
+- The oEmbed endpoint has no OpenAPI either, though it is the one anonymous surface and the
+  easiest tool a server could ship.
