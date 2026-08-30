@@ -1,21 +1,19 @@
 ---
 kin_checks:
   slug: instagram
-  schema_version: 0.15.1
-  scored_at: '2026-08-28'
-  run_ts: 2026-08-28T221322
+  schema_version: 0.16.0
+  scored_at: '2026-08-29'
+  run_ts: 2026-08-29T230545
   note: Actionable checks only (missed + partial). earned/na are every other check
-    in rubric/scoring-0.15.1.yml; counts below let you verify that.
+    in rubric/scoring-0.16.0.yml; counts below let you verify that.
   counts:
     total: 130
-    earned: 43
-    partial: 12
-    missed: 51
+    earned: 59
+    partial: 14
+    missed: 33
     na: 24
   checks:
   - id: well_known_published
-    status: missed
-  - id: llms_txt_published
     status: missed
   - id: apis_json_self_hosted
     status: missed
@@ -37,8 +35,6 @@ kin_checks:
   - id: webhooks_or_callbacks
     status: missed
     detail: 0 of 7 openapi documents pass
-  - id: asyncapi_present
-    status: missed
   - id: json_schema_present
     status: missed
   - id: json_schema_per_resource
@@ -47,43 +43,20 @@ kin_checks:
     status: missed
   - id: domain_standard_conformance
     status: missed
-  - id: vocabulary_published
-    status: missed
-  - id: conformance_declared
-    status: missed
   - id: overlay_published
     status: missed
   - id: status_page_present
     status: missed
     detail: pointer liveness 0.0
-  - id: deprecation_policy
-    status: missed
-  - id: security_disclosure
-    status: missed
-  - id: webhooks_advertised
-    status: missed
   - id: roadmap_present
-    status: missed
-  - id: examples_published
-    status: missed
-  - id: getting_started_present
-    status: missed
-    detail: pointer liveness 0.0
-  - id: sdk_count_1
     status: missed
   - id: sdk_count_3
     status: missed
   - id: cli_present
     status: missed
-  - id: console_or_sandbox
-    status: missed
-  - id: agent_skill_present
-    status: missed
   - id: plans_multiple
     status: missed
   - id: pricing_link
-    status: missed
-  - id: sign_up_present
     status: missed
   - id: privacy_policy
     status: missed
@@ -92,8 +65,6 @@ kin_checks:
     status: missed
   - id: trust_center
     status: missed
-  - id: reg_vulnerability_disclosure
-    status: missed
   - id: reg_privacy_policy
     status: missed
     detail: pointer liveness 0.0
@@ -101,15 +72,7 @@ kin_checks:
     status: missed
   - id: reversibility_documented
     status: missed
-  - id: mcp_server
-    status: missed
   - id: idempotency
-    status: missed
-  - id: error_semantics
-    status: missed
-  - id: event_surface_described
-    status: missed
-  - id: agent_skills
     status: missed
   - id: well_known_catalog
     status: missed
@@ -154,10 +117,18 @@ kin_checks:
     status: partial
     earned: 2.5
     detail: 'authorship: derived'
+  - id: mcp_server
+    status: partial
+    earned: 4.8
+    detail: 'grade: documented'
   - id: auth_clarity
     status: partial
-    earned: 7.5
-    detail: 'grade: negotiable'
+    earned: 9.0
+    detail: 'grade: served'
+  - id: error_semantics
+    status: partial
+    earned: 4.0
+    detail: 'grade: documented'
   - id: rate_limit_signal
     status: partial
     earned: 3.5
