@@ -42,7 +42,7 @@ tags:
   - Meta
   - Photos
   - Social-Media
-  - Videos
+  - Video
   - Content Publishing
 tags_raw:
   - Instagram
@@ -84,7 +84,7 @@ apis:
   - type: Documentation
     url: https://developers.facebook.com/docs/instagram-platform/oembed
   tags:
-  - Embedding
+  - Embeddings
   - oEmbed
   - Social-Media
   tags_raw:
