@@ -11,8 +11,18 @@ capability_model:
   attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
     CC BY 4.0
   notice: NOTICE
-edge_count: 1
+edge_count: 2
 edges:
+- tag: Publishing
+  spec_file: instagram-publishing-api-openapi.yml
+  capability_id: BC-400.60
+  capability_id_l1: BC-400
+  capability_name: Digital Marketing Management
+  confidence: 0.75
+  evidence: POST /{user_id}/media_publish publishMedia 'Instagram Publish Media Container'; GET /{user_id}/content_publishing_limit
+  reason: Content publishing to a social channel for business accounts — social/digital marketing publishing.
+    Could arguably be Content Marketing distribution, hence not higher.
+  recovered_from: capability-edges-sweep.json
 - tag: Comments
   spec_file: instagram-comments-api-openapi.yml
   capability_id: BC-3780.40
