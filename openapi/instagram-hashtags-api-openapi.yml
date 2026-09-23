@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Instagram Graph Comments Hashtags API
+  title: Instagram Graph Hashtags API
   description: The Instagram Graph API allows Instagram Professionals (Business and Creator accounts) to manage their presence on Instagram, including media publishing, comments, hashtags, mentions, insights, and messaging. Uses the Facebook Graph API infrastructure with OAuth 2.0 authentication.
   version: '21.0'
   contact:
@@ -140,6 +140,33 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    Paging:
+      type: object
+      properties:
+        cursors:
+          type: object
+          properties:
+            before:
+              type: string
+              example: QVFIUjRtc2c5NEl0ajN3
+            after:
+              type: string
+              example: QVFIUmlKdXBzYWtyUml3
+        next:
+          type: string
+          description: URL to fetch next page.
+        previous:
+          type: string
+          description: URL to fetch previous page.
+    MediaList:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Media'
+        paging:
+          $ref: '#/components/schemas/Paging'
     Media:
       type: object
       properties:
@@ -192,33 +219,6 @@ components:
         username:
           type: string
           example: examplebusiness
-    MediaList:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/Media'
-        paging:
-          $ref: '#/components/schemas/Paging'
-    Paging:
-      type: object
-      properties:
-        cursors:
-          type: object
-          properties:
-            before:
-              type: string
-              example: QVFIUjRtc2c5NEl0ajN3
-            after:
-              type: string
-              example: QVFIUmlKdXBzYWtyUml3
-        next:
-          type: string
-          description: URL to fetch next page.
-        previous:
-          type: string
-          description: URL to fetch previous page.
   securitySchemes:
     oauth2:
       type: oauth2

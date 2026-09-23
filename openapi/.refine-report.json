@@ -1,13 +1,7 @@
 {
   "provider": "instagram",
   "sources": [
-    "instagram-comments-api-openapi.yml",
-    "instagram-hashtags-api-openapi.yml",
-    "instagram-insights-api-openapi.yml",
-    "instagram-media-api-openapi.yml",
-    "instagram-mentions-api-openapi.yml",
-    "instagram-publishing-api-openapi.yml",
-    "instagram-users-api-openapi.yml"
+    "_original/instagram-graph-api.yaml"
   ],
   "outputs": [
     "instagram-comments-api-openapi.yml",
@@ -22,14 +16,17 @@
   "errors": [],
   "warnings": [],
   "notes": [
-    "instagram-comments-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "instagram-hashtags-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "instagram-insights-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "instagram-media-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "instagram-mentions-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "instagram-publishing-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "instagram-users-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "instagram-graph-api.yaml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
     "apis.yml register: already-registered"
   ],
-  "skipped": []
+  "skipped": [
+    "instagram-comments-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "instagram-hashtags-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "instagram-insights-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "instagram-media-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "instagram-mentions-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "instagram-publishing-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "instagram-users-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
