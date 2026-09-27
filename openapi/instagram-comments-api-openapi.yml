@@ -265,12 +265,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    SuccessResponse:
-      type: object
-      properties:
-        success:
-          type: boolean
-          example: true
     Comment:
       type: object
       properties:
@@ -323,6 +317,12 @@ components:
         previous:
           type: string
           description: URL to fetch previous page.
+    SuccessResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+          example: true
   securitySchemes:
     oauth2:
       type: oauth2

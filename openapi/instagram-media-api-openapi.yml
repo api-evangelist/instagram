@@ -259,12 +259,6 @@ components:
             $ref: '#/components/schemas/Media'
         paging:
           $ref: '#/components/schemas/Paging'
-    SuccessResponse:
-      type: object
-      properties:
-        success:
-          type: boolean
-          example: true
     Media:
       type: object
       properties:
@@ -317,6 +311,12 @@ components:
         username:
           type: string
           example: examplebusiness
+    SuccessResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+          example: true
   securitySchemes:
     oauth2:
       type: oauth2

@@ -41,9 +41,10 @@ tags:
   - Instagram
   - Meta
   - Photos
-  - Social-Media
+  - Social Media
   - Video
   - Content Publishing
+  - Social
 tags_raw:
   - Instagram
   - Meta
@@ -51,6 +52,8 @@ tags_raw:
   - Social Media
   - Videos
   - Content Publishing
+  - Social-Media
+  - Social
 apis:
 - aid: instagram:instagram-messaging-api
   name: Instagram Messaging API
@@ -68,11 +71,12 @@ apis:
   tags:
   - Direct Messages
   - Messaging
-  - Social-Media
+  - Social Media
   tags_raw:
   - Direct Messages
   - Messaging
   - Social Media
+  - Social-Media
 - aid: instagram:instagram-oembed-api
   name: Instagram oEmbed API
   description: >-
@@ -86,11 +90,12 @@ apis:
   tags:
   - Embeddings
   - oEmbed
-  - Social-Media
+  - Social Media
   tags_raw:
   - Embedding
   - oEmbed
   - Social Media
+  - Social-Media
 - aid: instagram:instagram-comments-api
   name: Instagram Comments API
   description: Comment management and moderation
