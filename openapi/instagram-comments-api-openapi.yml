@@ -290,15 +290,12 @@ components:
         parent_id:
           type: string
           description: ID of the parent comment if this is a reply.
-    CommentList:
+    SuccessResponse:
       type: object
       properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/Comment'
-        paging:
-          $ref: '#/components/schemas/Paging'
+        success:
+          type: boolean
+          example: true
     Paging:
       type: object
       properties:
@@ -317,12 +314,15 @@ components:
         previous:
           type: string
           description: URL to fetch previous page.
-    SuccessResponse:
+    CommentList:
       type: object
       properties:
-        success:
-          type: boolean
-          example: true
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Comment'
+        paging:
+          $ref: '#/components/schemas/Paging'
   securitySchemes:
     oauth2:
       type: oauth2

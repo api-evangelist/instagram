@@ -232,6 +232,12 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    SuccessResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+          example: true
     Paging:
       type: object
       properties:
@@ -311,12 +317,6 @@ components:
         username:
           type: string
           example: examplebusiness
-    SuccessResponse:
-      type: object
-      properties:
-        success:
-          type: boolean
-          example: true
   securitySchemes:
     oauth2:
       type: oauth2

@@ -140,6 +140,33 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    MediaList:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Media'
+        paging:
+          $ref: '#/components/schemas/Paging'
+    Paging:
+      type: object
+      properties:
+        cursors:
+          type: object
+          properties:
+            before:
+              type: string
+              example: QVFIUjRtc2c5NEl0ajN3
+            after:
+              type: string
+              example: QVFIUmlKdXBzYWtyUml3
+        next:
+          type: string
+          description: URL to fetch next page.
+        previous:
+          type: string
+          description: URL to fetch previous page.
     Media:
       type: object
       properties:
@@ -192,33 +219,6 @@ components:
         username:
           type: string
           example: examplebusiness
-    MediaList:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/Media'
-        paging:
-          $ref: '#/components/schemas/Paging'
-    Paging:
-      type: object
-      properties:
-        cursors:
-          type: object
-          properties:
-            before:
-              type: string
-              example: QVFIUjRtc2c5NEl0ajN3
-            after:
-              type: string
-              example: QVFIUmlKdXBzYWtyUml3
-        next:
-          type: string
-          description: URL to fetch next page.
-        previous:
-          type: string
-          description: URL to fetch previous page.
   securitySchemes:
     oauth2:
       type: oauth2
