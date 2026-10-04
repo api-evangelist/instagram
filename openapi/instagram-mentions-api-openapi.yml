@@ -52,15 +52,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    MediaList:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/Media'
-        paging:
-          $ref: '#/components/schemas/Paging'
     Paging:
       type: object
       properties:
@@ -131,6 +122,15 @@ components:
         username:
           type: string
           example: examplebusiness
+    MediaList:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Media'
+        paging:
+          $ref: '#/components/schemas/Paging'
   securitySchemes:
     oauth2:
       type: oauth2

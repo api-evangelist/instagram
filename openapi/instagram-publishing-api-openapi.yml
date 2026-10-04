@@ -184,6 +184,13 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    ContainerResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The container ID.
+          example: '17889615691921648'
     CreateContainerRequest:
       type: object
       properties:
@@ -229,13 +236,6 @@ components:
                 type: number
         access_token:
           type: string
-    ContainerResponse:
-      type: object
-      properties:
-        id:
-          type: string
-          description: The container ID.
-          example: '17889615691921648'
   securitySchemes:
     oauth2:
       type: oauth2

@@ -232,12 +232,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    SuccessResponse:
-      type: object
-      properties:
-        success:
-          type: boolean
-          example: true
     Paging:
       type: object
       properties:
@@ -256,15 +250,6 @@ components:
         previous:
           type: string
           description: URL to fetch previous page.
-    MediaList:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/Media'
-        paging:
-          $ref: '#/components/schemas/Paging'
     Media:
       type: object
       properties:
@@ -317,6 +302,21 @@ components:
         username:
           type: string
           example: examplebusiness
+    MediaList:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Media'
+        paging:
+          $ref: '#/components/schemas/Paging'
+    SuccessResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+          example: true
   securitySchemes:
     oauth2:
       type: oauth2
