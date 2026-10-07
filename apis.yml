@@ -309,6 +309,8 @@ apis:
   - type: ChangeLog
     url: https://developers.facebook.com/docs/instagram-api/changelog
 common:
+  - type: Pricing
+    url: https://developers.facebook.com/docs/graph-api/overview/access-levels
   - type: Website
     url: https://www.instagram.com/
   - type: CapabilityMap
