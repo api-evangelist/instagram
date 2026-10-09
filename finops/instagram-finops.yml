@@ -128,10 +128,8 @@ apis:
 unitEconomics:
   - name: Calls per Active User
     metric: api_calls / active_users
-    target: TBD
   - name: BUC Burn-Rate per Business Account
     metric: buc_usage / ig_business_account
-    target: TBD
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
