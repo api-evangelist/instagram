@@ -81,3 +81,46 @@
     detected: '2026-10-22'
   status: not-a-workflow
   arazzo: null
+- slug: instagram-apis-guru-openapi-directory
+  label: APIs.guru OpenAPI Directory
+  partner: apis-guru
+  partner_name: APIs.guru OpenAPI Directory
+  category: API definition directory listing (OpenAPI)
+  type: register
+  channel: standard-directory
+  evidence: https://apis.guru/
+  source: edge
+  relationship: standard-participant
+  contract_reference:
+    register: APIs.guru OpenAPI Directory
+    spec_file: null
+    standard: APIs.guru OpenAPI Directory
+    role: listed-in-directory
+    directory_provider: instagram.com
+    matched_domain: instagram.com
+    matched_by: domain
+    apis_listed: 1
+    version_count: 1
+    first_added: '2015-08-05'
+    last_updated: '2021-06-30'
+    origin_publisher_hosted: false
+    origin_hosts:
+    - raw.githubusercontent.com
+    categories:
+    - media
+    - social
+    own_openapi_files: 7
+    listings:
+    - key: instagram.com
+      title: Instagram API
+      preferred: 1.0.0
+      versions: 1
+      swagger_url: https://api.apis.guru/v2/specs/instagram.com/1.0.0/swagger.json
+      origin_url: https://raw.githubusercontent.com/darklynx/swagger-api-collection/master/api/yaml/instagram.yaml
+      openapi_version: '2.0'
+    signal_note: 'participation only: a community directory listing (APIs.guru collects definitions; the provider
+      did not file them). Signals: version_count, apis_listed, origin_publisher_hosted.'
+    detected_by: sweep-openapi-directory-apis-guru.py
+    detected: '2026-10-22'
+  status: not-a-workflow
+  arazzo: null
