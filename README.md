@@ -1,4 +1,4 @@
-# Instagram (instagram)
+# Instagram
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -64,177 +64,253 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Instagram is a photo and video sharing social networking platform owned by Meta. The Instagram APIs allow developers to build integrations with Instagram Business and Creator accounts for content publishing, media management, comment moderation, hashtag discovery, insights and analytics, messaging, and embedding.
+Instagram is a photo and video sharing social networking platform owned by Meta. The Instagram APIs allow developers to build integrations with Instagram Business and Creator accounts for content publishing, media management, comment moderation, hashtag discovery, insights and analytics, messaging, and embedding. Available through the Meta Developer Platform with Facebook Login or Instagram Login authentication.
 
-**URL:** [Visit APIs.json URL](https://raw.githubusercontent.com/api-evangelist/instagram/refs/heads/main/apis.yml)
+**Areas:** Instagram · Meta · Photos · Social Media · Video · Content Publishing · Social
 
-**Run:** [Capabilities Using Naftiko](https://github.com/naftiko/fleet?utm_source=api-evangelist&utm_medium=readme&utm_campaign=company-api-evangelist&utm_content=repo)
+## Instagram on APIs.io
 
-## Tags:
+Everything profiled for Instagram is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/instagram/](https://apis.io/providers/instagram/)** — or go straight to one of the APIs or properties below.
 
- - Instagram, Meta, Photos, Social Media, Videos, Content Publishing
+### APIs (9)
 
-## Timestamps
+- [Instagram Messaging API](https://apis.io/apis/instagram/instagram-messaging-api/) — The Messenger API support for Instagram consolidates Instagram and Facebook Page messaging into a unified platform. Enables businesses and creators to…
+- [Instagram oEmbed API](https://apis.io/apis/instagram/instagram-oembed-api/) — The Instagram oEmbed endpoint returns HTML and metadata for embedding Instagram photos, videos, reels, and carousels on third-party websites using the…
+- [Instagram Comments API](https://apis.io/apis/instagram/instagram-comments-api/) — Comment management and moderation
+- [Instagram Hashtags API](https://apis.io/apis/instagram/instagram-hashtags-api/) — Hashtag search and media discovery
+- [Instagram Insights API](https://apis.io/apis/instagram/instagram-insights-api/) — Account and media level analytics
+- [Instagram Media API](https://apis.io/apis/instagram/instagram-media-api/) — Photos, videos, stories, reels, and carousels
+- [Instagram Mentions API](https://apis.io/apis/instagram/instagram-mentions-api/) — Content where account was mentioned
+- [Instagram Publishing API](https://apis.io/apis/instagram/instagram-publishing-api/) — Content creation and publishing workflow
+- [Instagram Users API](https://apis.io/apis/instagram/instagram-users-api/) — Instagram Business and Creator account profiles
 
-- **Created:** 2024-01-01
-- **Modified:** 2026-04-17
+### Published properties
 
-## APIs
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-### Instagram API with Instagram Login
-The Instagram API with Instagram Login enables access to Instagram Business and Creator accounts using Instagram native login flow. Supports media management, content publishing, comment handling, mention identification, messaging, insights, and webhooks.
+#### AsyncAPI (1)
 
-**Human URL:** [https://developers.facebook.com/docs/instagram-platform/instagram-api-with-instagram-login](https://developers.facebook.com/docs/instagram-platform/instagram-api-with-instagram-login)
+Event-driven and webhook contracts.
 
-#### Tags:
+- [Instagram Webhooks](https://apis.io/asyncapis/instagram/instagram-webhooks/)
 
- - Content Publishing, Instagram Login, Media, Messaging, Social Media
+#### MCP servers (1)
 
-#### Properties
+Model Context Protocol servers that expose the API to agents.
 
-- [Documentation](https://developers.facebook.com/docs/instagram-platform/instagram-api-with-instagram-login)
-- [Getting Started](https://developers.facebook.com/docs/instagram-platform/instagram-api-with-instagram-login/getting-started)
-- [API Reference](https://developers.facebook.com/docs/instagram-api/reference)
-- [Authentication](https://developers.facebook.com/docs/instagram-platform/instagram-api-with-instagram-login/business-login)
+- [instagram-mcp.yml](https://apis.io/servers/instagram/instagram-mcp-yml/)
 
-### Instagram API with Facebook Login
-The Instagram API with Facebook Login accesses Instagram Business and Creator accounts linked to Facebook Pages. Enables media retrieval and publishing, comment management, mention identification, hashtag-based media discovery, insights, and business metadata.
+#### Agentic access (1)
 
-**Human URL:** [https://developers.facebook.com/docs/instagram-api](https://developers.facebook.com/docs/instagram-api)
+Which operations an agent can call, which act, and which need a human in the loop.
 
-#### Tags:
+- [Instagram Agentic Access](https://apis.io/agentic-access/instagram/instagram-agentic-access/)
 
- - Content Publishing, Facebook Login, Hashtags, Media, Social Media
+#### JSON Schema (11)
 
-#### Properties
+The data models the API reads and writes.
 
-- [Documentation](https://developers.facebook.com/docs/instagram-api/)
-- [Getting Started](https://developers.facebook.com/docs/instagram-api/getting-started)
-- [API Reference](https://developers.facebook.com/docs/instagram-api/reference)
-- [Authentication](https://developers.facebook.com/docs/instagram-api/overview#authentication)
-- [Change Log](https://developers.facebook.com/docs/instagram-api/changelog)
+- [Comment](https://apis.io/schemas/instagram/instagram-graph-api-comment/)
+- [CommentList](https://apis.io/schemas/instagram/instagram-graph-api-comment-list/)
+- [ContainerResponse](https://apis.io/schemas/instagram/instagram-graph-api-container-response/)
+- [CreateContainerRequest](https://apis.io/schemas/instagram/instagram-graph-api-create-container-request/)
+- [ErrorResponse](https://apis.io/schemas/instagram/instagram-graph-api-error-response/)
+- [InsightsResponse](https://apis.io/schemas/instagram/instagram-graph-api-insights-response/)
+- [Media](https://apis.io/schemas/instagram/instagram-graph-api-media/)
+- [MediaList](https://apis.io/schemas/instagram/instagram-graph-api-media-list/)
+- [Paging](https://apis.io/schemas/instagram/instagram-graph-api-paging/)
+- [SuccessResponse](https://apis.io/schemas/instagram/instagram-graph-api-success-response/)
+- [User](https://apis.io/schemas/instagram/instagram-graph-api-user/)
 
-### Instagram Messaging API
-The Messenger API support for Instagram consolidates Instagram and Facebook Page messaging into a unified platform for managing conversations and automation.
+#### JSON Structure (11)
 
-**Human URL:** [https://developers.facebook.com/docs/instagram-platform/instagram-api-with-instagram-login/messaging-api](https://developers.facebook.com/docs/instagram-platform/instagram-api-with-instagram-login/messaging-api)
+Data models expressed in JSON Structure.
 
-#### Tags:
+- [Instagram Graph Api Comment List Structure](https://apis.io/json-structure/instagram/instagram-graph-api-comment-list-structure/)
+- [Instagram Graph Api Comment Structure](https://apis.io/json-structure/instagram/instagram-graph-api-comment-structure/)
+- [Instagram Graph Api Container Response Structure](https://apis.io/json-structure/instagram/instagram-graph-api-container-response-structure/)
+- [Instagram Graph Api Create Container Request Structure](https://apis.io/json-structure/instagram/instagram-graph-api-create-container-request-structure/)
+- [Instagram Graph Api Error Response Structure](https://apis.io/json-structure/instagram/instagram-graph-api-error-response-structure/)
+- [Instagram Graph Api Insights Response Structure](https://apis.io/json-structure/instagram/instagram-graph-api-insights-response-structure/)
+- [Instagram Graph Api Media List Structure](https://apis.io/json-structure/instagram/instagram-graph-api-media-list-structure/)
+- [Instagram Graph Api Media Structure](https://apis.io/json-structure/instagram/instagram-graph-api-media-structure/)
+- [Instagram Graph Api Paging Structure](https://apis.io/json-structure/instagram/instagram-graph-api-paging-structure/)
+- [Instagram Graph Api Success Response Structure](https://apis.io/json-structure/instagram/instagram-graph-api-success-response-structure/)
+- [Instagram Graph Api User Structure](https://apis.io/json-structure/instagram/instagram-graph-api-user-structure/)
 
- - Direct Messages, Messaging, Social Media
+#### JSON-LD (1)
 
-#### Properties
+Linked-data contexts for the provider's vocabulary.
 
-- [Documentation](https://developers.facebook.com/docs/instagram-platform/instagram-api-with-instagram-login/messaging-api)
+- [Instagram Graph Api Context](https://apis.io/jsonld/instagram/instagram-graph-api-context/)
 
-### Instagram oEmbed API
-The Instagram oEmbed endpoint returns HTML and metadata for embedding Instagram photos, videos, reels, and carousels on third-party websites.
+#### Vocabulary (1)
 
-**Human URL:** [https://developers.facebook.com/docs/instagram-platform/oembed](https://developers.facebook.com/docs/instagram-platform/oembed)
+The provider's domain terms, defined.
 
-#### Tags:
+- [Instagram Vocabulary](https://apis.io/vocabularies/instagram/instagram-vocabulary/)
 
- - Embedding, oEmbed, Social Media
+#### Examples (11)
 
-#### Properties
+Example requests and responses.
 
-- [Documentation](https://developers.facebook.com/docs/instagram-platform/oembed)
+- [Instagram Graph Api Comment Example](https://apis.io/examples/instagram/instagram-graph-api-comment-example/)
+- [Instagram Graph Api Comment List Example](https://apis.io/examples/instagram/instagram-graph-api-comment-list-example/)
+- [Instagram Graph Api Container Response Example](https://apis.io/examples/instagram/instagram-graph-api-container-response-example/)
+- [Instagram Graph Api Create Container Request Example](https://apis.io/examples/instagram/instagram-graph-api-create-container-request-example/)
+- [Instagram Graph Api Error Response Example](https://apis.io/examples/instagram/instagram-graph-api-error-response-example/)
+- [Instagram Graph Api Insights Response Example](https://apis.io/examples/instagram/instagram-graph-api-insights-response-example/)
+- [Instagram Graph Api Media Example](https://apis.io/examples/instagram/instagram-graph-api-media-example/)
+- [Instagram Graph Api Media List Example](https://apis.io/examples/instagram/instagram-graph-api-media-list-example/)
+- [Instagram Graph Api Paging Example](https://apis.io/examples/instagram/instagram-graph-api-paging-example/)
+- [Instagram Graph Api Success Response Example](https://apis.io/examples/instagram/instagram-graph-api-success-response-example/)
+- [Instagram Graph Api User Example](https://apis.io/examples/instagram/instagram-graph-api-user-example/)
 
-## Common Properties
+#### Collections (14)
 
-- [Portal](https://developers.facebook.com/docs/instagram-platform)
-- [Getting Started](https://developers.facebook.com/docs/instagram-api/getting-started)
-- [Authentication](https://developers.facebook.com/docs/instagram-api/overview#authentication)
-- [Terms of Service](https://developers.facebook.com/terms)
-- [Privacy Policy](https://www.facebook.com/privacy/explanation)
-- [Status Page](https://developers.facebook.com/status/)
-- [Change Log](https://developers.facebook.com/docs/instagram-api/changelog)
+Postman and Open Collection request collections.
+
+- [Instagram Graph Comments API](https://apis.io/collections/instagram/open-instagram-comments-api/)
+- [Instagram Graph Comments Hashtags API](https://apis.io/collections/instagram/open-instagram-hashtags-api/)
+- [Instagram Graph Comments Insights API](https://apis.io/collections/instagram/open-instagram-insights-api/)
+- [Instagram Graph Comments Media API](https://apis.io/collections/instagram/open-instagram-media-api/)
+- [Instagram Graph Comments Mentions API](https://apis.io/collections/instagram/open-instagram-mentions-api/)
+- [Instagram Graph Comments Publishing API](https://apis.io/collections/instagram/open-instagram-publishing-api/)
+- [Instagram Graph Comments Users API](https://apis.io/collections/instagram/open-instagram-users-api/)
+- [Instagram Graph Comments API](https://apis.io/collections/instagram/postman-instagram-comments-api/)
+- [Instagram Graph Comments Hashtags API](https://apis.io/collections/instagram/postman-instagram-hashtags-api/)
+- [Instagram Graph Comments Insights API](https://apis.io/collections/instagram/postman-instagram-insights-api/)
+- [Instagram Graph Comments Media API](https://apis.io/collections/instagram/postman-instagram-media-api/)
+- [Instagram Graph Comments Mentions API](https://apis.io/collections/instagram/postman-instagram-mentions-api/)
+- [Instagram Graph Comments Publishing API](https://apis.io/collections/instagram/postman-instagram-publishing-api/)
+- [Instagram Graph Comments Users API](https://apis.io/collections/instagram/postman-instagram-users-api/)
+
+#### Overlays (14)
+
+OpenAPI overlays, including conversational phrasing for each operation.
+
+- [Instagram Comments Api Overlay](https://apis.io/overlays/instagram/instagram-comments-api-overlay/)
+- [Instagram Comments Api Phrasing Overlay](https://apis.io/overlays/instagram/instagram-comments-api-phrasing-overlay/)
+- [Instagram Hashtags Api Overlay](https://apis.io/overlays/instagram/instagram-hashtags-api-overlay/)
+- [Instagram Hashtags Api Phrasing Overlay](https://apis.io/overlays/instagram/instagram-hashtags-api-phrasing-overlay/)
+- [Instagram Insights Api Overlay](https://apis.io/overlays/instagram/instagram-insights-api-overlay/)
+- [Instagram Insights Api Phrasing Overlay](https://apis.io/overlays/instagram/instagram-insights-api-phrasing-overlay/)
+- [Instagram Media Api Overlay](https://apis.io/overlays/instagram/instagram-media-api-overlay/)
+- [Instagram Media Api Phrasing Overlay](https://apis.io/overlays/instagram/instagram-media-api-phrasing-overlay/)
+- [Instagram Mentions Api Overlay](https://apis.io/overlays/instagram/instagram-mentions-api-overlay/)
+- [Instagram Mentions Api Phrasing Overlay](https://apis.io/overlays/instagram/instagram-mentions-api-phrasing-overlay/)
+- [Instagram Publishing Api Overlay](https://apis.io/overlays/instagram/instagram-publishing-api-overlay/)
+- [Instagram Publishing Api Phrasing Overlay](https://apis.io/overlays/instagram/instagram-publishing-api-phrasing-overlay/)
+- [Instagram Users Api Overlay](https://apis.io/overlays/instagram/instagram-users-api-overlay/)
+- [Instagram Users Api Phrasing Overlay](https://apis.io/overlays/instagram/instagram-users-api-phrasing-overlay/)
+
+#### Governance rules (2)
+
+Spectral rulesets for the provider's contracts.
+
+- [Instagram — jsonschema rules](https://apis.io/rules/instagram/instagram-jsonschema-spectral-rules/)
+- [Instagram API Rules](https://apis.io/rules/instagram/instagram-spectral-rules/)
+
+#### Security (3)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Instagram Authentication](https://apis.io/security/instagram/instagram-authentication/)
+- [Instagram Domain Security](https://apis.io/security/instagram/instagram-domain-security/)
+- [Instagram Vulnerability Disclosure](https://apis.io/security/instagram/instagram-vulnerability-disclosure/)
+
+#### OAuth scopes (1)
+
+The permissions the API asks for.
+
+- [Instagram Scopes](https://apis.io/scopes/instagram/instagram-scopes/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Instagram Plans Pricing](https://apis.io/plans/instagram/instagram-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Instagram Rate Limits](https://apis.io/rate-limits/instagram/instagram-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Instagram Finops](https://apis.io/finops/instagram/instagram-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://www.instagram.com/)
+- [Documentation](https://developers.facebook.com/docs/instagram-platform)
+- [Getting started](https://developers.facebook.com/docs/instagram-platform/instagram-api-with-instagram-login/get-started)
+- [API reference](https://developers.facebook.com/docs/instagram-api/reference)
+- [Pricing](https://developers.facebook.com/docs/graph-api/overview/access-levels)
 - [Support](https://developers.facebook.com/support)
+- [Changelog](https://developers.facebook.com/docs/instagram-api/changelog)
 - [Blog](https://developers.facebook.com/blog/)
-- [GitHub Organization](https://github.com/fbsamples)
+- [Terms of service](https://developers.facebook.com/terms)
+- [Privacy policy](https://www.facebook.com/privacy/explanation)
+- [GitHub](https://github.com/fbsamples)
+- [Status](https://metastatus.com/)
 
-## Features
+## API Evangelist rating
 
-| Name | Description |
-|------|-------------|
-| Content Publishing | Publish photos, videos, reels, carousels, and stories to Instagram Business and Creator accounts programmatically. |
-| Media Management | Retrieve, manage, and organize published media including photos, videos, stories, and albums. |
-| Comment Moderation | Read, reply to, hide, and delete comments on Instagram media for brand safety and engagement. |
-| Hashtag Discovery | Search for hashtags and discover top and recent media associated with specific hashtags. |
-| Mention Tracking | Identify and retrieve media where your account has been mentioned by other Instagram users. |
-| Insights and Analytics | Access account-level and media-level metrics for reach, impressions, engagement, and audience demographics. |
-| Instagram Direct Messaging | Send and receive messages through Instagram Direct for customer service and business communication. |
-| Stories Publishing | Publish ephemeral story content including photos and videos that disappear after 24 hours. |
-| Reels Publishing | Create and publish short-form video content as Instagram Reels. |
-| oEmbed | Embed Instagram posts, reels, and videos on third-party websites using the standard oEmbed protocol. |
-| Webhooks | Receive real-time notifications for comments, mentions, messages, and story insights via webhooks. |
-| Private Replies | Send private direct messages in response to public comments on your Instagram media. |
+**Kin Score 67.4** — exemplar · rubric 0.25.0 · scored 2026-10-23
 
-## Use Cases
+| Facet | Score |
+|---|---|
+| Discoverability | 73.2 |
+| Contract quality | 65.1 |
+| Contract governance | 45.5 |
+| Operational transparency | 76.3 |
+| Developer ergonomics | 74.4 |
+| Access clarity | 55.3 |
 
-| Name | Description |
-|------|-------------|
-| Social Media Management | Automate content publishing, scheduling, and media management across Instagram accounts. |
-| Brand Monitoring | Track mentions, comments, and hashtags to monitor brand sentiment and engagement. |
-| Customer Service | Manage Instagram Direct conversations for customer support and business inquiries. |
-| Analytics and Reporting | Retrieve insights and metrics for measuring content performance and audience growth. |
-| Content Curation | Discover and curate content through hashtag search and mention tracking. |
-| E-commerce Integration | Connect product catalogs and shopping features with Instagram content for social commerce. |
-| Influencer Marketing | Track creator account metrics, media performance, and audience insights for influencer campaigns. |
-| Website Embedding | Embed Instagram posts, reels, and galleries on websites and blogs using oEmbed. |
+**Agent readiness 38.9** — agent-ready (gated down from agent-native)
 
-## Integrations
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | served (partial credit) |
+| Idempotency | — |
+| Error Semantics | documented (partial credit) |
+| OpenAPI Examples | verified |
+| Rate Limit Signal | documented (partial credit) |
+| Event Surface Described | yes |
+| Agent Skills | derived (partial credit) |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | documented (partial credit) |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | — |
+| Operation Distinctiveness | distinct |
 
-| Name | Description |
-|------|-------------|
-| Facebook | Unified management of Instagram and Facebook content, messaging, and advertising through the Meta platform. |
-| Meta Business Suite | Centralized dashboard for managing Instagram and Facebook business accounts, content, and insights. |
-| WhatsApp | Cross-platform messaging through Meta unified messaging infrastructure. |
-| Webhooks | Real-time event notifications for comments, mentions, messages, and story insights. |
+**Regulatory alignment 36.3** — Horizontal (data, software, accessibility, platform)
 
-## Solutions
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/instagram/](https://apis.io/providers/instagram/).
 
-| Name | Description |
-|------|-------------|
-| Instagram API with Instagram Login | Native Instagram authentication for Business and Creator accounts with full API access. |
-| Instagram API with Facebook Login | Facebook Page-linked authentication for Instagram Business accounts with hashtag discovery. |
-| Instagram Messaging | Unified messaging across Instagram Direct and Facebook Messenger for business communication. |
-| Instagram Embedding | oEmbed and embed tools for displaying Instagram content on third-party websites. |
+## How this profile is made
 
-## Artifacts
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
 
-Machine-readable API specifications organized by format.
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Instagram: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
 
-### OpenAPI
+## Open an issue
 
-- [Instagram Graph API](openapi/instagram-graph-api.yaml) — 27 endpoints, 11 schemas (generated from documentation)
-
-### JSON Schema
-
-11 standalone JSON Schema files extracted from the OpenAPI spec in [json-schema/](json-schema/).
-
-### JSON Structure
-
-11 JSON Structure files converted from JSON Schema in [json-structure/](json-structure/).
-
-### JSON-LD
-
-- [Instagram Graph API Context](json-ld/instagram-graph-api-context.jsonld) — 11 types, 37 properties
-
-### Examples
-
-11 realistic example JSON files generated from JSON Schema in [examples/](examples/).
-
-## Vocabulary
-
-- [Instagram Vocabulary](vocabulary/instagram-vocabulary.yaml) — Unified taxonomy mapping 9 resources, 4 APIs, 5 domains, and 6 personas
-
-## Rules
-
-- [Instagram Spectral Rules](rules/instagram-spectral-rules.yml) — 20 rules enforcing Instagram API conventions
-
-## Maintainers
-
-**FN:** Kin Lane
-
-**Email:** kin@apievangelist.com
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/instagram/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
